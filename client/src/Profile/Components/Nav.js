@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import React, { Component } from 'react';
-import { Input, Icon, Menu, Container} from 'semantic-ui-react';
+import { Input, Icon, Menu} from 'semantic-ui-react';
 import Logo from './Logo';
 
 
@@ -18,13 +18,13 @@ class Nav extends Component {
 
     return (
       <Menu color={ color } inverted> 
-            <Container style={{paddingLeft:30}}>
+        <Menu.Menu position='left' style={{marginLeft: 30}}>
                 <Logo/>
                 <Menu.Item>
                 <Input icon='search' placeholder='Search...' style={{width:300}}/>
                 </Menu.Item>
-            </Container>
-        <Menu.Menu position='center' style={{marginLeft: 200}}>
+        </Menu.Menu>
+        <Menu.Menu position='left'>
             <Menu.Item name='home' active={activeItem === 'home'} onClick={this.handleItemClick}>
               <Icon name='home' />
               Home
