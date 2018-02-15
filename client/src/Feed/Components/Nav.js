@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import React, { Component } from 'react';
-import { Input, Icon, Menu, Segment} from 'semantic-ui-react';
+import { Input, Icon, Menu, Segment, Dropdown} from 'semantic-ui-react';
 import Logo from './Logo';
 
 
