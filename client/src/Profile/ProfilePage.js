@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Nav from './Components/Nav'
 
 class ProfilePage extends Component {
     constructor(props) {
@@ -7,7 +8,8 @@ class ProfilePage extends Component {
     }
     render() { 
         return ( 
-            <h1>PROFILE PAGE</h1>
+        	<Nav color="black"/>
+    
          )
     }
 }
