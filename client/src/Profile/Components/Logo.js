@@ -1,5 +1,5 @@
 import React from 'react';
-import { Divider, Grid } from 'semantic-ui-react'
+import { Grid } from 'semantic-ui-react'
 
 let styles={
     color: "White",

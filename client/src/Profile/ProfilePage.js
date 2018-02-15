@@ -8,7 +8,7 @@ class ProfilePage extends Component {
     }
     render() { 
         return ( 
-        	<Nav color="black"/>
+        	<Nav color="black" style={{position: "fixed"}}/>
     
          )
     }

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import React, { Component } from 'react';
-import { Input, Icon, Menu} from 'semantic-ui-react';
+import { Input, Icon, Menu, Segment} from 'semantic-ui-react';
 import Logo from './Logo';
 
 
@@ -17,7 +17,8 @@ class Nav extends Component {
      const { color } = this.props
 
     return (
-      <Menu color={ color } inverted> 
+      <Segment color={ color } inverted  style={{padding: 0.5}}>
+      <Menu inverted pointing secondary> 
         <Menu.Menu position='left' style={{marginLeft: 30}}>
                 <Logo/>
                 <Menu.Item>
@@ -39,6 +40,8 @@ class Nav extends Component {
             </Menu.Item>
         </Menu.Menu>
       </Menu>
+    </Segment>
+
     )
   }
 }
