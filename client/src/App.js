@@ -6,10 +6,23 @@ import FeedPage from './Feed/FeedPage'
 import UserProfile from './Profile/ProfilePage'
 import NotFound from './NotFound/NotFound'
 
+const duration = 300;
+
+const defaultStyle = {
+  transition: `opacity ${duration}ms ease-in-out`,
+  opacity: 0,
+}
+
+const transitionStyles = {
+  entering: { opacity: 0 },
+  entered:  { opacity: 1 },
+};
+
 class App extends Component {
   render() {
-    const timeout = { enter: 300, exit: 200 };
+    const timeout = { enter: 900, exit: 900 };
     return (
+      
       
       <TransitionGroup component="main" className="page-main" style={{ height: '100%' }}>
         <CSSTransition
@@ -19,7 +32,7 @@ class App extends Component {
           appear
         >
 
-        
+
 
           <Router>
               <Switch>

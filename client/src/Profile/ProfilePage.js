@@ -3,6 +3,7 @@ import Parallax from 'react-springy-parallax'
 import Banner from './Components/Banner'
 import About from './Components/About'
 import { Grid, Container, Sidebar, Segment, Button, Menu, Image, Icon, Header } from 'semantic-ui-react'
+import {Link} from "react-router-dom"
 
 class ProfilePage extends Component {
     constructor(props) {
@@ -19,20 +20,17 @@ class ProfilePage extends Component {
 
         <div>
 
-                <Icon name="list" onClick={this.toggleVisibility} size='large' sytle={{ marginLeft: "2%", marginTop: "2%"}} />
+                
                 <Sidebar.Pushable>
                 <Sidebar as={Menu} animation='overlay' width='thin' visible={this.state.visible} icon='labeled' vertical inverted style={{height: "100vh;"}}>
                     <Menu.Item name='home'>
-                    <Icon name='home' />
-                    Home
+                    <Link to="/" ><Icon name='home' />Home</Link>
                     </Menu.Item>
                     <Menu.Item name='gamepad'>
-                    <Icon name='gamepad' />
-                    Games
+                    <Link to="/profile/:id" ><Icon name='user' />My Profile</Link>
                     </Menu.Item>
-                    <Menu.Item name='camera'>
-                    <Icon name='camera' />
-                    Channels
+                    <Menu.Item name='newspaper'>
+                    <Link to="/feed" ><Icon name='newspaper' />Feed</Link>
                     </Menu.Item>
                 </Sidebar>
                 <Sidebar.Pusher>
@@ -42,6 +40,8 @@ class ProfilePage extends Component {
                                 <Grid.Row>
                                 <Grid.Column width={16}>
                                     <Banner/>
+                                    <br/>
+                                    <Icon name="list" onClick={this.toggleVisibility} size='large' sytle={{ marginLeft: "2%", marginTop: "2%"}} />
                                 </Grid.Column>
                                 </Grid.Row>
                             
