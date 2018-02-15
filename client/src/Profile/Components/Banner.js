@@ -9,7 +9,7 @@ let styles={
   height: "30vh!important",
   //position: "fixed",
   backgroundImage: `url('https://bizsitenow-wpengine.netdna-ssl.com/wp-content/blogs.dir/28/files/2014/10/418_Las-Vegas-Web-Developer_201410141.jpg')`,
-  backgroundSize: "cover"
+  backgroundSize: "cover",
   
 }
 
@@ -32,7 +32,7 @@ const Logo = (props) =>
                              <Image  style={imageStyles} src='https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAMAAQDGAAwAAQAAAAAAAA7hAAAAJDE2YzA2NDBkLWU0YzMtNDE2Zi1hMDcxLTY0YWFiNWZlZjM5ZQ.jpg' size='medium' circular />
                         </Grid.Column>
 
-                        <Grid.Column width={8}>
+                        <Grid.Column width={9}>
                             
                             <Header as='h1' style={{marginTop: "5vh", color: "white", fontSize: "7vh"}}>
                                 <Icon name='code' />
@@ -45,7 +45,7 @@ const Logo = (props) =>
                             </Header>
                         </Grid.Column>
 
-                        <Grid.Column width={4}>
+                        <Grid.Column width={3}>
 
                             <ConnectButton/>
 

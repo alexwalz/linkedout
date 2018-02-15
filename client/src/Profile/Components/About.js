@@ -4,7 +4,7 @@ import { Header, Segment, Container } from 'semantic-ui-react'
 const About = () => (
   <div>
       <Container>
-        <Header as='h1' attached='top'>
+        <Header as='h1' attached='top' color="blue">
         About Me
         </Header>
         <Segment attached>
