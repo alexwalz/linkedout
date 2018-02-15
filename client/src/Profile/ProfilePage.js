@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Nav from './Components/Nav'
+import Nav from '../Feed/Components/Nav'
 
 class ProfilePage extends Component {
     constructor(props) {
