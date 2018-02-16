@@ -5,11 +5,13 @@ import ConnectButton from './ConnectButton'
 let styles={
   top: "0",
   left: "0",
-  width: "100%",
+  width: "127%",
   height: "30vh!important",
   //position: "fixed",
   backgroundImage: `url('https://bizsitenow-wpengine.netdna-ssl.com/wp-content/blogs.dir/28/files/2014/10/418_Las-Vegas-Web-Developer_201410141.jpg')`,
   backgroundSize: "cover",
+  margin: "0 0 0 -14%"
+
   
 }
 
