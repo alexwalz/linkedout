@@ -68,7 +68,7 @@ class ProfilePage extends Component {
                     </Sidebar>
                     <Sidebar.Pusher>
 
-                        <Container>
+                        <Container style={{paddingTop: 80}}>
                             <Grid>
                                 <Grid.Row>
                                     <Grid.Column width={16}>

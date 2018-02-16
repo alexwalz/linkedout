@@ -1,7 +1,7 @@
-<<<<<<< HEAD
+
 node_modules
 .DS_Store
-=======
+
 # Created by .ignore support plugin (hsz.mobi)
 ### Node template
 # Logs
@@ -66,4 +66,3 @@ typings/
 # next.js build output
 .next
 
->>>>>>> master
