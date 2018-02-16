@@ -45,7 +45,7 @@ class ProfilePage extends Component {
         return ( 
             
 
-        <div style={{backgroundImage: "url('https://www.toptal.com/designers/subtlepatterns/patterns/greyzz.png')", backgroundPositionX: 'center', color:"grey" }}>
+        <div style={{backgroundImage: "url('https://www.toptal.com/designers/subtlepatterns/patterns/greyzz.png')", backgroundPositionX: 'center', color:"grey", paddingTop: 80 }}>
                    
                     <Container>
                             <Grid>

@@ -7,7 +7,9 @@ class FeedPage extends Component {
     }
     render() { 
         return ( 
-        <h1>Feed</h1>
+ 			<div style={{backgroundImage: "url('https://www.toptal.com/designers/subtlepatterns/patterns/greyzz.png')", backgroundPositionX: 'center', color:"grey", paddingTop: 80}}>
+ 				<h1>Feed Page</h1>
+ 			</div>
           
          )
     }

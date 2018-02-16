@@ -20,7 +20,13 @@ class Nav extends Component {
      const { color } = this.props
 
     return (
-      <Segment color={ color } inverted  style={{padding: 0.5}}>
+      <Segment color={ color } inverted  style={{   
+        paddingBottom: 0.5,
+        position: "fixed",
+        zIndex: 20,
+        left: 0,
+        right: 0
+      }}>
       <Menu inverted pointing secondary> 
         <Menu.Menu position='left' style={{marginLeft: 30}}>
                 <Logo/>
