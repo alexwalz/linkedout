@@ -29,7 +29,7 @@ const Logo = (props) =>
                         <Grid.Row>
 
                         <Grid.Column width={4} textAlign="right">
-                             <Image  style={imageStyles} src='https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAMAAQDGAAwAAQAAAAAAAA7hAAAAJDE2YzA2NDBkLWU0YzMtNDE2Zi1hMDcxLTY0YWFiNWZlZjM5ZQ.jpg' size='medium' circular />
+                             <Image  style={imageStyles} src={props.image_url} size='medium' circular />
                         </Grid.Column>
 
                         <Grid.Column width={9}>
@@ -37,17 +37,15 @@ const Logo = (props) =>
                             <Header as='h1' style={{marginTop: "5vh", color: "white", fontSize: "7vh"}}>
                                 <Icon name='code' />
                                 <Header.Content>
-                                    Alexander Walz
+                                    {props.first_name + " " + props.last_name}
                                 <Header.Subheader style={{color: "white"}}>
-                                     <Divider horizontal  inverted >Full Stack Web Developer</Divider>
+                                     <Divider horizontal  inverted >{props.job_title}</Divider>
                                 </Header.Subheader>
                                 </Header.Content>
                             </Header>
                         </Grid.Column>
 
                         <Grid.Column width={3}>
-
-                            <ConnectButton/>
 
                         </Grid.Column>
 

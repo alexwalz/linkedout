@@ -1,8 +1,13 @@
 {
   "main.css": "static/css/main.e5b20a98.css",
   "main.css.map": "static/css/main.e5b20a98.css.map",
+<<<<<<< HEAD
   "main.js": "static/js/main.e2e7bb6d.js",
   "main.js.map": "static/js/main.e2e7bb6d.js.map",
+=======
+  "main.js": "static/js/main.116a9c71.js",
+  "main.js.map": "static/js/main.116a9c71.js.map",
+>>>>>>> a358ca702eca9a74feb0274ab07ff73e9fc2ca9a
   "static/media/flags.png": "static/media/flags.9c74e172.png",
   "static/media/icons.eot": "static/media/icons.674f50d2.eot",
   "static/media/icons.svg": "static/media/icons.912ec66d.svg",
