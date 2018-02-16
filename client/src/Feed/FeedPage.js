@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+// import { Grid, Container, Segment, Button, Menu, Image, Icon, Header } from 'semantic-ui-react'
 
 class FeedPage extends Component {
     constructor(props) {
