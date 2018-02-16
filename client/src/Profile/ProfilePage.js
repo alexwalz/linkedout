@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Nav from '../Feed/Components/Nav'
 import Parallax from 'react-springy-parallax'
 import Banner from './Components/Banner'
 import About from './Components/About'
@@ -44,9 +43,7 @@ class ProfilePage extends Component {
 
     render() { 
         return ( 
-
-        <div>
-            <Nav color="black" style={{position: "fixed"}}/>
+            
 
         <div style={{backgroundImage: "url('https://www.toptal.com/designers/subtlepatterns/patterns/greyzz.png')", backgroundPositionX: 'center', color:"grey" }}>
                    
@@ -97,10 +94,9 @@ class ProfilePage extends Component {
 
                                 </Grid.Row>
                         </Grid>
-                    </Container>
-            
-            
+                    </Container>     
           </div>
+
         
          )
     }

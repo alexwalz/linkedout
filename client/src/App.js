@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import Nav from "./Feed/Components/Nav";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import LoginPage from './Login/LoginPage'
 import FeedPage from './Feed/FeedPage'
 import UserProfile from './Profile/ProfilePage'
 import NotFound from './NotFound/NotFound'
+
 
 const duration = 300;
 
@@ -35,12 +37,15 @@ class App extends Component {
 
 
           <Router>
+            <div>
+              <Route path="/home" component={Nav} />
               <Switch>
                   <Route path="/" exact component={LoginPage} />
-                  <Route path="/feed" exact component={FeedPage} />
-                  <Route path="/profile/:id" exact component={UserProfile} />
+                  <Route path="/home/feed" exact component={FeedPage} />
+                  <Route path="/home/profile/:id" exact component={UserProfile} />
                   <Route component={NotFound} />
               </Switch>
+            </div>
           </Router>
 
 

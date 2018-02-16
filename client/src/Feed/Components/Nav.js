@@ -8,7 +8,7 @@ import {Link} from "react-router-dom";
 
 
 class Nav extends Component {
-    state = { activeItem: 'home' }
+    state = { activeItem: '' }
       static propTypes = {
     color: PropTypes.string,
   }
@@ -31,7 +31,7 @@ class Nav extends Component {
         <Menu.Menu position='left'>
            
               <Menu.Item name='home' active={activeItem === 'home'} onClick={this.handleItemClick}>
-               <Link to="/feed">
+               <Link to="/home/feed">
                 <Icon name='home' />
                 Home
               </Link>
@@ -43,7 +43,7 @@ class Nav extends Component {
                 Network
             </Menu.Item>
             <Menu.Item name='profile' active={activeItem === 'profile'} onClick={this.handleItemClick}>
-              <Link to="/profile/id">
+              <Link to="/home/profile/id">
                 <Icon name='image' />
                 Profile
               </Link>

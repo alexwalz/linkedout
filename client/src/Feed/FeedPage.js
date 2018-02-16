@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Nav from './Components/Nav';
 
 class FeedPage extends Component {
     constructor(props) {
@@ -8,7 +7,7 @@ class FeedPage extends Component {
     }
     render() { 
         return ( 
-        	<Nav color="black" style={{position: "fixed"}}/>
+        <h1>Feed</h1>
           
          )
     }
