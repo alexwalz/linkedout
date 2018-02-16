@@ -2,6 +2,9 @@ import PropTypes from 'prop-types'
 import React, { Component } from 'react';
 import { Input, Icon, Menu, Segment, Dropdown} from 'semantic-ui-react';
 import Logo from './Logo';
+import {Link} from "react-router-dom";
+
+
 
 
 class Nav extends Component {
@@ -26,17 +29,24 @@ class Nav extends Component {
                 </Menu.Item>
         </Menu.Menu>
         <Menu.Menu position='left'>
-            <Menu.Item name='home' active={activeItem === 'home'} onClick={this.handleItemClick}>
-              <Icon name='home' />
-              Home
-            </Menu.Item>
+           
+              <Menu.Item name='home' active={activeItem === 'home'} onClick={this.handleItemClick}>
+               <Link to="/feed">
+                <Icon name='home' />
+                Home
+              </Link>
+              </Menu.Item>
+            
+
             <Menu.Item name='network' active={activeItem === 'network'} onClick={this.handleItemClick}>
                 <Icon name='users' />
                 Network
             </Menu.Item>
             <Menu.Item name='profile' active={activeItem === 'profile'} onClick={this.handleItemClick}>
+              <Link to="/profile/id">
                 <Icon name='image' />
                 Profile
+              </Link>
             </Menu.Item>
         </Menu.Menu>
       </Menu>
