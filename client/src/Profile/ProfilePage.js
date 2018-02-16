@@ -8,6 +8,7 @@ import ConnectButton from './Components/ConnectButton'
 import EmailButton from './Components/EmailButton'
 import ProfileFeed from './Components/ProfileFeed'
 import LanguagesView from './Components/LanguagesView'
+import Bio from './Components/Bio'
 
 class ProfilePage extends Component {
     constructor(props) {
@@ -31,7 +32,8 @@ class ProfilePage extends Component {
                 "Sequelize",
                 "MySql",
                 "Javascript",
-                "Jquery"
+                "Jquery",
+                "Bootstrap"
             ]
          }
     }
@@ -43,7 +45,7 @@ class ProfilePage extends Component {
     render() { 
         return ( 
 
-        <div style={{backgroundImage: "url('https://www.toptal.com/designers/subtlepatterns/patterns/greyzz.png')", backgroundPositionX: 'center', color:"grey" }}>
+        <div style={{backgroundImage: "url('https://www.toptal.com/designers/subtlepatterns/patterns/greyzz.png')", backgroundPositionX: 'center', color:"grey"}}>
 
                 
                 <Sidebar.Pushable>
@@ -92,15 +94,19 @@ class ProfilePage extends Component {
                                 <Grid.Column width={8}>
 
                                             <Grid.Row>
+
+                                                <Grid.Column width={16}>
+                                                    <Bio first_name={this.state.first_name} last_name={this.state.last_name} email={this.state.email} phone={this.state.phone} education={this.state.education} company={this.state.current_company} jobTitle={this.state.job_title} birthday={this.state.birthday} />
+                                                </ Grid.Column>
+
                                                 <Grid.Column width={16}>
                                                      <About about={this.state.about}/>
                                                 </ Grid.Column>
 
                                                 <Grid.Column width={16}>
-
-                                                    <LanguagesView/>
-
+                                                    <LanguagesView languages={this.state.languages}/>
                                                 </ Grid.Column>
+
                                                 
                                             </Grid.Row>
                                     

@@ -1,35 +1,22 @@
 import React from 'react'
 import Languages from './Languages'
-import { Message, Grid, Segment } from 'semantic-ui-react'
+import { Message, Grid, Segment, Divider } from 'semantic-ui-react'
 
 const LanguagesView = (props) => (
   <div>
     
     <Segment>
-        <Grid.Row>
+      {console.log("LANGUAGES", props.languages)}
+
+        <Grid.Row style={{marginBottom: "10px"}}>
           <Grid.Column textAlign="center">
-            <h2  textAlign="center" >My Languages</h2>
+          <Divider horizontal><h4  textAlign="center" style={{color: "grey"}}>My Languages</h4></Divider>
           </Grid.Column>
         </Grid.Row>
 
-        <Grid.Row style={{marginTop: "10px"}}>
-            <Grid.Column width={8}>
-               <Languages language="React.js"/>
-            </Grid.Column>
-            <Grid.Column width={8}>
-               <Languages language="Node.js"/>
-            </Grid.Column>
-            <Grid.Column width={8}>
-               <Languages language="MongoDb"/>
-            </Grid.Column>
-            <Grid.Column width={8}>
-               <Languages language="Handlebars"/>
-            </Grid.Column>
-            <Grid.Column width={8}>
-               <Languages language="MySql"/>
-            </Grid.Column>
-        </Grid.Row>
-
+                {props.languages.map(language => (
+                  <Languages language={language} />
+                ))}
 
     </Segment>
   </div>
