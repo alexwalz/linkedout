@@ -8,6 +8,7 @@ import ConnectButton from './Components/ConnectButton'
 import EmailButton from './Components/EmailButton'
 import ProfileFeed from './Components/ProfileFeed'
 import LanguagesView from './Components/LanguagesView'
+import Bio from './Components/Bio'
 
 
 class ProfilePage extends Component {
@@ -32,7 +33,8 @@ class ProfilePage extends Component {
                 "Sequelize",
                 "MySql",
                 "Javascript",
-                "Jquery"
+                "Jquery",
+                "Bootstrap"
             ]
          }
     }
@@ -45,7 +47,26 @@ class ProfilePage extends Component {
         return ( 
             
 
+<<<<<<< HEAD
         <div style={{backgroundImage: "url('https://www.toptal.com/designers/subtlepatterns/patterns/greyzz.png')", backgroundPositionX: 'center', color:"grey", paddingTop: 80 }}>
+=======
+        <div style={{backgroundImage: "url('https://www.toptal.com/designers/subtlepatterns/patterns/greyzz.png')", backgroundPositionX: 'center', color:"grey"}}>
+
+                
+                <Sidebar.Pushable>
+                <Sidebar as={Menu} animation='overlay' width='thin' visible={this.state.visible} icon='labeled' vertical inverted style={{height: "100vh;"}}>
+                    <Menu.Item name='home'>
+                    <Link to="/" ><Icon name='home' />Home</Link>
+                    </Menu.Item>
+                    <Menu.Item name='gamepad'>
+                    <Link to="/profile/:id" ><Icon name='user' />My Profile</Link>
+                    </Menu.Item>
+                    <Menu.Item name='newspaper'>
+                    <Link to="/feed" ><Icon name='newspaper' />Feed</Link>
+                    </Menu.Item>
+                </Sidebar>
+                <Sidebar.Pusher>
+>>>>>>> master
                    
                     <Container>
                             <Grid>
@@ -75,15 +96,19 @@ class ProfilePage extends Component {
                                 <Grid.Column width={8}>
 
                                             <Grid.Row>
+
+                                                <Grid.Column width={16}>
+                                                    <Bio first_name={this.state.first_name} last_name={this.state.last_name} email={this.state.email} phone={this.state.phone} education={this.state.education} company={this.state.current_company} jobTitle={this.state.job_title} birthday={this.state.birthday} />
+                                                </ Grid.Column>
+
                                                 <Grid.Column width={16}>
                                                      <About about={this.state.about}/>
                                                 </ Grid.Column>
 
                                                 <Grid.Column width={16}>
-
-                                                    <LanguagesView/>
-
+                                                    <LanguagesView languages={this.state.languages}/>
                                                 </ Grid.Column>
+
                                                 
                                             </Grid.Row>
                                     
