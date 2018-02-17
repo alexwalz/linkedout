@@ -6,6 +6,7 @@ import LoginPage from './Login/LoginPage'
 import FeedPage from './Feed/FeedPage'
 import UserProfile from './Profile/ProfilePage'
 import NotFound from './NotFound/NotFound'
+import ClassifiedsPage from './Classifieds/ClassifiedsPage'
 
 
 const duration = 300;
@@ -43,6 +44,7 @@ class App extends Component {
                   <Route path="/" exact component={LoginPage} />
                   <Route path="/home/feed" exact component={FeedPage} />
                   <Route path="/home/profile/:id" exact component={UserProfile} />
+                  <Route path="/home/classifieds" exact component={ClassifiedsPage} />
                   <Route component={NotFound} />
               </Switch>
             </div>
