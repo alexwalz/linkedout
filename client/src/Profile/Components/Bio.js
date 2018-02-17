@@ -11,7 +11,7 @@ const Bio = (props) => (
 
         <Grid.Row style={{marginBottom: "10px"}}>
           <Grid.Column textAlign="center">
-          <Divider horizontal><h3  textAlign="center" style={{color: "grey"}}>My Bio</h3></Divider>
+          <Divider horizontal><h3  textAlign="center" style={{color: "grey"}}>{props.first_name + " " + props.last_name}'s Bio</h3></Divider>
           </Grid.Column>
         </Grid.Row>
 
@@ -28,35 +28,35 @@ const Bio = (props) => (
             <Icon circular color='teal' name='mail outline' />
         </Grid.Column>
         <Grid.Column width={14} textAlign="left">
-            <h4>{props.email}</h4>
+            <h4 style={{lineHeight: "2.5rem"}}>{props.email}</h4>
         </Grid.Column>
 
         <Grid.Column width={2} style={{marginTop: "3px"}}>
             <Icon circular color='teal' name='phone outline' />
         </Grid.Column>
         <Grid.Column width={14} textAlign="left">
-            <h4>{props.phone}</h4>
+            <h4 style={{lineHeight: "2.5rem"}}>{props.phone}</h4>
         </Grid.Column>
 
         <Grid.Column width={2} style={{marginTop: "3px"}}>
             <Icon circular color='teal' name='building outline' />
         </Grid.Column>
         <Grid.Column width={14} textAlign="left">
-            <h4>{props.company} | {props.jobTitle}</h4>
+            <h4 style={{lineHeight: "2.5rem"}}>{props.company} | {props.jobTitle}</h4>
         </Grid.Column>
 
         <Grid.Column width={2} style={{marginTop: "3px"}}>
         <Icon circular color='teal' name='calendar' />
         </Grid.Column>
         <Grid.Column width={14} textAlign="left">
-            <h4>{props.birthday}</h4>
+            <h4 style={{lineHeight: "2.5rem"}}>{props.birthday}</h4>
         </Grid.Column>
 
         <Grid.Column width={2} style={{marginTop: "3px"}}>
         <Icon circular color='teal' name='map pin' />
         </Grid.Column>
         <Grid.Column width={14} textAlign="left">
-            <h4>{props.location}</h4>
+            <h4 style={{lineHeight: "2.5rem"}}>{props.location}</h4>
         </Grid.Column>
 
 
