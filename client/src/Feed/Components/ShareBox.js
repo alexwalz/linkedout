@@ -1,25 +1,105 @@
-import React from 'react'
-import { Message, Grid, Segment, Divider, Header, Icon, Image } from 'semantic-ui-react'
+import React , { Component } from 'react'
+import { Container, Grid, Segment, Header, Icon, Form, TextArea, Card,  Button} from 'semantic-ui-react'
+import PostButton from './PostButton'
 
 
-const FeedIdentity = (props) => (
-  <div style={{marginBottom:"10px"}}>
-    
-    <Segment>
 
-    <Header as='h2' icon textAlign='center' style={{color: "black"}}>
-      <Icon name='user' circular />
-      <Header.Content>
-        {props.first_name + " " + props.last_name}
-        <Header.Subheader>
-             <Divider horizontal style={{color: "#00b5ad"}} >{props.job_title}</Divider>
-        </Header.Subheader>
-	   </Header.Content>
-    </Header>
+class ShareBox extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { 
+          first_name: "Alexander",
+            last_name: "Walz",
+            image_url: "https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAMAAQDGAAwAAQAAAAAAAA7hAAAAJDE2YzA2NDBkLWU0YzMtNDE2Zi1hMDcxLTY0YWFiNWZlZjM5ZQ.jpg",
+            job_title: "Full Stack Developer",
+          editing: false
+         }
+    }
 
-        
-    </Segment>
-  </div>
-)
+    edit(){
+      this.setState({editing: true})
+    }
 
-export default FeedIdentity;
+    cancel(){
+      this.setState({editing: false})
+    }
+
+    postComment(){
+      //this funciton will be passed to the PostButton when editing is true 
+    }
+
+    renderForm(){
+      return(
+        <Card fluid>
+      <Card.Content>
+        <Card.Header><Icon name='user' circular /> {this.state.first_name + " " + this.state.last_name}</Card.Header>
+        <Card.Description>
+           <Form>
+            <TextArea autoHeight placeholder='Add comment here' />
+          </Form>
+        </Card.Description>
+      </Card.Content>
+       <Card.Content extra>
+        <Grid>
+          <Grid.Row>
+
+            <Grid.Column width={9}>
+            </Grid.Column>
+
+            <Grid.Column width={3}>
+               <Button basic color='red' onClick={() => this.cancel()}>Cancel</Button>
+            </Grid.Column>
+
+            <Grid.Column width={3}>
+                <PostButton editing= {this.state.editing}/>
+            </Grid.Column>
+
+          </Grid.Row>
+          
+        </Grid>
+      </Card.Content>
+    </Card>
+
+        )
+    }
+
+    renderDisplay(){
+      return(
+        <Card fluid onClick={()=> this.edit()}>
+      <Card.Content>
+        <Card.Description>Post something here</Card.Description>
+      </Card.Content>
+       <Card.Content extra>
+        <Grid>
+          <Grid.Row>
+
+            <Grid.Column width={9}>
+            </Grid.Column>
+
+            <Grid.Column width={3}>
+      
+            </Grid.Column>
+
+            <Grid.Column width={3}>
+                <PostButton editing= {this.state.editing}/>
+            </Grid.Column>
+
+          </Grid.Row>
+          
+        </Grid>
+      </Card.Content>
+    </Card>
+        )
+    }
+
+    render() { 
+        return ( <Container>
+          {(this.state.editing) ? this.renderForm() : this.renderDisplay()}
+          </Container>
+         )
+    }
+}
+
+
+
+export default ShareBox;

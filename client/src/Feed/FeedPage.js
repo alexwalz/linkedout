@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Grid, Container, Segment, Button, Menu, Image, Icon, Header } from 'semantic-ui-react'
 import FeedIdentity from './Components/FeedIdentity';
+import ShareBox from './Components/ShareBox';
 
 class FeedPage extends Component {
     constructor(props) {
@@ -25,7 +26,7 @@ class FeedPage extends Component {
                              job_title={this.state.job_title} image_url={this.state.image_url}/>
  						</Grid.Column>
  						<Grid.Column width={8}>
- 							
+ 							<ShareBox />
  						</Grid.Column>
  						<Grid.Column width={4}>
  							
