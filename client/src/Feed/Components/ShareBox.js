@@ -1,5 +1,5 @@
 import React , { Component } from 'react'
-import { Container, Grid, Segment, Header, Icon, Form, TextArea, Card,  Button} from 'semantic-ui-react'
+import { Container, Grid, Segment, Header, Icon, Form, TextArea, Card,  Button, Image} from 'semantic-ui-react'
 import PostButton from './PostButton'
 
 
@@ -9,10 +9,6 @@ class ShareBox extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-          first_name: "Alexander",
-            last_name: "Walz",
-            image_url: "https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAMAAQDGAAwAAQAAAAAAAA7hAAAAJDE2YzA2NDBkLWU0YzMtNDE2Zi1hMDcxLTY0YWFiNWZlZjM5ZQ.jpg",
-            job_title: "Full Stack Developer",
           editing: false
          }
     }
@@ -33,7 +29,7 @@ class ShareBox extends Component {
       return(
     <Card fluid style={{boxShadow: "0 4px 6px 0 rgba(0, 0, 0, 0.2)"}}>
       <Card.Content>
-        <Card.Header><Icon name='user' circular /> {this.state.first_name + " " + this.state.last_name}</Card.Header>
+        <Card.Header><Image src={this.props.image_url} avatar /> {this.props.first_name + " " + this.props.last_name}</Card.Header>
         <Card.Description>
            <Form>
             <TextArea autoHeight placeholder='Add comment here' />

@@ -17,17 +17,17 @@ class ProfilePage extends Component {
         super(props);
         this.state = {
             visible: false,
-            first_name: "Alexander",
-            last_name: "Walz",
-            email: "alexwalz@icoud.com",
+            first_name: "John",
+            last_name: "Doe",
+            email: "JohnDoe@gmail.com",
             about: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            phone: "801-661-4344",
-            image_url: "https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAMAAQDGAAwAAQAAAAAAAA7hAAAAJDE2YzA2NDBkLWU0YzMtNDE2Zi1hMDcxLTY0YWFiNWZlZjM5ZQ.jpg",
+            phone: "801-123-4567",
+            image_url: "https://pbs.twimg.com/profile_images/543459641263665152/9-Y39lzm.jpeg",
             job_title: "Full Stack Developer",
             birthday: "10/29/1990",
             current_company: "Instructure",
             education: "Some College",
-            location: "Salt Lake City, Utah",
+            location: "Mobile, Alabama",
             languages: [
                 "React.js",
                 "Node.js",
@@ -134,7 +134,7 @@ class ProfilePage extends Component {
                                     <Grid.Column width={8}>
                                             <Grid.Row>
                                                  <Grid.Column width={16} style={{marginBottom: "10px"}}>
-                                                    <ShareBox />
+                                                    <ShareBox first_name={this.state.first_name} last_name={this.state.last_name} image_url={this.state.image_url}/>
                                                  </Grid.Column>
                                         
                                                  <Grid.Column width={16}>
