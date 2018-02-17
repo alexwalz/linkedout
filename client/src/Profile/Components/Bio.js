@@ -11,7 +11,7 @@ const Bio = (props) => (
 
         <Grid.Row style={{marginBottom: "10px"}}>
           <Grid.Column textAlign="center">
-          <Divider horizontal><h4  textAlign="center" style={{color: "grey"}}>My Bio</h4></Divider>
+          <Divider horizontal><h3  textAlign="center" style={{color: "grey"}}>My Bio</h3></Divider>
           </Grid.Column>
         </Grid.Row>
 
@@ -50,6 +50,13 @@ const Bio = (props) => (
         </Grid.Column>
         <Grid.Column width={14} textAlign="left">
             <h4>{props.birthday}</h4>
+        </Grid.Column>
+
+        <Grid.Column width={2} style={{marginTop: "3px"}}>
+        <Icon circular color='teal' name='map pin' />
+        </Grid.Column>
+        <Grid.Column width={14} textAlign="left">
+            <h4>{props.location}</h4>
         </Grid.Column>
 
 

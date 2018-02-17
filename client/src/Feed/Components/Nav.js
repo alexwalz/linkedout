@@ -25,9 +25,10 @@ class Nav extends Component {
         position: "fixed",
         zIndex: 20,
         left: 0,
-        right: 0
+        right: 0,
+        backgroundImage: "url('https://www.toptal.com/designers/subtlepatterns/patterns/always_grey.png')",
       }}>
-      <Menu inverted pointing secondary> 
+      <Menu inverted pointing secondary style={{ border:'none'}}> 
         <Menu.Menu position='left' style={{marginLeft: 30}}>
                 <Logo/>
                 <Menu.Item>

@@ -27,7 +27,7 @@ class ProfilePage extends Component {
             birthday: "10/29/1990",
             current_company: "Instructure",
             education: "Some College",
-            location: "Utah",
+            location: "Salt Lake City, Utah",
             languages: [
                 "React.js",
                 "Node.js",
@@ -79,7 +79,7 @@ class ProfilePage extends Component {
                     </Sidebar>
                     <Sidebar.Pusher>
 
-                        <Container style={{paddingTop: 80}}>
+                        <Container style={{paddingTop: 62}}>
                             <Grid>
                                 <Grid.Row>
                                     <Grid.Column width={16}>
@@ -109,16 +109,14 @@ class ProfilePage extends Component {
 
                                         <Grid.Row>
 
-                                            <Grid.Column width={16} style={{marginBottom: "10px"}}>
-                                                <ShareBox />
-                                            </ Grid.Column>
-
                                             <Grid.Column width={16}>
                                                 <Bio first_name={this.state.first_name} last_name={this.state.last_name}
                                                      email={this.state.email} phone={this.state.phone}
                                                      education={this.state.education}
                                                      company={this.state.current_company}
-                                                     jobTitle={this.state.job_title} birthday={this.state.birthday}/>
+                                                     jobTitle={this.state.job_title} 
+                                                     birthday={this.state.birthday}
+                                                     location={this.state.location}/>
                                             </ Grid.Column>
 
                                             <Grid.Column width={16}>
@@ -134,8 +132,17 @@ class ProfilePage extends Component {
 
                                     </Grid.Column>
                                     <Grid.Column width={8}>
-                                        <ProfileFeed first_name={this.state.first_name} last_name={this.state.last_name}
+                                            <Grid.Row>
+                                                 <Grid.Column width={16} style={{marginBottom: "10px"}}>
+                                                    <ShareBox />
+                                                 </Grid.Column>
+                                        
+                                                 <Grid.Column width={16}>
+                                                 <ProfileFeed first_name={this.state.first_name} last_name={this.state.last_name}
                                                      image_url={this.state.image_url}/>
+                                                </Grid.Column>
+
+                                            </Grid.Row>
                                     </Grid.Column>
 
                                 </Grid.Row>
