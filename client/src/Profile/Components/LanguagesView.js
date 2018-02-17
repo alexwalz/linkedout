@@ -6,11 +6,9 @@ const LanguagesView = (props) => (
   <div>
     
     <Segment>
-      {console.log("LANGUAGES", props.languages)}
-
         <Grid.Row style={{marginBottom: "10px"}}>
           <Grid.Column textAlign="center">
-          <Divider horizontal><h4  textAlign="center" style={{color: "grey"}}>My Languages</h4></Divider>
+          <Divider horizontal><h3  textAlign="center" style={{color: "grey"}}>My Languages</h3></Divider>
           </Grid.Column>
         </Grid.Row>
 
