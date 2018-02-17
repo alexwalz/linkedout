@@ -10,6 +10,7 @@ import ProfileFeed from './Components/ProfileFeed'
 import LanguagesView from './Components/LanguagesView'
 import Bio from './Components/Bio'
 import ShareBox from '../Feed/Components/ShareBox'
+import Connections from './Components/Connections'
 
 
 class ProfilePage extends Component {
@@ -17,15 +18,15 @@ class ProfilePage extends Component {
         super(props);
         this.state = {
             visible: false,
-            first_name: "John",
-            last_name: "Doe",
-            email: "JohnDoe@gmail.com",
+            first_name: "Bill",
+            last_name: "Palmer",
+            email: "billpalmer@gmail.com",
             about: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
             phone: "801-123-4567",
             image_url: "https://pbs.twimg.com/profile_images/543459641263665152/9-Y39lzm.jpeg",
-            job_title: "Full Stack Developer",
+            job_title: "Backend Developer",
             birthday: "10/29/1990",
-            current_company: "Instructure",
+            current_company: "Jimmy Johns Farm Industry",
             education: "Some College",
             location: "Mobile, Alabama",
             languages: [
@@ -36,7 +37,8 @@ class ProfilePage extends Component {
                 "MySql",
                 "Javascript",
                 "Jquery",
-                "Bootstrap"
+                "Bootstrap",
+                "Python"
             ],
             connections:[
                 "<Mongo User Id>",
@@ -46,7 +48,15 @@ class ProfilePage extends Component {
                 "<Mongo User Id>",
                 "<Mongo User Id>",
                 "<Mongo User Id>",
+            ],
+            posts:[
+                {
+                    messageType:"",
+                    Message:"",
+                    Date:""
+                }
             ]
+
         }
     }
 
@@ -125,6 +135,10 @@ class ProfilePage extends Component {
 
                                             <Grid.Column width={16}>
                                                 <LanguagesView languages={this.state.languages}/>
+                                            </ Grid.Column>
+
+                                             <Grid.Column width={16} style={{marginTop:"10px"}}>
+                                                <Connections exampleMessage="This is my message"/>
                                             </ Grid.Column>
 
 

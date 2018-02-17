@@ -9,7 +9,7 @@ function FeedMessages(props) {
           <Grid columns={2}>
                 <Grid.Row>
                 <Grid.Column width={4}>
-                <Image src={props.image_url} size='mini' />
+                <Image src={props.image_url} avatar />
                 </Grid.Column>
                 <Grid.Column width={12}>
                     <h2>{props.name}</h2>
