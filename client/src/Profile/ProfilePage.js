@@ -9,6 +9,7 @@ import EmailButton from './Components/EmailButton'
 import ProfileFeed from './Components/ProfileFeed'
 import LanguagesView from './Components/LanguagesView'
 import Bio from './Components/Bio'
+import ShareBox from '../Feed/Components/ShareBox'
 
 
 class ProfilePage extends Component {
@@ -35,6 +36,15 @@ class ProfilePage extends Component {
                 "Javascript",
                 "Jquery",
                 "Bootstrap"
+            ],
+            connections:[
+                "<Mongo User Id>",
+                "<Mongo User Id>",
+                "<Mongo User Id>",
+                "<Mongo User Id>",
+                "<Mongo User Id>",
+                "<Mongo User Id>",
+                "<Mongo User Id>",
             ]
         }
     }
@@ -97,6 +107,10 @@ class ProfilePage extends Component {
                                     <Grid.Column width={8}>
 
                                         <Grid.Row>
+
+                                            <Grid.Column width={16} style={{marginBottom: "10px"}}>
+                                                <ShareBox />
+                                            </ Grid.Column>
 
                                             <Grid.Column width={16}>
                                                 <Bio first_name={this.state.first_name} last_name={this.state.last_name}
