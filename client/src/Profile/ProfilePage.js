@@ -27,6 +27,7 @@ class ProfilePage extends Component {
             birthday: "10/29/1990",
             current_company: "Instructure",
             education: "Some College",
+            location: "Utah",
             languages: [
                 "React.js",
                 "Node.js",
