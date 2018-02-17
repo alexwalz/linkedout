@@ -5,6 +5,7 @@ import PostButton from './PostButton'
 
 
 class ShareBox extends Component {
+
     constructor(props) {
         super(props);
         this.state = { 
@@ -30,7 +31,7 @@ class ShareBox extends Component {
 
     renderForm(){
       return(
-        <Card fluid>
+    <Card fluid style={{boxShadow: "0 4px 6px 0 rgba(0, 0, 0, 0.2)"}}>
       <Card.Content>
         <Card.Header><Icon name='user' circular /> {this.state.first_name + " " + this.state.last_name}</Card.Header>
         <Card.Description>
@@ -65,7 +66,7 @@ class ShareBox extends Component {
 
     renderDisplay(){
       return(
-        <Card fluid onClick={()=> this.edit()}>
+        <Card fluid onClick={()=> this.edit()} style={{boxShadow: "0 4px 6px 0 rgba(0, 0, 0, 0.2)"}}>
       <Card.Content>
         <Card.Description>Post something here</Card.Description>
       </Card.Content>
