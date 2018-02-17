@@ -8,9 +8,9 @@ class FeedPage extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-        	first_name: "Alexander",
-            last_name: "Walz",
-            image_url: "https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAMAAQDGAAwAAQAAAAAAAA7hAAAAJDE2YzA2NDBkLWU0YzMtNDE2Zi1hMDcxLTY0YWFiNWZlZjM5ZQ.jpg",
+        	first_name: "John",
+            last_name: "Doe",
+            image_url: "https://pbs.twimg.com/profile_images/543459641263665152/9-Y39lzm.jpeg",
             job_title: "Full Stack Developer"
          }
     }
@@ -27,7 +27,9 @@ class FeedPage extends Component {
                              job_title={this.state.job_title} image_url={this.state.image_url}/>
  						</Grid.Column>
  						<Grid.Column width={8}>
- 							<ShareBox />
+ 							<ShareBox
+                            first_name={this.state.first_name} last_name={this.state.last_name}
+                             job_title={this.state.job_title} image_url={this.state.image_url} />
  							<FeedContainer 
  							first_name={this.state.first_name} last_name={this.state.last_name}
                              job_title={this.state.job_title} image_url={this.state.image_url}

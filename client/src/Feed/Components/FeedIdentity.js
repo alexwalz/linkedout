@@ -8,7 +8,7 @@ const FeedIdentity = (props) => (
     <Segment>
 
     <Header as='h2' icon textAlign='center' style={{color: "black"}}>
-      <Icon name='user' circular />
+      <Image src={props.image_url} avatar style={{width: 150, height: 150}}/> 
       <Header.Content>
         {props.first_name + " " + props.last_name}
         <Header.Subheader>
