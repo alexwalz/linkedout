@@ -52,7 +52,7 @@ class ProfilePage extends Component {
                     id: "234lkjsdf",
                 },
                 {
-                    name: "Cesar Caceras",
+                    name: "Cesar Caceres",
                     image_url: "https://media.licdn.com/media/AAMABADGAAwAAQAAAAAAABCdAAAAJGE2ZDM1NjAzLWQzN2QtNGViMS05MWY0LWQxNzBjNDgyOTE3Mg.jpg",
                     id: "asldkjfsdfj",
                 },
