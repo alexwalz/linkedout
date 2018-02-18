@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Parallax from 'react-springy-parallax'
 import Banner from './Components/Banner'
 import About from './Components/About'
+import Languages from './Components/Languages'
 import {Grid, Container, Sidebar, Segment, Button, Menu, Image, Icon, Header} from 'semantic-ui-react'
 import {Link} from "react-router-dom"
 import ConnectButton from './Components/ConnectButton'
@@ -41,6 +42,7 @@ class ProfilePage extends Component {
                 "Bootstrap",
                 "Python"
             ],
+            dragLanguages : [],
             connections:[
                 {
                     name: "Alex Walz",
@@ -83,6 +85,17 @@ class ProfilePage extends Component {
     toggleVisibility = () => this.setState({visible: !this.state.visible})
 
 
+    //function to pass languages that can be draggable
+    languageArray(languages){
+        for (var i = 0; i < languages.length; i++){
+            var div = {content: <Languages language={languages[i]}/>}
+            this.state.dragLanguages.push(div)
+        }
+    }
+
+    componentDidMount(){
+         this.languageArray(this.state.languages);
+    }
 
     render() {
         return (
@@ -156,6 +169,7 @@ class ProfilePage extends Component {
 
                                             <Grid.Column width={16}>
                                                 <LanguagesView languages={this.state.languages}
+                                                languagesDrag={this.state.dragLanguages}
                                                 />
                                             </ Grid.Column>
 
