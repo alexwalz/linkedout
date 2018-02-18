@@ -2,7 +2,13 @@ import React , { Component } from 'react'
 import { Container, Grid, Segment, Header, Icon, Form, TextArea, Card,  Button, Image, Select} from 'semantic-ui-react'
 import PostButton from './PostButton'
 
-
+let messageStyles={
+  border: "2px solid grey",
+  padding: "3%",
+  borderImage: "linear-gradient(to bottom, #3acfd5 0%, #3a4ed5 100%)",
+  borderImageSlice: "1",
+  marginBottom: "5px"
+}
 
 class ShareBox extends Component {
     constructor(props) {
@@ -38,8 +44,8 @@ class ShareBox extends Component {
         <Card.Header><Image src={this.props.image_url} avatar /> {this.props.first_name + " " + this.props.last_name}</Card.Header>
         <Card.Description>
            <Form>
-           <Select placeholder='Select the type of post' options={postOptions} style={{marginBottom: 5}} />
-            <TextArea autoHeight placeholder='Add comment here' />
+           <Select placeholder='Select the type of post' options={postOptions} style={messageStyles} />
+            <TextArea autoHeight style={messageStyles} placeholder='Add comment here' />
           </Form>
         </Card.Description>
       </Card.Content>

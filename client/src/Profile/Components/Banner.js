@@ -21,8 +21,9 @@ let imageStyles={
     width: "25vh",
     marginLeft: "5%",
     border: "4px solid #B1D4DD", 
-    padding: "2px"
+    padding: "2px",
 }
+
 
 
 const Logo = (props) => 
