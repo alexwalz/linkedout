@@ -2,7 +2,13 @@ import React , { Component } from 'react'
 import { Container, Grid, Segment, Header, Icon, Form, TextArea, Card,  Button, Image, Select} from 'semantic-ui-react'
 import PostButton from './PostButton'
 
-
+let messageStyles={
+  border: "2px solid grey",
+  padding: "1%",
+  borderImage: "linear-gradient(to bottom, #3acfd5 0%, #3a4ed5 100%)",
+  borderImageSlice: "1",
+  marginBottom: "5px"
+}
 
 class ShareBox extends Component {
     constructor(props) {
@@ -33,13 +39,13 @@ class ShareBox extends Component {
       ]
       return(
 
-    <Card fluid style={{boxShadow: "0 4px 6px 0 rgba(0, 0, 0, 0.2)"}}>
+    <Card fluid style={{boxShadow: "0 4px 6px 0 rgba(0, 0, 0, 0.2)"}} style={messageStyles} >
       <Card.Content>
         <Card.Header><Image src={this.props.image_url} avatar /> {this.props.first_name + " " + this.props.last_name}</Card.Header>
         <Card.Description>
            <Form>
-           <Select placeholder='Select the type of post' options={postOptions} style={{marginBottom: 5}} />
-            <TextArea autoHeight placeholder='Add comment here' />
+           <Select placeholder='Select the type of post' options={postOptions} style={messageStyles} />
+            <TextArea autoHeight style={messageStyles} placeholder='Add comment here' />
           </Form>
         </Card.Description>
       </Card.Content>
@@ -69,9 +75,9 @@ class ShareBox extends Component {
 
     renderDisplay(){
       return(
-          <Card fluid onClick={()=> this.edit()} style={{boxShadow: "0 4px 6px 0 rgba(0, 0, 0, 0.2)"}}>
-            <Card.Content>
-              <Card.Description>Post something here</Card.Description>
+          <Card fluid onClick={()=> this.edit()} style={{boxShadow: "0 4px 6px 0 rgba(0, 0, 0, 0.2)"}} style={messageStyles} >
+            <Card.Content style={{textAlign: "center"}}>
+              <Card.Description><h3 style={{color: "#67C8D3"}}>Click Here To Post Something New</h3></Card.Description>
             </Card.Content>
              <Card.Content extra>
               <Grid>

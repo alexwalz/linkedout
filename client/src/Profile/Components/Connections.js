@@ -5,7 +5,7 @@ import IndividualConnections from './IndividualConnections'
 
 
 const Connections = (props) => (
-  <Segment piled>
+  <Segment>
   <Divider horizontal><h3  textAlign="center" style={{color: "grey"}}>My Connections</h3></Divider>
 
       {props.connections.map(connection => (

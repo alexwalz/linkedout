@@ -1,10 +1,10 @@
 import React from 'react'
-import { Comment, Icon } from 'semantic-ui-react'
+import { Comment, Icon, Message } from 'semantic-ui-react'
 
 const Article = (props) => (
 
   <div style={{marginTop:"10px"}}>
-      {console.log(props.article)}
+  <Message>
       <Comment.Group>
         <Comment>
           <Comment.Avatar as='a' src={props.article.urlToImage} />
@@ -23,6 +23,7 @@ const Article = (props) => (
           </Comment.Content>
         </Comment>
       </Comment.Group>
+      </Message>
   </div>
 
 )

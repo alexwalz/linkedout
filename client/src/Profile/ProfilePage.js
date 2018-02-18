@@ -73,8 +73,8 @@ class ProfilePage extends Component {
             posts:[
                 {
                     messageType:"",
-                    Message:"",
-                    Date:""
+                    message:"",
+                    date:""
                 }
             ]
 
