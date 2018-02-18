@@ -4,7 +4,7 @@ import PostButton from './PostButton'
 
 let messageStyles={
   border: "2px solid grey",
-  padding: "3%",
+  padding: "1%",
   borderImage: "linear-gradient(to bottom, #3acfd5 0%, #3a4ed5 100%)",
   borderImageSlice: "1",
   marginBottom: "5px"
@@ -39,7 +39,7 @@ class ShareBox extends Component {
       ]
       return(
 
-    <Card fluid style={{boxShadow: "0 4px 6px 0 rgba(0, 0, 0, 0.2)"}}>
+    <Card fluid style={{boxShadow: "0 4px 6px 0 rgba(0, 0, 0, 0.2)"}} style={messageStyles} >
       <Card.Content>
         <Card.Header><Image src={this.props.image_url} avatar /> {this.props.first_name + " " + this.props.last_name}</Card.Header>
         <Card.Description>
@@ -75,7 +75,7 @@ class ShareBox extends Component {
 
     renderDisplay(){
       return(
-          <Card fluid onClick={()=> this.edit()} style={{boxShadow: "0 4px 6px 0 rgba(0, 0, 0, 0.2)"}}>
+          <Card fluid onClick={()=> this.edit()} style={{boxShadow: "0 4px 6px 0 rgba(0, 0, 0, 0.2)"}} style={messageStyles} >
             <Card.Content style={{textAlign: "center"}}>
               <Card.Description><h3 style={{color: "#67C8D3"}}>Click Here To Post Something New</h3></Card.Description>
             </Card.Content>
