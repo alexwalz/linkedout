@@ -26,8 +26,8 @@ class ShareBox extends Component {
 
     renderForm(){
       let postOptions =[
-        {key: 'job', value: 'job', text: 'Job Posting'},
         {key: 'news', value: 'news', text: 'News Feed'},
+        {key: 'job', value: 'job', text: 'Job Posting'},
         {key: 'recruitment', value: 'recruitment', text: 'Recruitment'},
         {key: 'thought', value: 'thought', text: 'Thought'}
       ]

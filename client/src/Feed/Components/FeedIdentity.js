@@ -1,5 +1,6 @@
 import React from 'react'
 import { Message, Grid, Segment, Divider, Header, Icon, Image, Container } from 'semantic-ui-react'
+import { Link }  from 'react-router-dom'
 
 
 const FeedIdentity = (props) => (
@@ -18,6 +19,7 @@ const FeedIdentity = (props) => (
     <Container style={{textAlign: "center", borderTop: "black 2px solid"}}>
       <div style={{margin: 5}}>
         <h3>{props.connections} Connections</h3> 
+        <Link to="/home/network">Connect Now</Link>
       </div>
     </Container>
 

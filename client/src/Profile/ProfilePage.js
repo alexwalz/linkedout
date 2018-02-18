@@ -82,6 +82,8 @@ class ProfilePage extends Component {
 
     toggleVisibility = () => this.setState({visible: !this.state.visible})
 
+
+
     render() {
         return (
 
@@ -153,7 +155,8 @@ class ProfilePage extends Component {
                                             </ Grid.Column>
 
                                             <Grid.Column width={16}>
-                                                <LanguagesView languages={this.state.languages}/>
+                                                <LanguagesView languages={this.state.languages}
+                                                />
                                             </ Grid.Column>
 
                                              <Grid.Column width={16} style={{marginTop:"10px"}}>
