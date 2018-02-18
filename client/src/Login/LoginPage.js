@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Parallax from 'react-springy-parallax'
 import Logo from './Components/Logo'
 import LoginForm from './Components/LoginForm'
-import ReactRevealText from 'react-reveal-text'
+
 
 
 

@@ -1,35 +1,84 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Languages from './Languages'
-import { Message, Grid, Segment, Divider , Icon, Modal, Button, Image, Header} from 'semantic-ui-react'
+import { Message, Grid, Segment, Divider , Icon, Modal, Button, Image, Header, Container, Form} from 'semantic-ui-react'
 import DragSortableList from 'react-drag-sortable'
 
-const LanguagesView = (props) => (
 
-  <div>
+class LanguagesView extends Component {
+
+  constructor(props) {
+        super(props);
+        this.state = { 
+          editing: false
+         }
+    }
+
+    edit(){
+      this.setState({editing: true})
+    }
+
+    cancel(){
+      this.setState({editing: false})
+    }
+
+    save(){
+      this.setState({editing: false})
+      //api route to save new array of languages
+    }
+
+    renderForm(){
+      return(
+          <div>
     
-    <Segment>
-        <Grid.Row style={{marginBottom: "10px"}}>
-        <Modal trigger={<Icon name='pencil' size='small' />}>
-          <Modal.Header>My Languages</Modal.Header>
-          <Modal.Content>
-            <Modal.Description>
-              <Header></Header>
+          <Segment>
+              <Grid.Row style={{marginBottom: "10px"}}>
+              <Icon name='cancel' size='small' onClick={()=> this.cancel()} />
               
-              <DragSortableList items={props.languagesDrag} dropBackTransitionDuration={0.3} type="vertical"/>
-            </Modal.Description>
-          </Modal.Content>
-        </Modal>
-          <Grid.Column textAlign="center">
-          <Divider horizontal><h3  textAlign="center" style={{color: "grey"}}>My Languages</h3></Divider>
-          </Grid.Column>
-        </Grid.Row>
+                <Grid.Column textAlign="center">
+                <Divider horizontal><h3  textAlign="center" style={{color: "grey"}}>My Languages</h3></Divider>
+                </Grid.Column>
+              </Grid.Row>
+                <Form>
+                  <Form.Input fluid placeholder="Add another language"/>
+                  <Button icon='add' size="large" circular color='teal'/>
+                  <Icon name='save' size='large' circular onClick={()=> this.save()} />
+                </Form>
 
-                {props.languages.map(language => (
-                  <Languages language={language} />
-                ))}
+                <Header>Drag and Drop to reorder your languages</Header>
+                <DragSortableList items={this.props.languagesDrag} dropBackTransitionDuration={0.3} type="vertical"/>
+          </Segment>
+        </div>
+        )
+    }
 
-    </Segment>
-  </div>
-)
+    renderDisplay(){
+      return(
+          <div>
+    
+          <Segment>
+              <Grid.Row style={{marginBottom: "10px"}}>
+
+                <Icon name='pencil' size='small' onClick={()=> this.edit()} />
+                <Grid.Column textAlign="center">
+                <Divider horizontal><h3  textAlign="center" style={{color: "grey"}}>My Languages</h3></Divider>
+                </Grid.Column>
+              </Grid.Row>
+
+                      {this.props.languages.map(language => (
+                        <Languages language={language} />
+                      ))}
+
+          </Segment>
+        </div>
+        )
+    }
+
+  render() { 
+    return(
+    <Container>
+    {(this.state.editing) ? this.renderForm() : this.renderDisplay()}
+    </Container>)
+  }
+}
 
 export default LanguagesView;

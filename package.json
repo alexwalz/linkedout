@@ -21,7 +21,6 @@
     "express": "^4.15.4",
     "mongoose": "^5.0.5",
     "react-drag-sortable": "^1.0.5",
-    "react-reveal-text": "^0.1.1",
     "react-transition-group": "^2.2.1"
   }
 }
