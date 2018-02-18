@@ -4,11 +4,13 @@ const Schema = mongoose.Schema;
 const postschema = new Schema({
     message: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     messageType: {
         type: String,
-        required: true
+        required: true,
+        enum: ['JOB', 'GENERAL', 'NEWS']
     },
     date: {
         type: Date,
