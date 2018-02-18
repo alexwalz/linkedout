@@ -61,7 +61,7 @@ class FeedPage extends Component {
  				 	<Grid>
  				 	<Grid.Row>
  				 		 <Grid.Column width={4}>
- 							<FeedIdentity first_name={this.state.first_name} last_name={this.state.last_name}
+ 							<FeedIdentity  style={{position: "fixed"}} first_name={this.state.first_name} last_name={this.state.last_name}
                              job_title={this.state.job_title} image_url={this.state.image_url} connections={this.state.connections.length}/>
  						</Grid.Column>
  						<Grid.Column width={7}>

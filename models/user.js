@@ -2,9 +2,6 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const userschema = new Schema({
-  title: { type: String, required: true },
-  author: { type: String, required: true },
-  synopsis: String,
   date: { type: Date, default: Date.now },
   first_name: { type: String, required: true },
   last_name: { type: String, required: true },

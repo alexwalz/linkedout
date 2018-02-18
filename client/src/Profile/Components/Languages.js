@@ -6,7 +6,7 @@ const Languages = (props) => (
   <div style={{marginBottom:"5px", fontSize: "1rem"}} textAlign="center"> 
 
 
-             <Message color='blue' textAlign="center">{props.language}</Message>
+             <Message info textAlign="center">{props.language}</Message>
     
   </div>
 )

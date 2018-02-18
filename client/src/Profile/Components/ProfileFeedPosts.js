@@ -9,10 +9,10 @@ function FeedMessages(props) {
           <Grid columns={2}>
                 <Grid.Row>
                 <Grid.Column width={4}>
-                <Image src={props.image_url} avatar />
+                <Image  style={{ border: "2px solid #B1D4DD", padding: "2px", height: "4rem", width: "4rem", borderRadius: "999px"}} src={props.image_url} rounded />
                 </Grid.Column>
                 <Grid.Column width={12}>
-                    <h2>{props.name}</h2>
+                    <h2 style={{lineHeight: "4.5rem"}}>{props.name}</h2>
                 </Grid.Column>
                 </Grid.Row>
 

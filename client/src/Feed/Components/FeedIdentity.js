@@ -8,11 +8,11 @@ const FeedIdentity = (props) => (
     
     <Segment>
     <Header as='h2' icon textAlign='center' style={{color: "black"}}>
-      <Image src={props.image_url} avatar style={{width: 150, height: 150}}/> 
+      <Image src={props.image_url} avatar style={{width: 150, height: 150, border: "4px solid #B1D4DD", padding: "2px"}}/> 
       <Header.Content>
         {props.first_name + " " + props.last_name}
         <Header.Subheader>
-             <Divider horizontal style={{color: "#00b5ad"}} >{props.job_title}</Divider>
+             <Divider horizontal style={{color: "#B1D4DD"}} >{props.job_title}</Divider>
         </Header.Subheader>
 	   </Header.Content>
     </Header>
