@@ -10,7 +10,7 @@ const postschema = new Schema({
     messageType: {
         type: String,
         required: true,
-        enum: ['JOB', 'GENERAL', 'NEWS']
+        enum: ['JOB', 'RECRUITMENT', 'NEWS', 'THOUGHT']
     },
     date: {
         type: Date,
