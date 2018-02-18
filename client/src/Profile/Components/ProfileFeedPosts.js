@@ -5,7 +5,7 @@ import { Message, Image, Grid } from 'semantic-ui-react'
 function FeedMessages(props) {
     return (
       <div style={{margin: "5px"}}>
-          <Message info raised>
+          <Message info>
           <Grid columns={2}>
                 <Grid.Row>
                 <Grid.Column width={4}>

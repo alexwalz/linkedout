@@ -7,8 +7,6 @@ const Bio = (props) => (
   <div style={{marginBottom:"10px"}}>
     
     <Segment>
-      {console.log("LANGUAGES", props.languages)}
-
         <Grid.Row style={{marginBottom: "10px"}}>
           <Grid.Column textAlign="center">
           <Divider horizontal><h3  textAlign="center" style={{color: "grey"}}>{props.first_name + " " + props.last_name}'s Bio</h3></Divider>

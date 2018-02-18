@@ -11,6 +11,7 @@ import LanguagesView from './Components/LanguagesView'
 import Bio from './Components/Bio'
 import ShareBox from '../Feed/Components/ShareBox'
 import Connections from './Components/Connections'
+import Newsfeed from './Components/NewsFeed'
 
 
 class ProfilePage extends Component {
@@ -157,6 +158,10 @@ class ProfilePage extends Component {
 
                                              <Grid.Column width={16} style={{marginTop:"10px"}}>
                                                 <Connections exampleMessage="This is my message" connections={this.state.connections}/>
+                                            </ Grid.Column>
+
+                                            <Grid.Column width={16} style={{marginTop:"10px"}}>
+                                                    <Newsfeed/>
                                             </ Grid.Column>
 
 
