@@ -76,8 +76,8 @@ class ShareBox extends Component {
     renderDisplay(){
       return(
           <Card fluid onClick={()=> this.edit()} style={{boxShadow: "0 4px 6px 0 rgba(0, 0, 0, 0.2)"}}>
-            <Card.Content>
-              <Card.Description>Post something here</Card.Description>
+            <Card.Content style={{textAlign: "center"}}>
+              <Card.Description><h3 style={{color: "#67C8D3"}}>Click Here To Post Something New</h3></Card.Description>
             </Card.Content>
              <Card.Content extra>
               <Grid>
