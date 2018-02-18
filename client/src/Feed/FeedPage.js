@@ -3,7 +3,7 @@ import { Grid, Container, Segment, Button, Menu, Image, Icon, Header } from 'sem
 import FeedIdentity from './Components/FeedIdentity';
 import ShareBox from './Components/ShareBox';
 import FeedContainer from './Components/FeedContainer';
-
+import NewsFeed from '../Profile/Components/NewsFeed'
 class FeedPage extends Component {
     constructor(props) {
         super(props);
@@ -64,7 +64,7 @@ class FeedPage extends Component {
  							<FeedIdentity first_name={this.state.first_name} last_name={this.state.last_name}
                              job_title={this.state.job_title} image_url={this.state.image_url} connections={this.state.connections.length}/>
  						</Grid.Column>
- 						<Grid.Column width={8}>
+ 						<Grid.Column width={7}>
  							<ShareBox
                             first_name={this.state.first_name} last_name={this.state.last_name}
                              job_title={this.state.job_title} image_url={this.state.image_url} />
@@ -73,8 +73,8 @@ class FeedPage extends Component {
                              job_title={this.state.job_title} image_url={this.state.image_url}
  							/>
  						</Grid.Column>
- 						<Grid.Column width={4}>
- 							
+ 						<Grid.Column width={5}>
+ 							<NewsFeed/>
  						</Grid.Column>
  					</Grid.Row>
  					</Grid>
