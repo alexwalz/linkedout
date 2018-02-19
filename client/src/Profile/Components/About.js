@@ -68,7 +68,7 @@ class About extends Component {
             <Header as='h1' attached='top' textAlign="center"  style={{backgroundImage: "url('https://www.toptal.com/designers/subtlepatterns/patterns/always_grey.png')", backgroundPositionX: 'center', color:"white", border: "none"}}>
             About Me
             </Header>
-            <Segment attached>
+            <Segment info attached style={{backgroundColor: "#F9FFFF"}}>
                 {this.props.about}
             </Segment>
         </Container>
