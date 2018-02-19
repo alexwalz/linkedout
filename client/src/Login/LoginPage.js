@@ -65,7 +65,7 @@ class LoginPage extends Component {
         </Parallax.Layer>
 
         <Parallax.Layer
-          offset={1.07}
+          offset={1.03}
           speed={2.9}
           >
           <LoginForm/>
