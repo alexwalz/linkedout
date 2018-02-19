@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Languages from './Languages'
-import { Message, Grid, Segment, Divider , Icon, Modal, Button, Image, Header, Container, Form} from 'semantic-ui-react'
+import { Message, Grid, Segment, Divider , Icon, Modal, Button, Image, Header, Container, Form, Loader} from 'semantic-ui-react'
 import DragSortableList from 'react-drag-sortable'
 
 
@@ -10,7 +10,8 @@ class LanguagesView extends Component {
         super(props);
         this.state = { 
           editing: false,
-          limit: true
+          limit: true,
+          loading: true
          }
     }
 
@@ -35,6 +36,10 @@ class LanguagesView extends Component {
 
     limit(){
       this.setState({limit: true})
+    }
+
+    componentDidMount(){
+      setTimeout(() => this.setState({ loading: false }), 1500); 
     }
 
     renderForm(){
@@ -71,6 +76,23 @@ class LanguagesView extends Component {
     }
 
     renderLimit(){
+      const loading  = this.state.loading;
+
+       if(loading) { 
+        return (
+          <div>
+          <Container>
+            <Segment>
+              <Divider horizontal><h3  textAlign="center" style={{color: "grey"}}>My Languages</h3></Divider>
+  
+                  <Loader active inline='centered' />
+  
+            </Segment>
+        </Container>
+      </div>
+        )
+      }
+
       return(
         <div>
     
