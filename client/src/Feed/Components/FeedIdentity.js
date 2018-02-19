@@ -18,9 +18,8 @@ const FeedIdentity = (props) => (
 	   </Header.Content>
     </Header>
     <Container style={{textAlign: "center", borderTop: "black 2px solid"}}>
-      <div style={{margin: 5}}>
+      <div style={{margin: 5, color: "white"}}>
         <h3>{props.connections} Connections</h3> 
-        <Link to="/home/network">Connect Now</Link>
       </div>
     </Container>
 

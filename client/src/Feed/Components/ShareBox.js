@@ -3,7 +3,7 @@ import { Container, Grid, Segment, Header, Icon, Form, TextArea, Card,  Button, 
 import PostButton from './PostButton'
 
 let messageStyles={
-  border: "2px solid grey",
+  border: "2px solid white",
   padding: "1%",
   // borderImage: "linear-gradient(to bottom, #3acfd5 0%, #3a4ed5 100%)",
   // borderImageSlice: "1",
