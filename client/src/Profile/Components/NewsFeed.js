@@ -34,11 +34,12 @@ class NewsArticles extends React.Component {
         return (
           <div>
           <Container>
-            <Segment  style={{backgroundColor: "transparent"}}>
+            <Segment  style={{backgroundColor: "transparent"}} textAlign="center">
               <Divider horizontal><h3  textAlign="center" style={{color: "white"}}>News Feed</h3></Divider>
   
-                  <Loader active inline='centered' />
-  
+              <h2 style={{color: "white"}} textAlign="center">Loading News Posts</h2>
+              <Loader active inline='centered' size="big" inverted style={{marginTop: "12%"}}/>
+              
             </Segment>
         </Container>
       </div>

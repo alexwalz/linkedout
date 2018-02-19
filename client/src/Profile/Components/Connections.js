@@ -5,8 +5,8 @@ import IndividualConnections from './IndividualConnections'
 
 
 const Connections = (props) => (
-  <Segment>
-  <Divider horizontal><h3  textAlign="center" style={{color: "grey"}}>My Connections</h3></Divider>
+  <Segment style={{backgroundImage: "url('https://www.toptal.com/designers/subtlepatterns/patterns/always_grey.png')"}}>
+  <Divider horizontal><h3  textAlign="center" style={{color: "white"}}>My Connections</h3></Divider>
 
       {props.connections.map(connection => (
                   <IndividualConnections connections={connection}/>

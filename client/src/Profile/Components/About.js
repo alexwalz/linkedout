@@ -65,7 +65,7 @@ class About extends Component {
 
       <div style={{marginBottom: "10px"}} onClick={()=> this.edit()}>
           <Container style={{border: "none"}}>
-            <Header as='h1' attached='top' textAlign="center"  style={{backgroundImage: "url('https://www.toptal.com/designers/subtlepatterns/patterns/always_grey.png')", backgroundPositionX: 'center', color:"white", border: "none"}}>
+            <Header as='h2' attached='top' textAlign="center"  style={{backgroundImage: "url('https://www.toptal.com/designers/subtlepatterns/patterns/always_grey.png')", backgroundPositionX: 'center', color:"white", border: "none"}}>
             About Me
             </Header>
             <Segment info attached style={{backgroundColor: "#F9FFFF"}}>
