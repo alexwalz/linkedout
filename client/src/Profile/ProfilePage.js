@@ -43,6 +43,7 @@ class ProfilePage extends Component {
                 "Python"
             ],
             dragLanguages : [],
+            fiveArr: [],
             connections:[
                 {
                     name: "Alex Walz",
@@ -93,9 +94,19 @@ class ProfilePage extends Component {
         }
     }
 
+     limit5(languages){
+        for(var i =0; i < 5; i++){
+          this.state.fiveArr.push(languages[i])
+        }
+        
+    }
+
     componentDidMount(){
          this.languageArray(this.state.languages);
+         this.limit5(this.state.languages);
     }
+
+   
 
     render() {
         return (
@@ -169,6 +180,7 @@ class ProfilePage extends Component {
 
                                             <Grid.Column width={16}>
                                                 <LanguagesView languages={this.state.languages}
+                                                limit5={this.state.fiveArr}
                                                 languagesDrag={this.state.dragLanguages}
                                                 />
                                             </ Grid.Column>

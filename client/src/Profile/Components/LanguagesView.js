@@ -9,7 +9,8 @@ class LanguagesView extends Component {
   constructor(props) {
         super(props);
         this.state = { 
-          editing: false
+          editing: false,
+          limit: true
          }
     }
 
@@ -19,11 +20,21 @@ class LanguagesView extends Component {
 
     cancel(){
       this.setState({editing: false})
+      this.setState({limit: true})
     }
 
     save(){
       this.setState({editing: false})
+      this.setState({limit: true})
       //api route to save new array of languages
+    }
+
+    removeLimit(){
+      this.setState({limit: false})
+    }
+
+    limit(){
+      this.setState({limit: true})
     }
 
     renderForm(){
@@ -53,7 +64,40 @@ class LanguagesView extends Component {
 
     renderDisplay(){
       return(
-          <div>
+          <Container>
+            {(this.state.limit) ? this.renderLimit() : this.renderNoLimit()}
+            </Container>
+        )
+    }
+
+    renderLimit(){
+      return(
+        <div>
+    
+          <Segment>
+              <Grid.Row style={{marginBottom: "10px"}}>
+
+                <Icon name='pencil' size='small' onClick={()=> this.edit()} />
+                <Grid.Column textAlign="center">
+                <Divider horizontal><h3  textAlign="center" style={{color: "grey"}}>My Languages</h3></Divider>
+                </Grid.Column>
+              </Grid.Row>
+
+                      {this.props.limit5.map(language => (
+                        <Languages language={language} />
+                      ))}
+            <Segment>
+              <Button onClick={()=>this.removeLimit()}>View All Languages</Button>
+            </Segment>
+          </Segment>
+          
+        </div>
+      )
+    }
+
+    renderNoLimit(){
+      return(
+        <div>
     
           <Segment>
               <Grid.Row style={{marginBottom: "10px"}}>
@@ -67,10 +111,12 @@ class LanguagesView extends Component {
                       {this.props.languages.map(language => (
                         <Languages language={language} />
                       ))}
-
+              <Segment>
+              <Button onClick={()=>this.limit()}>Hide</Button>
+            </Segment>
           </Segment>
         </div>
-        )
+      )
     }
 
   render() { 
