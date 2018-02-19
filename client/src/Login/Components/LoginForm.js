@@ -17,7 +17,7 @@ class LoginForm extends Component {
                 <Grid.Row >
                 <Grid.Column width={7}  style={{marginLeft:"2%"}}>
                     
-                        <Segment inverted   style={{backgroundImage: "url('https://www.toptal.com/designers/subtlepatterns/patterns/always_grey.png')"}}>
+                        <Segment inverted   style={{backgroundImage: "url('https://www.toptal.com/designers/subtlepatterns/patterns/always_grey.png')", border: "1px solid white"}}>
                             <Message
                             attached
                             header='Welcome to DevSpot!'
