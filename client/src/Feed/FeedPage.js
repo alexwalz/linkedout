@@ -61,31 +61,26 @@ class FeedPage extends Component {
  				 	<Grid>
  				 	<Grid.Row>
 
-                      <Grid.Column width={1}>
+                      <Grid.Column width={4}>
+                      <FeedIdentity  style={{position: "fixed"}} first_name={this.state.first_name} last_name={this.state.last_name}
+                                        job_title={this.state.job_title} image_url={this.state.image_url} connections={this.state.connections.length}/>
  						</Grid.Column>
 
- 						<Grid.Column width={10}>
-                                <Grid.Row>
+ 						<Grid.Column width={8}>
 
-                                    <Grid.Column width={8}>
-                                        <FeedIdentity  style={{position: "fixed"}} first_name={this.state.first_name} last_name={this.state.last_name}
-                                        job_title={this.state.job_title} image_url={this.state.image_url} connections={this.state.connections.length}/>
-                                    </Grid.Column>
 
-                                    <Grid.Column width={8}>
+                             
                                         <ShareBox
                                         first_name={this.state.first_name} last_name={this.state.last_name}
                                         job_title={this.state.job_title} image_url={this.state.image_url} />
-                                    </Grid.Column>
-                                    
-                                    </Grid.Row>
+                      
 
  							<FeedContainer 
  							first_name={this.state.first_name} last_name={this.state.last_name}
                              job_title={this.state.job_title} image_url={this.state.image_url}
  							/>
  						</Grid.Column>
- 						<Grid.Column width={5}>
+ 						<Grid.Column width={4}>
  							<NewsFeed/>
  						</Grid.Column>
  					</Grid.Row>
