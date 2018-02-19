@@ -9,8 +9,7 @@ import LoginForm from './Components/LoginForm'
 class LoginPage extends Component {
 
 
-  handleShow = () => this.setState({ active: true })
-  handleHide = () => this.setState({ active: false })
+
   render() {
     const styles = {
       display: 'flex', alignItems: 'center', justifyContent: 'center'
@@ -47,7 +46,9 @@ class LoginPage extends Component {
             speed={0.7}
             style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start' }}
             onClick={() => this.refs.parallax.scrollTo(1)}>
-            <Logo/>
+      
+              <Logo/>
+         
           </Parallax.Layer>
 
         </Parallax.Layer>
@@ -64,9 +65,8 @@ class LoginPage extends Component {
         </Parallax.Layer>
 
         <Parallax.Layer
-          offset={1.2}
+          offset={1.03}
           speed={2.9}
-          style={{ display: 'flex' }}
           >
           <LoginForm/>
         </Parallax.Layer>

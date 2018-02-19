@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Parallax from 'react-springy-parallax'
 import Banner from './Components/Banner'
 import About from './Components/About'
+import Languages from './Components/Languages'
 import {Grid, Container, Sidebar, Segment, Button, Menu, Image, Icon, Header} from 'semantic-ui-react'
 import {Link} from "react-router-dom"
 import ConnectButton from './Components/ConnectButton'
@@ -11,6 +12,8 @@ import LanguagesView from './Components/LanguagesView'
 import Bio from './Components/Bio'
 import ShareBox from '../Feed/Components/ShareBox'
 import Connections from './Components/Connections'
+import Newsfeed from './Components/NewsFeed'
+import background from '../img/midnight.jpg'
 
 
 class ProfilePage extends Component {
@@ -40,6 +43,8 @@ class ProfilePage extends Component {
                 "Bootstrap",
                 "Python"
             ],
+            dragLanguages : [],
+            fiveArr: [],
             connections:[
                 {
                     name: "Alex Walz",
@@ -52,7 +57,7 @@ class ProfilePage extends Component {
                     id: "234lkjsdf",
                 },
                 {
-                    name: "Cesar Caceras",
+                    name: "Cesar Caceres",
                     image_url: "https://media.licdn.com/media/AAMABADGAAwAAQAAAAAAABCdAAAAJGE2ZDM1NjAzLWQzN2QtNGViMS05MWY0LWQxNzBjNDgyOTE3Mg.jpg",
                     id: "asldkjfsdfj",
                 },
@@ -70,8 +75,8 @@ class ProfilePage extends Component {
             posts:[
                 {
                     messageType:"",
-                    Message:"",
-                    Date:""
+                    message:"",
+                    date:""
                 }
             ]
 
@@ -81,12 +86,35 @@ class ProfilePage extends Component {
 
     toggleVisibility = () => this.setState({visible: !this.state.visible})
 
+
+    //function to pass languages that can be draggable
+    languageArray(languages){
+        for (var i = 0; i < languages.length; i++){
+            var div = {content: <Languages language={languages[i]}/>}
+            this.state.dragLanguages.push(div)
+        }
+    }
+
+     limit5(languages){
+        for(var i =0; i < 5; i++){
+          this.state.fiveArr.push(languages[i])
+        }
+        
+    }
+
+    componentDidMount(){
+         this.languageArray(this.state.languages);
+         this.limit5(this.state.languages);
+    }
+
+   
+
     render() {
         return (
 
 
             <div style={{
-                backgroundImage: "url('https://www.toptal.com/designers/subtlepatterns/patterns/greyzz.png')",
+                backgroundImage: `url(${background})`,
                 backgroundPositionX: 'center',
                 color: "grey"
             }}>
@@ -152,11 +180,18 @@ class ProfilePage extends Component {
                                             </ Grid.Column>
 
                                             <Grid.Column width={16}>
-                                                <LanguagesView languages={this.state.languages}/>
+                                                <LanguagesView languages={this.state.languages}
+                                                limit5={this.state.fiveArr}
+                                                languagesDrag={this.state.dragLanguages}
+                                                />
                                             </ Grid.Column>
 
                                              <Grid.Column width={16} style={{marginTop:"10px"}}>
                                                 <Connections exampleMessage="This is my message" connections={this.state.connections}/>
+                                            </ Grid.Column>
+
+                                            <Grid.Column width={16} style={{marginTop:"10px"}}>
+                                                    <Newsfeed/>
                                             </ Grid.Column>
 
 
