@@ -34,8 +34,8 @@ class NewsArticles extends React.Component {
         return (
           <div>
           <Container>
-            <Segment>
-              <Divider horizontal><h3  textAlign="center" style={{color: "grey"}}>News Feed</h3></Divider>
+            <Segment  style={{backgroundColor: "transparent"}}>
+              <Divider horizontal><h3  textAlign="center" style={{color: "white"}}>News Feed</h3></Divider>
   
                   <Loader active inline='centered' />
   
@@ -47,11 +47,11 @@ class NewsArticles extends React.Component {
       
       return (
         <div>
-        <Container>
-          <Segment>
+        <Container style={{marginBottom: "10px"}} >
+          <Segment  style={{backgroundColor: "transparent"}}>
             <Divider horizontal><h3  textAlign="center" style={{color: "grey"}}>News Feed</h3></Divider>
   
-                        {this.state.articles.map(article => (
+                        {this.state.articles.slice(0, 5).map(article => (
                             <Article article={article} style={{marginTop:"10px"}}/>
                           ))}
                           <br/>

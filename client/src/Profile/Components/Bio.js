@@ -77,15 +77,15 @@ class Bio extends Component {
 
     <div style={{marginBottom:"10px"}} onClick={()=> this.edit()}>
     
-    <Segment>
+    <Segment style={{backgroundImage: "url('https://www.toptal.com/designers/subtlepatterns/patterns/always_grey.png')"}}>
         <Grid.Row style={{marginBottom: "10px"}}>
           <Grid.Column textAlign="center">
-          <Divider horizontal><h3  textAlign="center" style={{color: "grey"}}>{this.props.first_name + " " + this.props.last_name}'s Bio</h3></Divider>
+          <Divider horizontal><h3  textAlign="center" style={{color: "white"}}>{this.props.first_name + " " + this.props.last_name}'s Bio</h3></Divider>
           </Grid.Column>
         </Grid.Row>
 
     <Header as='h2' icon textAlign='center'>
-      <Icon name='user' circular />
+      <Icon name='user' color="teal" circular />
     
     </Header>
 
@@ -95,35 +95,35 @@ class Bio extends Component {
             <Icon circular color='teal' name='mail outline' />
         </Grid.Column>
         <Grid.Column width={14} textAlign="left">
-            <h4 style={{lineHeight: "2.5rem"}}>{this.props.email}</h4>
+            <h4 style={{lineHeight: "2.5rem", color: "white"}}>{this.props.email}</h4>
         </Grid.Column>
 
         <Grid.Column width={2} style={{marginTop: "3px"}}>
             <Icon circular color='teal' name='phone outline' />
         </Grid.Column>
         <Grid.Column width={14} textAlign="left">
-            <h4 style={{lineHeight: "2.5rem"}}>{this.props.phone}</h4>
+            <h4 style={{lineHeight: "2.5rem", color: "white"}}>{this.props.phone}</h4>
         </Grid.Column>
 
         <Grid.Column width={2} style={{marginTop: "3px"}}>
             <Icon circular color='teal' name='building outline' />
         </Grid.Column>
         <Grid.Column width={14} textAlign="left">
-            <h4 style={{lineHeight: "2.5rem"}}>{this.props.company} | {this.props.jobTitle}</h4>
+            <h4 style={{lineHeight: "2.5rem", color: "white"}}>{this.props.company} | {this.props.jobTitle}</h4>
         </Grid.Column>
 
         <Grid.Column width={2} style={{marginTop: "3px"}}>
         <Icon circular color='teal' name='calendar' />
         </Grid.Column>
         <Grid.Column width={14} textAlign="left">
-            <h4 style={{lineHeight: "2.5rem"}}>{this.props.birthday}</h4>
+            <h4 style={{lineHeight: "2.5rem", color: "white"}}>{this.props.birthday}</h4>
         </Grid.Column>
 
         <Grid.Column width={2} style={{marginTop: "3px"}}>
         <Icon circular color='teal' name='map pin' />
         </Grid.Column>
         <Grid.Column width={14} textAlign="left">
-            <h4 style={{lineHeight: "2.5rem"}}>{this.props.location}</h4>
+            <h4 style={{lineHeight: "2.5rem", color: "white"}}>{this.props.location}</h4>
         </Grid.Column>
 
 

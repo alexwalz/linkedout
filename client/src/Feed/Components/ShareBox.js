@@ -5,9 +5,11 @@ import PostButton from './PostButton'
 let messageStyles={
   border: "2px solid grey",
   padding: "1%",
-  borderImage: "linear-gradient(to bottom, #3acfd5 0%, #3a4ed5 100%)",
-  borderImageSlice: "1",
-  marginBottom: "5px"
+  // borderImage: "linear-gradient(to bottom, #3acfd5 0%, #3a4ed5 100%)",
+  // borderImageSlice: "1",
+  marginBottom: "5px",
+  backgroundImage: "url('https://www.toptal.com/designers/subtlepatterns/patterns/always_grey.png')",
+  color: "white"
 }
 
 class ShareBox extends Component {
@@ -41,7 +43,7 @@ class ShareBox extends Component {
 
     <Card fluid style={{boxShadow: "0 4px 6px 0 rgba(0, 0, 0, 0.2)"}} style={messageStyles} >
       <Card.Content>
-        <Card.Header><Image src={this.props.image_url} avatar /> {this.props.first_name + " " + this.props.last_name}</Card.Header>
+        <Card.Header style={{color: "white"}}><Image src={this.props.image_url} avatar /> {this.props.first_name + " " + this.props.last_name}</Card.Header>
         <Card.Description>
            <Form>
            <Select placeholder='Select the type of post' options={postOptions} style={messageStyles} />
@@ -77,7 +79,7 @@ class ShareBox extends Component {
       return(
           <Card fluid onClick={()=> this.edit()} style={{boxShadow: "0 4px 6px 0 rgba(0, 0, 0, 0.2)"}} style={messageStyles} >
             <Card.Content style={{textAlign: "center"}}>
-              <Card.Description><h3 style={{color: "#67C8D3"}}>Click Here To Post Something New</h3></Card.Description>
+              <Card.Description><h3 style={{color: "white", marginTop: "5%"}}> <Icon circular color='white' name='plus' />Create New Post</h3></Card.Description>
             </Card.Content>
              <Card.Content extra>
               <Grid>
@@ -91,7 +93,6 @@ class ShareBox extends Component {
                   </Grid.Column>
 
                   <Grid.Column width={3}>
-                      <PostButton editing= {this.state.editing}/>
                   </Grid.Column>
 
                 </Grid.Row>

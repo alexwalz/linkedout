@@ -16,12 +16,12 @@ let styles={
 }
 
 let imageStyles={
-    border: "4px solid grey",
     height: "25vh",
     width: "25vh",
     marginLeft: "5%",
-    border: "4px solid #B1D4DD", 
-    padding: "2px",
+    padding: "3px",
+    border: "3px solid #67C8D3", 
+    backgroundColor: "white"
 }
 
 

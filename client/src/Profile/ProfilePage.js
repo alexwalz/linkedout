@@ -13,6 +13,7 @@ import Bio from './Components/Bio'
 import ShareBox from '../Feed/Components/ShareBox'
 import Connections from './Components/Connections'
 import Newsfeed from './Components/NewsFeed'
+import background from '../img/midnight.jpg'
 
 
 class ProfilePage extends Component {
@@ -113,7 +114,7 @@ class ProfilePage extends Component {
 
 
             <div style={{
-                backgroundImage: "url('https://www.toptal.com/designers/subtlepatterns/patterns/greyzz.png')",
+                backgroundImage: `url(${background})`,
                 backgroundPositionX: 'center',
                 color: "grey"
             }}>

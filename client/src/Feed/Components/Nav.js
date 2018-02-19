@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Input, Icon, Menu, Segment, Dropdown} from 'semantic-ui-react';
 import Logo from './Logo';
 import {Link} from "react-router-dom";
+import background from '../../img/midnight.jpg'
 
 
 
@@ -26,7 +27,7 @@ class Nav extends Component {
         zIndex: 20,
         left: 0,
         right: 0,
-        backgroundImage: "url('https://www.toptal.com/designers/subtlepatterns/patterns/always_grey.png')",
+        backgroundImage: `url(${background})`,
       }}>
       <Menu inverted pointing secondary style={{ border:'none'}}> 
         <Menu.Menu position='left' style={{marginLeft: 30}}>

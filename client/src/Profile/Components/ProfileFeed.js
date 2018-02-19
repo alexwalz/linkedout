@@ -20,8 +20,8 @@ class ProfileFeed extends React.Component {
         <div>
         <Container style={{textAlign: "center"}}>
            
-                <Loader active inline='centered' />
-                <h1  textAlign="center" style={{color: "grey"}}>My Posts</h1>
+                <Loader active inline='centered' size="big" inverted style={{marginTop: "12%"}}/>
+                <h1  textAlign="center" style={{color: "white"}}>Loading My Posts...</h1>
 
       </Container>
     </div>

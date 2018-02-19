@@ -1671,6 +1671,14 @@ react-drag-sortable@^1.0.5:
     interactjs "^1.2.8"
     lodash "^4.17.4"
 
+react-gradient-text@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/react-gradient-text/-/react-gradient-text-0.1.0.tgz#9537395bc10f569968c1308db060b7167f71741c"
+
+react-textgradient@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/react-textgradient/-/react-textgradient-0.0.2.tgz#a58d520497c95b89447e6da0f7c6d7539f818576"
+
 react-transition-group@^2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-2.2.1.tgz#e9fb677b79e6455fd391b03823afe84849df4a10"

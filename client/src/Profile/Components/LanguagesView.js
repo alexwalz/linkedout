@@ -4,6 +4,13 @@ import { Message, Grid, Segment, Divider , Icon, Modal, Button, Image, Header, C
 import DragSortableList from 'react-drag-sortable'
 
 
+let languageStyles={
+  border: "2px solid grey",
+  borderImage: "linear-gradient(to bottom, #3acfd5 0%, #3a4ed5 100%)",
+  borderImageSlice: "1",
+  backgroundColor: "transparent"
+}
+
 class LanguagesView extends Component {
 
   constructor(props) {
@@ -46,7 +53,7 @@ class LanguagesView extends Component {
       return(
           <div>
     
-          <Segment>
+          <Segment >
               <Grid.Row style={{marginBottom: "10px"}}>
               <Icon name='cancel' size='small' onClick={()=> this.cancel()} />
               
@@ -56,11 +63,11 @@ class LanguagesView extends Component {
               </Grid.Row>
                 <Form>
                   <Form.Input fluid placeholder="Add another language"/>
-                  <Button icon='add' size="large" circular color='teal'/>
-                  <Icon name='save' size='large' circular onClick={()=> this.save()} />
+                  <Button icon='check' size="large" circular color='teal'/>
+                  <Icon name='close' size='large' circular onClick={()=> this.save()} />
                 </Form>
 
-                <Header>Drag and Drop to reorder your languages</Header>
+                <Header textAlign="center" style={{color:"grey"}}>Drag and Drop to reorder your languages</Header>
                 <DragSortableList items={this.props.languagesDrag} dropBackTransitionDuration={0.3} type="vertical"/>
           </Segment>
         </div>
@@ -82,10 +89,10 @@ class LanguagesView extends Component {
         return (
           <div>
           <Container>
-            <Segment>
-              <Divider horizontal><h3  textAlign="center" style={{color: "grey"}}>My Languages</h3></Divider>
+            <Segment  style={{backgroundImage: "url('https://www.toptal.com/designers/subtlepatterns/patterns/always_grey.png')"}}>
+              <Divider horizontal><h3  textAlign="center" style={{color: "white"}}>My Languages</h3></Divider>
   
-                  <Loader active inline='centered' />
+              <Loader active inline='centered' size="big" inverted style={{marginTop: "5%"}}/>
   
             </Segment>
         </Container>
@@ -96,21 +103,19 @@ class LanguagesView extends Component {
       return(
         <div>
     
-          <Segment>
-              <Grid.Row style={{marginBottom: "10px"}}>
+          <Segment  style={{backgroundImage: "url('https://www.toptal.com/designers/subtlepatterns/patterns/always_grey.png')"}}>
+              <Grid.Row style={{marginBottom: "10px", marginBottom: "10px"}}>
 
                 <Icon name='pencil' size='small' onClick={()=> this.edit()} />
                 <Grid.Column textAlign="center">
-                <Divider horizontal><h3  textAlign="center" style={{color: "grey"}}>My Languages</h3></Divider>
+                <Divider horizontal><h3  textAlign="center" style={{color: "white"}}>My Languages</h3></Divider>
                 </Grid.Column>
               </Grid.Row>
 
                       {this.props.limit5.map(language => (
                         <Languages language={language} />
                       ))}
-            <Segment>
-              <Button onClick={()=>this.removeLimit()}>View All Languages</Button>
-            </Segment>
+              <p onClick={()=>this.removeLimit()} style={{cursor: "pointer", color: "white", marginTop: "5px"}}>View All Languages</p>
           </Segment>
           
         </div>
@@ -121,21 +126,19 @@ class LanguagesView extends Component {
       return(
         <div>
     
-          <Segment>
+          <Segment  style={{backgroundImage: "url('https://www.toptal.com/designers/subtlepatterns/patterns/always_grey.png')"}}>
               <Grid.Row style={{marginBottom: "10px"}}>
 
                 <Icon name='pencil' size='small' onClick={()=> this.edit()} />
                 <Grid.Column textAlign="center">
-                <Divider horizontal><h3  textAlign="center" style={{color: "grey"}}>My Languages</h3></Divider>
+                <Divider horizontal><h3  textAlign="center" style={{color: "white"}}>My Languages</h3></Divider>
                 </Grid.Column>
               </Grid.Row>
 
                       {this.props.languages.map(language => (
                         <Languages language={language} />
                       ))}
-              <Segment>
-              <Button onClick={()=>this.limit()}>Hide</Button>
-            </Segment>
+              <p onClick={()=>this.limit()}  style={{cursor: "pointer", color: "white", marginTop: "5px"}}>Hide</p>
           </Segment>
         </div>
       )

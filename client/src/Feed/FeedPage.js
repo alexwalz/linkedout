@@ -4,6 +4,8 @@ import FeedIdentity from './Components/FeedIdentity';
 import ShareBox from './Components/ShareBox';
 import FeedContainer from './Components/FeedContainer';
 import NewsFeed from '../Profile/Components/NewsFeed'
+import background from '../img/midnight.jpg'
+
 class FeedPage extends Component {
     constructor(props) {
         super(props);
@@ -54,19 +56,18 @@ class FeedPage extends Component {
 
     render() { 
         return ( 
- 			<div style={{backgroundImage: "url('https://www.toptal.com/designers/subtlepatterns/patterns/greyzz.png')", backgroundPositionX: 'center', color:"grey", paddingTop: 80}}>
+ 			<div style={{backgroundImage: `url(${background})`, backgroundPositionX: 'center', color:"grey", paddingTop: 80, paddingLeft: "2%", paddingRight: "2%"}}>
  				 
  				 	
- 				 	<Container>
  				 	<Grid>
  				 	<Grid.Row>
 
-                      <Grid.Column width={4}>
+                      <Grid.Column width={3}>
                       <FeedIdentity  style={{position: "fixed"}} first_name={this.state.first_name} last_name={this.state.last_name}
                                         job_title={this.state.job_title} image_url={this.state.image_url} connections={this.state.connections.length}/>
  						</Grid.Column>
 
- 						<Grid.Column width={8}>
+ 						<Grid.Column width={7}>
 
 
                              
@@ -80,12 +81,11 @@ class FeedPage extends Component {
                              job_title={this.state.job_title} image_url={this.state.image_url}
  							/>
  						</Grid.Column>
- 						<Grid.Column width={4}>
+ 						<Grid.Column width={6}>
  							<NewsFeed/>
  						</Grid.Column>
  					</Grid.Row>
  					</Grid>
- 					</Container>
 
  					
  			
