@@ -94,26 +94,24 @@ class ProfilePage extends Component {
     }
 
     componentDidMount(){
-
-
-        axios.get('/api/users/'+this.props.match.params.id)
-        .then(response => {
-            this.setState(response.data );
-        })
-        .catch(error => {
-            console.log('Error fetching and parsing data', error);
-        });
-
+        this.renderUser()
     }
 
-
+renderUser =()=>{
+    axios.get('/api/users/'+this.props.match.params.id)
+    .then(response => {
+        this.setState(response.data );
+    })
+    .catch(error => {
+        console.log('Error fetching and parsing data', error);
+    });
+}
 
 
    
 
     render() {
         return (
-
 
             <div style={{
                 backgroundImage: `url(${background})`,
@@ -123,6 +121,9 @@ class ProfilePage extends Component {
 
 
                 <Sidebar.Pushable>
+
+                {this.renderUser()}
+
                     <Sidebar as={Menu} animation='overlay' width='thin' visible={this.state.visible} icon='labeled'
                              vertical inverted style={{height: "100vh"}}>
                         <Menu.Item name='home'>
@@ -164,7 +165,6 @@ class ProfilePage extends Component {
 
                                 <Grid.Row>
                                     <Grid.Column width={8}>
-
                                         <Grid.Row>
 
                                             <Grid.Column width={16}>

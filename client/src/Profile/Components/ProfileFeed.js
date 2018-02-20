@@ -11,7 +11,7 @@ class ProfileFeed extends React.Component {
   componentDidMount() {
     setTimeout(() => this.setState({ loading: false }), 2000); // simulates an async action, and hides the spinner
   }
-  
+
   render(props) {
     const { loading } = this.state;
     
