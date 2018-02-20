@@ -11,7 +11,7 @@ const FeedIdentity = (props) => (
     <Header as='h2' icon textAlign='center' style={{color: "black"}}>
       <Image src={props.image_url} avatar style={{width: 150, height: 150, border: "4px solid #67C8D3", padding: "2px"}}/> 
       <Header.Content style={{color: "white"}}>
-        {props.first_name + " " + props.last_name}
+        {props.firstName + " " + props.lastName}
         <Header.Subheader>
              <Divider horizontal style={{color: "#67C8D3"}} >{props.job_title}</Divider>
         </Header.Subheader>

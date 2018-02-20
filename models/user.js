@@ -55,7 +55,8 @@ var UserSchema = new Schema({
   },
   languages: [{
     type: String,
-    required: true
+    default: "None"
+    // required: true
   }],
   connections: [{
     type: Schema.Types.ObjectId,

@@ -28,8 +28,6 @@ class NewsArticles extends React.Component {
 
     render(props) {
       const loading  = this.state.loading;
-      console.log(loading)
-      
       if(loading) { 
         return (
           <div>
@@ -52,8 +50,8 @@ class NewsArticles extends React.Component {
           <Segment  style={{backgroundColor: "transparent"}}>
             <Divider horizontal><h3  textAlign="center" style={{color: "white"}}>News Feed</h3></Divider>
   
-                        {this.state.articles.slice(0, 5).map(article => (
-                            <Article article={article} style={{marginTop:"10px"}}/>
+                        {this.state.articles.slice(0, 5).map((article, key) => (
+                            <Article article={article} key={key} style={{marginTop:"10px"}}/>
                           ))}
                           <br/>
                           <p textAlign="center" style={{color:"grey"}}>Powered by NewsAPI.org</p>

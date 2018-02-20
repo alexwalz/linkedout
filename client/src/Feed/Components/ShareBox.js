@@ -43,7 +43,7 @@ class ShareBox extends Component {
 
     <Card fluid style={{boxShadow: "0 4px 6px 0 rgba(0, 0, 0, 0.2)"}} style={messageStyles} >
       <Card.Content>
-        <Card.Header style={{color: "white"}}><Image src={this.props.image_url} avatar /> {this.props.first_name + " " + this.props.last_name}</Card.Header>
+        <Card.Header style={{color: "white"}}><Image src={this.props.image_url} avatar /> {this.props.firstName + " " + this.props.lastName}</Card.Header>
         <Card.Description>
            <Form>
            <Select placeholder='Select the type of post' options={postOptions} style={messageStyles} />
@@ -79,7 +79,7 @@ class ShareBox extends Component {
       return(
           <Card fluid onClick={()=> this.edit()} style={{boxShadow: "0 4px 6px 0 rgba(0, 0, 0, 0.2)"}} style={messageStyles} >
             <Card.Content style={{textAlign: "center"}}>
-              <Card.Description><h3 style={{color: "white", marginTop: "5%"}}> <Icon circular color='white' name='plus' />Create New Post</h3></Card.Description>
+              <Card.Description><h3 style={{ marginTop: "5%"}}> <Icon circular name='plus' />Create New Post</h3></Card.Description>
             </Card.Content>
              <Card.Content extra>
               <Grid>

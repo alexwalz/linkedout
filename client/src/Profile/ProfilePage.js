@@ -14,6 +14,7 @@ import ShareBox from '../Feed/Components/ShareBox'
 import Connections from './Components/Connections'
 import Newsfeed from './Components/NewsFeed'
 import background from '../img/midnight.jpg'
+import axios from 'axios'
 
 
 class ProfilePage extends Component {
@@ -21,28 +22,18 @@ class ProfilePage extends Component {
         super(props);
         this.state = {
             visible: false,
-            first_name: "Bill",
-            last_name: "Palmer",
-            email: "billpalmer@gmail.com",
-            about: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            phone: "801-123-4567",
-            image_url: "https://pbs.twimg.com/profile_images/543459641263665152/9-Y39lzm.jpeg",
-            job_title: "Backend Developer",
-            birthday: "10/29/1990",
-            current_company: "Jimmy Johns Farm Industry",
-            education: "Some College",
-            location: "Mobile, Alabama",
-            languages: [
-                "React.js",
-                "Node.js",
-                "MongoDb",
-                "Sequelize",
-                "MySql",
-                "Javascript",
-                "Jquery",
-                "Bootstrap",
-                "Python"
-            ],
+            firstName: "",
+            lastName: "",
+            email: "",
+            about: "",
+            phone: "",
+            image_url: "",
+            job_title: "",
+            birthday: "",
+            current_company: "",
+            education: "",
+            location: "",
+            languages: [],
             dragLanguages : [],
             fiveArr: [],
             connections:[
@@ -103,9 +94,20 @@ class ProfilePage extends Component {
     }
 
     componentDidMount(){
-         this.languageArray(this.state.languages);
-         this.limit5(this.state.languages);
+
+
+        axios.get('/api/users/'+this.props.match.params.id)
+        .then(response => {
+            this.setState(response.data );
+        })
+        .catch(error => {
+            console.log('Error fetching and parsing data', error);
+        });
+
     }
+
+
+
 
    
 
@@ -122,7 +124,7 @@ class ProfilePage extends Component {
 
                 <Sidebar.Pushable>
                     <Sidebar as={Menu} animation='overlay' width='thin' visible={this.state.visible} icon='labeled'
-                             vertical inverted style={{height: "100vh;"}}>
+                             vertical inverted style={{height: "100vh"}}>
                         <Menu.Item name='home'>
                             <Link to="/"><Icon name='home'/>Home</Link>
                         </Menu.Item>
@@ -139,7 +141,7 @@ class ProfilePage extends Component {
                             <Grid>
                                 <Grid.Row>
                                     <Grid.Column width={16}>
-                                        <Banner first_name={this.state.first_name} last_name={this.state.last_name}
+                                        <Banner firstName={this.state.firstName} lastName={this.state.lastName}
                                                 job_title={this.state.job_title} image_url={this.state.image_url}/>
                                     </Grid.Column>
                                 </Grid.Row>
@@ -166,7 +168,7 @@ class ProfilePage extends Component {
                                         <Grid.Row>
 
                                             <Grid.Column width={16}>
-                                                <Bio first_name={this.state.first_name} last_name={this.state.last_name}
+                                                <Bio firstName={this.state.firstName} lastName={this.state.lastName}
                                                      email={this.state.email} phone={this.state.phone}
                                                      education={this.state.education}
                                                      company={this.state.current_company}
@@ -201,11 +203,11 @@ class ProfilePage extends Component {
                                     <Grid.Column width={8}>
                                             <Grid.Row>
                                                  <Grid.Column width={16} style={{marginBottom: "10px"}}>
-                                                    <ShareBox first_name={this.state.first_name} last_name={this.state.last_name} image_url={this.state.image_url}/>
+                                                    <ShareBox firstName={this.state.firstName} lastName={this.state.lastName} image_url={this.state.image_url}/>
                                                  </Grid.Column>
                                         
                                                  <Grid.Column width={16}>
-                                                 <ProfileFeed first_name={this.state.first_name} last_name={this.state.last_name}
+                                                 <ProfileFeed firstName={this.state.firstName} lastName={this.state.lastName}
                                                      image_url={this.state.image_url}/>
                                                 </Grid.Column>
 

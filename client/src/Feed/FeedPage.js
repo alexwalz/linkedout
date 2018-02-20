@@ -10,8 +10,8 @@ class FeedPage extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-        	first_name: "John",
-            last_name: "Doe",
+        	firstName: "John",
+            lastName: "Doe",
             image_url: "https://pbs.twimg.com/profile_images/543459641263665152/9-Y39lzm.jpeg",
             job_title: "Full Stack Developer",
             connections:[
@@ -63,7 +63,7 @@ class FeedPage extends Component {
  				 	<Grid.Row>
 
                       <Grid.Column width={3}>
-                      <FeedIdentity  style={{position: "fixed"}} first_name={this.state.first_name} last_name={this.state.last_name}
+                      <FeedIdentity  style={{position: "fixed"}} firstName={this.state.firstName} lastName={this.state.lastName}
                                         job_title={this.state.job_title} image_url={this.state.image_url} connections={this.state.connections.length}/>
  						</Grid.Column>
 
@@ -72,12 +72,12 @@ class FeedPage extends Component {
 
                              
                                         <ShareBox
-                                        first_name={this.state.first_name} last_name={this.state.last_name}
+                                        firstName={this.state.firstName} lastName={this.state.lastName}
                                         job_title={this.state.job_title} image_url={this.state.image_url} />
                       
 
  							<FeedContainer 
- 							first_name={this.state.first_name} last_name={this.state.last_name}
+ 							firstName={this.state.firstName} lastName={this.state.lastName}
                              job_title={this.state.job_title} image_url={this.state.image_url}
  							/>
  						</Grid.Column>

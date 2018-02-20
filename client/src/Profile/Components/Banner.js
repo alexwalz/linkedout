@@ -46,7 +46,7 @@ const Logo = (props) =>
                             <Header as='h1' style={{marginTop: "5vh", color: "white", fontSize: "7vh"}}>
                                 <Icon name='code' />
                                 <Header.Content>
-                                    {props.first_name + " " + props.last_name}
+                                    {props.firstName + " " + props.lastName}
                                 <Header.Subheader style={{color: "white"}}>
                                      <Divider horizontal  inverted >{props.job_title}</Divider>
                                 </Header.Subheader>

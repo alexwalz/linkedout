@@ -80,7 +80,7 @@ class Bio extends Component {
     <Segment style={{backgroundImage: "url('https://www.toptal.com/designers/subtlepatterns/patterns/always_grey.png')"}}>
         <Grid.Row style={{marginBottom: "10px"}}>
           <Grid.Column textAlign="center">
-          <Divider horizontal><h3  textAlign="center" style={{color: "white"}}>{this.props.first_name + " " + this.props.last_name}'s Bio</h3></Divider>
+          <Divider horizontal><h3  textAlign="center" style={{color: "white"}}>{this.props.firstName + " " + this.props.lastName}'s Bio</h3></Divider>
           </Grid.Column>
         </Grid.Row>
 
@@ -99,7 +99,7 @@ class Bio extends Component {
         </Grid.Column>
 
         <Grid.Column width={2} style={{marginTop: "3px"}}>
-            <Icon circular color='teal' name='phone outline' />
+            <Icon circular color='teal' name='phone' />
         </Grid.Column>
         <Grid.Column width={14} textAlign="left">
             <h4 style={{lineHeight: "2.5rem", color: "white"}}>{this.props.phone}</h4>
