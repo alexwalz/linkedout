@@ -19,6 +19,9 @@ router.route("/")
   .get(function(req, res){
     usersController.ActiveLogin(req, res);
   })
+  .delete(function(req, res){
+    usersController.logout(req, res);
+  })
 
 // Matches with "/api/users/:id"
 router

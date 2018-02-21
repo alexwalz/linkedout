@@ -69,5 +69,26 @@ module.exports = {
         loggedIn: false
       })
     }
+  },
+  logout: function(req, res) {
+    if (req.session) {
+      // delete session object
+      req.session.destroy(function (err) {
+        if (err) {
+          res.json({
+            status: 501
+          });
+        } else {
+          res.json({
+            status: 200
+          });
+        }
+      });
+    }
+    else {
+      res.json({
+        status: 501
+      });
+    }
   }
 };

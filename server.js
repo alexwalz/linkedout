@@ -4,7 +4,6 @@ const mongoose = require("mongoose");
 const routes = require("./routes");
 var session = require("express-session");
 var MongoStore = require("connect-mongo")(session);
-var loginauth = require("./middleware/loginauth");
 const app = express();
 const PORT = process.env.PORT || 3001;
 
