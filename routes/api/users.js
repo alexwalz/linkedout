@@ -12,6 +12,14 @@ router.route("/")
     usersController.create(req, res);
   });
 
+  router.route("/login")
+  .post(function(req, res){
+    usersController.login(req, res);
+  })
+  .get(function(req, res){
+    usersController.ActiveLogin(req, res);
+  })
+
 // Matches with "/api/users/:id"
 router
   .route("/:id")

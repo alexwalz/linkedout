@@ -35,5 +35,39 @@ module.exports = {
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
+  },
+  login: function(req, res) {
+    if (req.body.email && req.body.password) {
+      db.user.authenticate(req.body.email, req.body.password, function (error, user) {
+        if (error || !user) {
+          return res.json({
+            status: 401,
+            userId: 0
+          });
+        } else {
+          req.session.userId = user._id;
+          return res.json({
+            status: 200,
+            userId: user._id
+          });
+        }
+      });
+    } else {
+      return res.json({
+        status: 400,
+        userId: 0
+      });
+    }
+  },
+  ActiveLogin: function(req, res) {
+    if (req.session && req.session.userId) {
+      res.json({
+        loggedIn: true
+      });
+    } else {
+      res.json({
+        loggedIn: false
+      })
+    }
   }
 };

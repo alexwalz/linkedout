@@ -18,8 +18,10 @@
   },
   "dependencies": {
     "bcrypt": "^1.0.3",
+    "connect-mongo": "^2.0.1",
     "cors": "^2.8.4",
     "express": "^4.15.4",
+    "express-session": "^1.15.6",
     "mongoose": "^5.0.5",
     "react-drag-sortable": "^1.0.5",
     "react-gradient-text": "^0.1.0",
