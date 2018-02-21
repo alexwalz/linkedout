@@ -1,7 +1,22 @@
 const router = require("express").Router();
 const usersController = require("../../controllers/usersController");
+const mongoose = require("mongoose");
 const db = require("../../models");
-
+var session = require("express-session");
+var MongoStore = require("connect-mongo")(session);
+mongoose.Promise = global.Promise;
+router.use(session({
+  secret: 'dont die',
+  resave: true,
+  saveUninitialized: false,
+  store: new MongoStore({
+      url: process.env.MONGODB_URI || "mongodb://localhost/linkedOut"
+    }),
+    httpOnly: true,
+    secure: false,
+    maxAge: null,
+    path: "/"
+}));
 
 // Matches with "/api/users"
 router.route("/")
@@ -19,9 +34,10 @@ router.route("/")
   .get(function(req, res){
     usersController.ActiveLogin(req, res);
   })
-  .delete(function(req, res){
-    usersController.logout(req, res);
-  })
+  .delete(function(req, res, next){
+    usersController.logout(req, res)
+  });
+
 
 // Matches with "/api/users/:id"
 router

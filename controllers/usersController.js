@@ -62,7 +62,8 @@ module.exports = {
   ActiveLogin: function(req, res) {
     if (req.session && req.session.userId) {
       res.json({
-        loggedIn: true
+        loggedIn: true,
+        userId: req.session.userId
       });
     } else {
       res.json({
@@ -74,21 +75,15 @@ module.exports = {
     if (req.session) {
       // delete session object
       req.session.destroy(function (err) {
-        if (err) {
-          res.json({
-            status: 501
-          });
-        } else {
-          res.json({
-            status: 200
-          });
-        }
+        return res.json({
+          status: 200
+        })
       });
     }
     else {
-      res.json({
+      return res.json({
         status: 501
-      });
+      })
     }
   }
 };
