@@ -110,7 +110,7 @@ module.exports = {
             });
     },
     addPost: function(req, res) {
-      db.Eduction
+      db.Post
             .create(req.body)
             .then(function (dbPost) {
                 return db.User.findOneAndUpdate({_id: req.session.userId}, {$push: {post: dbPost._id}}, {new: true});
