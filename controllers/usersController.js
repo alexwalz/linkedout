@@ -20,7 +20,10 @@ module.exports = {
   create: function(req, res) {
     db.user
       .create(req.body)
-      .then(dbModel => res.json(dbModel))
+      .then(function(dbModel){
+        req.session.userId = dbModel._id;
+        res.json(dbModel);
+      })
       .catch(err => res.status(422).json(err));
   },
   update: function(req, res) {
@@ -61,10 +64,17 @@ module.exports = {
   },
   ActiveLogin: function(req, res) {
     if (req.session && req.session.userId) {
-      res.json({
-        loggedIn: true,
-        userId: req.session.userId
-      });
+      var thisUser;
+      db.user.findById(req.session.userId)
+      .then(function(data){
+        data.password = "";
+        res.json({
+          loggedIn: true,
+          userId: req.session.userId,
+          userData: data
+        });
+      })
+      
     } else {
       res.json({
         loggedIn: false
