@@ -83,9 +83,8 @@ renderUser =()=>{
     axios.get('/api/users/'+this.props.match.params.id)
     .then(response => {
         this.setState(response.data );
-        if(response.data === null){
-            console.log("No User Found")
-        }
+    }).then(function(){
+        //(this.state.loggedIn) ? null : <Redirect to="/"/>     *** NOT WORKING.***
     })
     .catch(error => {
         console.log('Error fetching and parsing data', error);
@@ -120,7 +119,6 @@ getLoggedInUser = () =>{
                 backgroundPositionX: 'center',
                 color: "grey"
             }}>
-
 
 
                 <Sidebar.Pushable>
