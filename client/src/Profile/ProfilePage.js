@@ -109,6 +109,7 @@ renderUser =()=>{
     .catch(error => {
         console.log('Error fetching and parsing data', error);
     });
+
 }
 
 
@@ -171,11 +172,6 @@ renderUser =()=>{
                                 <Grid.Row>
                                     <Grid.Column width={8}>
                                         <Grid.Row>
-
-                                        <Link to="/home/profile/5a8b66f54ce699b2d045f840">KURT</Link>
-                                        <Link to="/home/profile/5a8b4ae34ce699b2d045f75e">Alex</Link>
-
-
 
                                             <Grid.Column width={16}>
                                                 <Bio firstName={this.state.firstName} lastName={this.state.lastName}
