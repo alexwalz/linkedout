@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import { Button, Form, Icon, Message, Grid, Container } from 'semantic-ui-react'
 import Segment from 'semantic-ui-react/dist/commonjs/elements/Segment/Segment';
+import LoginModal from './LoginModal'
 import axios from 'axios'
 
 
@@ -81,9 +82,11 @@ class LoginForm extends Component {
                             </Form>
                             <br/>
                             <Message attached='bottom' warning>
+
                             <Icon name='help' />
-                                Already signed up?&nbsp;<a href='#'>Login here</a>&nbsp;instead.
+                                <LoginModal/>
                             </Message>
+                            
                             </Segment>
 
                 </Grid.Column>
