@@ -70,9 +70,8 @@ class ProfilePage extends Component {
 
     componentDidMount(){
         this.renderUser();
-        this.languageArray(this.state.languages);
-        this.limit5(this.state.languages);
         this.getLoggedInUser()
+        
     }
 
     componentDidUpdate(){
@@ -99,6 +98,8 @@ getLoggedInUser = () =>{
         console.log(response)
         this.setState({loggedInUser: response.data.userId });
         this.setState({loggedIn: response.data.loggedIn})
+        this.languageArray(this.state.languages);
+        this.limit5(this.state.languages);
     }).then(function(){
         if(this.state.loggedIn === false){
             console.log("No User Is Logged In"),
