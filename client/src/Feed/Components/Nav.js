@@ -4,6 +4,7 @@ import { Input, Icon, Menu, Segment, Dropdown} from 'semantic-ui-react';
 import Logo from './Logo';
 import {Link} from "react-router-dom";
 import background from '../../img/midnight.jpg'
+import axios from 'axios'
 
 
 
@@ -15,6 +16,18 @@ class Nav extends Component {
   }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+
+ logout = () =>{
+   return(
+  axios({
+    method: 'delete',
+    url: '/api/users/login',
+    data: null,
+    headers: {'Content-Type': 'application/json'}
+    })
+  )
+ }
+  
 
   render() {
     const { activeItem } = this.state
@@ -52,6 +65,10 @@ class Nav extends Component {
             </Menu.Item>
             <Menu.Item name='profile' active={activeItem === 'profile'} onClick={this.handleItemClick}>
               <Link to="/home/profile/id">
+                <Icon name='image' />
+                Profile
+              </Link>
+              <Link to="" onClick={this.logout}>
                 <Icon name='image' />
                 Profile
               </Link>

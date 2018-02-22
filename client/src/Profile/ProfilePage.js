@@ -21,6 +21,7 @@ class ProfilePage extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            CurrentUser:{},
             visible: false,
             firstName: "",
             lastName: "",
@@ -102,6 +103,7 @@ class ProfilePage extends Component {
         this.renderUser();
         this.languageArray(this.state.languages);
         this.limit5(this.state.languages);
+        this.getLoggedInUser()
     }
 
     componentDidUpdate(){
@@ -116,7 +118,20 @@ renderUser =()=>{
     .catch(error => {
         console.log('Error fetching and parsing data', error);
     });
+}
 
+getLoggedInUser = () =>{
+    axios.get('/api/users/login')
+    .then(response => {
+        console.log("Logged In User")
+        console.log(response.data)
+        // this.setState({CurrentUser: response.data });
+    }).then(function(){
+        console.log(this.state.CurrentUser)
+    })
+    .catch(error => {
+        console.log('Error fetching and parsing data', error);
+    });
 }
 
 

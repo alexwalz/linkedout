@@ -2,12 +2,22 @@ import React, { Component } from 'react';
 import Parallax from 'react-springy-parallax'
 import Logo from './Components/Logo'
 import LoginForm from './Components/LoginForm'
+import axios from 'axios'
 
 
 
 
 class LoginPage extends Component {
 
+  componentDidMount(){
+    axios.get('/api/users/login')
+    .then(response => {
+      console.log(response)
+    })
+    .catch(error => {
+        console.log('Error fetching and parsing data', error);
+    });
+  }
 
 
   render() {
