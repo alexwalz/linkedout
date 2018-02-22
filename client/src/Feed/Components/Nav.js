@@ -10,7 +10,7 @@ import axios from 'axios'
 
 
 class Nav extends Component {
-    state = { activeItem: '' }
+    state = { activeItem: '', loggedInUser: "", loggedIn: false }
       static propTypes = {
     color: PropTypes.string,
   }
@@ -27,7 +27,21 @@ class Nav extends Component {
     })
   )
  }
+
+ getUser = () => {
+  axios.get('/api/users/login')
+  .then(response => {
+    this.setState({loggedInUser: response.data.userId, Loggedin: response.data.loggedIn})
+  })
+  .catch(error => {
+      console.log('Error fetching and parsing data', error);
+  });
+ }
   
+
+ componentDidMount(){
+   this.getUser()
+ }
 
   render() {
     const { activeItem } = this.state
@@ -64,15 +78,22 @@ class Nav extends Component {
                 Network
             </Menu.Item>
             <Menu.Item name='profile' active={activeItem === 'profile'} onClick={this.handleItemClick}>
-              <Link to="/home/profile/id">
+              <Link to={`/home/profile/${this.state.loggedInUser}`}>
                 <Icon name='image' />
                 Profile
               </Link>
-              <Link to="" onClick={this.logout}>
-                <Icon name='image' />
-                Profile
-              </Link>
-            </Menu.Item>
+              </Menu.Item>
+
+              
+
+              {this.state.loggedIn ? 
+              
+              <Menu.Item name='logout' active={activeItem === 'logout'} onClick={this.handleItemClick}> <Link to="" onClick={this.logout}> <Icon name='lock' /> Logout </Link> </Menu.Item>
+              
+              : null } 
+
+
+            
         </Menu.Menu>
       </Menu>
     </Segment>

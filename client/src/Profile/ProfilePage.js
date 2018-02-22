@@ -15,14 +15,15 @@ import Connections from './Components/Connections'
 import Newsfeed from './Components/NewsFeed'
 import background from '../img/midnight.jpg'
 import axios from 'axios'
-
+import {Redirect} from 'react-router-dom'
 
 class ProfilePage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            CurrentUser:{},
+            loggedInUser: "",
             visible: false,
+            loggedIn: false,
             firstName: "",
             lastName: "",
             email: "",
@@ -37,40 +38,8 @@ class ProfilePage extends Component {
             languages: [],
             dragLanguages : [],
             fiveArr: [],
-            connections:[
-                {
-                    name: "Alex Walz",
-                    image_url: "https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAMAAQDGAAwAAQAAAAAAAA7hAAAAJDE2YzA2NDBkLWU0YzMtNDE2Zi1hMDcxLTY0YWFiNWZlZjM5ZQ.jpg",
-                    id: "12345",
-                },
-                {
-                    name: "Kurt Roberts",
-                    image_url: "https://media.licdn.com/media/AAEAAQAAAAAAAAxcAAAAJGY4MzNmNmMzLWMwM2QtNGQ4Ny1hYWZhLTQ0MTkzYzA5NzRiYQ.jpg",
-                    id: "234lkjsdf",
-                },
-                {
-                    name: "Cesar Caceres",
-                    image_url: "https://media.licdn.com/media/AAMABADGAAwAAQAAAAAAABCdAAAAJGE2ZDM1NjAzLWQzN2QtNGViMS05MWY0LWQxNzBjNDgyOTE3Mg.jpg",
-                    id: "asldkjfsdfj",
-                },
-                {
-                    name: "Andrew Reyes-Cairo",
-                    image_url: "https://media.licdn.com/media/AAEAAQAAAAAAAAwJAAAAJDQyNTQ2NDcyLTdkODItNDM0Ni1iMDVmLThmYWM3NTg5YzdmMw.jpg",
-                    id: "asldfusdofijsdf",
-                },
-                {
-                    name: "Curtis Lytle",
-                    image_url: "https://media.licdn.com/media/AAMABADuAAgAAQAAAAAAAA9ZAAAAJDM1YWEwYWQ3LTFmOWEtNDQ0Yi1hNDgxLTJkMTNjZTZkMTdmNQ.bin",
-                    id: "23423lkjfs443w32",
-                },
-            ],
-            posts:[
-                {
-                    messageType:"",
-                    message:"",
-                    date:""
-                }
-            ]
+            connections:[],
+            posts:[]
 
         }
     }
@@ -114,6 +83,9 @@ renderUser =()=>{
     axios.get('/api/users/'+this.props.match.params.id)
     .then(response => {
         this.setState(response.data );
+        if(response.data === null){
+            console.log("No User Found")
+        }
     })
     .catch(error => {
         console.log('Error fetching and parsing data', error);
@@ -124,15 +96,20 @@ getLoggedInUser = () =>{
     axios.get('/api/users/login')
     .then(response => {
         console.log("Logged In User")
-        console.log(response.data)
-        // this.setState({CurrentUser: response.data });
+        console.log(response)
+        this.setState({loggedInUser: response.data.userId });
+        this.setState({loggedIn: response.data.loggedIn})
     }).then(function(){
-        console.log(this.state.CurrentUser)
+        if(this.state.loggedIn === false){
+            console.log("No User Is Logged In"),
+            <Redirect to={"/"}/>
+        }
     })
     .catch(error => {
         console.log('Error fetching and parsing data', error);
     });
 }
+
 
 
     render() {
@@ -144,7 +121,7 @@ getLoggedInUser = () =>{
                 color: "grey"
             }}>
 
-        {/* {this.renderUser()} */}
+
 
                 <Sidebar.Pushable>
 
@@ -182,11 +159,13 @@ getLoggedInUser = () =>{
                                     </Grid.Column>
 
                                     <Grid.Column width={3}>
-                                        <ConnectButton/>
+                                    {this.state.loggedInUser === this.props.match.params.id && this.state.loggedIn ? null : <ConnectButton/> } 
+                                        
                                     </Grid.Column>
 
                                     <Grid.Column width={3}>
-                                        <EmailButton email={this.state.email}/>
+                                    {this.state.loggedInUser === this.props.match.params.id && this.state.loggedIn ? null : <EmailButton email={this.state.email}/> } 
+                                        
                                     </Grid.Column>
 
                                 </Grid.Row>
@@ -202,7 +181,8 @@ getLoggedInUser = () =>{
                                                      company={this.state.current_company}
                                                      jobTitle={this.state.job_title} 
                                                      birthday={this.state.birthday}
-                                                     location={this.state.location}/>
+                                                     location={this.state.location}
+                                                     loggedInUser={this.state.loggedInUser} url={this.props.match.params.id}/>
                                             </ Grid.Column>
 
                                             <Grid.Column width={16}>
@@ -210,9 +190,11 @@ getLoggedInUser = () =>{
                                             </ Grid.Column>
 
                                             <Grid.Column width={16}>
-                                                <LanguagesView languages={this.state.languages}
+                                                <LanguagesView 
+                                                languages={this.state.languages}
                                                 limit5={this.state.fiveArr}
                                                 languagesDrag={this.state.dragLanguages}
+                                                loggedInUser={this.state.loggedInUser}
                                                 />
                                             </ Grid.Column>
 
@@ -231,12 +213,14 @@ getLoggedInUser = () =>{
                                     <Grid.Column width={8}>
                                             <Grid.Row>
                                                  <Grid.Column width={16} style={{marginBottom: "10px"}}>
-                                                    <ShareBox firstName={this.state.firstName} lastName={this.state.lastName} image_url={this.state.image_url}/>
+
+                                                        {this.state.loggedInUser === this.props.match.params.id && this.state.loggedIn ? <ShareBox firstName={this.state.firstName} lastName={this.state.lastName} image_url={this.state.image_url} loggedInUser={this.state.loggedInUser}/> : null } 
+
                                                  </Grid.Column>
                                         
                                                  <Grid.Column width={16}>
                                                  <ProfileFeed firstName={this.state.firstName} lastName={this.state.lastName}
-                                                     image_url={this.state.image_url}/>
+                                                     image_url={this.state.image_url} loggedInUser={this.state.loggedInUser}/>
                                                 </Grid.Column>
 
                                             </Grid.Row>

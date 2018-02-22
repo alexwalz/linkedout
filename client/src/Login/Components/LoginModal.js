@@ -24,7 +24,6 @@ class LoginModal extends Component {
               handleFormSubmit = async (event) => {
                 event.preventDefault();
                 const res = await axios.post('/api/users/login', this.state);
-                console.log(res.data)
                 await console.log(res.data.userId)
                 this.setState({
                     loggedIn: true,

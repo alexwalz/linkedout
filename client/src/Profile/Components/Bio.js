@@ -2,13 +2,14 @@ import React, {Component} from 'react'
 import Languages from './Languages'
 import { Message, Grid, Segment, Divider, Header, Icon, Image, Container, Card, Form, Select, TextArea, Button } from 'semantic-ui-react'
 import PostButton from '../../Feed/Components/PostButton'
+import axios from 'axios'
 
 
 class Bio extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-          editing: false
+          editing: false,
          }
     }
 
@@ -20,9 +21,23 @@ class Bio extends Component {
       this.setState({editing: false})
     }
 
-    postComment(){
-      //this funciton will be passed to the PostButton when editing is true 
-    }
+  
+    handleInputChange = event => {
+        const value = event.target.value;
+        const name = event.target.name;
+        this.setState({
+          [name]: value
+        });
+      };
+    
+ 
+              handleFormSubmit = async (event) => {
+                event.preventDefault();
+                console.log(this.props.loggedInUser)
+                const res = await axios.post('/api/users/'+this.props.loggedInUser, this.state );
+                await console.log(res)
+
+            };
 
     renderForm(){
 
@@ -60,7 +75,7 @@ class Bio extends Component {
             </Grid.Column>
 
             <Grid.Column width={3}>
-                <PostButton editing= {this.state.editing}/>
+                <PostButton editing= {this.state.editing} onClick={() => this.handleFormSubmit()}/>
             </Grid.Column>
 
           </Grid.Row>
@@ -75,9 +90,13 @@ class Bio extends Component {
     renderDisplay(){
       return(
 
-    <div style={{marginBottom:"10px"}} onClick={()=> this.edit()}>
+
+    <div style={{marginBottom:"10px"}} >
     
     <Segment style={{backgroundImage: "url('https://www.toptal.com/designers/subtlepatterns/patterns/always_grey.png')"}}>
+
+    {this.props.loggedInUser === this.props.url ? <Icon name='pencil' size='small' onClick={()=> this.edit()} /> : null } 
+    
         <Grid.Row style={{marginBottom: "10px"}}>
           <Grid.Column textAlign="center">
           <Divider horizontal><h3  textAlign="center" style={{color: "white"}}>{this.props.firstName + " " + this.props.lastName}'s Bio</h3></Divider>

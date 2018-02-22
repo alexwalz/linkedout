@@ -24,10 +24,7 @@ class LoginForm extends Component {
     
       handleFormSubmit = event => {
         event.preventDefault();
-        console.log("clicked")
-        console.log(this.state)
         axios.post("/api/users", this.state).then(function(response){
-            console.log(response)
         })
       };
 
@@ -86,7 +83,7 @@ class LoginForm extends Component {
                             <Icon name='help' />
                                 <LoginModal/>
                             </Message>
-                            
+
                             </Segment>
 
                 </Grid.Column>

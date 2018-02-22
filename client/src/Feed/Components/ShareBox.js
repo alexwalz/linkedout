@@ -3,7 +3,7 @@ import { Container, Grid, Segment, Header, Icon, Form, TextArea, Card,  Button, 
 import PostButton from './PostButton'
 
 let messageStyles={
-  border: "2px solid white",
+border: "1px solid transparent",
   padding: "1%",
   // borderImage: "linear-gradient(to bottom, #3acfd5 0%, #3a4ed5 100%)",
   // borderImageSlice: "1",
@@ -77,9 +77,9 @@ class ShareBox extends Component {
 
     renderDisplay(){
       return(
-          <Card fluid onClick={()=> this.edit()} style={{boxShadow: "0 4px 6px 0 rgba(0, 0, 0, 0.2)"}} style={messageStyles} >
+          <Card fluid onClick={()=> this.edit()} style={{boxShadow: "0 4px 6px 0 rgba(0, 0, 0, 0.2)", border: "none"}} style={messageStyles} >
             <Card.Content style={{textAlign: "center"}}>
-              <Card.Description><h3 style={{ marginTop: "5%"}}> <Icon circular name='plus' />Create New Post</h3></Card.Description>
+              <Card.Description><h3 style={{ marginTop: "5%", color:"white"}}> <Icon circular name='plus' />Create New Post</h3></Card.Description>
             </Card.Content>
              <Card.Content extra>
               <Grid>
