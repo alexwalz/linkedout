@@ -112,8 +112,8 @@ class LanguagesView extends Component {
                 </Grid.Column>
               </Grid.Row>
 
-                      {this.props.limit5.map(language => (
-                        <Languages language={language} />
+                      {this.props.limit5.map((language, key) => (
+                        <Languages language={language} key={key} />
                       ))}
               <p onClick={()=>this.removeLimit()} style={{cursor: "pointer", color: "white", marginTop: "5px"}}>View All Languages</p>
           </Segment>

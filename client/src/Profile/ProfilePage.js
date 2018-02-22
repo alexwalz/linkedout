@@ -94,7 +94,9 @@ class ProfilePage extends Component {
     }
 
     componentDidMount(){
-        this.renderUser()
+        this.renderUser();
+         this.limit5(this.state.languages);
+        this.languageArray(this.state.languages);
     }
 
     componentDidUpdate(){
