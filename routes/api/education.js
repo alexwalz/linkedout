@@ -3,5 +3,7 @@ const usersController = require("../../controllers/usersController");
 
 // Matches with "/api/education"
 router.route("/")
-    .post(usersController.addEduction);
+    .post(usersController.addEducation);
+
+module.exports = router;
 

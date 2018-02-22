@@ -96,8 +96,8 @@ module.exports = {
             })
         }
     },
-    addEduction: function (req, res) {
-        db.Eduction
+    addEducation: function (req, res) {
+        db.Education
             .create(req.body)
             .then(function (dbEducation) {
                 return db.User.findOneAndUpdate({_id: req.session.userId}, {$push: {education: dbEducation._id}}, {new: true});
