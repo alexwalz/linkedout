@@ -86,11 +86,11 @@ class Nav extends Component {
 
               
 
-              {this.state.loggedIn ? 
+             
               
               <Menu.Item name='logout' active={activeItem === 'logout'} onClick={this.handleItemClick}> <Link to="" onClick={this.logout}> <Icon name='lock' /> Logout </Link> </Menu.Item>
               
-              : null } 
+    
 
 
             

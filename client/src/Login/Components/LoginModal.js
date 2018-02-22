@@ -6,7 +6,8 @@ import {Redirect} from 'react-router-dom'
 class LoginModal extends Component {
     constructor(props) {
         super(props);
-        this.state = {  }
+        this.state = {
+        incorrectPassword: false }
     }
 
     handleInputChange = event => {
@@ -25,10 +26,16 @@ class LoginModal extends Component {
                 event.preventDefault();
                 const res = await axios.post('/api/users/login', this.state);
                 await console.log(res.data.userId)
-                this.setState({
+                if(res.data.userId){this.setState({
+                    incorrectPassword: false,
                     loggedIn: true,
                     loggedInUserId: res.data.userId
                 })
+              }else{
+                this.setState({
+                  incorrectPassword: true
+                })
+              }
             };
 
 
@@ -46,15 +53,16 @@ class LoginModal extends Component {
                       <Form>
                         <Form.Group widths='equal'>
                         <Form.Input onChange={this.handleInputChange} fluid label='email' placeholder='Email' name="email" />
-                        <Form.Input onChange={this.handleInputChange} fluid label='password' placeholder='Password' name="password"/>
+                        <Form.Input onChange={this.handleInputChange} fluid label='password' placeholder='Password' name="password" type='password'/>
                         </Form.Group>
                     </Form>
-
+                    {this.state.incorrectPassword ? <span style={{color: "red"}}> Incorrect User or Password </span> : null}
               <Button color='green' inverted onClick={this.handleFormSubmit}>
                 <Icon name='checkmark' /> Login
               </Button>
 
-             {this.state.loggedIn ? <Redirect to={`/home/profile/${this.state.loggedInUserId}`}/> : null } 
+             {this.state.loggedIn ? <Redirect to={`/home/feed`}/> : null } 
+
 
             </Modal.Actions>
           </Modal>
