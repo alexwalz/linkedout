@@ -45,6 +45,10 @@ var UserSchema = new Schema({
     type: String,
     default: "Not Applicable"
   },
+  posts : [{
+    type: Schema.Types.ObjectId,
+    ref: "Post"
+  }],
   education : [{
     type: Schema.Types.ObjectId,
     ref: "Education"
