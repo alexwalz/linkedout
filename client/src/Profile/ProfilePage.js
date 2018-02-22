@@ -87,14 +87,21 @@ class ProfilePage extends Component {
     }
 
      limit5(languages){
-        for(var i =0; i < 5; i++){
-          this.state.fiveArr.push(languages[i])
+        if(languages.length > 5){
+            for(var i =0; i < 5; i++){
+              this.state.fiveArr.push(languages[i])
+            }
+        }else {
+            this.state.fiveArr = languages
         }
+        
         
     }
 
     componentDidMount(){
-        this.renderUser()
+        this.renderUser();
+        this.languageArray(this.state.languages);
+        this.limit5(this.state.languages);
     }
 
     componentDidUpdate(){
