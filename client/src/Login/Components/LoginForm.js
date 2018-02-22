@@ -49,13 +49,13 @@ class LoginForm extends Component {
                             <br/>
                             <Form.Group widths='equal'>
                             
-                                <Form.Input onChange={this.handleInputChange} fluid label='First Name' placeholder='First Name' type='text' name="firstName"/>
-                                <Form.Input onChange={this.handleInputChange} fluid label='Last Name' placeholder='Last Name' type='text' name="lastName"/>
+                                <Form.Input onChange={this.handleInputChange} fluid label='firstName' placeholder='First Name' type='text' name="firstName"/>
+                                <Form.Input onChange={this.handleInputChange} fluid label='lastName' placeholder='Last Name' type='text' name="lastName"/>
                                 </Form.Group>
                                 
                                 <Form.Group widths='equal'>
-                                <Form.Input onChange={this.handleInputChange} label='Email' placeholder='Email' type='text' name="email"/>
-                                <Form.Input onChange={this.handleInputChange} label='Password' type='password' name="password"/>
+                                <Form.Input onChange={this.handleInputChange} label='email' placeholder='Email' type='text' name="email"/>
+                                <Form.Input onChange={this.handleInputChange} label='password' type='password' name="password"/>
                                 </Form.Group>
 
                                 <Form.Group widths='equal'>
@@ -68,8 +68,12 @@ class LoginForm extends Component {
                                 <Form.Input onChange={this.handleInputChange} label='Job Title' placeholder='Project Manager' type='text' name="job_title"/>
                                 </Form.Group>
 
+                                <Form.Group widths="equal">
+                                <Form.Input onChange={this.handleInputChange} label='Birthday' placeholder='01/01/2001' type='text' name="birthday"/>
                                 <Form.Input onChange={this.handleInputChange} label='Location' placeholder='Salt Lake City, UT' type='text' name="location"/>
-                                <Form.TextArea onChange={this.handleInputChange} label='About' placeholder='Tell us more about you...' name="about"/>
+                                </Form.Group>
+
+                                <Form.TextArea onChange={this.handleInputChange} label='About' placeholder='Tell us more about you to display on your profile' name="about"/>
 
                                 <Form.Checkbox inline label='I agree to the terms and conditions' />
                                 <Button color='teal' inverted onClick={this.handleFormSubmit}>Submit</Button>
@@ -78,7 +82,7 @@ class LoginForm extends Component {
                             <br/>
                             <Message attached='bottom' warning>
                             <Icon name='help' />
-                            Already signed up?&nbsp;<a href='#'>Login here</a>&nbsp;instead.
+                                Already signed up?&nbsp;<a href='#'>Login here</a>&nbsp;instead.
                             </Message>
                             </Segment>
 

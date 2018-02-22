@@ -97,6 +97,10 @@ class ProfilePage extends Component {
         this.renderUser()
     }
 
+    componentDidUpdate(){
+        this.renderUser()
+    }
+
 renderUser =()=>{
     axios.get('/api/users/'+this.props.match.params.id)
     .then(response => {
@@ -108,8 +112,6 @@ renderUser =()=>{
 }
 
 
-   
-
     render() {
         return (
 
@@ -119,10 +121,12 @@ renderUser =()=>{
                 color: "grey"
             }}>
 
+        {/* {this.renderUser()} */}
 
                 <Sidebar.Pushable>
 
-                {this.renderUser()}
+
+             
 
                     <Sidebar as={Menu} animation='overlay' width='thin' visible={this.state.visible} icon='labeled'
                              vertical inverted style={{height: "100vh"}}>
@@ -141,6 +145,7 @@ renderUser =()=>{
                         <Container style={{paddingTop: 62}}>
                             <Grid>
                                 <Grid.Row>
+
                                     <Grid.Column width={16}>
                                         <Banner firstName={this.state.firstName} lastName={this.state.lastName}
                                                 job_title={this.state.job_title} image_url={this.state.image_url}/>
@@ -166,6 +171,11 @@ renderUser =()=>{
                                 <Grid.Row>
                                     <Grid.Column width={8}>
                                         <Grid.Row>
+
+                                        <Link to="/home/profile/5a8b66f54ce699b2d045f840">KURT</Link>
+                                        <Link to="/home/profile/5a8b4ae34ce699b2d045f75e">Alex</Link>
+
+
 
                                             <Grid.Column width={16}>
                                                 <Bio firstName={this.state.firstName} lastName={this.state.lastName}

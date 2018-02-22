@@ -39,7 +39,7 @@ var UserSchema = new Schema({
   },
   birthday: {
     type: String,
-    required: true
+    // required: true
   },
   current_company: {
     type: String,
