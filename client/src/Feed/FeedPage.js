@@ -3,17 +3,24 @@ import { Grid, Container, Segment, Button, Menu, Image, Icon, Header } from 'sem
 import FeedIdentity from './Components/FeedIdentity';
 import ShareBox from './Components/ShareBox';
 import FeedContainer from './Components/FeedContainer';
-import NewsFeed from '../Profile/Components/NewsFeed'
-import background from '../img/midnight.jpg'
+import NewsFeed from '../Profile/Components/NewsFeed';
+import background from '../img/midnight.jpg';
+import axios from 'axios';
 
 class FeedPage extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-        	firstName: "John",
-            lastName: "Doe",
-            image_url: "https://pbs.twimg.com/profile_images/543459641263665152/9-Y39lzm.jpeg",
-            job_title: "Full Stack Developer",
+        	firstName: "",
+            lastName: "",
+            image_url: "",
+            job_title: "",
+             posts:[
+                {
+                    messageType:"",
+                    message:"",
+                    date:""
+                }],
             connections:[
                 {
                     name: "Alex Walz",
@@ -46,12 +53,24 @@ class FeedPage extends Component {
 
     componentDidMount(){
         this.getPosts();
+        this.renderUser();
     }
 
     //function to obtain posts for the feed
     getPosts(){
         //API route to obtain all posts
     }
+
+    renderUser =()=>{
+        axios.get('/api/users/login')
+        .then(response => {
+            this.setState(response.data );
+        })
+        .catch(error => {
+            console.log('Error fetching and parsing data', error);
+        });
+    }
+
 
 
     render() { 

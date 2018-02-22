@@ -33,7 +33,7 @@ class ProfilePage extends Component {
             current_company: "",
             education: "",
             location: "",
-            languages: [],
+            languages: ["Javascript", "Java", "C++", "React", "Node", "Angular"],
             dragLanguages : [],
             fiveArr: [],
             connections:[
@@ -94,7 +94,9 @@ class ProfilePage extends Component {
     }
 
     componentDidMount(){
-        this.renderUser()
+        this.renderUser();
+         this.limit5(this.state.languages);
+        this.languageArray(this.state.languages);
     }
 
     componentDidUpdate(){
