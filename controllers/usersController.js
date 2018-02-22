@@ -100,7 +100,7 @@ module.exports = {
         db.Eduction
             .create(req.body)
             .then(function (dbEducation) {
-                return db.User.findOneAndUpdate({_id: req.params.id}, {$push: {education: dbEducation._id}}, {new: true});
+                return db.User.findOneAndUpdate({_id: req.session.userId}, {$push: {education: dbEducation._id}}, {new: true});
             })
             .then(function (dbUser) {
                 res.json(dbUser);
