@@ -86,11 +86,10 @@ class Nav extends Component {
 
               
 
-             
               
               <Menu.Item name='logout' active={activeItem === 'logout'} onClick={this.handleItemClick}> <Link to="" onClick={this.logout}> <Icon name='lock' /> Logout </Link> </Menu.Item>
               
-    
+
 
 
             

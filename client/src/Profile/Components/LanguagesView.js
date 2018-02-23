@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Languages from './Languages'
 import { Message, Grid, Segment, Divider , Icon, Modal, Button, Image, Header, Container, Form, Loader} from 'semantic-ui-react'
 import DragSortableList from 'react-drag-sortable'
+import API from "../../utils/API";
 
 
 let languageStyles={
@@ -50,6 +51,9 @@ class LanguagesView extends Component {
     }
 
     renderForm(){
+       let onSort = function(sortedList, dropEvent) {
+    this.setState({languages: sortedList})
+          }
       return(
           <div>
     
