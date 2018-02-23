@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Button, Header, Icon, Modal, Form } from 'semantic-ui-react'
 import axios from "axios"
 import {Link} from 'react-router-dom'
+import {Redirect} from 'react-router-dom'
 
 export default class SecondaryModal extends Component {
   state = { modalOpen: true }
@@ -26,20 +27,22 @@ export default class SecondaryModal extends Component {
             event.preventDefault();
             const res = await axios.post('/api/users/login', this.state);
             await console.log(res.data.userId)
-            if(res.data.userId){this.setState({
+            if(res.data.userId){
+              
+              this.setState({
                 incorrectPassword: false,
                 loggedIn: true,
                 loggedInUserId: res.data.userId,
                 modalOpen: false
-            })
+            },
+          )
           }else{
             this.setState({
               incorrectPassword: true
             })
-          }
+          };
         };
 
-        
 
   render() {
     return (
@@ -49,6 +52,7 @@ export default class SecondaryModal extends Component {
         basic
         size='small'
       >
+      {this.state.loggedIn ? <Redirect to="/home/feed"/> : null}
         <Header icon='user' content='Existing User Login' />
             <Modal.Content>
               <h4>You must be logged in to view these accounts.</h4>

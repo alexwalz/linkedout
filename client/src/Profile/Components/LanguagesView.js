@@ -110,7 +110,7 @@ class LanguagesView extends Component {
           <Segment  style={{backgroundImage: "url('https://www.toptal.com/designers/subtlepatterns/patterns/always_grey.png')"}}>
               <Grid.Row style={{marginBottom: "10px", marginBottom: "10px"}}>
 
-                <Icon name='pencil' size='small' onClick={()=> this.edit()} />
+                {this.props.loggedInUser === this.props.url ? <Icon name='pencil' color="white" size='small' onClick={()=> this.edit()} /> : null }
                 <Grid.Column textAlign="center">
                 <Divider horizontal><h3  textAlign="center" style={{color: "white"}}>My Languages</h3></Divider>
                 </Grid.Column>

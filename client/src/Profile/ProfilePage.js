@@ -72,19 +72,13 @@ class ProfilePage extends Component {
     componentDidMount(){
         this.renderUser();
         this.getLoggedInUser()
-        
     }
 
-    componentDidUpdate(){
-        this.renderUser()
-    }
 
 renderUser =()=>{
     axios.get('/api/users/'+this.props.match.params.id)
     .then(response => {
         this.setState(response.data );
-    }).then(function(){
-        //(this.state.loggedIn) ? null : <Redirect to="/"/>     *** NOT WORKING.***
     })
     .catch(error => {
         console.log('Error fetching and parsing data', error);
@@ -95,18 +89,11 @@ getLoggedInUser = () =>{
     axios.get('/api/users/login')
     .then(response => {
         console.log("Logged In User")
-        console.log(response)
         this.setState({loggedInUser: response.data.userId });
         this.setState({loggedIn: response.data.loggedIn})
         this.languageArray(this.state.languages);
         this.limit5(this.state.languages);
-    }).then(function(){
-        if(this.state.loggedIn === false){
-            console.log("No User Is Logged In"),
-            <Redirect to={"/"}/>
-        }
-    })
-    .catch(error => {
+    }).catch(error => {
         console.log('Error fetching and parsing data', error);
     });
 }
@@ -114,6 +101,7 @@ getLoggedInUser = () =>{
 
 
     render() {
+
         return (
 
             <div style={{
@@ -121,12 +109,11 @@ getLoggedInUser = () =>{
                 backgroundPositionX: 'center',
                 color: "grey"
             }}>
-            {this.state.loggedIn ? null : <SecondaryModal/>}
+            {this.renderUser}
+            {this.state.loggedIn ? null : <SecondaryModal/>}  
+            {/* Need to find a way to rerender the component after the SecondaryModal submit */}
 
                 <Sidebar.Pushable>
-
-
-             
 
                     <Sidebar as={Menu} animation='overlay' width='thin' visible={this.state.visible} icon='labeled'
                              vertical inverted style={{height: "100vh"}}>
@@ -195,6 +182,7 @@ getLoggedInUser = () =>{
                                                 limit5={this.state.fiveArr}
                                                 languagesDrag={this.state.dragLanguages}
                                                 loggedInUser={this.state.loggedInUser}
+                                                url={this.props.match.params.id}
                                                 />
                                             </ Grid.Column>
 

@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { Header, Segment, Container, Card, Form, Grid, Button } from 'semantic-ui-react'
+import { Header, Segment, Container, Card, Form, Grid, Button, Icon, Divider } from 'semantic-ui-react'
 import PostButton from '../../Feed/Components/PostButton'
 
 
@@ -63,17 +63,21 @@ class About extends Component {
   renderDisplay(){
     return(
 
-      <div style={{marginBottom: "10px"}} onClick={()=> this.edit()}>
-          <Container style={{border: "none"}}>
-            <Header as='h2' attached='top' textAlign="center"  style={{backgroundImage: "url('https://www.toptal.com/designers/subtlepatterns/patterns/always_grey.png')", backgroundPositionX: 'center', color:"white", border: "none"}}>
-            About Me
-            </Header>
-            <Segment attached style={{backgroundColor: "#F9FFFF"}}>
-                {this.props.about}
-            </Segment>
-        </Container>
-    </div>
+      <div style={{marginBottom:"10px"}} >
 
+      <Segment  style={{backgroundImage: "url('https://www.toptal.com/designers/subtlepatterns/patterns/always_grey.png')"}}>
+      <Grid.Row style={{marginBottom: "10px", marginBottom: "10px"}}>
+
+        {this.props.loggedInUser === this.props.url ? <Icon name='pencil' color="white" size='small' onClick={()=> this.edit()} /> : null } 
+        <Grid.Column textAlign="center">
+        <Divider horizontal><h3  textAlign="center" style={{color: "white"}}>About Me</h3></Divider>
+        </Grid.Column>
+      </Grid.Row>
+        <div style={{color: "white"}}>
+            {this.props.about}
+        </div>
+      </Segment>
+</div>
 
       )
   }
