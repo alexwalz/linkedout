@@ -16,6 +16,7 @@ import Newsfeed from './Components/NewsFeed'
 import background from '../img/midnight.jpg'
 import axios from 'axios'
 import {Redirect} from 'react-router-dom'
+import SecondaryModal from '../Login/Components/SecondaryLoginModal'
 
 class ProfilePage extends Component {
     constructor(props) {
@@ -120,7 +121,7 @@ getLoggedInUser = () =>{
                 backgroundPositionX: 'center',
                 color: "grey"
             }}>
-
+            {this.state.loggedIn ? null : <SecondaryModal/>}
 
                 <Sidebar.Pushable>
 
