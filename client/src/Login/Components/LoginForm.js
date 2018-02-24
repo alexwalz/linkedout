@@ -74,13 +74,11 @@ class LoginForm extends Component {
                                 <Form.TextArea onChange={this.handleInputChange} label='About' placeholder='Tell us more about you to display on your profile' name="about"/>
 
                                 <Form.Checkbox inline label='I agree to the terms and conditions' />
-                                <Button color='teal' inverted onClick={this.handleFormSubmit}>Submit</Button>
+                                <Button color='teal' inverted onClick={this.handleFormSubmit}>Create Account</Button>
 
                             </Form>
                             <br/>
                             <Message attached='bottom' warning>
-
-                            <Icon name='help' />
                                 <LoginModal/>
                             </Message>
 
