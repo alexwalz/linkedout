@@ -37,8 +37,6 @@ class ProfilePage extends Component {
             education: "",
             location: "",
             languages: [],
-            dragLanguages : [],
-            fiveArr: [],
             connections:[],
             posts:[]
 
@@ -48,26 +46,6 @@ class ProfilePage extends Component {
 
     toggleVisibility = () => this.setState({visible: !this.state.visible})
 
-
-    //function to pass languages that can be draggable
-    languageArray(languages){
-        for (var i = 0; i < languages.length; i++){
-            var div = {content: <Languages language={languages[i]}/>}
-            this.state.dragLanguages.push(div)
-        }
-    }
-
-     limit5(languages){
-        if(languages.length > 5){
-            for(var i =0; i < 5; i++){
-              this.state.fiveArr.push(languages[i])
-            }
-        }else {
-            this.state.fiveArr = languages
-        }
-        
-        
-    }
 
     componentDidMount(){
         this.renderUser();
@@ -91,8 +69,6 @@ getLoggedInUser = () =>{
         console.log("Logged In User")
         this.setState({loggedInUser: response.data.userId });
         this.setState({loggedIn: response.data.loggedIn})
-        this.languageArray(this.state.languages);
-        this.limit5(this.state.languages);
     }).catch(error => {
         console.log('Error fetching and parsing data', error);
     });
@@ -179,8 +155,6 @@ getLoggedInUser = () =>{
                                             <Grid.Column width={16}>
                                                 <LanguagesView 
                                                 languages={this.state.languages}
-                                                limit5={this.state.fiveArr}
-                                                languagesDrag={this.state.dragLanguages}
                                                 loggedInUser={this.state.loggedInUser}
                                                 url={this.props.match.params.id}
                                                 />

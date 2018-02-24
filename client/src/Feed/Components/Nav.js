@@ -56,6 +56,7 @@ class Nav extends Component {
         right: 0,
         backgroundImage: `url(${background})`,
       }}>
+      {this.getUser()}
       <Menu inverted pointing secondary style={{ border:'none'}}> 
         <Menu.Menu position='left' style={{marginLeft: 30}}>
                 <Logo/>
