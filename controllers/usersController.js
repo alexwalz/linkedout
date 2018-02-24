@@ -123,9 +123,12 @@ module.exports = {
             });
     },
     updateLanguages: function(req, res) {
+        var language = req.body.language;
         db.user
-            .findOneAndUpdate({_id: req.params.id}, { $push: {languages: req.body}}, {new: true})
-            .then(dbModel => res.json(dbModel))
+            .findByIdAndUpdate(req.params.id, { $push: {languages: language}}, {new: true})
+            .then(function(dbModel) {
+                res.json(dbModel);
+            })
             .catch(err => res.status(422).json(err));
     },
     replaceLanguages: function(req, res) {
