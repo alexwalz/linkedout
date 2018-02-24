@@ -38,7 +38,7 @@ router.route("/")
     usersController.logout(req, res)
   });
 
-  router.route("/langauges")
+  router.route("/:id/languages")
     .put(function(req, res) {
       usersController.updateLanguages(req, res);
     })
