@@ -42,6 +42,9 @@ router.route("/")
     .put(function(req, res) {
       usersController.updateLanguages(req, res);
     })
+    .post(function(req, res) {
+      usersController.replaceLanguages(req, res);
+    })
 
 // Matches with "/api/users/:id"
 router
