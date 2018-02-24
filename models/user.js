@@ -61,10 +61,7 @@ var UserSchema = new Schema({
         type: String,
         required: true
     },
-    languages: [{
-        language_name: String
-        // required: true
-    }],
+    language: [String],
     connections: [{
         type: Schema.Types.ObjectId,
         ref: "User"
