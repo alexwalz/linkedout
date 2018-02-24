@@ -62,13 +62,17 @@ var UserSchema = new Schema({
         required: true
     },
     languages: [{
-        type: String,
-        default: "None"
+        language_name: String
         // required: true
     }],
     connections: [{
         type: Schema.Types.ObjectId,
         ref: "User"
+    }],
+    projects: [{
+        project_title: String,
+        project_url: String,
+        project_description: String
     }]
 
 });

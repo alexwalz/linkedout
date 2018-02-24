@@ -38,12 +38,18 @@ router.route("/")
     usersController.logout(req, res)
   });
 
+  router.route("/langauges")
+    .put(function(req, res) {
+      usersController.updateLanguages(req, res);
+    })
 
 // Matches with "/api/users/:id"
 router
   .route("/:id")
   .get(usersController.findById)
-  .put(usersController.update)
+  .put(function(req, res) {
+    usersController.update(req, res);
+  })
   .delete(usersController.remove);
 
 module.exports = router;

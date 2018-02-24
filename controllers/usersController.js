@@ -121,5 +121,11 @@ module.exports = {
             .catch(function (err) {
                 res.json(err);
             });
+    },
+    updateLanguages: function(req, res) {
+        db.user
+            .findOneAndUpdate({_id: req.params.id}, { $push: {languages: req.body}}, {new: true})
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(422).json(err));
     }
 };
