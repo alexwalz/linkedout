@@ -171,8 +171,8 @@ getLoggedInUser = () =>{
                                     <Grid.Column width={8}>
                                         <Grid.Row>
 
-                                            <Link to="/home/profile/5a91a842c09c7b377882e41c">ALEX </Link>
-                                            <Link to="/home/profile/5a91a842c09c7b377882e41d"> KURT</Link>
+                                            {/* <Link to="/home/profile/5a91a842c09c7b377882e41c">ALEX </Link>
+                                            <Link to="/home/profile/5a91a842c09c7b377882e41d"> KURT</Link> */}
 
                                             <Grid.Column width={16}>
 
