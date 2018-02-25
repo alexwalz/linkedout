@@ -3,6 +3,7 @@ import Languages from './Languages'
 import { Message, Grid, Segment, Divider , Icon, Modal, Button, Image, Header, Container, Form, Loader} from 'semantic-ui-react'
 import DragSortableList from 'react-drag-sortable'
 import API from "../../utils/API";
+import axios from "axios";
 
 
 let languageStyles={
@@ -17,7 +18,8 @@ class LanguagesView extends Component {
   constructor(props) {
         super(props);
         this.state = { 
-          editing: false
+          editing: false,
+          newLanguage: ""
          }
     }
 
@@ -25,17 +27,40 @@ class LanguagesView extends Component {
       this.setState({editing: true})
     }
 
-    save(){
-      this.setState({editing: false})
-    }
-
     cancel(){
       this.setState({editing: false})
     }
 
+    save(){
+      this.state.languages.push(this.state.newLanguage)
+      console.log(this.state.languages)
+    }
 
-    componentDidMount(){
-      
+
+  handleInputChange = event => {
+        const value = event.target.value;
+        const name = event.target.name;
+        this.setState({
+          [name]: value
+        });
+      };
+     
+
+    handleFormSubmit = ()=> {
+     console.log(this.props.loggedInUserInfo.userId)
+      axios
+        .put(
+            `/api/users/${this.props.loggedInUserInfo.userId}/languages`, 
+            {language: this.state.newLanguage}
+            
+        )
+        .then(r => {console.log(r.status)
+          this.setState({editing: false})
+
+        })
+        .catch(e => console.log(e));
+
+
     }
 
     renderForm(){
@@ -52,9 +77,13 @@ class LanguagesView extends Component {
                 </Grid.Column>
               </Grid.Row>
                 <Form>
-                  <Form.Input fluid placeholder="Add another language"/>
-                  <Button icon='check' size="large" circular color='teal' onClick={()=> this.save()} />
+                  <Form.Input fluid placeholder="Add another language" onChange={this.handleInputChange} name="newLanguage"/>
+                  <Button icon='check' size="large" circular color='teal' onClick={()=>this.handleFormSubmit()}/>
               </Form>
+
+              {this.props.userInfo.languages.map(language => (
+                        <Languages language={language} editing={true}/>
+                      ))}
           </Segment>
         </div>
         )
