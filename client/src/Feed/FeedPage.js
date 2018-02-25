@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Container, Segment, Button, Menu, Image, Icon, Header } from 'semantic-ui-react'
+import { Grid, Container, Segment, Button, Menu, Image, Icon, Header, Dimmer, Loader } from 'semantic-ui-react'
 import FeedIdentity from './Components/FeedIdentity';
 import ShareBox from './Components/ShareBox';
 import FeedContainer from './Components/FeedContainer';
@@ -11,6 +11,7 @@ class FeedPage extends Component {
     constructor(props) {
         super(props);
         this.state = { 
+            loading: true,
         	firstName: "",
             lastName: "",
             image_url: "",
@@ -54,6 +55,7 @@ class FeedPage extends Component {
     componentDidMount(){
         this.getPosts();
         this.renderUser();
+        setTimeout(() => this.setState({ loading: false }), 2500); 
     }
 
     //function to obtain posts for the feed
@@ -77,43 +79,63 @@ class FeedPage extends Component {
     }
 
 
+renderFeedPage(){
+    return ( 
+        <div style={{backgroundImage: `url(${background})`, backgroundPositionX: 'center', color:"grey", paddingTop: 80, paddingLeft: "2%", paddingRight: "2%"}}>
+             
+                 
+                 <Grid>
+                 <Grid.Row>
+
+                 <Grid.Column width={3}>
+                 <FeedIdentity  style={{position: "fixed"}} firstName={this.state.firstName} lastName={this.state.lastName}
+                                   job_title={this.state.job_title} image_url={this.state.image_url} connections={this.state.connections.length}/>
+                    </Grid.Column>
+
+                    <Grid.Column width={7}>
+
+
+                        
+                                   <ShareBox
+                                   loggedInUser={this.state.loggedInUser} />
+                 
+
+                        <FeedContainer 
+                        firstName={this.state.firstName} lastName={this.state.lastName}
+                        job_title={this.state.job_title} image_url={this.state.image_url}
+                        />
+                    </Grid.Column>
+                    <Grid.Column width={6}>
+                        <NewsFeed/>
+                    </Grid.Column>
+                </Grid.Row>
+                </Grid>
+
+                
+        
+        </div>
+     
+    )
+}
+
+
+renderLoaderPage(){
+    return(
+        <Segment style={{height: "100vh"}}>
+        <Dimmer active>
+          <Loader size='massive' style={{marginTop: "5%"}}>Loading Your Feed</Loader>
+        </Dimmer>
+      </Segment>
+    )
+}
+
 
     render() { 
         return ( 
- 			<div style={{backgroundImage: `url(${background})`, backgroundPositionX: 'center', color:"grey", paddingTop: 80, paddingLeft: "2%", paddingRight: "2%"}}>
- 				 
- 				 	
- 				 	<Grid>
- 				 	<Grid.Row>
-
-                      <Grid.Column width={3}>
-                      <FeedIdentity  style={{position: "fixed"}} firstName={this.state.firstName} lastName={this.state.lastName}
-                                        job_title={this.state.job_title} image_url={this.state.image_url} connections={this.state.connections.length}/>
- 						</Grid.Column>
-
- 						<Grid.Column width={7}>
-
-
-                             
-                                        <ShareBox
-                                        loggedInUser={this.state.loggedInUser} />
-                      
-
- 							<FeedContainer 
- 							firstName={this.state.firstName} lastName={this.state.lastName}
-                             job_title={this.state.job_title} image_url={this.state.image_url}
- 							/>
- 						</Grid.Column>
- 						<Grid.Column width={6}>
- 							<NewsFeed/>
- 						</Grid.Column>
- 					</Grid.Row>
- 					</Grid>
-
- 					
  			
- 			</div>
-          
+          <div>
+              {this.state.loading ? this.renderLoaderPage() : this.renderFeedPage()}
+        </div>
          )
     }
 }
