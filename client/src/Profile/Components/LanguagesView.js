@@ -29,6 +29,11 @@ class LanguagesView extends Component {
       this.setState({editing: false})
     }
 
+    cancel(){
+      this.setState({editing: false})
+    }
+
+
     componentDidMount(){
       
     }
@@ -68,7 +73,7 @@ class LanguagesView extends Component {
                 </Grid.Column>
               </Grid.Row>
 
-                      {this.props.languages.map(language => (
+                      {this.props.userInfo.languages.map(language => (
                         <Languages language={language} />
                       ))}
               

@@ -48,17 +48,17 @@ class Bio extends Component {
         <Card.Description>
            <Form>
            <Form.Group widths='equal'>
-           <Form.Input fluid label='email' placeholder={this.props.email} />
-           <Form.Input fluid label='phone' placeholder={this.props.phone} />
+           <Form.Input fluid label='email' placeholder={this.props.userInfo.email} />
+           <Form.Input fluid label='phone' placeholder={this.props.userInfo.phone} />
            </Form.Group>
 
            <Form.Group widths='equal'>
-           <Form.Input fluid label='company' placeholder={this.props.company} />
-           <Form.Input fluid label='jobTitle' placeholder={this.props.jobTitle} />
+           <Form.Input fluid label='company' placeholder={this.props.userInfo.company} />
+           <Form.Input fluid label='jobTitle' placeholder={this.props.userInfo.jobTitle} />
            </Form.Group>
 
-           <Form.Input fluid label='birthday' placeholder={this.props.birthday} />
-           <Form.Input fluid label='location' placeholder={this.props.location} />
+           <Form.Input fluid label='birthday' placeholder={this.props.userInfo.birthday} />
+           <Form.Input fluid label='location' placeholder={this.props.userInfo.location} />
            
           </Form>
         </Card.Description>
@@ -95,11 +95,11 @@ class Bio extends Component {
     
     <Segment style={{backgroundImage: "url('https://www.toptal.com/designers/subtlepatterns/patterns/always_grey.png')"}}>
 
-    {this.props.loggedInUser === this.props.url ? <Icon name='pencil' size='small' onClick={()=> this.edit()} /> : null } 
+    {this.props.userInfo.loggedInUser === this.props.userInfo.url ? <Icon name='pencil' size='small' onClick={()=> this.edit()} /> : null } 
     
         <Grid.Row style={{marginBottom: "10px"}}>
           <Grid.Column textAlign="center">
-          <Divider horizontal><h3  textAlign="center" style={{color: "white"}}>{this.props.firstName + " " + this.props.lastName}'s Bio</h3></Divider>
+          <Divider horizontal><h3  textAlign="center" style={{color: "white"}}>{this.props.userInfo.firstName + " " + this.props.userInfo.lastName}'s Bio</h3></Divider>
           </Grid.Column>
         </Grid.Row>
 
@@ -114,35 +114,35 @@ class Bio extends Component {
             <Icon circular color='teal' name='mail outline' />
         </Grid.Column>
         <Grid.Column width={14} textAlign="left">
-            <h4 style={{lineHeight: "2.5rem", color: "white"}}>{this.props.email}</h4>
+            <h4 style={{lineHeight: "2.5rem", color: "white"}}>{this.props.userInfo.email}</h4>
         </Grid.Column>
 
         <Grid.Column width={2} style={{marginTop: "3px"}}>
             <Icon circular color='teal' name='phone' />
         </Grid.Column>
         <Grid.Column width={14} textAlign="left">
-            <h4 style={{lineHeight: "2.5rem", color: "white"}}>{this.props.phone}</h4>
+            <h4 style={{lineHeight: "2.5rem", color: "white"}}>{this.props.userInfo.phone}</h4>
         </Grid.Column>
 
         <Grid.Column width={2} style={{marginTop: "3px"}}>
             <Icon circular color='teal' name='building outline' />
         </Grid.Column>
         <Grid.Column width={14} textAlign="left">
-            <h4 style={{lineHeight: "2.5rem", color: "white"}}>{this.props.company} | {this.props.jobTitle}</h4>
+            <h4 style={{lineHeight: "2.5rem", color: "white"}}>{this.props.userInfo.current_company} | {this.props.userInfo.job_title}</h4>
         </Grid.Column>
 
         <Grid.Column width={2} style={{marginTop: "3px"}}>
         <Icon circular color='teal' name='calendar' />
         </Grid.Column>
         <Grid.Column width={14} textAlign="left">
-            <h4 style={{lineHeight: "2.5rem", color: "white"}}>{this.props.birthday}</h4>
+            <h4 style={{lineHeight: "2.5rem", color: "white"}}>{this.props.userInfo.birthday}</h4>
         </Grid.Column>
 
         <Grid.Column width={2} style={{marginTop: "3px"}}>
         <Icon circular color='teal' name='map pin' />
         </Grid.Column>
         <Grid.Column width={14} textAlign="left">
-            <h4 style={{lineHeight: "2.5rem", color: "white"}}>{this.props.location}</h4>
+            <h4 style={{lineHeight: "2.5rem", color: "white"}}>{this.props.userInfo.location}</h4>
         </Grid.Column>
 
 

@@ -68,13 +68,13 @@ class About extends Component {
       <Segment  style={{backgroundImage: "url('https://www.toptal.com/designers/subtlepatterns/patterns/always_grey.png')"}}>
       <Grid.Row style={{marginBottom: "10px", marginBottom: "10px"}}>
 
-        {this.props.loggedInUser === this.props.url ? <Icon name='pencil' color="white" size='small' onClick={()=> this.edit()} /> : null } 
+        {this.props.userInfo.userId === this.props.url ? <Icon name='pencil' color="white" size='small' onClick={()=> this.edit()} /> : null } 
         <Grid.Column textAlign="center">
         <Divider horizontal><h3  textAlign="center" style={{color: "white"}}>About Me</h3></Divider>
         </Grid.Column>
       </Grid.Row>
         <div style={{color: "white"}}>
-            {this.props.about}
+            {this.props.userInfo.about}
         </div>
       </Segment>
 </div>

@@ -23,7 +23,6 @@ class LoginPage extends Component {
   getUser = () => {
     axios.get('/api/users/login')
     .then(response => {
-      console.log(response)
       this.setState(response.data)
     })
     .catch(error => {
@@ -33,8 +32,6 @@ class LoginPage extends Component {
 
   redirect(){
     const { from } = this.props.location.state || { from: { pathname: "/home/feed" } };
-    console.log("Logged In Already");
-    console.log(from);
     <Redirect to={from}/>
   }
 
@@ -52,7 +49,6 @@ class LoginPage extends Component {
         <Parallax ref='parallax' pages={2}>
 
         {this.getUser}
-        {console.log(this.state)}
         {(this.state.loggedIn) ? <Redirect to="/home/feed"/> : null}
   
            
