@@ -54,7 +54,6 @@ class FeedPage extends Component {
     componentDidMount(){
         this.getPosts();
         this.renderUser();
-        this.renderUser();
     }
 
     //function to obtain posts for the feed
@@ -63,15 +62,14 @@ class FeedPage extends Component {
     }
 
     renderUser =()=>{
+
         axios.get('/api/users/login')
         .then(response => {
             this.setState({firstName: response.data.userData.firstName});
             this.setState({lastName: response.data.userData.lastName});
             this.setState({job_title: response.data.userData.job_title});
             this.setState({image_url: response.data.userData.image_url});
-            
-
-           
+            this.setState({loggedInUser: response.data });             
         })
         .catch(error => {
             console.log('Error fetching and parsing data', error);
@@ -98,8 +96,7 @@ class FeedPage extends Component {
 
                              
                                         <ShareBox
-                                        firstName={this.state.firstName} lastName={this.state.lastName}
-                                        job_title={this.state.job_title} image_url={this.state.image_url} />
+                                        loggedInUser={this.state.loggedInUser} />
                       
 
  							<FeedContainer 
