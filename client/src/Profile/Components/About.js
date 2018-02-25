@@ -68,7 +68,7 @@ class About extends Component {
       <Segment  style={{backgroundImage: "url('https://www.toptal.com/designers/subtlepatterns/patterns/always_grey.png')"}}>
       <Grid.Row style={{marginBottom: "10px", marginBottom: "10px"}}>
 
-        {this.props.userInfo.userId === this.props.url ? <Icon name='pencil' color="white" size='small' onClick={()=> this.edit()} /> : null } 
+        {this.props.loggedInUserInfo.userId === this.props.url && this.props.loggedInUserInfo.loggedIn ? <Icon name='pencil' size='small' onClick={()=> this.edit()} /> : null } 
         <Grid.Column textAlign="center">
         <Divider horizontal><h3  textAlign="center" style={{color: "white"}}>About Me</h3></Divider>
         </Grid.Column>

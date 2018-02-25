@@ -95,7 +95,7 @@ class Bio extends Component {
     
     <Segment style={{backgroundImage: "url('https://www.toptal.com/designers/subtlepatterns/patterns/always_grey.png')"}}>
 
-    {this.props.userInfo.loggedInUser === this.props.userInfo.url ? <Icon name='pencil' size='small' onClick={()=> this.edit()} /> : null } 
+    {this.props.loggedInUserInfo.userId === this.props.url && this.props.loggedInUserInfo.loggedIn ? <Icon name='pencil' size='small' onClick={()=> this.edit()} /> : null }
     
         <Grid.Row style={{marginBottom: "10px"}}>
           <Grid.Column textAlign="center">

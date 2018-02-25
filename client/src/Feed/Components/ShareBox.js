@@ -1,15 +1,9 @@
 import React , { Component } from 'react'
-import { Container, Grid, Segment, Header, Icon, Form, TextArea, Card,  Button, Image, Select} from 'semantic-ui-react'
+import { Container, Grid, Segment, Header, Icon, Form, TextArea, Card,  Button, Image, Select, Step, Comment} from 'semantic-ui-react'
 import PostButton from './PostButton'
 
 let messageStyles={
-border: "1px solid transparent",
-  padding: "1%",
-  // borderImage: "linear-gradient(to bottom, #3acfd5 0%, #3a4ed5 100%)",
-  // borderImageSlice: "1",
   marginBottom: "5px",
-  backgroundImage: "url('https://www.toptal.com/designers/subtlepatterns/patterns/always_grey.png')",
-  color: "white"
 }
 
 class ShareBox extends Component {
@@ -41,66 +35,97 @@ class ShareBox extends Component {
       ]
       return(
 
-    <Card fluid style={{boxShadow: "0 4px 6px 0 rgba(0, 0, 0, 0.2)"}} style={messageStyles} >
-    {console.log(this.props)}
-      <Card.Content>
-        <Card.Header style={{color: "white"}}><Image src={this.props.loggedInUser.userData.image_url} avatar /> {this.props.loggedInUser.userData.firstName + " " + this.props.loggedInUser.userData.lastName}</Card.Header>
-        <Card.Description>
-           <Form>
-           <Select placeholder='Select the type of post' options={postOptions} style={messageStyles} />
-            <TextArea autoHeight style={messageStyles} placeholder='Add comment here' />
-          </Form>
-        </Card.Description>
-      </Card.Content>
-       <Card.Content extra>
-        <Grid>
-          <Grid.Row>
+    // <Card fluid style={{boxShadow: "0 4px 6px 0 rgba(0, 0, 0, 0.2)"}} style={messageStyles} >
+    // {console.log(this.props)}
+    //   <Card.Content>
+    //     <Card.Header style={{color: "white"}}><Image src={this.props.loggedInUser.userData.image_url} avatar /> {this.props.loggedInUser.userData.firstName + " " + this.props.loggedInUser.userData.lastName}</Card.Header>
+    //     <Card.Description>
+    //        <Form>
+    //        <Select placeholder='Select the type of post' options={postOptions} style={messageStyles} />
+    //         <TextArea autoHeight style={messageStyles} placeholder='Add comment here' />
+    //       </Form>
+    //     </Card.Description>
+    //   </Card.Content>
+    //    <Card.Content extra>
+    //     <Grid>
+    //       <Grid.Row>
 
-            <Grid.Column width={9}>
-            </Grid.Column>
+    //         <Grid.Column width={9}>
+    //         </Grid.Column>
 
-            <Grid.Column width={3}>
-               <Button basic color='red' onClick={() => this.cancel()}>Cancel</Button>
-            </Grid.Column>
+    //         <Grid.Column width={3}>
+    //            <Button basic color='red' onClick={() => this.cancel()}>Cancel</Button>
+    //         </Grid.Column>
 
-            <Grid.Column width={3}>
-                <PostButton editing= {this.state.editing}/>
-            </Grid.Column>
+    //         <Grid.Column width={3}>
+    //             <PostButton editing= {this.state.editing}/>
+    //         </Grid.Column>
 
-          </Grid.Row>
+    //       </Grid.Row>
           
-        </Grid>
-      </Card.Content>
-    </Card>
+    //     </Grid>
+    //   </Card.Content>
+    // </Card>
+
+    <Comment.Group>
+    <Comment>
+      <Comment.Avatar as='a' src={this.props.loggedInUser.userData.image_url}/>
+      <Comment.Content>
+        <Comment.Author as='a' style={{color: "white"}}>{this.props.loggedInUser.userData.firstName + " " + this.props.loggedInUser.userData.lastName}</Comment.Author>
+        <Comment.Metadata>
+          <div></div>
+        </Comment.Metadata>
+        <Comment.Actions>
+          <Comment.Action active style={{color: "white"}}>New Post</Comment.Action>
+        </Comment.Actions>
+        <Form reply>
+          <Select placeholder='Select the type of post' options={postOptions} style={messageStyles} />
+          <Form.TextArea />
+          <Icon name='checkmark' size='large' circular color="teal"  />
+          <Icon name='close' size='large' circular color="teal" onClick={()=> this.cancel()} />
+        </Form>
+      </Comment.Content>
+    </Comment>
+  </Comment.Group>
 
         )
     }
 
     renderDisplay(){
       return(
-          <Card fluid onClick={()=> this.edit()} style={{boxShadow: "0 4px 6px 0 rgba(0, 0, 0, 0.2)", border: "none"}} style={messageStyles} >
-            <Card.Content style={{textAlign: "center"}}>
-              <Card.Description><h3 style={{ marginTop: "5%", color:"white"}}> <Icon circular name='plus' />Create New Post</h3></Card.Description>
-            </Card.Content>
-             <Card.Content extra>
-              <Grid>
-                <Grid.Row>
+          // <Card fluid onClick={()=> this.edit()} style={{boxShadow: "0 4px 6px 0 rgba(0, 0, 0, 0.2)", border: "none"}} style={messageStyles} >
+          //   <Card.Content style={{textAlign: "center"}}>
+          //     <Card.Description><h3 style={{ marginTop: "5%", color:"white"}}> <Icon circular name='plus' />Create New Post</h3></Card.Description>
+          //   </Card.Content>
+          //    <Card.Content extra>
+          //     <Grid>
+          //       <Grid.Row>
 
-                  <Grid.Column width={9}>
-                  </Grid.Column>
+          //         <Grid.Column width={9}>
+          //         </Grid.Column>
 
-                  <Grid.Column width={3}>
+          //         <Grid.Column width={3}>
             
-                  </Grid.Column>
+          //         </Grid.Column>
 
-                  <Grid.Column width={3}>
-                  </Grid.Column>
+          //         <Grid.Column width={3}>
+          //         </Grid.Column>
 
-                </Grid.Row>
+          //       </Grid.Row>
                 
-              </Grid>
-            </Card.Content>
-          </Card>
+          //     </Grid>
+          //   </Card.Content>
+          // </Card>
+          <Step.Group fluid vertical>
+              <Step active onClick={()=> this.edit()}>
+              <Icon name='comments' />
+              <Step.Content>
+                <Step.Title style={{color: "#67C8D3"}}>Posts</Step.Title>
+                <Step.Description>Create A New Post</Step.Description>
+              </Step.Content>
+              </Step>
+       </Step.Group>
+
         )
     }
 
