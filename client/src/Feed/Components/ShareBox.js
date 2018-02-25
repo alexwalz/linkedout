@@ -42,8 +42,9 @@ class ShareBox extends Component {
       return(
 
     <Card fluid style={{boxShadow: "0 4px 6px 0 rgba(0, 0, 0, 0.2)"}} style={messageStyles} >
+    {console.log(this.props)}
       <Card.Content>
-        <Card.Header style={{color: "white"}}><Image src={this.props.image_url} avatar /> {this.props.firstName + " " + this.props.lastName}</Card.Header>
+        <Card.Header style={{color: "white"}}><Image src={this.props.loggedInUser.userData.image_url} avatar /> {this.props.loggedInUser.userData.firstName + " " + this.props.loggedInUser.userData.lastName}</Card.Header>
         <Card.Description>
            <Form>
            <Select placeholder='Select the type of post' options={postOptions} style={messageStyles} />
