@@ -185,7 +185,7 @@ getLoggedInUser = () =>{
 
                                             <Grid.Column width={16}>
 
-                                                <LanguagesView userInfo={this.state.renderedUser} loggedInUserInfo={this.state.loggedInUser} url={this.state.url}/>
+                                                <LanguagesView userInfo={this.state.renderedUser} loggedInUserInfo={this.state.loggedInUser} url={this.state.url} renderUser={this.renderUser}/>
                                             
                                             </ Grid.Column>
 

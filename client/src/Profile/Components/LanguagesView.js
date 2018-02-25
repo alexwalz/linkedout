@@ -31,11 +31,6 @@ class LanguagesView extends Component {
       this.setState({editing: false})
     }
 
-    save(){
-      this.state.languages.push(this.state.newLanguage)
-      console.log(this.state.languages)
-    }
-
 
   handleInputChange = event => {
         const value = event.target.value;
@@ -55,7 +50,9 @@ class LanguagesView extends Component {
             
         )
         .then(r => {console.log(r.status)
+
           this.setState({editing: false})
+          this.props.renderUser()
 
         })
         .catch(e => console.log(e));
@@ -80,10 +77,11 @@ class LanguagesView extends Component {
                   <Form.Input fluid placeholder="Add another language" onChange={this.handleInputChange} name="newLanguage"/>
                   <Button icon='check' size="large" circular color='teal' onClick={()=>this.handleFormSubmit()}/>
               </Form>
-
+              <Container style={{marginTop: "20px"}}>
               {this.props.userInfo.languages.map(language => (
                         <Languages language={language} editing={true}/>
                       ))}
+              </Container>
           </Segment>
         </div>
         )
