@@ -11,7 +11,7 @@ class ConnectionsModal extends Component {
         return ( 
             <Modal dimmer="blurring" trigger={<Icon name='users' circular color="teal" size="large" />} basic size='small'>
             <Header icon='users' content='All Connections' />
-            <Modal.Content style={{width: "135%"}}>
+            <Modal.Content style={{width: "135%", margin: "0 0 0 -14%"}}>
 
 
                     {/* Map through all the connections for that user here: */}
