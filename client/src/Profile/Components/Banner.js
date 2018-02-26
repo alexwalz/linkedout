@@ -10,7 +10,8 @@ let styles={
   //position: "fixed",
   backgroundImage: `url('https://bizsitenow-wpengine.netdna-ssl.com/wp-content/blogs.dir/28/files/2014/10/418_Las-Vegas-Web-Developer_201410141.jpg')`,
   backgroundSize: "cover",
-  margin: "0 0 0 -14%"
+  margin: "0 0 0 -14%",
+  WebkitMaskImage:"-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)))",
 
   
 }
@@ -21,7 +22,7 @@ let imageStyles={
     marginLeft: "5%",
     padding: "6px",
     border: "1px solid grey", 
-    backgroundColor: "white"
+    backgroundColor: "white",
 }
 
 

@@ -7,6 +7,8 @@ import FeedPage from './Feed/FeedPage'
 import UserProfile from './Profile/ProfilePage'
 import NotFound from './NotFound/NotFound'
 import ClassifiedsPage from './Classifieds/ClassifiedsPage'
+import './css/index.css'
+import './App.css'
 
 
 const duration = 300;

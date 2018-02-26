@@ -26,6 +26,7 @@
     "react-drag-sortable": "^1.0.5",
     "react-gradient-text": "^0.1.0",
     "react-textgradient": "^0.0.2",
-    "react-transition-group": "^2.2.1"
+    "react-transition-group": "^2.2.1",
+    "webfontloader": "^1.6.28"
   }
 }

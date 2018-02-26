@@ -49,14 +49,15 @@ class Bio extends Component {
       <Card.Content>
         <Card.Description>
            <Form>
-           <Form.Group widths='equal'>
-           <Form.Input fluid label='email' placeholder={this.props.userInfo.email} />
-           <Form.Input fluid label='phone' placeholder={this.props.userInfo.phone} />
-           </Form.Group>
+
 
            <Form.Group widths='equal'>
            <Form.Input fluid label='company' placeholder={this.props.userInfo.company} />
            <Form.Input fluid label='jobTitle' placeholder={this.props.userInfo.jobTitle} />
+           </Form.Group>
+
+           <Form.Group widths='equal'>
+           <Form.Input fluid label='phone' placeholder={this.props.userInfo.phone} />
            </Form.Group>
 
            <Form.Input fluid label='birthday' placeholder={this.props.userInfo.birthday} />
@@ -69,15 +70,15 @@ class Bio extends Component {
         <Grid>
           <Grid.Row>
 
-            <Grid.Column width={9}>
+            <Grid.Column width={3}>
             </Grid.Column>
 
-            <Grid.Column width={3}>
-               <Button basic color='red' onClick={() => this.cancel()}>Cancel</Button>
+            <Grid.Column width={5}>
+                <Button icon='close' size="large" circular color='teal' onClick={() => this.cancel()}/>
             </Grid.Column>
 
-            <Grid.Column width={3}>
-                <PostButton editing= {this.state.editing} onClick={() => this.handleFormSubmit()}/>
+            <Grid.Column width={5}>
+                <Button icon='check' size="large" circular color='teal' onClick={()=>this.handleFormSubmit()}/>
             </Grid.Column>
 
           </Grid.Row>
@@ -146,11 +147,11 @@ class Bio extends Component {
             <h4 style={{lineHeight: "2.5rem", color: "white"}}>{this.props.userInfo.location}</h4>
         </Grid.Column>
 
-            <Grid.Column width={8} textAlign="center" style={{marginTop: "10px"}}>
+            <Grid.Column width={8} textAlign="center" style={{marginTop: "20px"}}>
                 {this.props.loggedInUserInfo.userId ===this.props.url && this.props.loggedInUserInfo.loggedIn ? null : (<ConnectButton />)}
             </Grid.Column>
 
-            <Grid.Column width={8} textAlign="center" style={{marginTop: "10px"}}>
+            <Grid.Column width={8} textAlign="center" style={{marginTop: "20px"}}>
                 {this.props.loggedInUserInfo.userId ===this.props.url && this.props.loggedInUserInfo.loggedIn ? null : (<EmailButton />)}
             </Grid.Column>
 

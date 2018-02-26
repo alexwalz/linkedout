@@ -11,6 +11,7 @@ import {
   Divider
 } from "semantic-ui-react";
 import PostButton from "../../Feed/Components/PostButton";
+import axios from "axios";
 
 class About extends Component {
   constructor(props) {
@@ -20,6 +21,28 @@ class About extends Component {
     };
   }
 
+
+  handleInputChange = event => {
+    const value = event.target.value;
+    const name = event.target.name;
+    this.setState({
+      [name]: value
+    });
+  };
+ 
+
+handleFormSubmit = ()=> {
+  console.log(this.props.loggedInUserInfo.userId)
+  console.log(this.state.about)
+  axios
+    .post(`/api/users/${this.props.loggedInUserInfo.userId}/about`, this.state.about)
+    .then(r => {console.log(r.status)
+      this.setState({editing: false})
+      this.props.renderUser()
+    })
+    .catch(e => console.log(e));
+}
+
   edit() {
     this.setState({ editing: true });
   }
@@ -28,9 +51,6 @@ class About extends Component {
     this.setState({ editing: false });
   }
 
-  postComment() {
-    //this funciton will be passed to the PostButton when editing is true
-  }
 
   renderForm() {
     return (
@@ -42,24 +62,23 @@ class About extends Component {
         <Card.Content>
           <Card.Description>
             <Form>
-              <Form.TextArea label="About" placeholder="Tell us about you..." />
+              <Form.TextArea label="about" placeholder="Tell us about you..." onChange={this.handleInputChange} name="about"/>
             </Form>
           </Card.Description>
         </Card.Content>
         <Card.Content extra>
           <Grid>
             <Grid.Row>
-              <Grid.Column width={9} />
+              <Grid.Column width={3} />
 
-              <Grid.Column width={3}>
-                <Button basic color="red" onClick={() => this.cancel()}>
-                  Cancel
-                </Button>
-              </Grid.Column>
+            <Grid.Column width={5}>
+                <Button icon='close' size="large" circular color='teal' onClick={() => this.cancel()}/>
+            </Grid.Column>
 
-              <Grid.Column width={3}>
-                <PostButton editing={this.state.editing} />
-              </Grid.Column>
+            <Grid.Column width={5}>
+                <Button icon='check' size="large" circular color='teal' onClick={()=>this.handleFormSubmit()}/>
+            </Grid.Column>
+
             </Grid.Row>
           </Grid>
         </Card.Content>
@@ -77,7 +96,7 @@ class About extends Component {
           ) : null}
           <Grid.Column textAlign="center" />
         </Grid.Row>
-        <div style={{ color: "white" }}>{this.props.userInfo.about}</div>
+        <div style={{ color: "#67C8D3" }}>{this.props.userInfo.about}</div>
       </div>
     );
   }

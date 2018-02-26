@@ -182,6 +182,7 @@ class ProfilePage extends Component {
                   userInfo={this.state.renderedUser}
                   loggedInUserInfo={this.state.loggedInUser}
                   url={this.state.url}
+                  renderUser={this.renderUser}
                 />
               </Grid.Column>
 

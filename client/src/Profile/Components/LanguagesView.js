@@ -78,9 +78,14 @@ class LanguagesView extends Component {
                   <Button icon='check' size="large" circular color='teal' onClick={()=>this.handleFormSubmit()}/>
               </Form>
               <Container style={{marginTop: "20px"}}>
-              {this.props.userInfo.languages.map(language => (
+              <Grid.Row>
+                <Grid.Column width={8}>
+                     {this.props.userInfo.languages.map(language => (
+                    
                         <Languages textAlign="center" language={language} editing={true}/>
                       ))}
+                </Grid.Column>
+              </Grid.Row>
               </Container>
           </Segment>
         </div>
