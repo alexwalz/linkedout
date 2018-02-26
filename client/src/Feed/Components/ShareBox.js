@@ -35,40 +35,8 @@ class ShareBox extends Component {
       ]
       return(
 
-    // <Card fluid style={{boxShadow: "0 4px 6px 0 rgba(0, 0, 0, 0.2)"}} style={messageStyles} >
-    // {console.log(this.props)}
-    //   <Card.Content>
-    //     <Card.Header style={{color: "white"}}><Image src={this.props.loggedInUser.userData.image_url} avatar /> {this.props.loggedInUser.userData.firstName + " " + this.props.loggedInUser.userData.lastName}</Card.Header>
-    //     <Card.Description>
-    //        <Form>
-    //        <Select placeholder='Select the type of post' options={postOptions} style={messageStyles} />
-    //         <TextArea autoHeight style={messageStyles} placeholder='Add comment here' />
-    //       </Form>
-    //     </Card.Description>
-    //   </Card.Content>
-    //    <Card.Content extra>
-    //     <Grid>
-    //       <Grid.Row>
-
-    //         <Grid.Column width={9}>
-    //         </Grid.Column>
-
-    //         <Grid.Column width={3}>
-    //            <Button basic color='red' onClick={() => this.cancel()}>Cancel</Button>
-    //         </Grid.Column>
-
-    //         <Grid.Column width={3}>
-    //             <PostButton editing= {this.state.editing}/>
-    //         </Grid.Column>
-
-    //       </Grid.Row>
-          
-    //     </Grid>
-    //   </Card.Content>
-    // </Card>
-
-    <Comment.Group>
-    <Comment>
+    <Comment.Group style={{backgroundColor: "none"}}>
+    <Comment style={{backgroundColor: "transparent"}}>
       <Comment.Avatar as='a' src={this.props.loggedInUser.userData.image_url}/>
       <Comment.Content>
         <Comment.Author as='a' style={{color: "white"}}>{this.props.loggedInUser.userData.firstName + " " + this.props.loggedInUser.userData.lastName}</Comment.Author>

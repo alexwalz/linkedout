@@ -1,15 +1,18 @@
 import React from 'react'
 import { Header, Image, Card, Grid, Segment } from 'semantic-ui-react'
+import {Link} from 'react-router-dom'
 
 
 
 
 const IndividualConnections = (props) => (
 
-<div style={{width: "20%"}}  textAlign='center'>
+<div textAlign='center'>
+  <Link to="/home/feed">
     <Image src={props.image_url} size='small' centered circular style={{border: "3px solid #67C8D3", padding: "3px", backgroundColor: "white"}}/>
-    {/* <p textAlign="center">{props.firstName + " " + props.lastName}</p> */}
-    
+    <h4 textAlign="center">{props.firstName + " " + props.lastName}</h4>
+    <h3 style={{marginTop:"-3%", color: "#67C8D3"}} textAlign="center">{props.job_title}</h3>
+    </Link>
   </div>
 )
 

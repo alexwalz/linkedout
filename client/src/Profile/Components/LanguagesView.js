@@ -14,6 +14,7 @@ let languageStyles={
 }
 
 class LanguagesView extends Component {
+  
 
   constructor(props) {
         super(props);
@@ -61,6 +62,13 @@ class LanguagesView extends Component {
     }
 
     renderForm(){
+
+      let messageStyles={
+        border: "2px solid grey",
+        padding: "3%",
+        borderImage: "linear-gradient(to bottom, #3acfd5 0%, #3a4ed5 100%)",
+        borderImageSlice: "1"
+      }
     
       return(
           <div>
@@ -77,16 +85,15 @@ class LanguagesView extends Component {
                   <Form.Input fluid placeholder="Add another language" onChange={this.handleInputChange} name="newLanguage"/>
                   <Button icon='check' size="large" circular color='teal' onClick={()=>this.handleFormSubmit()}/>
               </Form>
-              <Container style={{marginTop: "20px"}}>
-              <Grid.Row>
-                <Grid.Column width={8}>
-                     {this.props.userInfo.languages.map(language => (
-                    
-                        <Languages textAlign="center" language={language} editing={true}/>
-                      ))}
-                </Grid.Column>
-              </Grid.Row>
-              </Container>
+              <Grid>
+                    <Grid.Row>
+                          {this.props.userInfo.languages.map(language => (
+                            <Grid.Column width={8} style={{padding: "5px"}} textAlign="center">
+                                <Languages language={language} />
+                            </Grid.Column>
+                          ))}
+                      </Grid.Row>
+                    </Grid>
           </Segment>
         </div>
         )
@@ -104,10 +111,15 @@ class LanguagesView extends Component {
                 </Grid.Column>
               </Grid.Row>
 
-                      {this.props.userInfo.languages.map(language => (
-                        <Languages language={language} />
-                      ))}
-              
+                  <Grid>
+                    <Grid.Row>
+                          {this.props.userInfo.languages.map(language => (
+                            <Grid.Column width={8} style={{padding: "5px"}} textAlign="center">
+                                <Languages language={language} />
+                            </Grid.Column>
+                          ))}
+                      </Grid.Row>
+                    </Grid>
         </div>
         )
     }

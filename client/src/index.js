@@ -7,7 +7,7 @@ import WebFont from 'webfontloader';
 
 WebFont.load({
   google: {
-    families: ['Raleway', 'sans-serif']
+    families: ['Indie Flower', 'cursive']
   }
 });
 

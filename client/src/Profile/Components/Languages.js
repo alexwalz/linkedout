@@ -9,12 +9,10 @@ let messageStyles={
 }
 
 const Languages = (props) => (
-  <div style={{marginBottom:"5px", fontSize: "1rem"}} textAlign="center"> 
-
-
+  // <div style={{marginBottom:"5px", fontSize: "1rem"}} textAlign="center"> 
              <Message info textAlign="center" style={messageStyles}>{props.language}</Message>
     
-  </div>
+  // </div>
 )
 
 export default Languages;
