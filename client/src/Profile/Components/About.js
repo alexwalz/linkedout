@@ -70,7 +70,6 @@ class About extends Component {
 
         {this.props.loggedInUserInfo.userId === this.props.url && this.props.loggedInUserInfo.loggedIn ? <Icon name='pencil' size='small' onClick={()=> this.edit()} /> : null } 
         <Grid.Column textAlign="center">
-        <Divider horizontal><h3  textAlign="center" style={{color: "white"}}>About Me</h3></Divider>
         </Grid.Column>
       </Grid.Row>
         <div style={{color: "white"}}>

@@ -99,7 +99,6 @@ class Bio extends Component {
     
         <Grid.Row style={{marginBottom: "10px"}}>
           <Grid.Column textAlign="center">
-          <Divider horizontal><h3  textAlign="center" style={{color: "white"}}>{this.props.userInfo.firstName + " " + this.props.userInfo.lastName}'s Bio</h3></Divider>
           </Grid.Column>
         </Grid.Row>
 

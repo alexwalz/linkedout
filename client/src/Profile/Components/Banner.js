@@ -19,8 +19,8 @@ let imageStyles={
     height: "25vh",
     width: "25vh",
     marginLeft: "5%",
-    padding: "3px",
-    border: "3px solid #67C8D3", 
+    padding: "6px",
+    border: "1px solid grey", 
     backgroundColor: "white"
 }
 

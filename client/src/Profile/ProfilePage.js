@@ -3,7 +3,7 @@ import Parallax from 'react-springy-parallax'
 import Banner from './Components/Banner'
 import About from './Components/About'
 import Languages from './Components/Languages'
-import {Grid, Container, Sidebar, Segment, Button, Menu, Image, Icon, Header} from 'semantic-ui-react'
+import {Grid, Container, Sidebar, Segment, Button, Menu, Image, Icon, Header, Divider} from 'semantic-ui-react'
 import {Link} from "react-router-dom"
 import ConnectButton from './Components/ConnectButton'
 import EmailButton from './Components/EmailButton'
@@ -123,21 +123,6 @@ getLoggedInUser = () =>{
             }}>
             {this.state.loggedInUser.loggedIn ? null : <SecondaryModal/>}  
 
-                <Sidebar.Pushable>
-
-                    <Sidebar as={Menu} animation='overlay' width='thin' icon='labeled'
-                             vertical inverted style={{height: "100vh"}}>
-                        <Menu.Item name='home'>
-                            <Link to="/"><Icon name='home'/>Home</Link>
-                        </Menu.Item>
-                        <Menu.Item name='gamepad'>
-                            <Link to="/profile/:id"><Icon name='user'/>My Profile</Link>
-                        </Menu.Item>
-                        <Menu.Item name='newspaper'>
-                            <Link to="/feed"><Icon name='newspaper'/>Feed</Link>
-                        </Menu.Item>
-                    </Sidebar>
-                    <Sidebar.Pusher>
 
                         <Container style={{paddingTop: 62}}>
                             <Grid>
@@ -152,7 +137,7 @@ getLoggedInUser = () =>{
 
                                 <Grid.Row>
 
-                                    <Grid.Column width={9}>
+                                     <Grid.Column width={9}>
                                     </Grid.Column>
 
                                     <Grid.Column width={3}>
@@ -165,6 +150,19 @@ getLoggedInUser = () =>{
                                         
                                     </Grid.Column>
 
+
+
+                                        <Grid.Column width={16} style={{marginTop:"10px"}}>
+
+                                        <Divider horizontal><h3  textAlign="center" style={{color: "white"}}>My Connections</h3></Divider>
+
+                                            <Grid.Row>
+
+                                                    <Connections userInfo={this.state.renderedUser} loggedInUserInfo={this.state.loggedInUser} url={this.state.url}/>
+                                            </Grid.Row>
+                                        </ Grid.Column>
+
+
                                 </Grid.Row>
 
                                 <Grid.Row>
@@ -176,11 +174,16 @@ getLoggedInUser = () =>{
 
                                             <Grid.Column width={16}>
 
+                                                <Divider horizontal><h3  textAlign="center" style={{color: "white"}}>My Bio</h3></Divider>
+
                                                 <Bio userInfo={this.state.renderedUser} loggedInUserInfo={this.state.loggedInUser} url={this.state.url}/>
                                             
                                             </ Grid.Column>
 
                                             <Grid.Column width={16}>
+
+                                                <Divider horizontal><h3  textAlign="center" style={{color: "white"}}>About Me</h3></Divider>
+                                            
 
                                                 <About userInfo={this.state.renderedUser} loggedInUserInfo={this.state.loggedInUser} url={this.state.url}/>
 
@@ -188,14 +191,10 @@ getLoggedInUser = () =>{
 
                                             <Grid.Column width={16}>
 
+                                                <Divider horizontal><h3  textAlign="center" style={{color: "white"}}>My Programming Languages</h3></Divider>
+
                                                 <LanguagesView userInfo={this.state.renderedUser} loggedInUserInfo={this.state.loggedInUser} url={this.state.url} renderUser={this.renderUser}/>
                                             
-                                            </ Grid.Column>
-
-                                             <Grid.Column width={16} style={{marginTop:"10px"}}>
-
-                                                <Connections userInfo={this.state.renderedUser} loggedInUserInfo={this.state.loggedInUser} url={this.state.url}/>
-                                           
                                             </ Grid.Column>
 
                                             <Grid.Column width={16} style={{marginTop:"10px"}}>
@@ -210,7 +209,7 @@ getLoggedInUser = () =>{
                                     </Grid.Column>
                                     <Grid.Column width={8}>
                                             <Grid.Row>
-                                                 <Grid.Column width={16} style={{marginBottom: "10px"}}>
+                                                 <Grid.Column width={16} style={{marginBottom: "10px", marginTop: "3%"}}>
 
                                                         {this.state.loggedInUser.userId === this.props.match.params.id && this.state.loggedInUser.loggedIn ?
 
@@ -233,9 +232,7 @@ getLoggedInUser = () =>{
                             </Grid>
                         </Container>
 
-                    </Sidebar.Pusher>
-                </Sidebar.Pushable>
-            </div>
+                        </div>
 
 
         )
