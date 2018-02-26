@@ -79,7 +79,7 @@ class LanguagesView extends Component {
               </Form>
               <Container style={{marginTop: "20px"}}>
               {this.props.userInfo.languages.map(language => (
-                        <Languages language={language} editing={true}/>
+                        <Languages textAlign="center" language={language} editing={true}/>
                       ))}
               </Container>
           </Segment>
@@ -91,7 +91,6 @@ class LanguagesView extends Component {
       return(
            <div>
     
-          <Segment  style={{backgroundImage: "url('https://www.toptal.com/designers/subtlepatterns/patterns/always_grey.png')"}}>
               <Grid.Row style={{marginBottom: "10px"}}>
 
               {this.props.loggedInUserInfo.userId === this.props.url && this.props.loggedInUserInfo.loggedIn ? <Icon name='pencil' size='small' onClick={()=> this.edit()} /> : null } 
@@ -104,7 +103,6 @@ class LanguagesView extends Component {
                         <Languages language={language} />
                       ))}
               
-          </Segment>
         </div>
         )
     }

@@ -3,6 +3,8 @@ import Languages from './Languages'
 import { Message, Grid, Segment, Divider, Header, Icon, Image, Container, Card, Form, Select, TextArea, Button } from 'semantic-ui-react'
 import PostButton from '../../Feed/Components/PostButton'
 import axios from 'axios'
+import ConnectButton from './ConnectButton'
+import EmailButton from './EmailButton'
 
 
 class Bio extends Component {
@@ -144,6 +146,13 @@ class Bio extends Component {
             <h4 style={{lineHeight: "2.5rem", color: "white"}}>{this.props.userInfo.location}</h4>
         </Grid.Column>
 
+            <Grid.Column width={8} textAlign="center" style={{marginTop: "10px"}}>
+                {this.props.loggedInUserInfo.userId ===this.props.url && this.props.loggedInUserInfo.loggedIn ? null : (<ConnectButton />)}
+            </Grid.Column>
+
+            <Grid.Column width={8} textAlign="center" style={{marginTop: "10px"}}>
+                {this.props.loggedInUserInfo.userId ===this.props.url && this.props.loggedInUserInfo.loggedIn ? null : (<EmailButton />)}
+            </Grid.Column>
 
         </Grid.Row>
 
