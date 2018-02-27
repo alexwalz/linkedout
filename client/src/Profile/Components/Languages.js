@@ -2,10 +2,14 @@ import React from 'react'
 import { Message } from 'semantic-ui-react'
 
 let messageStyles={
-  border: "2px solid grey",
+  border: "1px solid grey",
   padding: "3%",
   borderImage: "linear-gradient(to bottom, #3acfd5 0%, #3a4ed5 100%)",
-  borderImageSlice: "1"
+  borderImageSlice: "1",
+  background: "#4b79a1", /* fallback for old browsers */
+  background: "-webkit-linear-gradient(to right, #283e51, #4b79a1)", /* Chrome 10-25, Safari 5.1-6 */
+  background: "linear-gradient(to right, #283e51, #4b79a1)",
+  color: "white"
 }
 
 const Languages = (props) => (
