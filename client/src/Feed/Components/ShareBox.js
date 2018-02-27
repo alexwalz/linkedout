@@ -1,6 +1,7 @@
 import React , { Component } from 'react'
 import { Container, Grid, Segment, Header, Icon, Form, TextArea, Card,  Button, Image, Select, Step, Comment} from 'semantic-ui-react'
 import PostButton from './PostButton'
+import axios from 'axios'
 
 let messageStyles={
   marginBottom: "5px",
@@ -18,7 +19,8 @@ class ShareBox extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-          editing: false
+          editing: false,
+          messageType: "Job Posting"
          }
     }
 
@@ -30,9 +32,36 @@ class ShareBox extends Component {
       this.setState({editing: false})
     }
 
-    postComment(){
-      //this funciton will be passed to the PostButton when editing is true 
-    }
+    handleInputChange = event => {
+      const value = event.target.value;
+      const name = event.target.name;
+      this.setState({
+        [name]: value
+      });
+    };
+   
+
+  handleFormSubmit = ()=> {
+   console.log(this.state)
+    axios
+      .post(
+          `/api/posts`, 
+          {
+            message: this.state.message,
+            messageType: this.state.messageType
+          }
+          
+      )
+      .then(r => {console.log(r.status)
+        console.log(r)
+        this.setState({editing: false})
+        this.props.renderUser()
+
+      })
+      .catch(e => console.log(e));
+
+
+  }
 
     renderForm(){
       let postOptions =[
@@ -55,9 +84,9 @@ class ShareBox extends Component {
           <Comment.Action active style={{color: "white"}}>New Post</Comment.Action>
         </Comment.Actions>
         <Form reply>
-          <Select placeholder='Select the type of post' options={postOptions} style={messageStyles} />
-          <Form.TextArea style={{backgroundColor:"transparent", border: "1px solid white", color: "white"}}/>
-          <Icon name='checkmark' size='large' circular color="grey"  />
+          <Select placeholder='Select the type of post' options={postOptions} style={messageStyles} name="messageType" onChange={this.handleInputChange}/>
+          <Form.TextArea style={{backgroundColor:"transparent", border: "1px solid white", color: "white"}} onChange={this.handleInputChange} name="message"/>
+          <Icon name='checkmark' size='large' circular color="grey"  onClick={this.handleFormSubmit}/>
           <Icon name='close' size='large' circular color="grey" onClick={()=> this.cancel()} />
         </Form>
       </Comment.Content>

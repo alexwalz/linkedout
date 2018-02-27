@@ -85,6 +85,7 @@ class ProfilePage extends Component {
       .catch(error => {
         console.log("Error fetching and parsing data", error);
       });
+
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -128,6 +129,8 @@ class ProfilePage extends Component {
       .get("/api/users/login")
       .then(response => {
         this.setState({ loggedInUser: response.data });
+        console.log("Logged In User")
+        console.log(this.state.loggedInUser)
       })
       .catch(error => {
         console.log("Error fetching and parsing data", error);
@@ -244,7 +247,7 @@ class ProfilePage extends Component {
                     {this.state.loggedInUser.userId ===
                       this.props.match.params.id &&
                     this.state.loggedInUser.loggedIn ? (
-                      <ShareBox loggedInUser={this.state.loggedInUser} />
+                      <ShareBox loggedInUser={this.state.loggedInUser} renderUser={this.renderUser}/>
                     ) : null}
                   </Grid.Column>
 

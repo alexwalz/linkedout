@@ -12,6 +12,7 @@ class Bio extends Component {
         super(props);
         this.state = { 
           editing: false,
+          userData:{}
          }
     }
 
@@ -23,23 +24,33 @@ class Bio extends Component {
       this.setState({editing: false})
     }
 
+    componentDidMount(){
+        axios
+        .get("/api/users/login")
+        .then(response => {
+            this.setState(response.data)
+          this.setState({ userData: response.data.userData });
+        })
+        .catch(error => {
+          console.log("Error fetching and parsing data", error);
+        });
+    }
+
   
     handleInputChange = event => {
         const value = event.target.value;
         const name = event.target.name;
-        this.setState({
-          [name]: value
-        });
+        this.setState({userData:{[name]: value}});
+        console.log(this.state.userData)
       };
+      
     
  
-              handleFormSubmit = async (event) => {
-                event.preventDefault();
-                console.log(this.props.loggedInUser)
-                const res = await axios.post('/api/users/'+this.props.loggedInUser, this.state );
-                await console.log(res)
+handleFormSubmit = async (event) => {
+const res = await axios.post('/api/users/'+this.state.userId+"/edit", this.state.userData );
+await console.log(res)
+};
 
-            };
 
     renderForm(){
 
@@ -53,16 +64,16 @@ class Bio extends Component {
 
 
            <Form.Group widths='equal'>
-           <Form.Input fluid label='company' placeholder={this.props.userInfo.company} />
-           <Form.Input fluid label='jobTitle' placeholder={this.props.userInfo.jobTitle} />
+           <Form.Input fluid label='Company' placeholder={this.props.userInfo.company} onChange={this.handleInputChange}  name="company"/>
+           <Form.Input fluid label='Job Title' placeholder={this.props.userInfo.jobTitle} onChange={this.handleInputChange}  name="job_title" />
            </Form.Group>
 
            <Form.Group widths='equal'>
-           <Form.Input fluid label='phone' placeholder={this.props.userInfo.phone} />
+           <Form.Input fluid label='Phone' placeholder={this.props.userInfo.phone} onChange={this.handleInputChange}  name="phone"/>
            </Form.Group>
 
-           <Form.Input fluid label='birthday' placeholder={this.props.userInfo.birthday} />
-           <Form.Input fluid label='location' placeholder={this.props.userInfo.location} />
+           <Form.Input fluid label='Birthday' placeholder={this.props.userInfo.birthday} onChange={this.handleInputChange} name="birthday"/>
+           <Form.Input fluid label='Location' placeholder={this.props.userInfo.location} onChange={this.handleInputChange}  name="location" />
            
           </Form>
         </Card.Description>
