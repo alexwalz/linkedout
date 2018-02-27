@@ -1,5 +1,3 @@
-import { compareSync } from "./C:/Users/Andrew/AppData/Local/Microsoft/TypeScript/2.6/node_modules/@types/bcrypt";
-
 const db = require("../models");
 
 module.exports = {
