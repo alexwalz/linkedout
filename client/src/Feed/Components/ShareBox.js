@@ -4,6 +4,14 @@ import PostButton from './PostButton'
 
 let messageStyles={
   marginBottom: "5px",
+  backgroundColor: "transparent",
+  color: "white"
+}
+
+let postStyles={
+  background: "#bdc3c7",
+  background: "-webkit-linear-gradient(to right, #bdc3c7, #2c3e50)",
+  background: "linear-gradient(to right, #bdc3c7, #2c3e50)"
 }
 
 class ShareBox extends Component {
@@ -48,9 +56,9 @@ class ShareBox extends Component {
         </Comment.Actions>
         <Form reply>
           <Select placeholder='Select the type of post' options={postOptions} style={messageStyles} />
-          <Form.TextArea />
-          <Icon name='checkmark' size='large' circular color="teal"  />
-          <Icon name='close' size='large' circular color="teal" onClick={()=> this.cancel()} />
+          <Form.TextArea style={{backgroundColor:"transparent", border: "1px solid white", color: "white"}}/>
+          <Icon name='checkmark' size='large' circular color="grey"  />
+          <Icon name='close' size='large' circular color="grey" onClick={()=> this.cancel()} />
         </Form>
       </Comment.Content>
     </Comment>
@@ -84,12 +92,12 @@ class ShareBox extends Component {
           //     </Grid>
           //   </Card.Content>
           // </Card>
-          <Step.Group fluid vertical>
-              <Step active onClick={()=> this.edit()}>
-              <Icon name='comments' />
+          <Step.Group fluid vertical style={{backgroundColor:"transparent", border: "1px solid white"}}>
+              <Step active onClick={()=> this.edit()}  style={{backgroundColor:"transparent"}}>
+              <Icon name='plus' color="grey" />
               <Step.Content>
                 <Step.Title style={{color: "#67C8D3"}}>Posts</Step.Title>
-                <Step.Description>Create A New Post</Step.Description>
+                <Step.Description style={{color: "white"}}>Click Here To Create A New Post</Step.Description>
               </Step.Content>
               </Step>
        </Step.Group>

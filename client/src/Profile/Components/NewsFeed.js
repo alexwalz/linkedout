@@ -48,7 +48,6 @@ class NewsArticles extends React.Component {
         <div>
         <Container style={{marginBottom: "10px"}} >
           <Segment  style={{backgroundColor: "transparent"}}>
-            <Divider horizontal><h3  textAlign="center" style={{color: "white"}}>News Feed</h3></Divider>
   
                         {this.state.articles.slice(0, 5).map((article, key) => (
                             <Article article={article} key={key} style={{marginTop:"10px"}}/>

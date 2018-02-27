@@ -229,6 +229,8 @@ class ProfilePage extends Component {
 
 
                   <Grid.Column width={16} style={{ marginTop: "10px" }}>
+                         <Divider horizontal><h3  textAlign="center" style={{color: "white"}}>News Feed</h3></Divider>
+                  
                     <Newsfeed />
                   </Grid.Column>
                 </Grid.Row>
@@ -237,7 +239,7 @@ class ProfilePage extends Component {
                 <Grid.Row>
                   <Grid.Column
                     width={16}
-                    style={{ marginBottom: "10px", marginTop: "9%" }}
+                    style={{ marginBottom: "10px", marginTop: "3.3%"}}
                   >
                     {this.state.loggedInUser.userId ===
                       this.props.match.params.id &&
@@ -246,7 +248,7 @@ class ProfilePage extends Component {
                     ) : null}
                   </Grid.Column>
 
-                  <Grid.Column width={16} style={{marginTop:"13%"}}>
+                  <Grid.Column width={16} style={{marginTop:"4%"}}>
                     <ProfileFeed
                       userInfo={this.state.renderedUser}
                       loggedInUserInfo={this.state.loggedInUser}
