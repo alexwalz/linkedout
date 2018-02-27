@@ -44,7 +44,12 @@ router.route("/")
     })
     .post(function(req, res) {
       usersController.replaceLanguages(req, res);
-    })
+    });
+
+    router.route("/:id/edit")
+      .post(function(req, res) {
+        usersController.updateUser(req, res);
+      })
 
 // Matches with "/api/users/:id"
 router
