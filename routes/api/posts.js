@@ -3,6 +3,8 @@ const usersController = require("../../controllers/usersController");
 
 // Matches with "/api/posts"
 router.route("/")
-    .post(usersController.addPost);
+    .post(function(req, res) {
+        usersController.addPost(req, res);
+    });
 
 module.exports = router;

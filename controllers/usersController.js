@@ -1,3 +1,5 @@
+import { compareSync } from "./C:/Users/Andrew/AppData/Local/Microsoft/TypeScript/2.6/node_modules/@types/bcrypt";
+
 const db = require("../models");
 
 module.exports = {
@@ -136,5 +138,18 @@ module.exports = {
             .findOneAndUpdate({_id: req.params.id}, { $set: {languages: req.body}}, {new: true})
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
+    },
+    updateUser: function(req, res) {
+        db.user
+        .findOneAndUpdate({_id: req.params.id}, {$set: {current_company: req.body.current_company, 
+            job_title: req.body.job_title, 
+            phone: req.body.phone,
+            birthday: req.body.birthday,
+            location: req.body.location
+        }}).then(function(dbModel){
+            res.json(dbModel);
+        }).catch(function(err){
+            res.status(422).json(err)
+        })
     }
 };

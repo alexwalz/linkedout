@@ -70,7 +70,11 @@ var UserSchema = new Schema({
         project_title: String,
         project_url: String,
         project_description: String
-    }]
+    }],
+    newUser: {
+        type: Boolean,
+        default: true
+    }
 
 });
 
