@@ -15,7 +15,8 @@ let messageStyles={
     borderImageSlice: "1",
     background: "#4b79a1", /* fallback for old browsers */
     background: "-webkit-linear-gradient(to right, #4b79a1, #283e51)", /* Chrome 10-25, Safari 5.1-6 */
-    background: "linear-gradient(to right, #4b79a1, #283e51)"
+    background: "linear-gradient(to right, #4b79a1, #283e51)",
+    opacity: "0.8"
 }
 
 

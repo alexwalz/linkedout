@@ -81,7 +81,7 @@ class FeedPage extends Component {
 
 renderFeedPage(){
     return ( 
-        <div style={{backgroundImage: `url(${background})`, backgroundPositionX: 'center', color:"grey", paddingTop: 80, paddingLeft: "2%", paddingRight: "2%"}}>
+        <div style={{background: `url("http://brtweed.co.uk/dist/images/bt3.jpg") no-repeat center center fixed`, backgroundPositionX: 'center', color:"grey", paddingTop: 80, paddingLeft: "2%", paddingRight: "2%"}}>
              
                  
                  <Grid>

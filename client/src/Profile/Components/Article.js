@@ -5,7 +5,8 @@ let articleStyles={
   border: "2px solid grey",
   borderImage: "linear-gradient(to bottom, #3acfd5 0%, #3a4ed5 100%)",
   borderImageSlice: "1",
-  backgroundImage: "url('https://www.toptal.com/designers/subtlepatterns/patterns/always_grey.png')"
+  backgroundImage: "url('https://www.toptal.com/designers/subtlepatterns/patterns/always_grey.png')",
+  opacity: "0.8"
 }
 
 const Article = (props) => (
