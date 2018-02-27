@@ -96,7 +96,7 @@ handleFormSubmit = ()=> {
           ) : null}
           <Grid.Column textAlign="center" />
         </Grid.Row>
-        <div style={{ color: "#67C8D3" }}>{this.props.userInfo.about}</div>
+        <div style={{ color: "white" }}>{this.props.userInfo.about}</div>
       </div>
     );
   }

@@ -7,7 +7,7 @@ import {Link} from 'react-router-dom'
 
 const IndividualConnections = (props) => (
 
-<div textAlign='center' style={{positon: "absolute", zIndex: "999"}}>
+<div textAlign='center'>
   <Link to="/home/feed">
     <Image src={props.image_url} size='small' centered circular style={{border: "3px solid #67C8D3", padding: "3px", backgroundColor: "white"}}/>
     <h4 textAlign="center">{props.firstName + " " + props.lastName}</h4>
