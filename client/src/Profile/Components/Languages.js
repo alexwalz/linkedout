@@ -1,5 +1,5 @@
 import React from 'react'
-import { Message } from 'semantic-ui-react'
+import { Message, Icon } from 'semantic-ui-react'
 
 let messageStyles={
   border: "1px solid grey",
@@ -14,7 +14,7 @@ let messageStyles={
 
 const Languages = (props) => (
   // <div style={{marginBottom:"5px", fontSize: "1rem"}} textAlign="center"> 
-             <Message info textAlign="center" style={messageStyles}>{props.language}</Message>
+             <Message info textAlign="center" style={messageStyles}>{(props.loggedUser)? <Icon name="delete" color='red' onClick={()=>props.deleteLanguage(props.language)} style={{opacity: 0.7}}/> : null }{props.language}</Message>
     
   // </div>
 )
