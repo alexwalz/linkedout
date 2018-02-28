@@ -72,11 +72,11 @@ handleFormSubmit = ()=> {
               <Grid.Column width={3} />
 
             <Grid.Column width={5}>
-                <Button icon='close' size="large" circular color='teal' onClick={() => this.cancel()}/>
+                <Button icon='close' size="large" circular color='grey' onClick={() => this.cancel()}/>
             </Grid.Column>
 
             <Grid.Column width={5}>
-                <Button icon='check' size="large" circular color='teal' onClick={()=>this.handleFormSubmit()}/>
+                <Button icon='check' size="large" circular color='grey' onClick={()=>this.handleFormSubmit()}/>
             </Grid.Column>
 
             </Grid.Row>

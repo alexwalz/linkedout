@@ -31,18 +31,18 @@ class LoginForm extends Component {
 
     render() { 
         return (  
-            <div>
+            <div style={{height: "100vh"}}>
                 <Grid columns={2} >
                 <Grid.Row >
                 <Grid.Column width={7}  style={{marginLeft:"2%"}}>
                     
                         <Segment inverted   style={{backgroundImage: "url('https://www.toptal.com/designers/subtlepatterns/patterns/always_grey.png')", border: "1px solid white"}}>
-                            <Message
+                            {/* <Message
                             attached
                             header='Welcome to DevSpot!'
                             content='Fill out the form below to sign-up for a new account'
                             inverted
-                            />
+                            /> */}
                             <Form inverted>
                             <br/>
                             <Form.Group widths='equal'>
@@ -71,17 +71,13 @@ class LoginForm extends Component {
                                 <Form.Input onChange={this.handleInputChange} label='Location' placeholder='Salt Lake City, UT' type='text' name="location"/>
                                 </Form.Group>
 
-                                <Form.TextArea onChange={this.handleInputChange} label='About' placeholder='Tell us more about you to display on your profile' name="about"/>
+                                <Form.TextArea rows={10} onChange={this.handleInputChange} label='About' placeholder='Tell us more about you to display on your profile' name="about"/>
 
                                 <Form.Checkbox inline label='I agree to the terms and conditions' />
                                 <Button color='teal' inverted onClick={this.handleFormSubmit}>Create Account</Button>
+                                <LoginModal/>
 
                             </Form>
-                            <br/>
-                            <Message attached='bottom' warning>
-                                <LoginModal/>
-                            </Message>
-
                             </Segment>
 
                 </Grid.Column>

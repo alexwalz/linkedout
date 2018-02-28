@@ -40,8 +40,9 @@ class Bio extends Component {
     handleInputChange = event => {
         const value = event.target.value;
         const name = event.target.name;
-        this.setState({userData:{[name]: value}});
-        console.log(this.state.userData)
+        this.setState({
+            userData : {[name]:value}
+        })
       };
       
     
@@ -86,11 +87,11 @@ await console.log(res)
             </Grid.Column>
 
             <Grid.Column width={5}>
-                <Button icon='close' size="large" circular color='black' onClick={() => this.cancel()}/>
+                <Button icon='close' size="large" circular color='grey' onClick={() => this.cancel()}/>
             </Grid.Column>
 
             <Grid.Column width={5}>
-                <Button icon='check' size="large" circular color='black' onClick={()=>this.handleFormSubmit()}/>
+                <Button icon='check' size="large" circular color='grey' onClick={()=>this.handleFormSubmit()}/>
             </Grid.Column>
 
           </Grid.Row>
@@ -105,9 +106,10 @@ await console.log(res)
     renderDisplay(){
 
         let backgroundStyles={
-            background: "#4b79a1", /* fallback for old browsers */
-            background: "-webkit-linear-gradient(to right, #4b79a1, #283e51)", /* Chrome 10-25, Safari 5.1-6 */
-            background: "linear-gradient(to right, #4b79a1, #283e51)"
+            // background: "#4b79a1", /* fallback for old browsers */
+            // background: "-webkit-linear-gradient(to right, #4b79a1, #283e51)", /* Chrome 10-25, Safari 5.1-6 */
+            // background: "linear-gradient(to right, #4b79a1, #283e51)"
+            backroundColor: "transparent",
         }
 
       return(
@@ -115,52 +117,48 @@ await console.log(res)
 
     <div style={{marginBottom:"10px"}} >
     
-    <Segment style={backgroundStyles}>
+    <Segment style={{backgroundColor: "transparent"}}>
 
-    {this.props.loggedInUserInfo.userId === this.props.url && this.props.loggedInUserInfo.loggedIn ? <Icon name='pencil' size='small' color="black" onClick={()=> this.edit()} /> : null }
+    {this.props.loggedInUserInfo.userId === this.props.url && this.props.loggedInUserInfo.loggedIn ? <Icon name='pencil' size='small' color="grey" onClick={()=> this.edit()} /> : null }
     
         <Grid.Row style={{marginBottom: "10px"}}>
           <Grid.Column textAlign="center">
           </Grid.Column>
         </Grid.Row>
 
-    <Header as='h2' icon textAlign='center'>
-      <Icon name='user' color="black" circular />
-    
-    </Header>
-
+   
     <Grid>
         <Grid.Row columns={2}>
         <Grid.Column width={2}>
-            <Icon circular color='black' name='mail outline' />
+            <Icon circular color='grey' name='mail outline' />
         </Grid.Column>
         <Grid.Column width={14} textAlign="left">
             <h4 style={{lineHeight: "2.5rem", color: "white"}}>{this.props.userInfo.email}</h4>
         </Grid.Column>
 
         <Grid.Column width={2} style={{marginTop: "3px"}}>
-            <Icon circular color='black' name='phone' />
+            <Icon circular color='grey' name='phone' />
         </Grid.Column>
         <Grid.Column width={14} textAlign="left">
             <h4 style={{lineHeight: "2.5rem", color: "white"}}>{this.props.userInfo.phone}</h4>
         </Grid.Column>
 
         <Grid.Column width={2} style={{marginTop: "3px"}}>
-            <Icon circular color='black' name='building outline' />
+            <Icon circular color='grey' name='building outline' />
         </Grid.Column>
         <Grid.Column width={14} textAlign="left">
             <h4 style={{lineHeight: "2.5rem", color: "white"}}>{this.props.userInfo.current_company} | {this.props.userInfo.job_title}</h4>
         </Grid.Column>
 
         <Grid.Column width={2} style={{marginTop: "3px"}}>
-        <Icon circular color='black' name='calendar' />
+        <Icon circular color='grey' name='calendar' />
         </Grid.Column>
         <Grid.Column width={14} textAlign="left">
             <h4 style={{lineHeight: "2.5rem", color: "white"}}>{this.props.userInfo.birthday}</h4>
         </Grid.Column>
 
         <Grid.Column width={2} style={{marginTop: "3px"}}>
-        <Icon circular color='black' name='map pin' />
+        <Icon circular color='grey' name='map pin' />
         </Grid.Column>
         <Grid.Column width={14} textAlign="left">
             <h4 style={{lineHeight: "2.5rem", color: "white"}}>{this.props.userInfo.location}</h4>
