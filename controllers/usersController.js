@@ -113,7 +113,9 @@ module.exports = {
       db.Post
             .create(req.body)
             .then(function (dbPost) {
-                return db.user.findOneAndUpdate({_id: req.session.userId}, {$push: {post: dbPost._id}}, {new: true});
+                console.log(dbPost);
+                console.log(req.session.userId);
+                return db.user.findOneAndUpdate({_id: req.session.userId}, {$push: {posts: dbPost._id}}, {new: true});
             })
             .then(function (dbUser) {
                 res.json(dbUser);

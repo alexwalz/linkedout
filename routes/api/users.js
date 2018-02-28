@@ -51,6 +51,11 @@ router.route("/")
         usersController.updateUser(req, res);
       })
 
+      router.route("/addPost")
+        .post(function(req, res) {
+            usersController.addPost(req, res);
+        });
+
 // Matches with "/api/users/:id"
 router
   .route("/:id")
