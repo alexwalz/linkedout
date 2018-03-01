@@ -24,8 +24,9 @@ class LanguagesView extends Component {
          }
     }
 
-    edit(){
+    async edit(){
       this.setState({editing: true})
+      await this.props.renderUser();
     }
 
     cancel(){
@@ -34,7 +35,7 @@ class LanguagesView extends Component {
 
     deleteLanguage = (language) =>{
 
-      let array = this.props.loggedInUserInfo.userData.languages
+      let array = this.state.LanguageList
       for (var i=array.length-1; i>=0; i--) {
         if (array[i] == language) {
         array.splice(i, 1);
@@ -69,6 +70,10 @@ class LanguagesView extends Component {
      
 
     handleFormSubmit = ()=> {
+      let array = this.state.LanguageList;
+
+      array.push(this.state.newLanguage);
+      this.setState({LanguageList: array})
       axios
         .put(
             `/api/users/${this.props.loggedInUserInfo.userId}/languages`, 
@@ -84,6 +89,13 @@ class LanguagesView extends Component {
         .catch(e => console.log(e));
 
 
+    }
+
+    componentDidMount = () => {
+      axios.get('/api/users/login')
+      .then((res) => {this.setState({LanguageList : res.data.userData.languages})})
+
+     
     }
 
     renderForm(){
@@ -116,7 +128,7 @@ class LanguagesView extends Component {
               </Form>
               <Grid>
                     <Grid.Row>
-                          {this.props.loggedInUserInfo.userData.languages.map(language => (
+                          {this.state.LanguageList.map(language => (
                             <Grid.Column width={8} style={{padding: "5px"}} textAlign="center">
                                 <Languages language={language} id={language} loggedUser={true} deleteLanguage={this.deleteLanguage}/>
                             </Grid.Column>
