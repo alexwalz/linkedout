@@ -65,7 +65,8 @@ module.exports = {
     ActiveLogin: function (req, res) {
         if (req.session && req.session.userId) {
             var thisUser;
-            db.user.findById(req.session.userId)
+            db.user.findOne({_id: req.session.userId})
+                .populate('posts')
                 .then(function (data) {
                     data.password = "";
                     res.json({
@@ -100,9 +101,10 @@ module.exports = {
         db.Education
             .create(req.body)
             .then(function (dbEducation) {
-                return db.User.findOneAndUpdate({_id: req.session.userId}, {$push: {education: dbEducation._id}}, {new: true});
+                return db.user.findOneAndUpdate({_id: req.session.userId}, {$push: {education: dbEducation._id}}, {new: true});
             })
             .then(function (dbUser) {
+                dbUser.password = "";
                 res.json(dbUser);
             })
             .catch(function (err) {
@@ -118,6 +120,7 @@ module.exports = {
                 return db.user.findOneAndUpdate({_id: req.session.userId}, {$push: {posts: dbPost._id}}, {new: true});
             })
             .then(function (dbUser) {
+                dbUser.password = "";
                 res.json(dbUser);
             })
             .catch(function (err) {
