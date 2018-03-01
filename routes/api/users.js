@@ -59,7 +59,9 @@ router.route("/")
 // Matches with "/api/users/:id"
 router
   .route("/:id")
-  .get(usersController.findById)
+  .get(function(req, res){
+    usersController.findById(req, res);
+  })
   .put(function(req, res) {
     usersController.update(req, res);
   })

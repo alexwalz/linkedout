@@ -14,7 +14,13 @@ module.exports = {
     findById: function (req, res) {
         db.user
             .findById(req.params.id)
-            .then(dbModel => res.json(dbModel))
+            .populate('posts')
+            .populate('education')
+            .populate('connections')
+            .then(function(dbUser){
+                dbUser.password = "";
+                res.json(dbUser);
+            })
             .catch(err => res.status(422).json(err));
     },
     create: function (req, res) {
@@ -67,6 +73,8 @@ module.exports = {
             var thisUser;
             db.user.findOne({_id: req.session.userId})
                 .populate('posts')
+                .populate('education')
+                .populate('connections')
                 .then(function (data) {
                     data.password = "";
                     res.json({
