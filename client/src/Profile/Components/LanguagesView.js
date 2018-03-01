@@ -49,8 +49,8 @@ class LanguagesView extends Component {
         )
         .then(r => {
 
-          this.setState({editing: false})
-          this.props.renderUser()
+        this.setState({editing: false})
+        this.props.renderUser()
 
         })
         .catch(e => console.log(e));
