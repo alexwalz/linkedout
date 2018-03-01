@@ -79,7 +79,7 @@ class ProfilePage extends Component {
           this.setState({ renderedUser: response.data });
           this.setState({ url: this.props.match.params.id });
         } else {
-          console.log("Information already up to date");
+          // console.log("Information already up to date");
         }
       })
       .catch(error => {
@@ -99,7 +99,7 @@ class ProfilePage extends Component {
           this.setState({ renderedUser: response.data });
           this.setState({ url: this.props.match.params.id });
         } else {
-          console.log("Information already up to date");
+          // console.log("Information already up to date");
         }
       })
       .catch(error => {
@@ -117,7 +117,7 @@ class ProfilePage extends Component {
           this.setState({ url: this.props.match.params.id });
           console.log(this.state)
         } else {
-          console.log("Information already up to date");
+          // console.log("Information already up to date");
         }
       })
       .catch(error => {
@@ -130,8 +130,6 @@ class ProfilePage extends Component {
       .get("/api/users/login")
       .then(response => {
         this.setState({ loggedInUser: response.data });
-        console.log("Logged In User")
-        console.log(this.state.loggedInUser)
       })
       .catch(error => {
         console.log("Error fetching and parsing data", error);
@@ -154,10 +152,9 @@ class ProfilePage extends Component {
             <Grid.Row>
               <Grid.Column width={16}>
                 <Banner
-                  firstName={this.state.renderedUser.firstName}
-                  lastName={this.state.renderedUser.lastName}
-                  job_title={this.state.renderedUser.job_title}
-                  image_url={this.state.renderedUser.image_url}
+                  userInfo={this.state.renderedUser}
+                  loggedInUserInfo={this.state.loggedInUser}
+                  url={this.state.url}
                 />
               </Grid.Column>
             </Grid.Row>
@@ -173,6 +170,7 @@ class ProfilePage extends Component {
                   userInfo={this.state.renderedUser}
                   loggedInUserInfo={this.state.loggedInUser}
                   url={this.state.url}
+                  renderUser={this.renderUser}
                 />
               </Grid.Column>
 

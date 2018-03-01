@@ -12,7 +12,7 @@ class Bio extends Component {
         super(props);
         this.state = { 
           editing: false,
-          userData:{}
+          
          }
     }
 
@@ -25,11 +25,14 @@ class Bio extends Component {
     }
 
     componentDidMount(){
+        console.log(this.props)
         axios
         .get("/api/users/login")
         .then(response => {
-            this.setState(response.data)
-          this.setState({ userData: response.data.userData });
+            console.log(response)
+            this.setState({loggedInUser: response.data.userId})
+            this.setState({userData: response.data.userData})
+            console.log(this.state)
         })
         .catch(error => {
           console.log("Error fetching and parsing data", error);
@@ -40,16 +43,21 @@ class Bio extends Component {
     handleInputChange = event => {
         const value = event.target.value;
         const name = event.target.name;
-        this.setState({
-            userData : {[name]:value}
-        })
+        this.setState(prevState => ({
+            userData: {
+              ...prevState.userData,
+              [name]:value
+            }
+          }));
+          console.log(this.state)
       };
-      
     
  
 handleFormSubmit = async (event) => {
-const res = await axios.post('/api/users/'+this.state.userId+"/edit", this.state.userData );
+const res = await axios.post('/api/users/'+this.state.loggedInUser+"/edit", this.state.userData );
 await console.log(res)
+await this.setState({editing: false})
+await this.props.renderUser()
 };
 
 
@@ -65,8 +73,8 @@ await console.log(res)
 
 
            <Form.Group widths='equal'>
-           <Form.Input fluid label='Company' placeholder={this.props.userInfo.company} onChange={this.handleInputChange}  name="company"/>
-           <Form.Input fluid label='Job Title' placeholder={this.props.userInfo.jobTitle} onChange={this.handleInputChange}  name="job_title" />
+           <Form.Input fluid label='Company' placeholder={this.props.userInfo.current_company} onChange={this.handleInputChange}  name="current_company"/>
+           <Form.Input fluid label='Job Title' placeholder={this.props.userInfo.job_title} onChange={this.handleInputChange}  name="job_title"/>
            </Form.Group>
 
            <Form.Group widths='equal'>
@@ -74,7 +82,7 @@ await console.log(res)
            </Form.Group>
 
            <Form.Input fluid label='Birthday' placeholder={this.props.userInfo.birthday} onChange={this.handleInputChange} name="birthday"/>
-           <Form.Input fluid label='Location' placeholder={this.props.userInfo.location} onChange={this.handleInputChange}  name="location" />
+           <Form.Input fluid label='Location' placeholder={this.props.userInfo.location} onChange={this.handleInputChange}  name="location"/>
            
           </Form>
         </Card.Description>
@@ -118,7 +126,7 @@ await console.log(res)
     <div style={{marginBottom:"10px"}} >
     
     <Segment style={{backgroundColor: "transparent"}}>
-
+    <div style={{marginLeft: "auto", marginRight: "auto"}}>{this.props.loggedInUserInfo.userId === this.props.url && this.props.loggedInUserInfo.loggedIn ? null : (<ConnectButton textAlign="center" />)}</div>
     {this.props.loggedInUserInfo.userId === this.props.url && this.props.loggedInUserInfo.loggedIn ? <Icon name='pencil' size='small' color="grey" onClick={()=> this.edit()} /> : null }
     
         <Grid.Row style={{marginBottom: "10px"}}>
@@ -163,14 +171,6 @@ await console.log(res)
         <Grid.Column width={14} textAlign="left">
             <h4 style={{lineHeight: "2.5rem", color: "white"}}>{this.props.userInfo.location}</h4>
         </Grid.Column>
-
-            <Grid.Column width={8} textAlign="center" style={{marginTop: "20px"}}>
-                {this.props.loggedInUserInfo.userId ===this.props.url && this.props.loggedInUserInfo.loggedIn ? null : (<ConnectButton />)}
-            </Grid.Column>
-
-            <Grid.Column width={8} textAlign="center" style={{marginTop: "20px"}}>
-                {this.props.loggedInUserInfo.userId ===this.props.url && this.props.loggedInUserInfo.loggedIn ? null : (<EmailButton />)}
-            </Grid.Column>
 
         </Grid.Row>
 

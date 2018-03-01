@@ -45,7 +45,7 @@ class ShareBox extends Component {
    console.log(this.state)
     axios
       .post(
-          `/api/posts`, 
+          `/api/users/addPost`, 
           {
             message: this.state.message,
             messageType: this.state.messageType
