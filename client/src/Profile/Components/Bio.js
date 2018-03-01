@@ -12,6 +12,7 @@ class Bio extends Component {
         super(props);
         this.state = { 
           editing: false,
+          
          }
     }
 
@@ -23,23 +24,37 @@ class Bio extends Component {
       this.setState({editing: false})
     }
 
+    componentDidMount(){
+        axios
+        .get("/api/users/login")
+        .then(response => {
+            this.setState({loggedInUser: response.data.userId})
+            this.setState({userData: response.data.userData})
+        })
+        .catch(error => {
+          console.log("Error fetching and parsing data", error);
+        });
+    }
+
   
     handleInputChange = event => {
         const value = event.target.value;
         const name = event.target.name;
-        this.setState({
-          [name]: value
-        });
+        this.setState(prevState => ({
+            userData: {
+              ...prevState.userData,
+              [name]:value
+            }
+          }));
       };
     
  
-              handleFormSubmit = async (event) => {
-                event.preventDefault();
-                console.log(this.props.loggedInUser)
-                const res = await axios.post('/api/users/'+this.props.loggedInUser, this.state );
-                await console.log(res)
+handleFormSubmit = async (event) => {
+const res = await axios.post('/api/users/'+this.state.loggedInUser+"/edit", this.state.userData );
+await this.setState({editing: false})
+await this.props.renderUser()
+};
 
-            };
 
     renderForm(){
 
@@ -53,16 +68,16 @@ class Bio extends Component {
 
 
            <Form.Group widths='equal'>
-           <Form.Input fluid label='company' placeholder={this.props.userInfo.company} />
-           <Form.Input fluid label='jobTitle' placeholder={this.props.userInfo.jobTitle} />
+           <Form.Input fluid label='Company' placeholder={this.props.userInfo.current_company} onChange={this.handleInputChange}  name="current_company"/>
+           <Form.Input fluid label='Job Title' placeholder={this.props.userInfo.job_title} onChange={this.handleInputChange}  name="job_title"/>
            </Form.Group>
 
            <Form.Group widths='equal'>
-           <Form.Input fluid label='phone' placeholder={this.props.userInfo.phone} />
+           <Form.Input fluid label='Phone' placeholder={this.props.userInfo.phone} onChange={this.handleInputChange}  name="phone"/>
            </Form.Group>
 
-           <Form.Input fluid label='birthday' placeholder={this.props.userInfo.birthday} />
-           <Form.Input fluid label='location' placeholder={this.props.userInfo.location} />
+           <Form.Input fluid label='Birthday' placeholder={this.props.userInfo.birthday} onChange={this.handleInputChange} name="birthday"/>
+           <Form.Input fluid label='Location' placeholder={this.props.userInfo.location} onChange={this.handleInputChange}  name="location"/>
            
           </Form>
         </Card.Description>
@@ -75,11 +90,11 @@ class Bio extends Component {
             </Grid.Column>
 
             <Grid.Column width={5}>
-                <Button icon='close' size="large" circular color='black' onClick={() => this.cancel()}/>
+                <Button icon='close' size="large" circular color='grey' onClick={() => this.cancel()}/>
             </Grid.Column>
 
             <Grid.Column width={5}>
-                <Button icon='check' size="large" circular color='black' onClick={()=>this.handleFormSubmit()}/>
+                <Button icon='check' size="large" circular color='grey' onClick={()=>this.handleFormSubmit()}/>
             </Grid.Column>
 
           </Grid.Row>
@@ -94,9 +109,10 @@ class Bio extends Component {
     renderDisplay(){
 
         let backgroundStyles={
-            background: "#4b79a1", /* fallback for old browsers */
-            background: "-webkit-linear-gradient(to right, #4b79a1, #283e51)", /* Chrome 10-25, Safari 5.1-6 */
-            background: "linear-gradient(to right, #4b79a1, #283e51)"
+            // background: "#4b79a1", /* fallback for old browsers */
+            // background: "-webkit-linear-gradient(to right, #4b79a1, #283e51)", /* Chrome 10-25, Safari 5.1-6 */
+            // background: "linear-gradient(to right, #4b79a1, #283e51)"
+            backroundColor: "transparent",
         }
 
       return(
@@ -104,64 +120,52 @@ class Bio extends Component {
 
     <div style={{marginBottom:"10px"}} >
     
-    <Segment style={backgroundStyles}>
-
-    {this.props.loggedInUserInfo.userId === this.props.url && this.props.loggedInUserInfo.loggedIn ? <Icon name='pencil' size='small' color="black" onClick={()=> this.edit()} /> : null }
+    <Segment style={{backgroundColor: "transparent"}}>
+    <div style={{marginLeft: "auto", marginRight: "auto"}}>{this.props.loggedInUserInfo.userId === this.props.url && this.props.loggedInUserInfo.loggedIn ? null : (<ConnectButton textAlign="center" />)}</div>
+    {this.props.loggedInUserInfo.userId === this.props.url && this.props.loggedInUserInfo.loggedIn ? <Icon name='pencil' size='small' color="grey" onClick={()=> this.edit()} /> : null }
     
         <Grid.Row style={{marginBottom: "10px"}}>
           <Grid.Column textAlign="center">
           </Grid.Column>
         </Grid.Row>
 
-    <Header as='h2' icon textAlign='center'>
-      <Icon name='user' color="black" circular />
-    
-    </Header>
-
+   
     <Grid>
         <Grid.Row columns={2}>
         <Grid.Column width={2}>
-            <Icon circular color='black' name='mail outline' />
+            <Icon circular color='grey' name='mail outline' />
         </Grid.Column>
         <Grid.Column width={14} textAlign="left">
             <h4 style={{lineHeight: "2.5rem", color: "white"}}>{this.props.userInfo.email}</h4>
         </Grid.Column>
 
         <Grid.Column width={2} style={{marginTop: "3px"}}>
-            <Icon circular color='black' name='phone' />
+            <Icon circular color='grey' name='phone' />
         </Grid.Column>
         <Grid.Column width={14} textAlign="left">
             <h4 style={{lineHeight: "2.5rem", color: "white"}}>{this.props.userInfo.phone}</h4>
         </Grid.Column>
 
         <Grid.Column width={2} style={{marginTop: "3px"}}>
-            <Icon circular color='black' name='building outline' />
+            <Icon circular color='grey' name='building outline' />
         </Grid.Column>
         <Grid.Column width={14} textAlign="left">
             <h4 style={{lineHeight: "2.5rem", color: "white"}}>{this.props.userInfo.current_company} | {this.props.userInfo.job_title}</h4>
         </Grid.Column>
 
         <Grid.Column width={2} style={{marginTop: "3px"}}>
-        <Icon circular color='black' name='calendar' />
+        <Icon circular color='grey' name='calendar' />
         </Grid.Column>
         <Grid.Column width={14} textAlign="left">
             <h4 style={{lineHeight: "2.5rem", color: "white"}}>{this.props.userInfo.birthday}</h4>
         </Grid.Column>
 
         <Grid.Column width={2} style={{marginTop: "3px"}}>
-        <Icon circular color='black' name='map pin' />
+        <Icon circular color='grey' name='map pin' />
         </Grid.Column>
         <Grid.Column width={14} textAlign="left">
             <h4 style={{lineHeight: "2.5rem", color: "white"}}>{this.props.userInfo.location}</h4>
         </Grid.Column>
-
-            <Grid.Column width={8} textAlign="center" style={{marginTop: "20px"}}>
-                {this.props.loggedInUserInfo.userId ===this.props.url && this.props.loggedInUserInfo.loggedIn ? null : (<ConnectButton />)}
-            </Grid.Column>
-
-            <Grid.Column width={8} textAlign="center" style={{marginTop: "20px"}}>
-                {this.props.loggedInUserInfo.userId ===this.props.url && this.props.loggedInUserInfo.loggedIn ? null : (<EmailButton />)}
-            </Grid.Column>
 
         </Grid.Row>
 

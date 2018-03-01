@@ -79,12 +79,13 @@ class ProfilePage extends Component {
           this.setState({ renderedUser: response.data });
           this.setState({ url: this.props.match.params.id });
         } else {
-          console.log("Information already up to date");
+          // console.log("Information already up to date");
         }
       })
       .catch(error => {
         console.log("Error fetching and parsing data", error);
       });
+
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -98,7 +99,7 @@ class ProfilePage extends Component {
           this.setState({ renderedUser: response.data });
           this.setState({ url: this.props.match.params.id });
         } else {
-          console.log("Information already up to date");
+          // console.log("Information already up to date");
         }
       })
       .catch(error => {
@@ -114,8 +115,9 @@ class ProfilePage extends Component {
         if (this.state.renderedUser !== response.data) {
           this.setState({ renderedUser: response.data });
           this.setState({ url: this.props.match.params.id });
+          console.log(this.state)
         } else {
-          console.log("Information already up to date");
+          // console.log("Information already up to date");
         }
       })
       .catch(error => {
@@ -150,10 +152,9 @@ class ProfilePage extends Component {
             <Grid.Row>
               <Grid.Column width={16}>
                 <Banner
-                  firstName={this.state.renderedUser.firstName}
-                  lastName={this.state.renderedUser.lastName}
-                  job_title={this.state.renderedUser.job_title}
-                  image_url={this.state.renderedUser.image_url}
+                  userInfo={this.state.renderedUser}
+                  loggedInUserInfo={this.state.loggedInUser}
+                  url={this.state.url}
                 />
               </Grid.Column>
             </Grid.Row>
@@ -169,6 +170,7 @@ class ProfilePage extends Component {
                   userInfo={this.state.renderedUser}
                   loggedInUserInfo={this.state.loggedInUser}
                   url={this.state.url}
+                  renderUser={this.renderUser}
                 />
               </Grid.Column>
 
@@ -244,7 +246,7 @@ class ProfilePage extends Component {
                     {this.state.loggedInUser.userId ===
                       this.props.match.params.id &&
                     this.state.loggedInUser.loggedIn ? (
-                      <ShareBox loggedInUser={this.state.loggedInUser} />
+                      <ShareBox loggedInUser={this.state.loggedInUser} renderUser={this.renderUser}/>
                     ) : null}
                   </Grid.Column>
 

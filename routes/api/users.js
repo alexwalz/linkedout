@@ -51,10 +51,17 @@ router.route("/")
         usersController.updateUser(req, res);
       })
 
+      router.route("/addPost")
+        .post(function(req, res) {
+            usersController.addPost(req, res);
+        });
+
 // Matches with "/api/users/:id"
 router
   .route("/:id")
-  .get(usersController.findById)
+  .get(function(req, res){
+    usersController.findById(req, res);
+  })
   .put(function(req, res) {
     usersController.update(req, res);
   })

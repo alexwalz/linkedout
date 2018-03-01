@@ -14,7 +14,13 @@ module.exports = {
     findById: function (req, res) {
         db.user
             .findById(req.params.id)
-            .then(dbModel => res.json(dbModel))
+            .populate('posts')
+            .populate('education')
+            .populate('connections')
+            .then(function(dbUser){
+                dbUser.password = "";
+                res.json(dbUser);
+            })
             .catch(err => res.status(422).json(err));
     },
     create: function (req, res) {
@@ -65,7 +71,10 @@ module.exports = {
     ActiveLogin: function (req, res) {
         if (req.session && req.session.userId) {
             var thisUser;
-            db.user.findById(req.session.userId)
+            db.user.findOne({_id: req.session.userId})
+                .populate('posts')
+                .populate('education')
+                .populate('connections')
                 .then(function (data) {
                     data.password = "";
                     res.json({
@@ -100,9 +109,10 @@ module.exports = {
         db.Education
             .create(req.body)
             .then(function (dbEducation) {
-                return db.User.findOneAndUpdate({_id: req.session.userId}, {$push: {education: dbEducation._id}}, {new: true});
+                return db.user.findOneAndUpdate({_id: req.session.userId}, {$push: {education: dbEducation._id}}, {new: true});
             })
             .then(function (dbUser) {
+                dbUser.password = "";
                 res.json(dbUser);
             })
             .catch(function (err) {
@@ -113,9 +123,12 @@ module.exports = {
       db.Post
             .create(req.body)
             .then(function (dbPost) {
-                return db.user.findOneAndUpdate({_id: req.session.userId}, {$push: {post: dbPost._id}}, {new: true});
+                console.log(dbPost);
+                console.log(req.session.userId);
+                return db.user.findOneAndUpdate({_id: req.session.userId}, {$push: {posts: dbPost._id}}, {new: true});
             })
             .then(function (dbUser) {
+                dbUser.password = "";
                 res.json(dbUser);
             })
             .catch(function (err) {
@@ -143,7 +156,8 @@ module.exports = {
             job_title: req.body.job_title, 
             phone: req.body.phone,
             birthday: req.body.birthday,
-            location: req.body.location
+            location: req.body.location,
+            about: req.body.about
         }}).then(function(dbModel){
             res.json(dbModel);
         }).catch(function(err){

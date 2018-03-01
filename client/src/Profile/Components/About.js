@@ -22,26 +22,36 @@ class About extends Component {
   }
 
 
-  handleInputChange = event => {
+  componentDidMount(){
+    axios
+    .get("/api/users/login")
+    .then(response => {
+        this.setState({loggedInUser: response.data.userId})
+        this.setState({userData: response.data.userData})
+    })
+    .catch(error => {
+      console.log("Error fetching and parsing data", error);
+    });
+}
+
+
+handleInputChange = event => {
     const value = event.target.value;
     const name = event.target.name;
-    this.setState({
-      [name]: value
-    });
+    this.setState(prevState => ({
+        userData: {
+          ...prevState.userData,
+          [name]:value
+        }
+      }));
   };
- 
 
-handleFormSubmit = ()=> {
-  console.log(this.props.loggedInUserInfo.userId)
-  console.log(this.state.about)
-  axios
-    .post(`/api/users/${this.props.loggedInUserInfo.userId}/about`, this.state.about)
-    .then(r => {console.log(r.status)
-      this.setState({editing: false})
-      this.props.renderUser()
-    })
-    .catch(e => console.log(e));
-}
+
+handleFormSubmit = async (event) => {
+const res = await axios.post('/api/users/'+this.state.loggedInUser+"/edit", this.state.userData );
+await this.setState({editing: false})
+await this.props.renderUser()
+};
 
   edit() {
     this.setState({ editing: true });
@@ -72,11 +82,11 @@ handleFormSubmit = ()=> {
               <Grid.Column width={3} />
 
             <Grid.Column width={5}>
-                <Button icon='close' size="large" circular color='teal' onClick={() => this.cancel()}/>
+                <Button icon='close' size="large" circular color='grey' onClick={() => this.cancel()}/>
             </Grid.Column>
 
             <Grid.Column width={5}>
-                <Button icon='check' size="large" circular color='teal' onClick={()=>this.handleFormSubmit()}/>
+                <Button icon='check' size="large" circular color='grey' onClick={()=>this.handleFormSubmit()}/>
             </Grid.Column>
 
             </Grid.Row>

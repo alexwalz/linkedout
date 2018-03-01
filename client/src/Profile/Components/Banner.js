@@ -1,6 +1,7 @@
 import React from 'react';
 import { Segment, Image, Grid, Header, Icon, Button, Label, Divider} from 'semantic-ui-react'
 import ConnectButton from './ConnectButton'
+import EmailButton from './EmailButton'
 
 let styles={
   top: "0",
@@ -39,7 +40,7 @@ const Logo = (props) =>
                         </Grid.Column>
 
                         <Grid.Column width={3} textAlign="right">
-                             <Image  style={imageStyles} src={props.image_url} size='medium' circular />
+                             <Image  style={imageStyles} src={props.userInfo.image_url} size='medium' circular />
                         </Grid.Column>
 
                         <Grid.Column width={7}>
@@ -47,9 +48,9 @@ const Logo = (props) =>
                             <Header as='h1' style={{marginTop: "5vh", color: "white", fontSize: "7vh"}}>
                                 <Icon name='code' />
                                 <Header.Content>
-                                    {props.firstName + " " + props.lastName}
+                                    {props.userInfo.firstName + " " + props.userInfo.lastName}
                                 <Header.Subheader style={{color: "white"}}>
-                                     <Divider horizontal  inverted >{props.job_title}</Divider>
+                                     <Divider horizontal  inverted >{props.userInfo.job_title}</Divider>
                                 </Header.Subheader>
                                 </Header.Content>
                             </Header>

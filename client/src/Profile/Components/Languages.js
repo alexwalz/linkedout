@@ -1,5 +1,5 @@
 import React from 'react'
-import { Message, Icon } from 'semantic-ui-react'
+import { Message, Icon, Button, List } from 'semantic-ui-react'
 
 let messageStyles={
   border: "1px solid grey",
@@ -13,10 +13,11 @@ let messageStyles={
 }
 
 const Languages = (props) => (
-  // <div style={{marginBottom:"5px", fontSize: "1rem"}} textAlign="center"> 
-             <Message info textAlign="center" style={messageStyles}>{(props.loggedUser)? <Icon name="delete" color='red' onClick={()=>props.deleteLanguage(props.language)} style={{opacity: 0.7}}/> : null }{props.language}</Message>
-    
-  // </div>
+            //  <Message info textAlign="center" style={messageStyles}>{(props.loggedUser)? <Icon name="delete" color='red' onClick={()=>props.deleteLanguage(props.language)} style={{opacity: 0.7}}/> : null }{props.language}</Message>
+            <List.Item key={props.language}>
+            {(props.loggedUser)? <Icon name="close" onClick={()=>props.deleteLanguage(props.language)} style={{opacity: 0.7}}/> : null }
+            <List.Content header={props.language} />
+          </List.Item>
 )
 
 export default Languages;

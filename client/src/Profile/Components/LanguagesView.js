@@ -105,15 +105,14 @@ class LanguagesView extends Component {
     
           <Segment >
               <Grid.Row style={{marginBottom: "10px"}}>
-              <Icon name='cancel' size='small' onClick={()=> this.cancel()} />
-              
                 <Grid.Column textAlign="center">
                 <Divider horizontal><h3  textAlign="center" style={{color: "grey"}}>My Languages</h3></Divider>
                 </Grid.Column>
               </Grid.Row>
                 <Form>
                   <Form.Input fluid placeholder="Add another language" onChange={this.handleInputChange} name="newLanguage"/>
-                  <Button icon='check' size="large" circular color='teal' onClick={()=>this.handleFormSubmit()}/>
+                  <Button icon='close' size="small" circular color='grey' onClick={()=>this.cancel()}/>
+                  <Button icon='check' size="small" circular color='grey' onClick={()=>this.handleFormSubmit()}/>
               </Form>
               <Grid>
                     <Grid.Row>
