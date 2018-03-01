@@ -156,7 +156,8 @@ module.exports = {
             job_title: req.body.job_title, 
             phone: req.body.phone,
             birthday: req.body.birthday,
-            location: req.body.location
+            location: req.body.location,
+            about: req.body.about
         }}).then(function(dbModel){
             res.json(dbModel);
         }).catch(function(err){

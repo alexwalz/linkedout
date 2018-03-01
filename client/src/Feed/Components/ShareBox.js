@@ -42,7 +42,6 @@ class ShareBox extends Component {
    
 
   handleFormSubmit = ()=> {
-   console.log(this.state)
     axios
       .post(
           `/api/users/addPost`, 
@@ -52,8 +51,7 @@ class ShareBox extends Component {
           }
           
       )
-      .then(r => {console.log(r.status)
-        console.log(r)
+      .then(r => {
         this.setState({editing: false})
         this.props.renderUser()
 
