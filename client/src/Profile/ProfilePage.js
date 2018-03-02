@@ -165,9 +165,9 @@ class ProfilePage extends Component {
             <Grid.Row>
               <Grid.Column width={6}>
                 <Divider horizontal>
-                  <h2 textAlign="center" style={{ color: "white" }}>
+                  <h3 textAlign="center" style={{ color: "white" }}>
                   <Icon circular name='user' />My Bio
-                  </h2>
+                  </h3>
                 </Divider>
                 <Bio
                   userInfo={this.state.renderedUser}
@@ -179,9 +179,9 @@ class ProfilePage extends Component {
 
               <Grid.Column width={6}>
                 <Divider horizontal>
-                  <h2 textAlign="center" style={{ color: "white" }}>
+                  <h3 textAlign="center" style={{ color: "white" }}>
                   <Icon circular name='id card' />About Me
-                  </h2>
+                  </h3>
                 </Divider>
                 <About
                   userInfo={this.state.renderedUser}
@@ -194,9 +194,9 @@ class ProfilePage extends Component {
 
                <Grid.Column width={4}>
                     <Divider horizontal>
-                      <h2 textAlign="center" style={{ color: "white" }}>
+                      <h3 textAlign="center" style={{ color: "white" }}>
                       <Icon circular name='code' />Languages
-                      </h2>
+                      </h3>
                     </Divider>
 
                     <LanguagesView
@@ -211,9 +211,9 @@ class ProfilePage extends Component {
 
               <Grid.Column width={16} style={{ marginTop: "10px" }}>
                 <Divider horizontal>
-                  <h2 textAlign="center" style={{ color: "white" }}>
+                  <h3 textAlign="center" style={{ color: "white" }}>
                   <Icon circular name='sitemap' />My Connections
-                  </h2>
+                  </h3>
                 </Divider>
 
                 <Grid.Row>
@@ -257,10 +257,7 @@ class ProfilePage extends Component {
               </Grid.Column>
               <Grid.Column width={8}>
                 <Grid.Row>
-                  <Grid.Column
-                    width={16}
-                    style={{ marginBottom: "10px", marginTop: "3.3%"}}
-                  >
+                  <Grid.Column width={16} style={{ marginBottom: "10px"}}>
                   <Divider horizontal><h3  textAlign="center" style={{color: "white"}}>News Feed</h3></Divider>
                     {this.state.loggedInUser.userId ===
                       this.props.match.params.id &&

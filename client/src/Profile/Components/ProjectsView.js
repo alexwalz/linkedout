@@ -22,9 +22,9 @@ class ProfileFeed extends React.Component {
     return(
     
       <div style={{marginTop: "7%"}}>
-      <Header as='h2' icon textAlign='center'>
+      <Header as='h3' icon textAlign='center'>
         <Icon name='warning sign' color="grey" circular />
-        <Header.Content style={{color: "white"}}>
+        <Header.Content style={{color: "#5CC1CD"}}>
           No Projects Added For This User
         </Header.Content>
       </Header>
@@ -45,7 +45,7 @@ class ProfileFeed extends React.Component {
         <Container style={{textAlign: "center"}}>
            
                 <Loader active inline='centered' size="big" inverted style={{marginTop: "12%"}}/>
-                <h1  textAlign="center" style={{color: "white"}}>Loading My Projects...</h1>
+                <h3  textAlign="center" style={{color: "#5CC1CD"}}>Loading My Projects...</h3>
 
       </Container>
     </div>
@@ -66,18 +66,7 @@ class ProfileFeed extends React.Component {
               languages={project.languages} />
       ))
         
-        
         : this.renderError()}
-
-      {/* <ProjectPosts 
-              project_name="DevSpot Social Media"
-              development_position="Front End Developer"
-              code_url="https://github.com/alexwalz/linkedout"
-              project_url="https://devspot1.herokuapp.com/"
-              project_description="Created a brand new social media website for developers only.  This way it's easier to connect with others in the same field and recruit other developers"
-              languages="React, Node, Express, MongoDb" /> */}
-      
-
 
     </Container>
   </div>

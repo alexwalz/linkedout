@@ -21,9 +21,9 @@ class ProfileFeed extends React.Component {
     return(
     
       <div style={{marginTop: "7%"}}>
-      <Header as='h2' icon textAlign='center'>
+      <Header as='h3' icon textAlign='center'>
         <Icon name='warning sign' color="grey" circular />
-        <Header.Content style={{color: "white"}}>
+        <Header.Content style={{color: "#5CC1CD"}}>
           No Posts For This User
         </Header.Content>
       </Header>
@@ -44,7 +44,7 @@ class ProfileFeed extends React.Component {
         <Container style={{textAlign: "center"}}>
            
                 <Loader active inline='centered' size="big" inverted style={{marginTop: "12%"}}/>
-                <h1  textAlign="center" style={{color: "white"}}>Loading My Posts...</h1>
+                <h3  textAlign="center" style={{color: "#5CC1CD"}}>Loading My Posts...</h3>
 
       </Container>
     </div>

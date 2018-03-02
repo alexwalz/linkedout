@@ -9,7 +9,7 @@ class ConnectionsModal extends Component {
     }
     render() { 
         return ( 
-            <Modal dimmer="blurring" trigger={<Icon name='users' circular color="teal" size="large" />} basic size='small'>
+            <Modal dimmer="blurring" trigger={<Icon name='users' circular color="grey" size="large" />} basic >
             <Header icon='users' content='All Connections' />
             <Modal.Content style={{width: "135%", margin: "0 0 0 -14%"}}>
 
