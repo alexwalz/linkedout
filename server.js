@@ -1,4 +1,5 @@
 const express = require("express");
+require('dotenv').config();
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const routes = require("./routes");
@@ -13,8 +14,8 @@ mongoose.Promise = global.Promise;
 
 
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/linkedOut",
-  {useMongoClient: true}
+  process.env.MONGODB_URI || "mongodb://localhost/linkedOut"
+  //{useMongoClient: true}
 );
 
 app.get('*', function (req, res) {
