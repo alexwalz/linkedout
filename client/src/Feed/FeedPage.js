@@ -100,7 +100,7 @@ renderLoaderPage(){
     return(
         <Segment style={{height: "100vh"}}>
         <Dimmer active>
-          <Loader size='massive' style={{marginTop: "5%"}}>Loading Your Feed</Loader>
+          <Loader size='massive' style={{marginTop: "5%", color: "#7EC6D1"}}><h1>Loading Your Feed</h1></Loader>
         </Dimmer>
       </Segment>
     )

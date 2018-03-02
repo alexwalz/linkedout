@@ -28,6 +28,8 @@ import background from "../img/midnight.jpg";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 import SecondaryModal from "../Login/Components/SecondaryLoginModal";
+import ProjectShareBox from './Components/ProjectShareBox'
+import ProjectsView from './Components/ProjectsView'
 
 class ProfilePage extends Component {
   constructor(props) {
@@ -232,10 +234,25 @@ class ProfilePage extends Component {
 
 
                   <Grid.Column width={16} style={{ marginTop: "10px" }}>
-                         <Divider horizontal><h3  textAlign="center" style={{color: "white"}}>News Feed</h3></Divider>
+                         <Divider horizontal><h3  textAlign="center" style={{color: "white"}}>My Projects</h3></Divider>
                   
-                    <Newsfeed />
+                         {this.state.loggedInUser.userId ===
+                      this.props.match.params.id &&
+                    this.state.loggedInUser.loggedIn ? (
+                      <ProjectShareBox loggedInUser={this.state.loggedInUser} renderUser={this.renderUser}/>
+                    ) : null}
+
                   </Grid.Column>
+
+                  <Grid.Column width={16} style={{marginTop:"4%"}}>
+                    <ProjectsView
+                      userInfo={this.state.renderedUser}
+                      loggedInUserInfo={this.state.loggedInUser}
+                      url={this.state.url}
+                    />
+                  </Grid.Column>
+
+
                 </Grid.Row>
               </Grid.Column>
               <Grid.Column width={8}>
@@ -244,6 +261,7 @@ class ProfilePage extends Component {
                     width={16}
                     style={{ marginBottom: "10px", marginTop: "3.3%"}}
                   >
+                  <Divider horizontal><h3  textAlign="center" style={{color: "white"}}>News Feed</h3></Divider>
                     {this.state.loggedInUser.userId ===
                       this.props.match.params.id &&
                     this.state.loggedInUser.loggedIn ? (
