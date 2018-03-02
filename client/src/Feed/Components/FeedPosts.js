@@ -28,7 +28,7 @@ function FeedPosts(props) {
           <Grid columns={2}>
                 <Grid.Row>
                 <Grid.Column width={4}>
-                <Image style={imageStyles} src={props.image_url} size='mini' />
+                <Image style={{ border: "2px solid #67C8D3", padding: "2px", height: "4rem", width: "4rem", borderRadius: "999px"}} src={props.image_url} rounded />
                 </Grid.Column>
                 <Grid.Column width={12}>
                     <h2  style={{color: "white"}}>{props.name}</h2>

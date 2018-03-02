@@ -4,6 +4,9 @@ import Logo from './Components/Logo'
 import LoginForm from './Components/LoginForm'
 import axios from 'axios'
 import {Redirect} from 'react-router-dom'
+import { Button } from 'semantic-ui-react'
+import LoginModal from './Components/LoginModal'
+import NewAccountMondal from './Components/NewAccountModal'
 
 
 
@@ -69,20 +72,48 @@ class LoginPage extends Component {
               offset={0}
               speed={0.5}
               style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start' }}
-              onClick={() => this.refs.parallax.scrollTo(1)}>
+              >
             </Parallax.Layer>
   
             <Parallax.Layer
               offset={0.0}
               speed={0.7}
               style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start' }}
-              onClick={() => this.refs.parallax.scrollTo(1)}>
+              >
         
                 <Logo/>
-           
+                        
             </Parallax.Layer>
   
           </Parallax.Layer>
+
+                    <Parallax.Layer
+            offset={0}
+            speed={0}
+          >
+            {/* stuff for First page */}
+            <Parallax.Layer
+              offset={0}
+              speed={0.5}
+              style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start' }}
+              >
+            </Parallax.Layer>
+  
+            <Parallax.Layer
+              offset={0.15}
+              speed={1}
+              style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start' }}
+              >
+              <div  style={{marginLeft: "11.5%"}}>
+                 <LoginModal/>
+                 <NewAccountMondal/>
+              </div>
+                        
+            </Parallax.Layer>
+  
+          </Parallax.Layer>
+
+
   
   
   
@@ -99,7 +130,10 @@ class LoginPage extends Component {
             offset={1.03}
             speed={2.9}
             >
-            <LoginForm/>
+
+            {/* <LoginForm/> */}
+            {/* Maybe we should add a contact form here? */}
+            
           </Parallax.Layer>
   
         </Parallax>
