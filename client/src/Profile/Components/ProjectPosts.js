@@ -92,9 +92,8 @@ class ShareBox extends Component {
           <Step.Group fluid vertical style={{backgroundColor:"transparent", border: "1px solid white"}}>
               <Step active onClick={()=> this.edit()}  style={{backgroundColor:"transparent"}}>
               <Icon name='code' color="grey" />
-
               <Step.Content>
-                <Step.Title style={{color: "#67C8D3"}}>{this.props.project_name}</Step.Title>
+                <Step.Title style={{color: "#67C8D3", width: "100%"}}>{this.props.project_name}</Step.Title>
                 <Step.Description style={{color: "white"}}>{this.props.development_position}</Step.Description>
               </Step.Content>
                 

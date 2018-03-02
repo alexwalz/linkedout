@@ -56,26 +56,26 @@ class ProfileFeed extends React.Component {
       <div>
       <Container>
 
-        {/* {this.props.userInfo.projects.length > 0 ? this.props.userInfo.projects.slice(0).reverse().map((project, key) => (
-          <ProjectPosts 
+        {this.props.userInfo.projects.length > 0 ? this.props.userInfo.projects.slice(0).reverse().map((project, key) => (
+          <ProjectPosts
               project_name={project.project_name}
               development_position={project.development_position}
-              code_url={project.project_name}
-              project_url={project.project_name}
-              project_description={project.project_name}
+              code_url={project.code_url}
+              project_url={project.project_url}
+              project_description={project.project_description}
               languages={project.languages} />
       ))
         
         
-        : this.renderError()} */}
+        : this.renderError()}
 
-      <ProjectPosts 
+      {/* <ProjectPosts 
               project_name="DevSpot Social Media"
               development_position="Front End Developer"
               code_url="https://github.com/alexwalz/linkedout"
               project_url="https://devspot1.herokuapp.com/"
               project_description="Created a brand new social media website for developers only.  This way it's easier to connect with others in the same field and recruit other developers"
-              languages="React, Node, Express, MongoDb" />
+              languages="React, Node, Express, MongoDb" /> */}
       
 
 

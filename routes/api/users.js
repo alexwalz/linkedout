@@ -56,6 +56,14 @@ router.route("/")
             usersController.addPost(req, res);
         });
 
+        router.route("/:id/newProject")
+        .put(function(req, res) {
+          usersController.newProject(req, res);
+        })
+        .post(function(req, res) {
+          usersController.newProject(req, res);
+        });
+
 // Matches with "/api/users/:id"
 router
   .route("/:id")

@@ -64,9 +64,12 @@ var UserSchema = new Schema({
         ref: "User"
     }],
     projects: [{
-        project_title: String,
+        project_name: String,
+        development_position: String,
+        code_url: String, 
         project_url: String,
-        project_description: String
+        project_description: String,
+        languages: String
     }],
     newUser: {
         type: Boolean,

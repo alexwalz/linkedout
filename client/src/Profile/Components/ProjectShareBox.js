@@ -19,6 +19,12 @@ class ShareBox extends Component {
         super(props);
         this.state = { 
           editing: false,
+          project_name: "",
+          development_position: "",
+          code_url: "", 
+          project_url: "",
+          project_description: "",
+          languages: ""
          }
     }
 
@@ -37,26 +43,28 @@ class ShareBox extends Component {
         [name]: value
       });
     };
-   
+
 
   handleFormSubmit = ()=> {
     axios
       .post(
-          `/api/users/addPost`, 
+          `/api/users/`+this.props.loggedInUser.userId+"/newProject", 
           {
-            message: this.state.message,
-            messageType: this.state.messageType
+            project_name: this.state.project_name,
+            development_position: this.state.development_position,
+            code_url: this.state.code_url, 
+            project_url: this.state.project_url,
+            project_description: this.state.project_description,
+            languages: this.state.languages
           }
           
       )
       .then(r => {
         this.setState({editing: false})
         this.props.renderUser()
-
+        console.log(r)
       })
       .catch(e => console.log(e));
-
-
   }
 
     renderForm(){

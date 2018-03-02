@@ -163,5 +163,15 @@ module.exports = {
         }).catch(function(err){
             res.status(422).json(err)
         })
-    }
+    },
+
+    newProject: function(req, res) {
+        var project = req.body;
+        db.user
+            .findByIdAndUpdate(req.params.id, { $push: {projects: project}}, {new: true})
+            .then(function(dbModel) {
+                res.json(dbModel);
+            })
+            .catch(err => res.status(422).json(err));
+    },
 };
