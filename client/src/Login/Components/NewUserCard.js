@@ -4,7 +4,7 @@ import { Header, Icon, Image, Segment, Divider, List } from 'semantic-ui-react'
 const NewUserCard = (props) => (
   <div>
         <Segment style={{textAlign: "center"}}>
-        <Image src={props.userInfo.image_url} size='small' verticalAlign='middle' circular style={{padding: "2px", backgroundColor:"white", border: "2px solid grey", marginLeft:"2%"}} centered/>
+        <Image src={props.userInfo.image_url} size='small' verticalAlign='middle' circular style={{padding: "2px", backgroundColor:"white", border: "2px solid grey", marginLeft:"2%", height: "14vh", width: "14vh", overflow: "hidden"}} centered/>
         <Header as='h2' icon textAlign="center">
             My New Profile
                 <Header.Subheader >

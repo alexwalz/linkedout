@@ -20,6 +20,7 @@ let styles={
 let imageStyles={
     height: "25vh",
     width: "25vh",
+    overflow: "hidden",
     marginLeft: "5%",
     padding: "6px",
     border: "1px solid grey", 
