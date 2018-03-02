@@ -49,7 +49,7 @@ router.route("/:id/languages")
 router.route("/:id/edit")
     .post(function (req, res) {
         usersController.updateUser(req, res);
-    })
+    });
 
 router.route("/addPost")
     .post(function (req, res) {
