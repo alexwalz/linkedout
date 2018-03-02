@@ -31,11 +31,8 @@ var UserSchema = new Schema({
     },
     image_url: {
         type: String,
-        required: true
-    },
-    img: {
-        data: Buffer,
-        contentType: String
+        required: true,
+        default: 'defaultImage.jpg'
     },
     job_title: {
         type: String,
