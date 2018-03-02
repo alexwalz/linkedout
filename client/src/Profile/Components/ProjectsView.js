@@ -70,13 +70,13 @@ class ProfileFeed extends React.Component {
         : this.renderError()} */}
 
       <ProjectPosts 
-              project_name="Test Project"
+              project_name="DevSpot Social Media"
               development_position="Front End Developer"
               code_url="https://github.com/alexwalz/linkedout"
               project_url="https://devspot1.herokuapp.com/"
               project_description="Created a brand new social media website for developers only.  This way it's easier to connect with others in the same field and recruit other developers"
               languages="React, Node, Express, MongoDb" />
-      ))
+      
 
 
     </Container>
