@@ -100,7 +100,7 @@ class LoginPage extends Component {
             </Parallax.Layer>
   
             <Parallax.Layer
-              offset={0.15}
+              offset={0.2}
               speed={1}
               style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start' }}
               >

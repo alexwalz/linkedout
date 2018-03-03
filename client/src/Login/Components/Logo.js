@@ -12,7 +12,7 @@ const Logo = () =>
 <Grid columns={3} divided style={styles}>
     <Grid.Row>
       <Grid.Column>
-      <h1 style={{textAlign: "center", fontSize: "4rem"}}>DevSpot</h1>
+      <h1 style={{textAlign: "center", fontSize: "9rem"}}>DevSpot</h1>
         <Divider horizontal style={{color: "white"}}>Social Media For Developers</Divider>
       </Grid.Column>
 
