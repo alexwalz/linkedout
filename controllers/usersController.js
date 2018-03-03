@@ -175,8 +175,6 @@ module.exports = {
 
             db.user.find({posts: {$in: postIdArray}})
             .then(function(dbUsers) {
-                console.log(dbPost);
-                console.log(dbUsers);
                 var newObj = [];
 
 
