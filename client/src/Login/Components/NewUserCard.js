@@ -3,7 +3,7 @@ import { Header, Icon, Image, Segment, Divider, List } from 'semantic-ui-react'
 
 const NewUserCard = (props) => (
   <div>
-        <Segment style={{textAlign: "center"}}>
+        <Segment style={{textAlign: "center", minHeight:"76vh"}}>
         <Image src={props.userInfo.image_url} size='small' verticalAlign='middle' circular style={{padding: "2px", backgroundColor:"white", border: "2px solid grey", marginLeft:"2%", height: "14vh", width: "14vh", overflow: "hidden"}} centered/>
         <Header as='h2' icon textAlign="center">
             My New Profile
@@ -36,6 +36,12 @@ const NewUserCard = (props) => (
                             <List.Icon name='phone' />
                             <List.Content>
                             <List.Content>{props.userInfo.phone}</List.Content>
+                            </List.Content>
+                            </List.Item>
+                            <List.Item>
+                            <List.Icon name='calendar' />
+                            <List.Content>
+                            <List.Content>{props.userInfo.birthday}</List.Content>
                             </List.Content>
                             </List.Item>
                         </List>

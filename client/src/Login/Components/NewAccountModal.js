@@ -9,18 +9,17 @@ class LoginModal extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            firstName: "John",
-            lastName: "Doe",
-            email: "JohnDoe@johndoe.com",
-            about:
-              "Here is a bunch of filler information about a fella named John Doe. This is the area that you explain a whole bunch of information about yourself.  This way, employers and fellow developers will be able to see what type of person you are.",
-            phone: "123-456-7890",
+            firstName: "",
+            lastName: "",
+            email: "",
+            about:"",
+            phone: "",
             image_url:
               "http://www.terry.uga.edu/digitalmarketing/images/icons/user.jpg",
-            job_title: "Developer",
-            birthday: "01/01/1990",
-            current_company: "John Doe's Dev Company",
-            location: "Silicon Valley",
+            job_title: "",
+            birthday: "",
+            current_company: "",
+            location: "",
           }
         };
 
@@ -62,7 +61,7 @@ class LoginModal extends Component {
 
                         <Grid.Column>
                             
-                        <Form inverted>
+                        <Form inverted style={{marginTop:"-8%"}}>
                             <br/>
                                 <Form.Group widths='equal'>
                                 <Form.Input onChange={this.handleInputChange}  label='First Name' placeholder={this.state.firstName} type='text' name="firstName"/>
@@ -75,13 +74,18 @@ class LoginModal extends Component {
                                 
                                 <Form.Group widths='equal'>
                                 <Form.Input onChange={this.handleInputChange} label='Email' placeholder={this.state.email} type='text' name="email"/>
-                                <Form.Input onChange={this.handleInputChange} label='Password' type='password' name="password"/>
+                                <Form.Input onChange={this.handleInputChange} label='Location' placeholder={this.state.location} type='text' name="location"/>
+                                </Form.Group>
+
+                                <Form.Group widths='equal'>
+                                <Form.Input label='Password' type='password'/>
+                                <Form.Input onChange={this.handleInputChange} label='Confirm Password' type='password' name="password"/>
                                 </Form.Group>
 
                                 <Form.Group widths='equal'>
                                 {/* <Form.Input onChange={this.handleInputChange} label='image_url' placeholder='https://<Path To Image>' type='text' name="image_url"/> */}
                                 <Form.Input onChange={this.handleInputChange} label='Phone' placeholder={this.state.phone} type='text' name="phone" />
-                                <Form.Input onChange={this.handleInputChange} label='Location' placeholder={this.state.location} type='text' name="location" />
+                                <Form.Input onChange={this.handleInputChange} label='Birthday' placeholder={this.state.birthday} type='text' name="birthday" />
                                 </Form.Group>
                                 
                                 <Form.Group widths='equal'>
@@ -89,13 +93,8 @@ class LoginModal extends Component {
                                 <Form.Input onChange={this.handleInputChange} label='Job Title' placeholder={this.state.job_title} type='text' name="job_title"/>
                                 </Form.Group>
 
-                                <Form.Group widths="equal">
-                                <Form.Input onChange={this.handleInputChange} label='Birthday' placeholder={this.state.birthday} type='text' name="birthday"/>
-                                <Form.Input onChange={this.handleInputChange} label='Location' placeholder={this.state.location} type='text' name="location"/>
-                                </Form.Group>
 
-
-                                <Form.TextArea style={{width: "110%"}}rows={8} onChange={this.handleInputChange} label='About' placeholder='Tell us more about you to display on your profile' name="about"/>
+                                <Form.TextArea style={{width: "110%"}}rows={10} onChange={this.handleInputChange} label='About' placeholder='Tell us more about you to display on your profile' name="about"/>
                                 <Button color='teal' inverted onClick={this.handleFormSubmit}>Create Account</Button>
                             </Form>
                         </Grid.Column>
