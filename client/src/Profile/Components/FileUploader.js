@@ -22,27 +22,35 @@ class FileUploader extends Component {
     render() {
         const {preview} = this.state;
         let imgStyle = {
-            float: 'left'
+            maxHeight: "125px",
+            minHeight: "125px",
+            maxWidth: "125px",
+            minWidth: "125px",
+            overflow: "hidden",
+            borderRadius: "999px",
+            border: "1px solid grey",
+            padding: "2px",
+            backgroundColor: "white"
         };
         return (
             <Container>
-                  <Grid>
-                        <Grid.Row columns={2} textAlign="center">
-                            <Grid.Column width={9}>
+                  {/* <Grid>
+                        <Grid.Row columns={1} textAlign="center" verticalAlign="middle">
+                            <Grid.Column width={16}> */}
                                 <Dropzone onDrop={this.onDrop} accept="image/jpeg,image/jpg,image/tiff,image/gif,image/png"
                                         multiple={false} onDropRejected={handleDropRejected}
-                                        style={{width: "100%", height: "100%", border: "2px solid white", padding: "3px", borderRadius: "5px"}}>
-                                    <div>Drop Your Image, Or Click To Upload</div>
+                                        style={{width: "110%", height: "100%", border: "2px solid white", padding: "8px", borderRadius: "5px"}}>
+                                    <div style={{textAlign: "center"}}>Drop Your Image, Or Click To Upload</div>
                                 </Dropzone>
-                            </Grid.Column>
+                            {/* </Grid.Column> */}
 
-                            <Grid.Column width={7} textAlign="center">
+                            {/* <Grid.Column width={7} textAlign="center">
                                 {preview &&
-                                <img src={preview} alt="preview" height="150" width="150" style={imgStyle}/>
+                                <img src={preview} alt="preview" style={imgStyle}/>
                                 }
-                            </Grid.Column>
-                        </Grid.Row>
-                    </Grid>
+                            </Grid.Column> */}
+                        {/* </Grid.Row> */}
+                    {/* </Grid> */}
             </Container>
         );
     }

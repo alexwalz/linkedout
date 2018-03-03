@@ -43,7 +43,7 @@ class LoginModal extends Component {
 
           handleImageFile = (result) => {
               console.log(result)
-              this.setState({image_url: result.blob})
+              this.setState({image_url: result.preview})
               console.log(this.state)
           }
 
@@ -68,6 +68,10 @@ class LoginModal extends Component {
                                 <Form.Input onChange={this.handleInputChange}  label='First Name' placeholder={this.state.firstName} type='text' name="firstName"/>
                                 <Form.Input onChange={this.handleInputChange}  label='Last Name' placeholder={this.state.lastName} type='text' name="lastName"/>
                                 </Form.Group>
+
+                                <Form.Group>
+                                <FileUploader imageFile={this.handleImageFile} name="image_url" onChange={this.handleInputChange} style={{marginBottom: "15px"}}/>
+                                </Form.Group>
                                 
                                 <Form.Group widths='equal'>
                                 <Form.Input onChange={this.handleInputChange} label='Email' placeholder={this.state.email} type='text' name="email"/>
@@ -75,8 +79,9 @@ class LoginModal extends Component {
                                 </Form.Group>
 
                                 <Form.Group widths='equal'>
-                                <Form.Input onChange={this.handleInputChange} label='image_url' placeholder='https://<Path To Image>' type='text' name="image_url"/>
+                                {/* <Form.Input onChange={this.handleInputChange} label='image_url' placeholder='https://<Path To Image>' type='text' name="image_url"/> */}
                                 <Form.Input onChange={this.handleInputChange} label='Phone' placeholder={this.state.phone} type='text' name="phone" />
+                                <Form.Input onChange={this.handleInputChange} label='Location' placeholder={this.state.location} type='text' name="location" />
                                 </Form.Group>
                                 
                                 <Form.Group widths='equal'>
@@ -89,9 +94,8 @@ class LoginModal extends Component {
                                 <Form.Input onChange={this.handleInputChange} label='Location' placeholder={this.state.location} type='text' name="location"/>
                                 </Form.Group>
 
-                                <FileUploader imageFile={this.handleImageFile} name="image_url" onChange={this.handleInputChange}/>
 
-                                <Form.TextArea style={{width: "110%"}}rows={12} onChange={this.handleInputChange} label='About' placeholder='Tell us more about you to display on your profile' name="about"/>
+                                <Form.TextArea style={{width: "110%"}}rows={8} onChange={this.handleInputChange} label='About' placeholder='Tell us more about you to display on your profile' name="about"/>
                                 <Button color='teal' inverted onClick={this.handleFormSubmit}>Create Account</Button>
                             </Form>
                         </Grid.Column>
