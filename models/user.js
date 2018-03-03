@@ -32,7 +32,7 @@ var UserSchema = new Schema({
     image_url: {
         type: String,
         required: true,
-        default: 'defaultImage.jpg'
+        default: 'http://www.terry.uga.edu/digitalmarketing/images/icons/user.jpg'
     },
     job_title: {
         type: String,
