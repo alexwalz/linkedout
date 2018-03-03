@@ -51,6 +51,11 @@ router.route("/")
         usersController.updateUser(req, res);
       })
 
+      router.route("/posts")
+      .get(function(req, res) {
+        usersController.findRecentPosts(req, res);
+      })
+
       router.route("/addPost")
         .post(function(req, res) {
             usersController.addPost(req, res);

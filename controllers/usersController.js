@@ -162,5 +162,46 @@ module.exports = {
         }).catch(function(err){
             res.status(422).json(err)
         })
+    },
+    findRecentPosts: function(req, res) {
+        db.Post.find({}).sort({viewCount: -1}).limit(50)
+        .then(function(dbPost) {
+            var postIdArray = [];
+
+            for(j = 0; j < dbPost.length; j++){
+                postIdArray.push(dbPost[j]._id);
+            }
+
+            db.user.find({posts: {$in: postIdArray}})
+            .then(function(dbUsers) {
+                console.log(dbPost);
+                console.log(dbUsers);
+                var newObj = [];
+
+
+                for(i = 0; i < dbPost.length; i++) {
+                    for(u = 0; u < dbUsers.length; u++) {
+                        for(o = 0; o < dbUsers[u].posts.length; o++) {
+                            if (dbPost[i]._id.toString() == dbUsers[u].posts[o].toString()) {
+                                newObj.push({
+                                    userId: dbUsers[u]._id,
+                                    firstName: dbUsers[u].firstName,
+                                    lastName: dbUsers[u].lastName,
+                                    message: dbPost[i].message,
+                                    messageType: dbPost[i].messageType,
+                                    date: dbPost[i].date
+                                })
+                            }
+                        }
+                    }
+                }
+
+            res.json({data: newObj});
+            }).catch(function(err){
+                console.log(err);
+            })
+        }).catch(function(err){
+            console.log(err);
+        })
     }
 };
