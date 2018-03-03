@@ -18,7 +18,7 @@ class NewsArticles extends React.Component {
             axios.get('https://newsapi.org/v2/everything?q=developers&sortBy=publishedAt&apiKey=bc369628b86c49f298e31af73acbba7a')
         .then(response => {
             this.setState({ articles: response.data.articles });
-            setTimeout(() => this.setState({ loading: false }), 1500); 
+            this.setState({ loading: false })
             
         })
         .catch(error => {

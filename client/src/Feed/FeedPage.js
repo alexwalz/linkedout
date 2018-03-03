@@ -48,7 +48,8 @@ class FeedPage extends Component {
             this.setState({job_title: response.data.userData.job_title});
             this.setState({image_url: response.data.userData.image_url});
             this.setState({connections: response.data.userData.connections});
-            this.setState({loggedInUser: response.data });             
+            this.setState({loggedInUser: response.data });
+            // this.setState({ loading: false })             
         })
         .catch(error => {
             console.log('Error fetching and parsing data', error);
