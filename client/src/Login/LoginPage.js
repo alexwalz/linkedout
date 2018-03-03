@@ -6,7 +6,7 @@ import axios from 'axios'
 import {Redirect} from 'react-router-dom'
 import { Button } from 'semantic-ui-react'
 import LoginModal from './Components/LoginModal'
-import NewAccountMondal from './Components/NewAccountModal'
+import NewAccountModal from './Components/NewAccountModal'
 
 
 
@@ -106,7 +106,7 @@ class LoginPage extends Component {
               >
               <div  style={{marginLeft: "11.5%"}}>
                  <LoginModal/>
-                 <NewAccountMondal/>
+                 <NewAccountModal/>
               </div>
                         
             </Parallax.Layer>
