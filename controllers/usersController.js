@@ -156,7 +156,8 @@ module.exports = {
             job_title: req.body.job_title, 
             phone: req.body.phone,
             birthday: req.body.birthday,
-            location: req.body.location
+            location: req.body.location,
+            about: req.body.about
         }}).then(function(dbModel){
             res.json(dbModel);
         }).catch(function(err){
@@ -203,5 +204,15 @@ module.exports = {
         }).catch(function(err){
             console.log(err);
         })
-    }
+    },
+
+    newProject: function(req, res) {
+        var project = req.body;
+        db.user
+            .findByIdAndUpdate(req.params.id, { $push: {projects: project}}, {new: true})
+            .then(function(dbModel) {
+                res.json(dbModel);
+            })
+            .catch(err => res.status(422).json(err));
+    },
 };

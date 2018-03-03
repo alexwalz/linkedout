@@ -20,6 +20,7 @@ let styles={
 let imageStyles={
     height: "25vh",
     width: "25vh",
+    overflow: "hidden",
     marginLeft: "5%",
     padding: "6px",
     border: "1px solid grey", 
@@ -36,14 +37,14 @@ const Logo = (props) =>
                   <Grid columns={4} >
                         <Grid.Row>
 
-                        <Grid.Column width={3} textAlign="right">
+                        <Grid.Column width={2} textAlign="right">
                         </Grid.Column>
 
                         <Grid.Column width={3} textAlign="right">
                              <Image  style={imageStyles} src={props.userInfo.image_url} size='medium' circular />
                         </Grid.Column>
 
-                        <Grid.Column width={7}>
+                        <Grid.Column width={9}>
                             
                             <Header as='h1' style={{marginTop: "5vh", color: "white", fontSize: "7vh"}}>
                                 <Icon name='code' />
@@ -56,7 +57,7 @@ const Logo = (props) =>
                             </Header>
                         </Grid.Column>
 
-                        <Grid.Column width={3}>
+                        <Grid.Column width={2}>
 
                         </Grid.Column>
 

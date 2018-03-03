@@ -6,8 +6,6 @@ import ConnectionsModal from './ConnectionsModal'
 let styles = {        
         top: "0",
         left: "0",
-        width: "128%",
-        margin: "0 0 0 -14%",
         backgroundImage: "url('https://www.toptal.com/designers/subtlepatterns/patterns/always_grey.png')",
         // webkitClipPath: "polygon(50% 0%, 100% 0, 100% 75%, 50% 100%, 0% 75%, 0 0)",
         // clipPath: "polygon(50% 0%, 100% 0, 100% 75%, 50% 100%, 0% 75%, 0 0)",

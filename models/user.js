@@ -31,11 +31,8 @@ var UserSchema = new Schema({
     },
     image_url: {
         type: String,
-        required: true
-    },
-    img: {
-        data: Buffer,
-        contentType: String
+        required: true,
+        default: 'http://www.terry.uga.edu/digitalmarketing/images/icons/user.jpg'
     },
     job_title: {
         type: String,
@@ -67,9 +64,12 @@ var UserSchema = new Schema({
         ref: "User"
     }],
     projects: [{
-        project_title: String,
+        project_name: String,
+        development_position: String,
+        code_url: String, 
         project_url: String,
-        project_description: String
+        project_description: String,
+        languages: String
     }],
     newUser: {
         type: Boolean,

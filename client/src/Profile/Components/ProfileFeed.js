@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { Header, Segment, Container, Divider, Loader } from 'semantic-ui-react'
+import { Header, Segment, Container, Divider, Loader, Icon } from 'semantic-ui-react'
 import FeedMessages from './ProfileFeedPosts'
 
 class ProfileFeed extends React.Component {
@@ -17,6 +17,24 @@ class ProfileFeed extends React.Component {
     setTimeout(() => this.setState({ loading: false }), 2000); // simulates an async action, and hides the spinner
   }
 
+  renderError(){
+    return(
+    
+      <div style={{marginTop: "7%"}}>
+      <Header as='h3' icon textAlign='center'>
+        <Icon name='warning sign' color="grey" circular />
+        <Header.Content style={{color: "#5CC1CD"}}>
+          No Posts For This User
+        </Header.Content>
+      </Header>
+    </div>
+
+    )
+  }
+
+  renderDisplay(){
+
+}
   render(props) {
     const { loading } = this.state;
     
@@ -26,7 +44,7 @@ class ProfileFeed extends React.Component {
         <Container style={{textAlign: "center"}}>
            
                 <Loader active inline='centered' size="big" inverted style={{marginTop: "12%"}}/>
-                <h1  textAlign="center" style={{color: "white"}}>Loading My Posts...</h1>
+                <h3  textAlign="center" style={{color: "#5CC1CD"}}>Loading My Posts...</h3>
 
       </Container>
     </div>
@@ -36,20 +54,16 @@ class ProfileFeed extends React.Component {
     return (
       <div>
       <Container>
+        {this.props.userInfo.posts.length > 0 ? 
+        
+        this.props.userInfo.posts.slice(0).reverse().map((message, key) => (
+          <FeedMessages messageType = {message.messageType} name={this.props.userInfo.firstName + " " + this.props.userInfo.lastName} image_url={this.props.userInfo.image_url} message = {message.message} date={message.date}/>
+      ))
+        
+        
+        : this.renderError()}
 
-            <FeedMessages messageType = "Job Posting" name={this.props.userInfo.firstName + " " + this.props.userInfo.lastName} image_url={this.props.userInfo.image_url} message = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. A scelerisque purus semper eget duis at tellus at urna. Magna eget est lorem ipsum dolor sit amet consectetur. Gravida dictum fusce ut placerat orci." date="February 13, 2018"/>
 
-            <FeedMessages messageType = "News Feed" name={this.props.userInfo.firstName + " " + this.props.userInfo.lastName} image_url={this.props.userInfo.image_url} message = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. A scelerisque purus semper eget duis at tellus at urna. Magna eget est lorem ipsum dolor sit amet consectetur. Gravida dictum fusce ut placerat orci." date="February 13, 2018"/>
-
-            <FeedMessages messageType = "News Feed" name={this.props.userInfo.firstName + " " + this.props.userInfo.lastName} image_url={this.props.userInfo.image_url} message = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. A scelerisque purus semper eget duis at tellus at urna. Magna eget est lorem ipsum dolor sit amet consectetur. Gravida dictum fusce ut placerat orci." date="February 13, 2018"/>
-
-            <FeedMessages messageType = "Thought of The Day" name={this.props.userInfo.firstName + " " + this.props.userInfo.lastName} image_url={this.props.userInfo.image_url} message = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. A scelerisque purus semper eget duis at tellus at urna. Magna eget est lorem ipsum dolor sit amet consectetur. Gravida dictum fusce ut placerat orci." date="February 13, 2018"/>
-
-            <FeedMessages messageType = "Job Posting" name={this.props.userInfo.firstName + " " + this.props.userInfo.lastName} image_url={this.props.userInfo.image_url} message = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. A scelerisque purus semper eget duis at tellus at urna. Magna eget est lorem ipsum dolor sit amet consectetur. Gravida dictum fusce ut placerat orci." date="February 13, 2018"/>
-
-            <FeedMessages messageType = "Recruitment" name={this.props.userInfo.firstName + " " + this.props.userInfo.lastName} image_url={this.props.userInfo.image_url} message = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. A scelerisque purus semper eget duis at tellus at urna. Magna eget est lorem ipsum dolor sit amet consectetur. Gravida dictum fusce ut placerat orci." date="February 13, 2018"/>
-
-            <FeedMessages messageType = "Thought of The Day" name={this.props.userInfo.firstName + " " + this.props.userInfo.lastName} image_url={this.props.userInfo.image_url} message = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. A scelerisque purus semper eget duis at tellus at urna. Magna eget est lorem ipsum dolor sit amet consectetur. Gravida dictum fusce ut placerat orci." date="February 13, 2018"/>
     </Container>
   </div>
     ); 

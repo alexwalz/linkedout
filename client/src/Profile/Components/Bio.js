@@ -25,14 +25,11 @@ class Bio extends Component {
     }
 
     componentDidMount(){
-        console.log(this.props)
         axios
         .get("/api/users/login")
         .then(response => {
-            console.log(response)
             this.setState({loggedInUser: response.data.userId})
             this.setState({userData: response.data.userData})
-            console.log(this.state)
         })
         .catch(error => {
           console.log("Error fetching and parsing data", error);
@@ -49,13 +46,11 @@ class Bio extends Component {
               [name]:value
             }
           }));
-          console.log(this.state)
       };
     
  
 handleFormSubmit = async (event) => {
 const res = await axios.post('/api/users/'+this.state.loggedInUser+"/edit", this.state.userData );
-await console.log(res)
 await this.setState({editing: false})
 await this.props.renderUser()
 };

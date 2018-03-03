@@ -28,6 +28,8 @@ import background from "../img/midnight.jpg";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 import SecondaryModal from "../Login/Components/SecondaryLoginModal";
+import ProjectShareBox from './Components/ProjectShareBox'
+import ProjectsView from './Components/ProjectsView'
 
 class ProfilePage extends Component {
   constructor(props) {
@@ -98,8 +100,9 @@ class ProfilePage extends Component {
         ) {
           this.setState({ renderedUser: response.data });
           this.setState({ url: this.props.match.params.id });
+          console.log("Rendered User Updated")
         } else {
-          // console.log("Information already up to date");
+          console.log("Information already up to date");
         }
       })
       .catch(error => {
@@ -162,9 +165,9 @@ class ProfilePage extends Component {
             <Grid.Row>
               <Grid.Column width={6}>
                 <Divider horizontal>
-                  <h2 textAlign="center" style={{ color: "white" }}>
+                  <h3 textAlign="center" style={{ color: "white" }}>
                   <Icon circular name='user' />My Bio
-                  </h2>
+                  </h3>
                 </Divider>
                 <Bio
                   userInfo={this.state.renderedUser}
@@ -176,9 +179,9 @@ class ProfilePage extends Component {
 
               <Grid.Column width={6}>
                 <Divider horizontal>
-                  <h2 textAlign="center" style={{ color: "white" }}>
+                  <h3 textAlign="center" style={{ color: "white" }}>
                   <Icon circular name='id card' />About Me
-                  </h2>
+                  </h3>
                 </Divider>
                 <About
                   userInfo={this.state.renderedUser}
@@ -191,9 +194,9 @@ class ProfilePage extends Component {
 
                <Grid.Column width={4}>
                     <Divider horizontal>
-                      <h2 textAlign="center" style={{ color: "white" }}>
+                      <h3 textAlign="center" style={{ color: "white" }}>
                       <Icon circular name='code' />Languages
-                      </h2>
+                      </h3>
                     </Divider>
 
                     <LanguagesView
@@ -208,9 +211,9 @@ class ProfilePage extends Component {
 
               <Grid.Column width={16} style={{ marginTop: "10px" }}>
                 <Divider horizontal>
-                  <h2 textAlign="center" style={{ color: "white" }}>
+                  <h3 textAlign="center" style={{ color: "white" }}>
                   <Icon circular name='sitemap' />My Connections
-                  </h2>
+                  </h3>
                 </Divider>
 
                 <Grid.Row>
@@ -231,18 +234,31 @@ class ProfilePage extends Component {
 
 
                   <Grid.Column width={16} style={{ marginTop: "10px" }}>
-                         <Divider horizontal><h3  textAlign="center" style={{color: "white"}}>News Feed</h3></Divider>
+                         <Divider horizontal><h3  textAlign="center" style={{color: "white"}}>My Projects</h3></Divider>
                   
-                    <Newsfeed />
+                         {this.state.loggedInUser.userId ===
+                      this.props.match.params.id &&
+                    this.state.loggedInUser.loggedIn ? (
+                      <ProjectShareBox loggedInUser={this.state.loggedInUser} renderUser={this.renderUser}/>
+                    ) : null}
+
                   </Grid.Column>
+
+                  <Grid.Column width={16} style={{marginTop:"4%"}}>
+                    <ProjectsView
+                      userInfo={this.state.renderedUser}
+                      loggedInUserInfo={this.state.loggedInUser}
+                      url={this.state.url}
+                    />
+                  </Grid.Column>
+
+
                 </Grid.Row>
               </Grid.Column>
               <Grid.Column width={8}>
                 <Grid.Row>
-                  <Grid.Column
-                    width={16}
-                    style={{ marginBottom: "10px", marginTop: "3.3%"}}
-                  >
+                  <Grid.Column width={16} style={{ marginBottom: "10px"}}>
+                  <Divider horizontal><h3  textAlign="center" style={{color: "white"}}>News Feed</h3></Divider>
                     {this.state.loggedInUser.userId ===
                       this.props.match.params.id &&
                     this.state.loggedInUser.loggedIn ? (

@@ -48,7 +48,8 @@ class FeedPage extends Component {
             this.setState({job_title: response.data.userData.job_title});
             this.setState({image_url: response.data.userData.image_url});
             this.setState({connections: response.data.userData.connections});
-            this.setState({loggedInUser: response.data });             
+            this.setState({loggedInUser: response.data });
+            // this.setState({ loading: false })             
         })
         .catch(error => {
             console.log('Error fetching and parsing data', error);
@@ -100,7 +101,7 @@ renderLoaderPage(){
     return(
         <Segment style={{height: "100vh"}}>
         <Dimmer active>
-          <Loader size='massive' style={{marginTop: "5%"}}>Loading Your Feed</Loader>
+          <Loader size='massive' style={{marginTop: "5%", color: "#7EC6D1"}}><h1>Loading Your Feed</h1></Loader>
         </Dimmer>
       </Segment>
     )
