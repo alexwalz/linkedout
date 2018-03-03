@@ -71,10 +71,11 @@ class ShareBox extends Component {
       return(
 
     <Comment.Group style={{backgroundColor: "none"}}>
+    
     <Comment style={{backgroundColor: "transparent"}}>
-      <Comment.Avatar as='a' src={this.props.loggedInUser.userData.image_url}/>
+      <Comment.Avatar as='a' src={this.props.loggedInUser.image_url}/>
       <Comment.Content>
-        <Comment.Author as='a' style={{color: "white"}}>{this.props.loggedInUser.userData.firstName + " " + this.props.loggedInUser.userData.lastName}</Comment.Author>
+        <Comment.Author as='a' style={{color: "white"}}>{this.props.loggedInUser.firstName + " " + this.props.loggedInUser.lastName}</Comment.Author>
         <Comment.Metadata>
           <div></div>
         </Comment.Metadata>
@@ -96,29 +97,6 @@ class ShareBox extends Component {
 
     renderDisplay(){
       return(
-          // <Card fluid onClick={()=> this.edit()} style={{boxShadow: "0 4px 6px 0 rgba(0, 0, 0, 0.2)", border: "none"}} style={messageStyles} >
-          //   <Card.Content style={{textAlign: "center"}}>
-          //     <Card.Description><h3 style={{ marginTop: "5%", color:"white"}}> <Icon circular name='plus' />Create New Post</h3></Card.Description>
-          //   </Card.Content>
-          //    <Card.Content extra>
-          //     <Grid>
-          //       <Grid.Row>
-
-          //         <Grid.Column width={9}>
-          //         </Grid.Column>
-
-          //         <Grid.Column width={3}>
-            
-          //         </Grid.Column>
-
-          //         <Grid.Column width={3}>
-          //         </Grid.Column>
-
-          //       </Grid.Row>
-                
-          //     </Grid>
-          //   </Card.Content>
-          // </Card>
           <Step.Group fluid vertical style={{backgroundColor:"transparent", border: "1px solid white"}}>
               <Step active onClick={()=> this.edit()}  style={{backgroundColor:"transparent"}}>
               <Icon name='plus' color="grey" />

@@ -48,7 +48,7 @@ class ShareBox extends Component {
   handleFormSubmit = ()=> {
     axios
       .post(
-          `/api/users/`+this.props.loggedInUser.userId+"/newProject", 
+          `/api/users/`+this.props.loggedInUser._id+"/newProject", 
           {
             project_name: this.state.project_name,
             development_position: this.state.development_position,
@@ -73,9 +73,9 @@ class ShareBox extends Component {
 
     <Comment.Group style={{backgroundColor: "none"}}>
     <Comment style={{backgroundColor: "transparent"}}>
-      <Comment.Avatar as='a' src={this.props.loggedInUser.userData.image_url} circular/>
+      <Comment.Avatar as='a' src={this.props.loggedInUser.image_url} circular/>
       <Comment.Content>
-        <Comment.Author as='a' style={{color: "white"}}>{this.props.loggedInUser.userData.firstName + " " + this.props.loggedInUser.userData.lastName}</Comment.Author>
+        <Comment.Author as='a' style={{color: "white"}}>{this.props.loggedInUser.firstName + " " + this.props.loggedInUser.lastName}</Comment.Author>
         <Comment.Metadata>
           <div></div>
         </Comment.Metadata>
@@ -106,7 +106,7 @@ class ShareBox extends Component {
               <Icon name='plus' color="grey" />
               <Step.Content>
                 <Step.Title style={{color: "#67C8D3"}}>Projects</Step.Title>
-                <Step.Description style={{color: "white"}}>Click Here To Create A New Project</Step.Description>
+                <Step.Description style={{color: "white"}}>Click Here To Add A New Project</Step.Description>
               </Step.Content>
               </Step>
        </Step.Group>

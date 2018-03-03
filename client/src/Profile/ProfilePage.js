@@ -239,7 +239,7 @@ class ProfilePage extends Component {
                          {this.state.loggedInUser.userId ===
                       this.props.match.params.id &&
                     this.state.loggedInUser.loggedIn ? (
-                      <ProjectShareBox loggedInUser={this.state.loggedInUser} renderUser={this.renderUser}/>
+                      <ProjectShareBox loggedInUser={this.state.loggedInUser.userData} renderUser={this.renderUser}/>
                     ) : null}
 
                   </Grid.Column>
@@ -262,7 +262,7 @@ class ProfilePage extends Component {
                     {this.state.loggedInUser.userId ===
                       this.props.match.params.id &&
                     this.state.loggedInUser.loggedIn ? (
-                      <ShareBox loggedInUser={this.state.loggedInUser} renderUser={this.renderUser}/>
+                      <ShareBox loggedInUser={this.state.loggedInUser.userData} renderUser={this.renderUser}/>
                     ) : null}
                   </Grid.Column>
 
