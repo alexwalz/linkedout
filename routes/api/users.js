@@ -54,6 +54,9 @@ router.post("/", upload.single('theseNamesMustMatch'), (req, res) => {
     console.log("... made it to the post...");
     db.user.create(JSON.parse(req.body.newUser))
         .then(dbModel => {
+            if (req.file == null) { // if no file was input
+                return res.json(dbModel);
+            }
             let mimetype = req.file.mimetype;
             let arr = mimetype.split("/");
             let keyname = dbModel._id + "." + arr[1];
@@ -123,9 +126,9 @@ router.route("/addPost")
 router.route("/posts")
     .get(function (req, res) {
         usersController.findRecentPosts(req, res);
-    })
+    });
 
-router.route("/addPost")
+router.route("/addPost");
 router.route("/:id/newProject")
     .put(function (req, res) {
         usersController.newProject(req, res);
