@@ -7,7 +7,7 @@ import NewsFeed from '../Profile/Components/NewsFeed';
 import axios from 'axios';
 import Banner from '../Profile/Components/Banner'
 import background from "../img/midnight.jpg";
-import UserCard from '../Login/Components/NewUserCard'
+import UserCard from '../Login/Components/FeedUserCard'
 import FeaturedJobContainer from './Components/FeaturedJobContainer'
 import FeedShareBox from './Components/ShareBox'
 import NewProjectBox from '../Profile/Components/ProjectShareBox'
