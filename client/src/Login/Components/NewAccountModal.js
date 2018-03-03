@@ -3,6 +3,7 @@ import { Button, Header, Icon, Modal, Form, Grid, Input, TextArea } from 'semant
 import axios from 'axios'
 import {Redirect} from 'react-router-dom'
 import NewUserCard from './NewUserCard'
+import FileUploader from '../../Profile/Components/FileUploader'
 
 class LoginModal extends Component {
     constructor(props) {
@@ -12,7 +13,7 @@ class LoginModal extends Component {
             lastName: "Doe",
             email: "JohnDoe@johndoe.com",
             about:
-              "Here is a bunch of filler information about a fella named John Doe.  You should only be seing this information is our website is broken.  If that is the case, please contact us and let us know that you are seing the generic 'State' information.",
+              "Here is a bunch of filler information about a fella named John Doe. This is the area that you explain a whole bunch of information about yourself.  This way, employers and fellow developers will be able to see what type of person you are.",
             phone: "123-456-7890",
             image_url:
               "http://www.terry.uga.edu/digitalmarketing/images/icons/user.jpg",
@@ -39,6 +40,12 @@ class LoginModal extends Component {
                 console.log(e)
             })
           };
+
+          handleImageFile = (result) => {
+              console.log(result)
+              this.setState({image_url: result.blob})
+              console.log(this.state)
+          }
 
 
     render() { 
@@ -81,6 +88,8 @@ class LoginModal extends Component {
                                 <Form.Input onChange={this.handleInputChange} label='Birthday' placeholder={this.state.birthday} type='text' name="birthday"/>
                                 <Form.Input onChange={this.handleInputChange} label='Location' placeholder={this.state.location} type='text' name="location"/>
                                 </Form.Group>
+
+                                <FileUploader imageFile={this.handleImageFile} name="image_url" onChange={this.handleInputChange}/>
 
                                 <Form.TextArea style={{width: "110%"}}rows={12} onChange={this.handleInputChange} label='About' placeholder='Tell us more about you to display on your profile' name="about"/>
                                 <Button color='teal' inverted onClick={this.handleFormSubmit}>Create Account</Button>
