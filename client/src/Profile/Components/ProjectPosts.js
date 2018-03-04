@@ -90,30 +90,38 @@ class ShareBox extends Component {
     renderDisplay(){
       return(
           <Step.Group fluid vertical style={{backgroundColor:"transparent", border: "1px solid white"}}>
+          
               <Step active onClick={()=> this.edit()}  style={{backgroundColor:"transparent"}}>
-              <Icon name='code' color="grey" />
-              <Step.Content>
-                <Step.Title style={{color: "#67C8D3", width: "100%"}}>{this.props.project_name}</Step.Title>
-                <Step.Description style={{color: "white"}}>{this.props.development_position}</Step.Description>
-              </Step.Content>
+              <div style={{width: "100%"}}>
+                  <Step.Content>
+                    <Step.Title style={{color: "#67C8D3", width: "100%"}}>{this.props.project_name}</Step.Title>
+                    <Step.Description style={{color: "white"}}>{this.props.development_position}</Step.Description>
+                  </Step.Content>
+              </div>
                 
 
               <Step.Content style={{marginTop:"15px"}}>
-
+              <div style={{width: "100%"}}>
               <Button.Group>
                     <Link to={this.props.code_url} target="_blank"><Button basic color="grey">View Code</Button></Link>
                     <Button.Or />
                     <Link to={this.props.project_url} target="_blank"><Button basic color="grey">Production</Button></Link>
                 </Button.Group>
+                </div>
 
-                <Step.Title style={{color: "#67C8D3", marginTop:"25px"}}>Project Description</Step.Title>
-                <Step.Description style={{color: "white"}}>{this.props.project_description}</Step.Description>
+                  <div style={{width: "100%"}}>
+                    <Step.Title style={{color: "#67C8D3", marginTop:"25px"}}>Project Description</Step.Title>
+                    <Step.Description style={{color: "white"}}>{this.props.project_description}</Step.Description>
+                </div>
+
               </Step.Content>
 
+            <div style={{width: "100%"}}>
             <Step.Content>
                 <Step.Title style={{color: "#67C8D3", marginTop: "15px"}}>Languages</Step.Title>
                 <Step.Description style={{color: "white"}}>{this.props.languages}</Step.Description>
               </Step.Content>
+              </div>
 
 
               </Step>
