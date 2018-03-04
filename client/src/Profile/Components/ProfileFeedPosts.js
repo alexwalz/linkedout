@@ -1,20 +1,24 @@
 import React from 'react'
 import { Message, Image, Grid } from 'semantic-ui-react'
+import PostComments from './PostComments'
+
 
 let messageStyles={
     border: "2px solid grey",
     padding: "3%",
     borderImage: "linear-gradient(to bottom, #3acfd5 0%, #3a4ed5 100%)",
-    borderImageSlice: "1",
-    background: "#4b79a1", /* fallback for old browsers */
-    background: "-webkit-linear-gradient(to right, #4b79a1, #283e51)", /* Chrome 10-25, Safari 5.1-6 */
-    background: "linear-gradient(to right, #4b79a1, #283e51)"
+    backgroundColor: "transparent"
+    // borderImageSlice: "1",
+    // background: "#4b79a1", /* fallback for old browsers */
+    // background: "-webkit-linear-gradient(to right, #4b79a1, #283e51)", /* Chrome 10-25, Safari 5.1-6 */
+    // background: "linear-gradient(to right, #4b79a1, #283e51)"
 }
 
 
 function FeedMessages(props) {
     return (
       <div style={{margin: "5px"}}>
+      
           <Message info style={messageStyles}>
           <Grid columns={2}>
                 <Grid.Row>
@@ -40,9 +44,12 @@ function FeedMessages(props) {
                 </Grid.Row>
                 
             </Grid>
-            
-            
-       
+
+                <div>
+                    <PostComments userInfo = {props.userInfo} LoggedInUserInfo = {props.LoggedInUserInfo}/>
+                    
+                </div>
+
         </Message>
       </div>
     )

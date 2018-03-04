@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { Header, Segment, Container, Divider, Loader, Icon } from 'semantic-ui-react'
-import FeedMessages from './ProfileFeedPosts'
+import ProfileFeedPosts from './ProfileFeedPosts'
 
 class ProfileFeed extends React.Component {
   
@@ -57,7 +57,7 @@ class ProfileFeed extends React.Component {
         {this.props.userInfo.posts.length > 0 ? 
         
         this.props.userInfo.posts.slice(0).reverse().map((message, key) => (
-          <FeedMessages messageType = {message.messageType} name={this.props.userInfo.firstName + " " + this.props.userInfo.lastName} image_url={this.props.userInfo.image_url} message = {message.message} date={message.date}/>
+          <ProfileFeedPosts messageType = {message.messageType} name={this.props.userInfo.firstName + " " + this.props.userInfo.lastName} image_url={this.props.userInfo.image_url} message = {message.message} date={message.date} userInfo={this.props.userInfo} loggedInUserInfo={this.props.loggedInUserInfo} url={this.props.url}/>
       ))
         
         

@@ -113,7 +113,7 @@ renderFeedPage(){
                                     </Grid.Column>
 
                                     <Grid.Column width={16}>
-                                        <FeedContainer userInfo={this.state.loggedInUser} />
+                                        <FeedContainer  loggedInUser={this.state.loggedInUser} />
                                     </Grid.Column>
 
                                 </Grid.Row>

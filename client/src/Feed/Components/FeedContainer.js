@@ -1,24 +1,16 @@
 import React from 'react'
 import { Header, Segment, Container, Divider, Icon } from 'semantic-ui-react'
-import FeedPosts from './FeedPosts'
+import ProfileFeedPosts from '../../Profile/Components/ProfileFeedPosts'
+
 
 const ProfileFeed = (props) => (
       <div style={{marginTop: 40}}>
             <Divider horizontal><h3 textAlign="center" style={{ color: "white" }}><Icon circular name='share alternate' />Posts Feed</h3></Divider>
 
-            <FeedPosts messageType = "Job Posting" name={props.userInfo.firstName + " " + props.userInfo.lastName} image_url={props.userInfo.image_url} message = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. A scelerisque purus semper eget duis at tellus at urna. Magna eget est lorem ipsum dolor sit amet consectetur. Gravida dictum fusce ut placerat orci." date="February 13, 2018"/>
+      {props.loggedInUser.posts.slice(0).reverse().map((message, key) => (
+          <ProfileFeedPosts messageType = {message.messageType} name={props.loggedInUser.firstName + " " + props.loggedInUser.lastName} image_url={props.loggedInUser.image_url} message = {message.message} date={message.date} userInfo={props.loggedInUser} loggedInUserInfo={props.loggedInUserInfo}/>
+      ))}
 
-            <FeedPosts messageType = "News Feed" name={props.userInfo.firstName + " " + props.userInfo.lastName} image_url={props.userInfo.image_url} message = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. A scelerisque purus semper eget duis at tellus at urna. Magna eget est lorem ipsum dolor sit amet consectetur. Gravida dictum fusce ut placerat orci." date="February 13, 2018"/>
-
-            <FeedPosts messageType = "News Feed" name={props.userInfo.firstName + " " + props.userInfo.lastName} image_url={props.userInfo.image_url} message = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. A scelerisque purus semper eget duis at tellus at urna. Magna eget est lorem ipsum dolor sit amet consectetur. Gravida dictum fusce ut placerat orci." date="February 13, 2018"/>
-
-            <FeedPosts messageType = "Thought of The Day" name={props.userInfo.firstName + " " + props.userInfo.lastName} image_url={props.userInfo.image_url} message = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. A scelerisque purus semper eget duis at tellus at urna. Magna eget est lorem ipsum dolor sit amet consectetur. Gravida dictum fusce ut placerat orci." date="February 13, 2018"/>
-
-            <FeedPosts messageType = "Job Posting" name={props.userInfo.firstName + " " + props.userInfo.lastName} image_url={props.userInfo.image_url} message = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. A scelerisque purus semper eget duis at tellus at urna. Magna eget est lorem ipsum dolor sit amet consectetur. Gravida dictum fusce ut placerat orci." date="February 13, 2018"/>
-
-            <FeedPosts messageType = "Recruitment" name={props.userInfo.firstName + " " + props.userInfo.lastName} image_url={props.userInfo.image_url} message = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. A scelerisque purus semper eget duis at tellus at urna. Magna eget est lorem ipsum dolor sit amet consectetur. Gravida dictum fusce ut placerat orci." date="February 13, 2018"/>
-
-            <FeedPosts messageType = "Thought of The Day" name={props.userInfo.firstName + " " + props.userInfo.lastName} image_url={props.userInfo.image_url} message = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. A scelerisque purus semper eget duis at tellus at urna. Magna eget est lorem ipsum dolor sit amet consectetur. Gravida dictum fusce ut placerat orci." date="February 13, 2018"/>
     </div>
 )
 
