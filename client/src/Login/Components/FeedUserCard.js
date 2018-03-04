@@ -22,28 +22,41 @@ const NewUserCard = (props) => (
                             <List.Icon name='users' />
                             <List.Content>{props.userInfo.firstName + " " + props.userInfo.lastName}</List.Content>
                             </List.Item>
+
+                            {props.userInfo.location === "" ? null :
                             <List.Item>
                             <List.Icon name='marker'/>
                             <List.Content>{props.userInfo.location}</List.Content>
                             </List.Item>
+                            }
+
+                            {props.userInfo.email === "" ? null :
                             <List.Item>
                             <List.Icon name='mail' />
                             <List.Content>
                                 {props.userInfo.email}
                             </List.Content>
                             </List.Item>
+                            }
+
+                            {props.userInfo.phone === "" ? null : 
                             <List.Item>
                             <List.Icon name='phone' />
                             <List.Content>
                             <List.Content>{props.userInfo.phone}</List.Content>
                             </List.Content>
                             </List.Item>
+                            }
+
+                            {props.userInfo.birthday === "" ? null : 
                             <List.Item>
                             <List.Icon name='calendar' />
                             <List.Content>
                             <List.Content>{props.userInfo.birthday}</List.Content>
                             </List.Content>
                             </List.Item>
+                            }
+
                         </List>
 
             <Header as='h2' icon textAlign="center">
@@ -55,22 +68,30 @@ const NewUserCard = (props) => (
                 {props.userInfo.about}
             </div>
 
-            <Header as='h2' icon textAlign="center">
-            <Divider horizontal>Company Information</Divider>
-                <Header.Subheader >
-                </Header.Subheader>
-            </Header>
+            {props.userInfo.current_company === "" && props.userInfo.job_title === ""  ? null :
+                        <Header as='h2' icon textAlign="center">
+                        <Divider horizontal>Company Information</Divider>
+                            <Header.Subheader >
+                            </Header.Subheader>
+                        </Header>
+            }
 
 
                         <List style={{color: "grey"}} textAlign="center">
+                            {props.userInfo.current_company === "" ? null : 
                             <List.Item>
                             <List.Icon name='building outline' />
                             <List.Content>{props.userInfo.current_company}</List.Content>
                             </List.Item>
+                            }
+
+                            {props.userInfo.job_title === "" ? null : 
                             <List.Item>
                             <List.Icon name='circle notched'/>
                             <List.Content>{props.userInfo.job_title}</List.Content>
                             </List.Item>
+                            }
+
                             <List.Item>
                             </List.Item>
                         </List>

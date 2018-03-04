@@ -52,18 +52,7 @@ class ProfilePage extends Component {
         current_company: "John Doe's Dev Company",
         education: "None",
         location: "Silicon Valley",
-        languages: [
-          "React",
-          "Node",
-          "Express",
-          "HTML",
-          "CSS",
-          "Redux",
-          "Handlebars",
-          "Ruby",
-          "Javascript",
-          "Jquery"
-        ],
+        languages: [],
         connections: [],
         posts: [],
         url: ""

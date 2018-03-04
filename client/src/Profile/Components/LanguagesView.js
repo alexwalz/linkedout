@@ -98,6 +98,21 @@ class LanguagesView extends Component {
      
     }
 
+    renderError(){
+      return(
+      
+        <div style={{marginTop: "8%"}}>
+        <Header as='h3' icon textAlign='center'>
+          <Icon name='warning sign' color="grey" circular />
+          <Header.Content style={{color: "#5CC1CD"}}>
+            No Languages Added For This Profile
+          </Header.Content>
+        </Header>
+      </div>
+  
+      )
+    }
+
     renderForm(){
 
       let messageStyles={
@@ -151,7 +166,7 @@ class LanguagesView extends Component {
                 <Grid.Column textAlign="center">
                 </Grid.Column>
               </Grid.Row>
-
+                {this.props.userInfo.languages.length !== 0 ? 
                   <Grid>
                     <Grid.Row>
                           {this.props.userInfo.languages.map(language => (
@@ -159,8 +174,13 @@ class LanguagesView extends Component {
                                 <Languages language={language} />
                             </Grid.Column>
                           ))}
+                          
                       </Grid.Row>
-                    </Grid>
+                   </Grid>
+                   
+                      :this.renderError()
+                  }
+                    
         </div>
         )
     }

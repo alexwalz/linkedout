@@ -10,7 +10,7 @@ class FeaturedJobsContainer extends Component {
     render() { 
         return ( 
             <Container>
-                    <Divider horizontal><h3 textAlign="center" style={{ color: "white" }}><Icon circular name='info' />Featured Job Posting</h3></Divider>
+                    <Divider horizontal><h3 textAlign="center" style={{ color: "#7ABEC9" }}><Icon circular name='info' />Featured Job Posting</h3></Divider>
                     <FeaturedJob/>
             </Container>
          )

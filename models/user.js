@@ -24,10 +24,11 @@ var UserSchema = new Schema({
     },
     about: {
         type: String,
-        required: true
+        default: ""
     },
     phone: {
-        type: String
+        type: String,
+        default: ""
     },
     image_url: {
         type: String,
@@ -36,7 +37,7 @@ var UserSchema = new Schema({
     },
     job_title: {
         type: String,
-        default: "Not Applicable"
+        default: ""
     },
     birthday: {
         type: String,
@@ -44,7 +45,7 @@ var UserSchema = new Schema({
     },
     current_company: {
         type: String,
-        default: "Not Applicable"
+        default: ""
     },
     posts: [{
         type: Schema.Types.ObjectId,
@@ -56,7 +57,7 @@ var UserSchema = new Schema({
     }],
     location: {
         type: String,
-        required: true
+        default: ""
     },
     languages: [],
     connections: [{

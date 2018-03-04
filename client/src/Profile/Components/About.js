@@ -62,6 +62,22 @@ await this.props.renderUser()
   }
 
 
+  renderError(){
+    return(
+    
+      <div style={{marginTop: "7%"}}>
+      <Header as='h3' icon textAlign='center'>
+        <Icon name='warning sign' color="grey" circular />
+        <Header.Content style={{color: "#5CC1CD"}}>
+          No Information Added For This Profile
+        </Header.Content>
+      </Header>
+    </div>
+
+    )
+  }
+
+
   renderForm() {
     return (
       <Card
@@ -98,7 +114,9 @@ await this.props.renderUser()
 
   renderDisplay() {
     return (
+      
       <div style={{ marginBottom: "10px" }}>
+      
         <Grid.Row style={{ marginBottom: "10px", marginBottom: "10px" }}>
           {this.props.loggedInUserInfo.userId === this.props.url &&
           this.props.loggedInUserInfo.loggedIn ? (
@@ -106,10 +124,13 @@ await this.props.renderUser()
           ) : null}
           <Grid.Column textAlign="center" />
         </Grid.Row>
+        {this.props.userInfo.about === "" ? this.renderError() :
         <div style={{ color: "white" }}>{this.props.userInfo.about}</div>
+        }
       </div>
     );
   }
+  
 
   render() {
     return (
