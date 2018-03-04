@@ -56,7 +56,7 @@ class LoginModal extends Component {
                         </Form.Group>
                     </Form>
                     {this.state.incorrectPassword ? <span style={{color: "red"}}> Incorrect User or Password </span> : null}
-              <Button color='green' inverted onClick={this.handleFormSubmit}>
+              <Button  basic color='teal' onClick={this.handleFormSubmit}>
                 <Icon name='checkmark' /> Login
               </Button>
 
