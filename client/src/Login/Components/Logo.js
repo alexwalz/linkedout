@@ -9,17 +9,15 @@ let styles={
 const Logo = () => 
 
 
-<Grid columns={3} divided style={styles}>
+<Grid columns={2} divided style={styles}>
     <Grid.Row>
-      <Grid.Column>
+
+      <Grid.Column width={8}>
+      </Grid.Column>
+
+      <Grid.Column width={8}>
       <h1 style={{textAlign: "center", fontSize: "9rem"}}>DevSpot</h1>
         <Divider horizontal style={{color: "white"}}>Social Media For Developers</Divider>
-      </Grid.Column>
-
-      <Grid.Column>
-      </Grid.Column>
-
-      <Grid.Column>
       </Grid.Column>
 
     </Grid.Row>

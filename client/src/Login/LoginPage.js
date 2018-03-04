@@ -56,11 +56,8 @@ class LoginPage extends Component {
   
            
           {/* Mobile  */}
-          <Parallax.Layer offset={0} speed={0} factor={4.1} style={{ backgroundImage: `url('http://brtweed.co.uk/dist/images/bt3.jpg')`, backgroundSize: 'cover', backgroundPositionX: 'center' }} />
-          <Parallax.Layer offset={1} speed={0} className='hide-on-med-and-up' onClick={() => this.refs.parallax.scrollTo(0)} />
-  
-          <Parallax.Layer offset={0} speed={0} style={{ backgroundImage: `url(${'http://brtweed.co.uk/dist/images/bt3.jpg'})`, backgroundSize: 'cover' }} />
-          <Parallax.Layer offset={1} speed={0} style={{ backgroundImage: `url(${'http://getwallpapers.com/wallpaper/full/2/b/b/488958.jpg'})`, backgroundSize: 'cover' }} />
+          <Parallax.Layer offset={0} speed={0} style={{ backgroundImage: `url(${'https://images.pexels.com/photos/129208/pexels-photo-129208.jpeg?w=1260&h=750&dpr=2&auto=compress&cs=tinysrgb'})`, backgroundSize: 'cover' }} />
+          <Parallax.Layer offset={1} speed={0} style={{ backgroundImage: `url(${'https://images.pexels.com/photos/669996/pexels-photo-669996.jpeg?w=1260&h=750&dpr=2&auto=compress&cs=tinysrgb'})`, backgroundSize: 'cover' }} />
   
   
           <Parallax.Layer
@@ -68,12 +65,6 @@ class LoginPage extends Component {
             speed={0}
           >
             {/* stuff for First page */}
-            <Parallax.Layer
-              offset={0}
-              speed={0.5}
-              style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start' }}
-              >
-            </Parallax.Layer>
   
             <Parallax.Layer
               offset={0.0}
@@ -100,11 +91,11 @@ class LoginPage extends Component {
             </Parallax.Layer>
   
             <Parallax.Layer
-              offset={0.2}
+              offset={0.18}
               speed={1}
               style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start' }}
               >
-              <div  style={{marginLeft: "11.5%"}}>
+              <div  style={{marginLeft: "68.3%"}}>
                  <LoginModal/>
                  <NewAccountModal/>
               </div>

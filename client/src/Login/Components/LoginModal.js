@@ -42,7 +42,7 @@ class LoginModal extends Component {
 
     render() { 
         return ( 
-            <Modal trigger={<Button basic color="grey">User Login</Button>} basic size='small'>
+            <Modal trigger={<Button basic color="teal">User Login</Button>} basic size='small'>
             <Header icon='user' content='Existing User Login' />
             <Modal.Content>
               <p>Already Have an Account?  Login with your credentials below.</p>

@@ -71,7 +71,7 @@ class LoginModal extends Component {
 
     render() {
         return (
-            <Modal trigger={<Button basic color="grey">New Account</Button>} blur basic size='small'>
+            <Modal trigger={<Button basic color="teal">New Account</Button>} blur basic size='small'>
                 <Header icon='user' content='Create A New Account'/>
                 <Modal.Actions style={{marginTop: "-3%"}}>
 
