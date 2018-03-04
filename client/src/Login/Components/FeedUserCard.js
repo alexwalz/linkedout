@@ -1,6 +1,10 @@
 import React from 'react'
 import { Header, Icon, Image, Segment, Divider, List } from 'semantic-ui-react'
 
+ const aboutErrorMessage = () => {
+     return <div style={{color: "#7ABEC9"}}><h5>Edit Your Profile to add information about you</h5></div> 
+    }
+
 const NewUserCard = (props) => (
   <div>
         <Segment style={{textAlign: "center", minHeight:"76vh"}}>
@@ -65,7 +69,10 @@ const NewUserCard = (props) => (
                 </Header.Subheader>
             </Header>
             <div style={{color: "grey"}}>
-                {props.userInfo.about}
+                {props.userInfo.about !== "" ?
+                    props.userInfo.about
+                    : aboutErrorMessage()
+                }
             </div>
 
             {props.userInfo.current_company === "" && props.userInfo.job_title === ""  ? null :
