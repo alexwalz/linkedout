@@ -27,8 +27,7 @@ class  ProfileFeed extends Component {
             <div style={{marginTop: 40}}>
             <Divider horizontal><h3 textAlign="center" style={{ color: "white" }}><Icon circular name='share alternate' />Posts Feed</h3></Divider>
 
-                              {this.state.posts.slice(0).reverse().map((post, key) => (
-                                  console.log(post),
+                          {this.state.posts.slice(0).reverse().map((post, key) => (
                             <ProfileFeedPosts key={key} messageType= {post.messageType} name={post.firstName + " " + post.lastName} image_url={post.image_url} message ={post.message} userId={post.userId} userInfo={this.props.loggedInUser} />
                           ))}
 

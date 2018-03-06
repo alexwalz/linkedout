@@ -9,13 +9,9 @@ class ProfileFeed extends React.Component {
   };
 
   componentDidMount() {
-    this.setState({loading: true})
-
-  }
-
-  componentDidUpdate(){
     setTimeout(() => this.setState({ loading: false }), 2000); // simulates an async action, and hides the spinner
   }
+
 
   renderError(){
     return(
@@ -57,7 +53,8 @@ class ProfileFeed extends React.Component {
         {this.props.userInfo.posts.length > 0 ? 
         
         this.props.userInfo.posts.slice(0).reverse().map((message, key) => (
-          <ProfileFeedPosts messageType = {message.messageType} name={this.props.userInfo.firstName + " " + this.props.userInfo.lastName} image_url={this.props.userInfo.image_url} message = {message.message} date={message.date} userInfo={this.props.userInfo} loggedInUserInfo={this.props.loggedInUserInfo} url={this.props.url}/>
+          console.log(message),
+          <ProfileFeedPosts messageType = {message.messageType} name={this.props.userInfo.firstName + " " + this.props.userInfo.lastName} image_url={this.props.userInfo.image_url} message = {message.message} date={message.date} userInfo={this.props.userInfo} loggedInUserInfo={this.props.loggedInUserInfo} url={this.props.url} postId={message._id}/>
       ))
         
         

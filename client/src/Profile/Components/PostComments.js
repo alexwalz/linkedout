@@ -21,20 +21,16 @@ export default class CommentExamplecommentsCollapsed extends Component {
 
         <Comment.Group>
           <Comment>
+
+
             <Comment.Group collapsed={commentsCollapsed}>
                 <IndividualComments userInfo={this.props.userInfo} message="This is a first Comment"/>
             </Comment.Group>
 
-            <Comment.Group collapsed={commentsCollapsed}>
-                <IndividualComments userInfo={this.props.userInfo} message="This is a second Comment"/>
-            </Comment.Group>
+            
 
             <Comment.Group collapsed={commentsCollapsed}>
-                <IndividualComments userInfo={this.props.userInfo} message="This is a third Comment"/>
-            </Comment.Group>
-
-            <Comment.Group collapsed={commentsCollapsed}>
-            <PostReplyBox userInfo={this.props.userInfo} LoggedInUserInfo={this.props.LoggedInUserInfo}/>
+                <PostReplyBox postId={this.props.postId}/>
             </Comment.Group>
 
           </Comment>
