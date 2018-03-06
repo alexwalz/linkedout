@@ -12,6 +12,10 @@ const postschema = new Schema({
         required: true,
         enum: ['Job Posting', 'Recruitment', 'News Feed', 'Thought']
     },
+    comments: [{
+        type: Schema.Types.ObjectId,
+        ref: "Comment"
+    }],
     date: {
         type: Date,
         default: Date.now

@@ -3,5 +3,6 @@ module.exports = {
     Post: require("./Post"),
     Education: require("./education"),
     images: require("./images"),
-    classified: require("./classified")
+    classified: require("./classified"),
+    comment: require("./comment")
 };
