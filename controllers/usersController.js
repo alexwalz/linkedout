@@ -238,7 +238,7 @@ module.exports = {
             .then(function (dbComment) {
                 console.log(dbComment);
                 console.log(req.session.userId);
-                return db.Post.findOneAndUpdate({_id: req.param.postId}, {$push: {comments: dbComment._id}}, {new: true});
+                return db.Post.findOneAndUpdate({_id: req.param.postid}, {$push: {comments: dbComment._id}}, {new: true});
             })
             .then(function (dbPost) {
                 res.json(dbPost);
