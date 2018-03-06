@@ -128,6 +128,13 @@ router.route("/posts")
         usersController.findRecentPosts(req, res);
     });
 
+router.route("/comment/:postid")
+    .post(function (req, res) {
+        usersController.addComment(req, res);
+    });
+
+
+
 router.route("/addPost");
 router.route("/:id/newProject")
     .put(function (req, res) {
