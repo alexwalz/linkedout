@@ -1,6 +1,7 @@
 import React from 'react'
 import { Message, Image, Grid } from 'semantic-ui-react'
 import PostComments from './PostComments'
+import {Link} from 'react-router-dom'
 
 
 let messageStyles={
@@ -26,7 +27,7 @@ function FeedMessages(props) {
                 <Image  style={{ border: "2px solid #67C8D3", padding: "2px", height: "4rem", width: "4rem", borderRadius: "999px"}} src={props.image_url} rounded />
                 </Grid.Column>
                 <Grid.Column width={12}>
-                    <h2 style={{lineHeight: "4.2rem", color: "white"}}>{props.name}</h2>
+                    <Link to={'/home/profile/'+ props.userId}><h2 style={{lineHeight: "4.2rem", color: "white"}}>{props.name}</h2></Link>
                 </Grid.Column>
                 </Grid.Row>
 

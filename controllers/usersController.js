@@ -186,6 +186,7 @@ module.exports = {
                                     userId: dbUsers[u]._id,
                                     firstName: dbUsers[u].firstName,
                                     lastName: dbUsers[u].lastName,
+                                    image_url: dbUsers[u].image_url,
                                     message: dbPost[i].message,
                                     messageType: dbPost[i].messageType,
                                     date: dbPost[i].date
