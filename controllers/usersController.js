@@ -174,6 +174,7 @@ module.exports = {
             }
 
             db.user.find({posts: {$in: postIdArray}})
+            .populate("comments")
             .then(function(dbUsers) {
                 var newObj = [];
 
@@ -190,6 +191,7 @@ module.exports = {
                                     image_url: dbUsers[u].image_url,
                                     message: dbPost[i].message,
                                     messageType: dbPost[i].messageType,
+                                    comments: dbPost[i].comments,
                                     date: dbPost[i].date
                                 })
                             }
