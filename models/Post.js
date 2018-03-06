@@ -14,7 +14,7 @@ const postschema = new Schema({
     },
     comments: [{
         type: Schema.Types.ObjectId,
-        ref: "Comment"
+        ref: "comment"
     }],
     date: {
         type: Date,

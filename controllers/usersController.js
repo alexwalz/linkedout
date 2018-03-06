@@ -152,8 +152,8 @@ module.exports = {
     },
     updateUser: function(req, res) {
         db.user
-        .findOneAndUpdate({_id: req.params.id}, {$set: {current_company: req.body.current_company, 
-            job_title: req.body.job_title, 
+        .findOneAndUpdate({_id: req.params.id}, {$set: {current_company: req.body.current_company,
+            job_title: req.body.job_title,
             phone: req.body.phone,
             birthday: req.body.birthday,
             location: req.body.location,
@@ -217,7 +217,7 @@ module.exports = {
             })
             .catch(err => res.status(422).json(err));
     },
-    
+
     addConnection: function(req, res) {
         db.user.findByIdAndUpdate(req.session.userId, {$push: {connections: req.params.id}}, {new: true})
         .then(function(dbModel) {
@@ -226,27 +226,37 @@ module.exports = {
             .then(function(dbUser){
                 res.json(dbUser);
             }).catch(err => res.status(422).json(err));
-            
+
         })
         .catch(err => res.status(422).json(err));
     },
     addComment: function(req, res) {
-        let comment = {
-            text: req.body.text,
-            user: req.session.userId
-        };
-        db.comment
-            .create(comment)
-            .then(function (dbComment) {
-                console.log(dbComment);
-                console.log(req.session.userId);
-                return db.Post.findOneAndUpdate({_id: req.param.postid}, {$push: {comments: dbComment._id}}, {new: true});
+        db.user
+            .findById(req.session.userId)
+            .then(function(dbUser){
+                console.log("...Found user...");
+                console.log(dbUser);
+                dbUser.password = "";
+                let comment = {
+                    text: req.body.text,
+                    user: dbUser
+                };
+                db.comment
+                    .create(comment)
+                    .then(function (dbComment) {
+                        console.log("... dbComment made...");
+                        console.log(dbComment);
+                        console.log("user id..." + req.session.userId);
+                        console.log("post id..." + req.params.postid);
+                        return db.Post.findOneAndUpdate({_id: req.params.postid}, {$push: {comments: dbComment._id}}, {new: true});
+                    })
+                    .then(function (dbPost) {
+                        res.json(dbPost);
+                    })
+                    .catch(function (err) {
+                        res.json(err);
+                    });
             })
-            .then(function (dbPost) {
-                res.json(dbPost);
-            })
-            .catch(function (err) {
-                res.json(err);
-            });
+            .catch(err => res.status(422).json(err));
     },
 };

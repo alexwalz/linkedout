@@ -9,8 +9,7 @@ const commentschema = new Schema({
     },
     user: {
         type: Schema.Types.ObjectId,
-        ref: "User",
-        required: true
+        ref: "user"
     },
     date: {
         type: Date,
@@ -18,6 +17,6 @@ const commentschema = new Schema({
     }
 });
 
-const Comment = mongoose.model("Comment", commentschema);
+const comment = mongoose.model("comment", commentschema);
 
-module.exports = Comment;
+module.exports = comment;
