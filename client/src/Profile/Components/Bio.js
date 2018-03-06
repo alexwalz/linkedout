@@ -121,7 +121,7 @@ await this.props.renderUser()
     <div style={{marginBottom:"10px"}} >
     
     <Segment style={{backgroundColor: "transparent"}}>
-    <div style={{marginLeft: "auto", marginRight: "auto"}}>{this.props.loggedInUserInfo.userId === this.props.url && this.props.loggedInUserInfo.loggedIn ? null : (<ConnectButton textAlign="center" />)}</div>
+    <div style={{marginLeft: "auto", marginRight: "auto"}}>{this.props.loggedInUserInfo.userId === this.props.url && this.props.loggedInUserInfo.loggedIn ? null : (<ConnectButton loggedInUser = {this.props.loggedInUserInfo} userInfo={this.props.userInfo} url={this.props.url}/>)}</div>
     {this.props.loggedInUserInfo.userId === this.props.url && this.props.loggedInUserInfo.loggedIn ? <Icon name='pencil' size='small' color="grey" onClick={()=> this.edit()} /> : null }
     
         <Grid.Row style={{marginBottom: "10px"}}>

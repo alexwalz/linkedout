@@ -227,5 +227,24 @@ module.exports = {
             
         })
         .catch(err => res.status(422).json(err));
-    }
+    },
+    addComment: function(req, res) {
+        let comment = {
+            text: req.body.text,
+            user: req.session.userId
+        };
+        db.Comment
+            .create(comment)
+            .then(function (dbComment) {
+                console.log(dbComment);
+                console.log(req.session.userId);
+                return db.Post.findOneAndUpdate({_id: req.param.postId}, {$push: {comments: dbComment._id}}, {new: true});
+            })
+            .then(function (dbPost) {
+                res.json(dbPost);
+            })
+            .catch(function (err) {
+                res.json(err);
+            });
+    },
 };
