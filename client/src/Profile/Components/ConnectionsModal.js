@@ -13,73 +13,17 @@ class ConnectionsModal extends Component {
             <Header icon='users' content='All Connections' />
             <Modal.Content style={{width: "135%", margin: "0 0 0 -14%"}}>
 
-
-                    {/* Map through all the connections for that user here: */}
                     
                     <Grid>
                     <Grid.Row>
 
-                            {/* WE WILL WANT TO THROW A .MAP DOWN HERE INSTEAD.  HARD CODED FOR UI PURPOSES ONLY */}
+                        
+                        {this.props.userInfo.connections.map((connection, key) => (
+                            <Grid.Column width={3} style={{padding: "15px"}} textAlign="center">
+                                        <IndividualConnections firstName={connection.firstName} key={key} lastName ={connection.lastName}  job_title={connection.job_title}  image_url={connection.image_url} />
+                           </Grid.Column>
+                          ))}
                           
-                            <Grid.Column width={3} style={{padding: "15px"}} textAlign="center">
-                                         <IndividualConnections firstName="Jordan" lastName ="Jacobson" job_title="Software Engineer" image_url="http://www.patriots.com/sites/patriots.com/files/styles/borealis_no_limit_respondsmall/public/embedded-photos/vzn_brian_mecum_headshot_004.jpg?itok=SzZfv98_"/>
-                            </Grid.Column>
-
-                            <Grid.Column width={3} style={{padding: "15px"}} textAlign="center">
-                                         <IndividualConnections firstName="Jordan" lastName ="Jacobson" job_title="Software Engineer" image_url="http://www.patriots.com/sites/patriots.com/files/styles/borealis_no_limit_respondsmall/public/embedded-photos/vzn_brian_mecum_headshot_004.jpg?itok=SzZfv98_"/>
-                            </Grid.Column>
-
-                            <Grid.Column width={3} style={{padding: "15px"}} textAlign="center">
-                                         <IndividualConnections firstName="Jordan" lastName ="Jacobson" job_title="Software Engineer" image_url="http://www.patriots.com/sites/patriots.com/files/styles/borealis_no_limit_respondsmall/public/embedded-photos/vzn_brian_mecum_headshot_004.jpg?itok=SzZfv98_"/>
-                            </Grid.Column>
-
-                            <Grid.Column width={3} style={{padding: "15px"}} textAlign="center">
-                                         <IndividualConnections firstName="Jordan" lastName ="Jacobson" job_title="Software Engineer" image_url="http://www.patriots.com/sites/patriots.com/files/styles/borealis_no_limit_respondsmall/public/embedded-photos/vzn_brian_mecum_headshot_004.jpg?itok=SzZfv98_"/>
-                            </Grid.Column>
-
-                            <Grid.Column width={3} style={{padding: "15px"}} textAlign="center">
-                                         <IndividualConnections firstName="Jordan" lastName ="Jacobson" job_title="Software Engineer" image_url="http://www.patriots.com/sites/patriots.com/files/styles/borealis_no_limit_respondsmall/public/embedded-photos/vzn_brian_mecum_headshot_004.jpg?itok=SzZfv98_"/>
-                            </Grid.Column>
-
-                                                        <Grid.Column width={3} style={{padding: "15px"}} textAlign="center">
-                                         <IndividualConnections firstName="Jordan" lastName ="Jacobson" job_title="Software Engineer" image_url="http://www.patriots.com/sites/patriots.com/files/styles/borealis_no_limit_respondsmall/public/embedded-photos/vzn_brian_mecum_headshot_004.jpg?itok=SzZfv98_"/>
-                            </Grid.Column>
-
-                            <Grid.Column width={3} style={{padding: "15px"}} textAlign="center">
-                                         <IndividualConnections firstName="Jordan" lastName ="Jacobson" job_title="Software Engineer" image_url="http://www.patriots.com/sites/patriots.com/files/styles/borealis_no_limit_respondsmall/public/embedded-photos/vzn_brian_mecum_headshot_004.jpg?itok=SzZfv98_"/>
-                            </Grid.Column>
-
-                            <Grid.Column width={3} style={{padding: "15px"}} textAlign="center">
-                                         <IndividualConnections firstName="Jordan" lastName ="Jacobson" job_title="Software Engineer" image_url="http://www.patriots.com/sites/patriots.com/files/styles/borealis_no_limit_respondsmall/public/embedded-photos/vzn_brian_mecum_headshot_004.jpg?itok=SzZfv98_"/>
-                            </Grid.Column>
-
-                            <Grid.Column width={3} style={{padding: "15px"}} textAlign="center">
-                                         <IndividualConnections firstName="Jordan" lastName ="Jacobson" job_title="Software Engineer" image_url="http://www.patriots.com/sites/patriots.com/files/styles/borealis_no_limit_respondsmall/public/embedded-photos/vzn_brian_mecum_headshot_004.jpg?itok=SzZfv98_"/>
-                            </Grid.Column>
-
-                            <Grid.Column width={3} style={{padding: "15px"}} textAlign="center">
-                                         <IndividualConnections firstName="Jordan" lastName ="Jacobson" job_title="Software Engineer" image_url="http://www.patriots.com/sites/patriots.com/files/styles/borealis_no_limit_respondsmall/public/embedded-photos/vzn_brian_mecum_headshot_004.jpg?itok=SzZfv98_"/>
-                            </Grid.Column>
-
-                                                        <Grid.Column width={3} style={{padding: "15px"}} textAlign="center">
-                                         <IndividualConnections firstName="Jordan" lastName ="Jacobson" job_title="Software Engineer" image_url="http://www.patriots.com/sites/patriots.com/files/styles/borealis_no_limit_respondsmall/public/embedded-photos/vzn_brian_mecum_headshot_004.jpg?itok=SzZfv98_"/>
-                            </Grid.Column>
-
-                            <Grid.Column width={3} style={{padding: "15px"}} textAlign="center">
-                                         <IndividualConnections firstName="Jordan" lastName ="Jacobson" job_title="Software Engineer" image_url="http://www.patriots.com/sites/patriots.com/files/styles/borealis_no_limit_respondsmall/public/embedded-photos/vzn_brian_mecum_headshot_004.jpg?itok=SzZfv98_"/>
-                            </Grid.Column>
-
-                            <Grid.Column width={3} style={{padding: "15px"}} textAlign="center">
-                                         <IndividualConnections firstName="Jordan" lastName ="Jacobson" job_title="Software Engineer" image_url="http://www.patriots.com/sites/patriots.com/files/styles/borealis_no_limit_respondsmall/public/embedded-photos/vzn_brian_mecum_headshot_004.jpg?itok=SzZfv98_"/>
-                            </Grid.Column>
-
-                            <Grid.Column width={3} style={{padding: "15px"}} textAlign="center">
-                                         <IndividualConnections firstName="Jordan" lastName ="Jacobson" job_title="Software Engineer" image_url="http://www.patriots.com/sites/patriots.com/files/styles/borealis_no_limit_respondsmall/public/embedded-photos/vzn_brian_mecum_headshot_004.jpg?itok=SzZfv98_"/>
-                            </Grid.Column>
-
-                            <Grid.Column width={3} style={{padding: "15px"}} textAlign="center">
-                                         <IndividualConnections firstName="Jordan" lastName ="Jacobson" job_title="Software Engineer" image_url="http://www.patriots.com/sites/patriots.com/files/styles/borealis_no_limit_respondsmall/public/embedded-photos/vzn_brian_mecum_headshot_004.jpg?itok=SzZfv98_"/>
-                            </Grid.Column>
                        
                    </Grid.Row>
                </Grid>

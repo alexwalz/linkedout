@@ -89,10 +89,10 @@ class ProfilePage extends Component {
         ) {
           this.setState({ renderedUser: response.data });
           this.setState({ url: this.props.match.params.id });
-          console.log("Rendered User Updated")
         } else {
-          console.log("Information already up to date");
+
         }
+        
       })
       .catch(error => {
         console.log("Error fetching and parsing data", error);
