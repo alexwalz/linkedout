@@ -214,4 +214,17 @@ module.exports = {
             })
             .catch(err => res.status(422).json(err));
     },
+    
+    addConnection: function(req, res) {
+        db.user.findByIdAndUpdate(req.session.userId, {$push: {connections: req.params.id}}, {new: true})
+        .then(function(dbModel) {
+            db.user.findById(dbModel._id)
+            .populate("connections")
+            .then(function(dbUser){
+                res.json(dbUser);
+            }).catch(err => res.status(422).json(err));
+            
+        })
+        .catch(err => res.status(422).json(err));
+    }
 };

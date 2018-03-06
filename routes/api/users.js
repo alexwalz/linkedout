@@ -155,4 +155,9 @@ router
     })
     .delete(usersController.remove);
 
+    router.route("/connections/add/:id")
+    .post(function(req, res) {
+        usersController.addConnection(req, res);
+    })
+
 module.exports = router;
