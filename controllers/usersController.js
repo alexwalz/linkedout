@@ -239,9 +239,8 @@ module.exports = {
                 console.log(req.session.userId);
                 return db.Post.findOneAndUpdate({_id: req.param.postId}, {$push: {comments: dbComment._id}}, {new: true});
             })
-            .then(function (dbUser) {
-                dbUser.password = "";
-                res.json(dbUser);
+            .then(function (dbPost) {
+                res.json(dbPost);
             })
             .catch(function (err) {
                 res.json(err);
