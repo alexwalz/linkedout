@@ -235,7 +235,7 @@ module.exports = {
             text: req.body.text,
             user: req.session.userId
         };
-        db.Comment
+        db.comment
             .create(comment)
             .then(function (dbComment) {
                 console.log(dbComment);
