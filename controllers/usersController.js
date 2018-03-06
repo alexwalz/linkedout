@@ -184,6 +184,7 @@ module.exports = {
                             if (dbPost[i]._id.toString() == dbUsers[u].posts[o].toString()) {
                                 newObj.push({
                                     userId: dbUsers[u]._id,
+                                    postId: dbPost[i]._id,
                                     firstName: dbUsers[u].firstName,
                                     lastName: dbUsers[u].lastName,
                                     image_url: dbUsers[u].image_url,
