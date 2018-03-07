@@ -30,9 +30,8 @@ export default class CommentExamplecommentsCollapsed extends Component {
 
         {this.props.comments.slice(0).reverse().map((comment, key) => (
                     <Comment.Group collapsed={commentsCollapsed}>
-
                     {/* I NEED TO CHANGE THE PROPS THAT ARE BEING PASSED THROUGH HERE TO REFLECT THE COMMENTS OBJECT RATHER THAN THE USERINFO PROPS */}
-                    
+
                       <IndividualComments userInfo={this.props.userInfo} loggedInUser={this.props.loggedinUser} message={comment}/>
                   </Comment.Group>
       ))}
