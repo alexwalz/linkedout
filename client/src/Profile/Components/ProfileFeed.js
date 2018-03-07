@@ -54,7 +54,7 @@ class ProfileFeed extends React.Component {
         
         this.props.userInfo.posts.slice(0).reverse().map((message, key) => (
           console.log(message),
-          <ProfileFeedPosts messageType = {message.messageType} name={this.props.userInfo.firstName + " " + this.props.userInfo.lastName} image_url={this.props.userInfo.image_url} message = {message.message} date={message.date} userInfo={this.props.userInfo} loggedInUserInfo={this.props.loggedInUserInfo} url={this.props.url} postId={message._id}/>
+          <ProfileFeedPosts messageType = {message.messageType} name={this.props.userInfo.firstName + " " + this.props.userInfo.lastName} image_url={this.props.userInfo.image_url} message = {message.message} date={message.date} userInfo={this.props.userInfo} loggedInUserInfo={this.props.loggedInUserInfo} url={this.props.url} postId={message._id} comments={message.comments} updateParent={this.props.updateParent}/>
       ))
         
         

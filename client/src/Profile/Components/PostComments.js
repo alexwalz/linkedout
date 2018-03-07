@@ -23,14 +23,18 @@ export default class CommentExamplecommentsCollapsed extends Component {
           <Comment>
 
 
-            <Comment.Group collapsed={commentsCollapsed}>
-                <IndividualComments userInfo={this.props.userInfo} message="This is a first Comment"/>
-            </Comment.Group>
+        {this.props.comments.slice(0).reverse().map((comment, key) => (
+                    <Comment.Group collapsed={commentsCollapsed}>
+                      <IndividualComments userInfo={this.props.userInfo} message={comment}/>
+                  </Comment.Group>
+      ))}
+
+
 
             
 
             <Comment.Group collapsed={commentsCollapsed}>
-                <PostReplyBox postId={this.props.postId}/>
+                <PostReplyBox postId={this.props.postId} updateParent={this.props.updateParent}/>
             </Comment.Group>
 
           </Comment>

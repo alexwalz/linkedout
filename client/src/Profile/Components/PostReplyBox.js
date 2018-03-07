@@ -20,7 +20,10 @@ import axios from 'axios'
             text: this.state.text
         })
         .then(response => {
-          console.log(response)
+          console.log(response),
+          this.props.updateParent(),
+          this.setState({text: ""}),
+          this.refs.text.value = '';
         })
         .catch(error => console.log(error));
       }
@@ -36,9 +39,9 @@ import axios from 'axios'
 
       render(props) { 
           return ( 
-            <div>
+              <div>
                     <Form style={{marginBottom: "2%", marginTop: "4%"}}>
-                        <TextArea placeholder='Reply' onChange={this.handleInputChange} name="text" />
+                        <TextArea placeholder='Reply' onChange={this.handleInputChange} name="text" ref="text" value={this.state.text}/>
                     </Form>
 
                     <Button.Group size='small'>

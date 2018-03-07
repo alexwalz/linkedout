@@ -47,7 +47,7 @@ function FeedMessages(props) {
             </Grid>
 
                 <div>
-                    <PostComments userInfo = {props.userInfo} LoggedInUserInfo = {props.LoggedInUserInfo} postId={props.postId}/>
+                    <PostComments userInfo = {props.userInfo} LoggedInUserInfo = {props.LoggedInUserInfo} postId={props.postId} comments={props.comments} updateParent={props.updateParent}/>
                     
                 </div>
 

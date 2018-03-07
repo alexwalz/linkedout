@@ -35,8 +35,10 @@ class ProfilePage extends Component {
   constructor(props) {
     super(props);
     this.renderUser = this.renderUser.bind(this);
+    this.update = this.update.bind(this);
 
     this.state = {
+      update: false,
       loggedInUser: {},
       renderedUser: {
         firstName: "John",
@@ -59,6 +61,11 @@ class ProfilePage extends Component {
       }
     };
   }
+
+  update = () => {
+    this.setState({update: true})
+    console.log(this.state)
+}
 
   componentDidMount() {
     this.getLoggedInUser();
@@ -89,6 +96,7 @@ class ProfilePage extends Component {
         ) {
           this.setState({ renderedUser: response.data });
           this.setState({ url: this.props.match.params.id });
+          this.setState({update: false})
         } else {
 
         }
@@ -260,6 +268,7 @@ class ProfilePage extends Component {
                       userInfo={this.state.renderedUser}
                       loggedInUserInfo={this.state.loggedInUser}
                       url={this.state.url}
+                      updateParent = {this.update}
                     />
                   </Grid.Column>
                 </Grid.Row>
