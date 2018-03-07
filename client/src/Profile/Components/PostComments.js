@@ -6,6 +6,7 @@ import PostReplyBox from './PostReplyBox'
 export default class CommentExamplecommentsCollapsed extends Component {
   state = { commentsCollapsed: true }
 
+  
 
   showComments = () => (
       this.state.commentsCollapsed ? this.setState({commentsCollapsed: false}) : this.setState({commentsCollapsed: true})
@@ -13,11 +14,15 @@ export default class CommentExamplecommentsCollapsed extends Component {
 
   render(props) {
     const { commentsCollapsed } = this.state
-
+    const commentsNumber = this.props.comments.length
 
     return (
       <div>
-        <Button circular color="grey" icon='comments' onClick={this.showComments}/>
+         
+       <div>
+       <Button circular color="grey" icon='comments' onClick={this.showComments}/>
+        {commentsNumber === 0 ? <a style={{cursor: "pointer", color: "inherit"}} onClick={this.showComments}> {commentsNumber} comments</a> : <a style={{cursor: "pointer", color: "inherit"}} onClick={this.showComments}> {commentsNumber} comments</a>}
+        </div>
 
         <Comment.Group>
           <Comment>
