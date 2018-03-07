@@ -247,10 +247,10 @@ module.exports = {
                 db.comment
                     .create(comment)
                     .then(function (dbComment) {
-                        console.log("... dbComment made...");
-                        console.log(dbComment);
-                        console.log("user id..." + req.session.userId);
-                        console.log("post id..." + req.params.postid);
+                        //console.log("... dbComment made...");
+                        //console.log(dbComment);
+                        //console.log("user id..." + req.session.userId);
+                        //console.log("post id..." + req.params.postid);
                         db.Post.findOneAndUpdate({_id: req.params.postid}, {$push: {comments: dbComment._id}}, {new: true})
                             .then(function (dbPost) {
                                 let commentObj = {
@@ -259,8 +259,8 @@ module.exports = {
                                     date: dbComment.date,
                                     user: dbUser
                                 };
-                                console.log(".... responding with...");
-                                console.log(commentObj);
+                                //console.log(".... responding with...");
+                                //console.log(commentObj);
                                 res.json({data: commentObj});
                             });
                     })
