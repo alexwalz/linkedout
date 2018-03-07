@@ -17,7 +17,7 @@ module.exports = {
             .populate('posts')
             .populate('education')
             .populate('connections')
-            .then(function(dbUser){
+            .then(function (dbUser) {
                 dbUser.password = "";
                 res.json(dbUser);
             })
@@ -119,8 +119,8 @@ module.exports = {
                 res.json(err);
             });
     },
-    addPost: function(req, res) {
-      db.Post
+    addPost: function (req, res) {
+        db.Post
             .create(req.body)
             .then(function (dbPost) {
                 console.log(dbPost);
@@ -135,107 +135,110 @@ module.exports = {
                 res.json(err);
             });
     },
-    updateLanguages: function(req, res) {
+    updateLanguages: function (req, res) {
         var language = req.body.language;
         db.user
-            .findByIdAndUpdate(req.params.id, { $push: {languages: language}}, {new: true})
-            .then(function(dbModel) {
+            .findByIdAndUpdate(req.params.id, {$push: {languages: language}}, {new: true})
+            .then(function (dbModel) {
                 res.json(dbModel);
             })
             .catch(err => res.status(422).json(err));
     },
-    replaceLanguages: function(req, res) {
+    replaceLanguages: function (req, res) {
         db.user
-            .findOneAndUpdate({_id: req.params.id}, { $set: {languages: req.body}}, {new: true})
+            .findOneAndUpdate({_id: req.params.id}, {$set: {languages: req.body}}, {new: true})
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
-    updateUser: function(req, res) {
+    updateUser: function (req, res) {
         db.user
-        .findOneAndUpdate({_id: req.params.id}, {$set: {current_company: req.body.current_company,
-            job_title: req.body.job_title,
-            phone: req.body.phone,
-            birthday: req.body.birthday,
-            location: req.body.location,
-            about: req.body.about
-        }}).then(function(dbModel){
+            .findOneAndUpdate({_id: req.params.id}, {
+                $set: {
+                    current_company: req.body.current_company,
+                    job_title: req.body.job_title,
+                    phone: req.body.phone,
+                    birthday: req.body.birthday,
+                    location: req.body.location,
+                    about: req.body.about
+                }
+            }).then(function (dbModel) {
             res.json(dbModel);
-        }).catch(function(err){
+        }).catch(function (err) {
             res.status(422).json(err)
         })
     },
-    findRecentPosts: function(req, res) {
+    findRecentPosts: function (req, res) {
         db.Post.find({}).sort({viewCount: -1}).limit(50)
-        .then(function(dbPost) {
-            var postIdArray = [];
+            .then(function (dbPost) {
+                var postIdArray = [];
 
-            for(j = 0; j < dbPost.length; j++){
-                postIdArray.push(dbPost[j]._id);
-            }
-
-            db.user.find({posts: {$in: postIdArray}})
-            .populate("comments")
-            .then(function(dbUsers) {
-                var newObj = [];
-
-
-                for(i = 0; i < dbPost.length; i++) {
-                    for(u = 0; u < dbUsers.length; u++) {
-                        for(o = 0; o < dbUsers[u].posts.length; o++) {
-                            if (dbPost[i]._id.toString() == dbUsers[u].posts[o].toString()) {
-                                newObj.push({
-                                    userId: dbUsers[u]._id,
-                                    postId: dbPost[i]._id,
-                                    firstName: dbUsers[u].firstName,
-                                    lastName: dbUsers[u].lastName,
-                                    image_url: dbUsers[u].image_url,
-                                    message: dbPost[i].message,
-                                    messageType: dbPost[i].messageType,
-                                    comments: dbPost[i].comments,
-                                    date: dbPost[i].date
-                                })
-                            }
-                        }
-                    }
+                for (j = 0; j < dbPost.length; j++) {
+                    postIdArray.push(dbPost[j]._id);
                 }
 
-            res.json({data: newObj});
-            }).catch(function(err){
-                console.log(err);
-            })
-        }).catch(function(err){
+                db.user.find({posts: {$in: postIdArray}})
+                    .populate("comments")
+                    .then(function (dbUsers) {
+                        var newObj = [];
+
+
+                        for (i = 0; i < dbPost.length; i++) {
+                            for (u = 0; u < dbUsers.length; u++) {
+                                for (o = 0; o < dbUsers[u].posts.length; o++) {
+                                    if (dbPost[i]._id.toString() == dbUsers[u].posts[o].toString()) {
+                                        newObj.push({
+                                            userId: dbUsers[u]._id,
+                                            postId: dbPost[i]._id,
+                                            firstName: dbUsers[u].firstName,
+                                            lastName: dbUsers[u].lastName,
+                                            image_url: dbUsers[u].image_url,
+                                            message: dbPost[i].message,
+                                            messageType: dbPost[i].messageType,
+                                            comments: dbPost[i].comments,
+                                            date: dbPost[i].date
+                                        })
+                                    }
+                                }
+                            }
+                        }
+
+                        res.json({data: newObj});
+                    }).catch(function (err) {
+                    console.log(err);
+                })
+            }).catch(function (err) {
             console.log(err);
         })
     },
 
-    newProject: function(req, res) {
+    newProject: function (req, res) {
         var project = req.body;
         db.user
-            .findByIdAndUpdate(req.params.id, { $push: {projects: project}}, {new: true})
-            .then(function(dbModel) {
+            .findByIdAndUpdate(req.params.id, {$push: {projects: project}}, {new: true})
+            .then(function (dbModel) {
                 res.json(dbModel);
             })
             .catch(err => res.status(422).json(err));
     },
 
-    addConnection: function(req, res) {
+    addConnection: function (req, res) {
         db.user.findByIdAndUpdate(req.session.userId, {$push: {connections: req.params.id}}, {new: true})
-        .then(function(dbModel) {
-            db.user.findById(dbModel._id)
-            .populate("connections")
-            .then(function(dbUser){
-                res.json(dbUser);
-            }).catch(err => res.status(422).json(err));
+            .then(function (dbModel) {
+                db.user.findById(dbModel._id)
+                    .populate("connections")
+                    .then(function (dbUser) {
+                        res.json(dbUser);
+                    }).catch(err => res.status(422).json(err));
 
-        })
-        .catch(err => res.status(422).json(err));
+            })
+            .catch(err => res.status(422).json(err));
     },
-    addComment: function(req, res) {
+    addComment: function (req, res) {
         db.user
             .findById(req.session.userId)
-            .then(function(dbUser){
-                console.log("...Found user...");
-                console.log(dbUser);
+            .then(function (dbUser) {
+                //console.log("...Found user...");
+                //console.log(dbUser);
                 dbUser.password = "";
                 let comment = {
                     text: req.body.text,
@@ -244,14 +247,20 @@ module.exports = {
                 db.comment
                     .create(comment)
                     .then(function (dbComment) {
-                        console.log("... dbComment made...");
-                        console.log(dbComment);
-                        console.log("user id..." + req.session.userId);
-                        console.log("post id..." + req.params.postid);
-                        return db.Post.findOneAndUpdate({_id: req.params.postid}, {$push: {comments: dbComment._id}}, {new: true});
+                        //console.log("... dbComment made...");
+                        //console.log(dbComment);
+                        //console.log("user id..." + req.session.userId);
+                        //console.log("post id..." + req.params.postid);
+                        db.Post.findOneAndUpdate({_id: req.params.postid}, {$push: {comments: dbComment._id}}, {new: true});
                     })
                     .then(function (dbPost) {
-                        res.json(dbPost);
+                        let commentObj = {
+                            id: dbComment._id,
+                            text: dbComment.text,
+                            date: dbComment.date,
+                            user: dbUser
+                        };
+                        res.json({data: commentObj});
                     })
                     .catch(function (err) {
                         res.json(err);
