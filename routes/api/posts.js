@@ -1,10 +1,13 @@
 const router = require("express").Router();
-const usersController = require("../../controllers/usersController");
+const postsController = require("../../controllers/postsController");
 
 // Matches with "/api/posts"
 router.route("/:id")
     .put(function(req, res) {
-        postController.update(req, res);
+        postsController.update(req, res);
+    })
+    .delete(function(req, res) {
+        postsController.remove(req, res);
     });
 
 module.exports = router;
