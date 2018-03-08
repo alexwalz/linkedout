@@ -77,6 +77,7 @@ class ProfilePage extends Component {
         if (this.state.renderedUser !== response.data) {
           this.setState({ renderedUser: response.data });
           this.setState({ url: this.props.match.params.id });
+          console.log(response)
         } else {
           // console.log("Information already up to date");
         }
