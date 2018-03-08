@@ -30,6 +30,7 @@ import { Redirect } from "react-router-dom";
 import SecondaryModal from "../Login/Components/SecondaryLoginModal";
 import ProjectShareBox from './Components/ProjectShareBox'
 import ProjectsView from './Components/ProjectsView'
+import './Components/css/profile.css'
 
 class ProfilePage extends Component {
   constructor(props) {
