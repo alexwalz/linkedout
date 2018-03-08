@@ -17,6 +17,7 @@ module.exports = {
             .populate('posts')
             .populate('education')
             .populate('connections')
+            .populate('comments')
             .then(function (dbUser) {
                 dbUser.password = "";
                 res.json(dbUser);
