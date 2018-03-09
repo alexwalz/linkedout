@@ -65,7 +65,6 @@ class ProfilePage extends Component {
 
   update = () => {
     this.setState({update: true})
-    console.log(this.state)
 }
 
   componentDidMount() {
@@ -77,7 +76,6 @@ class ProfilePage extends Component {
         if (this.state.renderedUser !== response.data) {
           this.setState({ renderedUser: response.data });
           this.setState({ url: this.props.match.params.id });
-          console.log(response)
         } else {
           // console.log("Information already up to date");
         }
@@ -110,14 +108,12 @@ class ProfilePage extends Component {
   }
 
   renderUser = () => {
-    console.log("New API Request", this.props.match.params.id);
     axios
       .get("/api/users/" + this.props.match.params.id)
       .then(response => {
         if (this.state.renderedUser !== response.data) {
           this.setState({ renderedUser: response.data });
           this.setState({ url: this.props.match.params.id });
-          console.log(this.state)
         } else {
           // console.log("Information already up to date");
         }
