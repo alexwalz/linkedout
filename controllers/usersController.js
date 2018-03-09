@@ -14,9 +14,16 @@ module.exports = {
     findById: function (req, res) {
         db.user
             .findById(req.params.id)
-            .populate('posts')
+            .populate({
+                path: 'posts',
+                populate: {
+                    path: 'comments',
+                    model: 'comment'
+                }
+            })
             .populate('education')
             .populate('connections')
+            .populate('comments')
             .then(function (dbUser) {
                 dbUser.password = "";
                 res.json(dbUser);

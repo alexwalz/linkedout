@@ -63,7 +63,11 @@ class ProfileFeed extends React.Component {
               code_url={project.code_url}
               project_url={project.project_url}
               project_description={project.project_description}
-              languages={project.languages} />
+              languages={project.languages} 
+              loggedInUserInfo={this.props.loggedInUserInfo}
+              url={this.props.url}
+              />
+              
       ))
         
         : this.renderError()}

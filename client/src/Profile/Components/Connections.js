@@ -32,7 +32,7 @@ const Connections = (props) => (
                        
                         {props.userInfo.connections.slice(0, 6).map((connection, key) => (
                             <Grid.Column width={2} style={{padding: "5px"}} textAlign="center">
-                                        <IndividualConnections firstName={connection.firstName} key={key} lastName ={connection.lastName}  job_title={connection.job_title}  image_url={connection.image_url} />
+                                        <IndividualConnections url={connection._id} firstName={connection.firstName} key={key} lastName ={connection.lastName}  job_title={connection.job_title}  image_url={connection.image_url} />
                            </Grid.Column>
                           ))}
 

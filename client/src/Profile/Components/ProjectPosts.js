@@ -68,7 +68,7 @@ class ShareBox extends Component {
     <Comment style={{backgroundColor: "transparent"}}>
       <Comment.Content>
         <Comment.Actions>
-          <Comment.Action active style={{color: "white"}}>Edit Project</Comment.Action>
+          <Comment.Action active style={{color: "white"}}><h2>Edit Project</h2></Comment.Action>
         </Comment.Actions>
         <Form reply>
           <Form.Input style={{backgroundColor:"transparent", border: "1px solid white", color: "white"}} onChange={this.handleInputChange} name="project_name" label="Project Name" placeholder="Name of My Project"/>
@@ -79,6 +79,7 @@ class ShareBox extends Component {
           <Form.Input style={{backgroundColor:"transparent", border: "1px solid white", color: "white"}} onChange={this.handleInputChange} name="languages" label="Languages Used" placeholder="React, Node, Express, MongoDb"/>
           <Icon name='checkmark' size='large' circular color="grey"  onClick={this.handleFormSubmit}/>
           <Icon name='close' size='large' circular color="grey" onClick={()=> this.cancel()} />
+          <Button inverted color='red'>Delete</Button>
         </Form>
       </Comment.Content>
     </Comment>
@@ -93,7 +94,8 @@ class ShareBox extends Component {
           
               <Step active  style={{backgroundColor:"transparent"}}>
               <div style={{width: "100%"}}>
-                <Icon name='pencil' size='small' color="grey" onClick={()=> this.edit()} style={{marginBottom: "1%"}} /> 
+              {this.props.loggedInUserInfo.user}
+              {this.props.loggedInUserInfo.userId === this.props.url && this.props.loggedInUserInfo.loggedIn ? <Icon name='pencil' size='small' color="grey" style={{marginBottom: "3%"}} onClick={()=> this.edit()} /> : null } 
                   <Step.Content>
                     <Step.Title style={{color: "#67C8D3", width: "100%"}}>{this.props.project_name}</Step.Title>
                     <Step.Description style={{color: "white"}}>{this.props.development_position}</Step.Description>
