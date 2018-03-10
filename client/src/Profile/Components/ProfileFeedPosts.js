@@ -138,7 +138,7 @@ let messageStyles={
                   </div>
 
                 <div>
-                {this.props.loggedInUserInfo.userId === this.props.url && this.props.loggedInUserInfo.loggedIn  ? <h5 style={{marginBottom: "3%", cursor: "pointer"}} onClick={()=> this.edit()}>Edit Post</h5> : null}
+                {this.props.loggedInUserInfo._id === this.props.url ? <h5 style={{marginBottom: "3%", cursor: "pointer"}} onClick={()=> this.edit()}>Edit Post</h5> : null}
                   
                 </div>
   
