@@ -115,7 +115,7 @@ class IndividualComments extends Component {
               <Comment.Metadata>
                 <span style={{color: "grey"}}>{this.props.date}</span>
               </Comment.Metadata>
-        {this.props.loggedInUserInfo.userId === this.props.user_id && this.props.loggedInUserInfo.loggedIn ? <Icon name='pencil' size='small' color="teal" style={{marginBottom: "3%", cursor: "pointer"}} onClick={()=> this.edit()} /> : null } 
+               {this.props.loggedInUserInfo._id === this.props.comment_user._id ? <Icon name='pencil' size='small' color="teal" style={{marginBottom: "3%", cursor: "pointer"}} onClick={()=> this.edit()} /> : null } 
               <Comment.Text style={{color: "white"}}>{this.props.message}</Comment.Text>
               <Comment.Actions>
               </Comment.Actions>
