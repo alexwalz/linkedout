@@ -181,14 +181,12 @@ module.exports = {
     findRecentPosts: function (req, res) {
         db.Post.find({}).sort({viewCount: -1}).limit(50)
             .populate({
-                populate: {
                     path: 'comments',
                     model: 'comment',
                     populate: {
                         path: 'user',
                         model: 'user'
                     }
-                }
             })
             .then(function (dbPost) {
                 var postIdArray = [];
