@@ -201,7 +201,7 @@ module.exports = {
                                             image_url: dbUsers[u].image_url,
                                             message: dbPost[i].message,
                                             messageType: dbPost[i].messageType,
-                                            comments: dbPost[i].comments,
+                                            comments: dbUsers[u].comments,
                                             date: dbPost[i].date
                                         })
                                     }
