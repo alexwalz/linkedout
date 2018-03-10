@@ -31,9 +31,9 @@ export default class CommentExamplecommentsCollapsed extends Component {
           <Comment>
 
                   {this.props.comments.slice(0).reverse().map((comment, key) => (
-                    console.log(comment),
+                    // console.log(comment),
                     <Comment.Group collapsed={commentsCollapsed}>
-                        <IndividualComments userInfo={this.props.userInfo} loggedInUserInfo={this.props.loggedInUserInfo} message={comment.text} date={comment.date.slice(0,10)} user_id={comment.user} comment_id={comment._id} updateParent={this.props.updateParent}/>
+                        <IndividualComments userInfo={this.props.userInfo} loggedInUserInfo={this.props.loggedInUserInfo} message={comment.text} date={comment.date.slice(0,10)} user_id={comment.user._id} comment_id={comment._id} updateParent={this.props.updateParent} comment_user={comment.user}/>
                     </Comment.Group>       
                 ))}
 

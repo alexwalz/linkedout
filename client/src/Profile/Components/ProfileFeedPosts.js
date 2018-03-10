@@ -102,7 +102,6 @@ let messageStyles={
         return(
   
             <div style={{margin: "5px"}}>
-      
             <Message info style={messageStyles}>
             <Grid columns={2}>
                   <Grid.Row>

@@ -109,9 +109,9 @@ class IndividualComments extends Component {
       return(
 
         <Comment>
-            <Comment.Avatar as='a' circular src={this.props.userInfo.image_url} />
+            <Comment.Avatar as='a' circular src={this.props.comment_user.image_url}/>
             <Comment.Content>
-             <Link to={'/home/profile/'+ this.props.userInfo._id}> <Comment.Author  style={{color: "#5CC1CD"}} as='a'>{this.props.userInfo.firstName + " " + this.props.userInfo.lastName}</Comment.Author></Link>
+             <Link to={'/home/profile/'+ this.props.comment_user._id}> <Comment.Author  style={{color: "#5CC1CD"}} as='a'>{this.props.comment_user.firstName + " " + this.props.comment_user.lastName}</Comment.Author></Link>
               <Comment.Metadata>
                 <span style={{color: "grey"}}>{this.props.date}</span>
               </Comment.Metadata>

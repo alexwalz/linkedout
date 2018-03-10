@@ -239,13 +239,17 @@ class ProfilePage extends Component {
 
                   </Grid.Column>
 
-                  <Grid.Column width={16} style={{marginTop:"4%"}}>
+
+{/* BROKEN CODE */}
+                  {/* <Grid.Column width={16} style={{marginTop:"4%"}}>
                     <ProjectsView
                       userInfo={this.state.renderedUser}
                       loggedInUserInfo={this.state.loggedInUser}
                       url={this.state.url}
                     />
-                  </Grid.Column>
+                  </Grid.Column> */}
+
+{/* ######### */}
 
 
                 </Grid.Row>
