@@ -184,7 +184,6 @@ module.exports = {
                 }
 
                 db.user.find({posts: {$in: postIdArray}})
-                    .populate("comments")
                     .then(function (dbUsers) {
                         var newObj = [];
 
