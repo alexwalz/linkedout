@@ -18,7 +18,11 @@ module.exports = {
                 path: 'posts',
                 populate: {
                     path: 'comments',
-                    model: 'comment'
+                    model: 'comment',
+                    populate: {
+                        path: 'user',
+                        model: 'user'
+                    }
                 }
             })
             .populate('education')
@@ -176,6 +180,16 @@ module.exports = {
     },
     findRecentPosts: function (req, res) {
         db.Post.find({}).sort({viewCount: -1}).limit(50)
+            .populate({
+                populate: {
+                    path: 'comments',
+                    model: 'comment',
+                    populate: {
+                        path: 'user',
+                        model: 'user'
+                    }
+                }
+            })
             .then(function (dbPost) {
                 var postIdArray = [];
 
@@ -184,7 +198,6 @@ module.exports = {
                 }
 
                 db.user.find({posts: {$in: postIdArray}})
-                    .populate("comments")
                     .then(function (dbUsers) {
                         var newObj = [];
 
@@ -201,7 +214,7 @@ module.exports = {
                                             image_url: dbUsers[u].image_url,
                                             message: dbPost[i].message,
                                             messageType: dbPost[i].messageType,
-                                            comments: dbUsers[u].comments,
+                                            comments: dbPost[i].comments,
                                             date: dbPost[i].date
                                         })
                                     }

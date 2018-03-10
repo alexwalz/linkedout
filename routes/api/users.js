@@ -77,7 +77,10 @@ router.post("/", upload.single('theseNamesMustMatch'), (req, res) => {
                 console.log(url);
                 db.user
                     .findOneAndUpdate({_id: userId}, {$set:{image_url: url}})
-                    .then(dbUpdate => res.json(dbUpdate))
+                    .then(function(dbUser){
+                        req.session.userId = dbUser._id;
+                        res.json(dbUser);
+                    })
                     .catch(err => {
                         console.log(".... err on userupdate");
                         console.log(err);
