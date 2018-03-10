@@ -15,7 +15,6 @@ class  ProfileFeed extends Component {
 
     update = () => {
         this.setState({update: true})
-        console.log(this.state)
     }
 
     componentDidMount(){

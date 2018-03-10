@@ -34,9 +34,12 @@ class FeedMessages extends Component {
         });
     }
 
-    updateComment=()=>{
+    updatePost=()=>{
         axios
-        .put("/api/posts/"+this.props.postId, this.state.text)
+        .put("/api/posts/"+this.props.postId, 
+        {
+            message: this.state.text
+        })
         .then(response => {
                 this.props.updateParent()
                 this.setState({editing: false})
@@ -76,7 +79,7 @@ let messageStyles={
                     </Comment.Actions>
                     <Form reply>
                       <Form.TextArea style={{backgroundColor:"transparent", border: "1px solid white", color: "white"}} onChange={this.handleInputChange} name="text" placeholder={this.props.message}/>
-                      <Icon name='checkmark' size='large' circular color="grey"  onClick={this.updateComment}/>
+                      <Icon name='checkmark' size='large' circular color="grey"  onClick={this.updatePost}/>
                       <Icon name='close' size='large' circular color="grey" onClick={()=> this.cancel()} />
                       <Button inverted color='red' onClick={this.deleteComment}>Delete</Button>
                     </Form>

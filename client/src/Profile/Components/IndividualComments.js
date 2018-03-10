@@ -43,6 +43,25 @@ class IndividualComments extends Component {
       });
   }
 
+  updateComment=()=>{
+    console.log("Update Requested on", this.props.comment_id)
+
+    axios
+    .put("/api/comments/"+this.props.comment_id, {
+      text: this.state.text
+    })
+    .then(response => {
+            console.log("Successfully Deleted")
+            this.props.updateParent()
+            this.setState({editing: false})
+    })
+    .catch(error => {
+      console.log("Error fetching and parsing data", error);
+    });
+}
+
+
+
   handleFormSubmit = ()=> {
     axios
       .post(
@@ -67,7 +86,7 @@ class IndividualComments extends Component {
 
       return(
 
-              <Comment.Group style={{backgroundColor: "none"}}>
+            <Comment.Group style={{backgroundColor: "none"}}>
               <Comment style={{backgroundColor: "transparent"}}>
                 <Comment.Content>
                   <Comment.Actions>
@@ -75,7 +94,7 @@ class IndividualComments extends Component {
                   </Comment.Actions>
                   <Form reply>
                     <Form.TextArea style={{backgroundColor:"transparent", border: "1px solid white", color: "white"}} onChange={this.handleInputChange} name="text" placeholder={this.props.message}/>
-                    <Icon name='checkmark' size='large' circular color="grey"  onClick={this.handleFormSubmit}/>
+                    <Icon name='checkmark' size='large' circular color="grey"  onClick={this.updateComment}/>
                     <Icon name='close' size='large' circular color="grey" onClick={()=> this.cancel()} />
                     <Button inverted color='red' onClick={this.deleteComment}>Delete</Button>
                   </Form>

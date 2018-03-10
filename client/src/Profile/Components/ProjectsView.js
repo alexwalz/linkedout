@@ -55,6 +55,7 @@ class ProfileFeed extends React.Component {
     return (
       <div>
       <Container>
+        {console.log(this.props.userInfo)}
 
         {this.props.userInfo.projects.length > 0 ? this.props.userInfo.projects.slice(0).reverse().map((project, key) => (
           <ProjectPosts
