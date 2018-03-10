@@ -18,12 +18,15 @@ module.exports = {
                 path: 'posts',
                 populate: {
                     path: 'comments',
-                    model: 'comment'
+                    model: 'comment',
+                    populate: {
+                        path: 'user',
+                        model: 'User'
+                    }
                 }
             })
             .populate('education')
             .populate('connections')
-            .populate('comments')
             .then(function (dbUser) {
                 dbUser.password = "";
                 res.json(dbUser);
@@ -176,6 +179,14 @@ module.exports = {
     },
     findRecentPosts: function (req, res) {
         db.Post.find({}).sort({viewCount: -1}).limit(50)
+            .populate({
+                path: 'comments',
+                model: 'comment',
+                populate: {
+                    path: 'user',
+                    model: 'User'
+                }
+            })
             .then(function (dbPost) {
                 var postIdArray = [];
 
