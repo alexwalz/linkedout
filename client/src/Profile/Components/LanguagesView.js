@@ -93,7 +93,7 @@ class LanguagesView extends Component {
 
     componentDidMount = () => {
       axios.get('/api/users/login')
-      .then((res) => {this.setState({LanguageList : res.data.userData.languages})})
+      .then((res) => {if(res.data.userData){this.setState({LanguageList : res.data.userData.languages})}})
 
      
     }

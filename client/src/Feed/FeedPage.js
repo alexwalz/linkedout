@@ -12,6 +12,7 @@ import FeaturedJobContainer from './Components/FeaturedJobContainer'
 import FeedShareBox from './Components/ShareBox'
 import NewProjectBox from '../Profile/Components/ProjectShareBox'
 import Languages from '../Profile/Components/LanguagesView'
+import { Redirect } from "react-router-dom"
 
 class FeedPage extends Component {
     constructor(props) {
@@ -66,8 +67,10 @@ class FeedPage extends Component {
       };
 
 
-renderFeedPage(){
+renderFeedPage(){   
     return ( 
+      <div>
+        {this.state.loggedInUser ?
         <div style={{backgroundImage: `url(${background})`, backgroundPositionX: 'center', color:"grey", paddingTop: 80, paddingLeft: "2%", paddingRight: "2%"}}>
              
                  
@@ -132,7 +135,10 @@ renderFeedPage(){
                 
         
         </div>
-     
+          : <Redirect to={`/`}/>}
+      </div>
+
+   
     )
 }
 
@@ -150,7 +156,7 @@ renderLoaderPage(){
 
     render() { 
         return ( 
- 			
+      
           <div>
               {this.state.loading ? this.renderLoaderPage() : this.renderFeedPage()}
         </div>
