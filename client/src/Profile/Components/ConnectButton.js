@@ -12,69 +12,58 @@ class ConnectButton extends Component {
      }
   }
 
-  handleConnect = ()=> {
-    console.log("Connection Requested")
-    console.log(this.props)
+  componentDidMount() {
     axios
-    .post(
-        `/api/users/connections/add/`+this.props.userInfo._id+"", 
-       
-    )
-    .then(r => {
-      console.log(r)
-      this.props.renderUser()
-      this.setState({connected: true})
+      .get("/api/users/" + this.props.url)
+      .then(response => {this.setState({ renderedUser: response.data });})
+      .catch(error => {console.log("Error fetching and parsing data", error);});
+  }
+
+  componentWillReceiveProps(props) {
+    this.setState(props)
+    axios
+    .get("/api/users/" + this.props.url)
+    .then(response => {
+        this.setState({ renderedUser: response.data });
+        this.setState({connected: false});
+        this.handleConnectionCheck()
     })
+    .catch(error => {console.log("Error fetching and parsing data", error);});
+  }
+
+  handleConnect = ()=> {
+    axios
+    .post(`/api/users/connections/add/`+this.props.userInfo._id+"", )
+    .then(r => {this.setState({connected: true})})
     .catch(e => console.log(e));
   }
 
-  componentDidUpdate(prevProps, prevState){
-    if(this.state.updateReady === true){
-      this.handleConnectionCheck()
-    }else {
-      console.log("Done")
-    }
-    console.log(this.state)
-  }
+  getLoggedInUser = () => {
+    axios
+      .get("/api/users/login")
+      .then(response => {this.setState({ loggedInUser: response.data });})
+      .catch(error => {console.log("Error fetching and parsing data", error);});
+  };
 
   handleConnectionCheck = () =>{
-    this.props.loggedInUser.loggedIn ? 
-    this.props.loggedInUser.userData.connections.map((connectionCheck, key) => (
-      connectionCheck._id === this.props.url ? this.setState({connected: true, updateReady: false}) : console.log("Not Connected")
-    ))
-    
-    : console.log(false)
+    this.getLoggedInUser()
+    this.state.loggedInUser.loggedIn ? 
+    this.state.loggedInUser.userData.connections.map((connectionCheck, key) => (
+      connectionCheck._id === this.state.url ? this.setState({connected: true}) : null)) : null
   }
 
   connectedButton = () => {
-    return(
-      <Button basic color="red"><Icon name='heart'/>Connected</Button>
-    )
+    return(<Button basic color="red"><Icon name='heart'/>Connected</Button>)
   }
-
 
   connectButton = () => {
-    return(
-      <Button basic color="grey" onClick={this.handleConnect}><Icon name='empty heart'/>Connect</Button>
-    )
+    return(<Button basic color="grey" onClick={this.handleConnect}><Icon name='empty heart'/>Connect</Button>)
   }
-
-
 
 
   render(props) { 
     return ( 
       <div>
-
-    {/* {this.props.loggedInUser.loggedIn ? 
-    this.props.loggedInUser.map((connectionCheck, key) => (
-      console.log(connectionCheck)
-    ))}
-     : console.log(false); */}
-
-     {/* {this.props.loggedInUser.loggedIn ? this.handleConnectionCheck : console.log(false)} */}
-
-
           <Button.Group>
               {this.state.connected ? this.connectedButton() : this.connectButton()}
               <Button.Or />
