@@ -110,7 +110,7 @@ renderFeedPage(){
                                         <Languages loggedInUserInfo={this.state.loggedInUser} userInfo={this.state.loggedInUser}/>
                                     </Grid.Column>
                                     <Grid.Column width={16} style={{marginTop:"3%"}}>
-                                        <Divider horizontal><h3 textAlign="center" style={{ color: "white" }}><Icon circular name='newspaper' />News Feed</h3></Divider>
+                                        <Divider horizontal><h3 textAlign="center" style={{ color: "white" }}><Icon circular name='newspaper' />News Articles</h3></Divider>
                                         <NewsFeed />
                                     </Grid.Column>
                                 </Grid.Row>
