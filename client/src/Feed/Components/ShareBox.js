@@ -20,7 +20,7 @@ class ShareBox extends Component {
         super(props);
         this.state = { 
           editing: false,
-          messageType: "Job Posting"
+          messageType: "News Feed"
          }
     }
 
@@ -83,7 +83,7 @@ class ShareBox extends Component {
           <Comment.Action active style={{color: "white"}}>New Post</Comment.Action>
         </Comment.Actions>
         <Form reply>
-          <Select placeholder='Select the type of post' options={postOptions} style={messageStyles} name="messageType" onChange={this.handleInputChange}/>
+          {/* <Select placeholder='Select the type of post' options={postOptions} style={messageStyles} name="messageType" onChange={this.handleInputChange}/> */}
           <Form.TextArea style={{backgroundColor:"transparent", border: "1px solid white", color: "white"}} onChange={this.handleInputChange} name="message"/>
           <Icon name='checkmark' size='large' circular color="grey"  onClick={this.handleFormSubmit}/>
           <Icon name='close' size='large' circular color="grey" onClick={()=> this.cancel()} />
