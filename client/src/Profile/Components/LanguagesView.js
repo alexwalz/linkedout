@@ -161,7 +161,7 @@ class LanguagesView extends Component {
     
               <Grid.Row style={{marginBottom: "10px"}}>
 
-              {this.props.loggedInUserInfo.userId === this.props.url && this.props.loggedInUserInfo.loggedIn ? <Icon name='pencil' size='small' onClick={()=> this.edit()} /> : null } 
+              {this.props.loggedInUserInfo.userId === this.props.url && this.props.loggedInUserInfo.loggedIn ? <Icon name='pencil' size='small' color="grey" onClick={()=> this.edit()} /> : null } 
                
                 <Grid.Column textAlign="center">
                 </Grid.Column>

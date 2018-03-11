@@ -20,7 +20,6 @@ class ConnectionsModal extends Component {
                         
                         {this.props.userInfo.connections.map((connection, key) => (
                             <Grid.Column width={3} style={{padding: "15px"}} textAlign="center">
-                            {console.log(connection)}
                                         <IndividualConnections url={connection._id} firstName={connection.firstName} key={key} lastName ={connection.lastName}  job_title={connection.job_title}  image_url={connection.image_url} />
                            </Grid.Column>
                           ))}

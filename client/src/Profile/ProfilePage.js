@@ -23,8 +23,6 @@ import LanguagesView from "./Components/LanguagesView";
 import Bio from "./Components/Bio";
 import ShareBox from "../Feed/Components/ShareBox";
 import Connections from "./Components/Connections";
-import Newsfeed from "./Components/NewsFeed";
-import background from "../img/midnight.jpg";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 import SecondaryModal from "../Login/Components/SecondaryLoginModal";
@@ -136,13 +134,7 @@ class ProfilePage extends Component {
 
   render() {
     return (
-      <div
-        style={{
-          backgroundImage: `url(${background})`,
-          backgroundPositionX: "center",
-          color: "grey"
-        }}
-      >
+      <div>
         {this.state.loggedInUser.loggedIn ? null : <SecondaryModal />}
 
         <Container style={{ paddingTop: 62 }}>

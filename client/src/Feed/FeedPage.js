@@ -71,7 +71,14 @@ renderFeedPage(){
     return ( 
       <div>
         {this.state.loggedInUser ?
-        <div style={{backgroundImage: `url(${background})`, backgroundPositionX: 'center', color:"grey", paddingTop: 80, paddingLeft: "2%", paddingRight: "2%"}}>
+        <div style={{
+            background: `url(${background}) no-repeat center center fixed`,
+            webkitBackgroundSize: "cover",
+            mozBackgroundSize: "cover",
+            oBackgroundSize: "cover",
+            backgroundSize: "cover",
+            backgroundSize: "cover",
+        }}>
              
                  
                 <Grid>
@@ -84,7 +91,7 @@ renderFeedPage(){
                      </Grid.Column>
                 </Grid.Row> */}
 
-                 <Grid.Row>
+                 <Grid.Row  style={{marginTop: "5%"}}>
 
                  <Grid.Column width={5}>
                             <Grid>
@@ -101,6 +108,10 @@ renderFeedPage(){
                                     <Grid.Column width={16} style={{marginTop:"3%"}}>
                                         <Divider horizontal><h3 textAlign="center" style={{ color: "white" }}><Icon circular name='info' />My Languages</h3></Divider>
                                         <Languages loggedInUserInfo={this.state.loggedInUser} userInfo={this.state.loggedInUser}/>
+                                    </Grid.Column>
+                                    <Grid.Column width={16} style={{marginTop:"3%"}}>
+                                        <Divider horizontal><h3 textAlign="center" style={{ color: "white" }}><Icon circular name='newspaper' />News Feed</h3></Divider>
+                                        <NewsFeed />
                                     </Grid.Column>
                                 </Grid.Row>
                             </Grid>

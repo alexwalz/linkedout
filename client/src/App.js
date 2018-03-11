@@ -9,6 +9,8 @@ import NotFound from './NotFound/NotFound'
 import ClassifiedsPage from './Classifieds/ClassifiedsPage'
 import './css/index.css'
 import './App.css'
+import background from "./img/midnight.jpg";
+
 
 
 const duration = 300;
@@ -28,7 +30,15 @@ class App extends Component {
     const timeout = { enter: 900, exit: 900 };
     return (
       
-      
+      <div style={{
+        background: `url(${background}) no-repeat center center fixed`,
+        webkitBackgroundSize: "cover",
+        mozBackgroundSize: "cover",
+        oBackgroundSize: "cover",
+        backgroundSize: "cover",
+        backgroundSize: "cover",
+      }}
+      >
       <TransitionGroup component="main" className="page-main" style={{ height: '100%' }}>
         <CSSTransition
           //key={currentKey}
@@ -55,6 +65,7 @@ class App extends Component {
 
         </CSSTransition>
       </TransitionGroup>
+      </div>
     );
   }
 }

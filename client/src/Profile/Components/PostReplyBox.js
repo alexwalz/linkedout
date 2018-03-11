@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form, TextArea, Button } from 'semantic-ui-react'
+import { Form, TextArea, Button, Icon } from 'semantic-ui-react'
 import axios from 'axios'
 
 
@@ -41,12 +41,11 @@ import axios from 'axios'
           return ( 
               <div>
                     <Form style={{marginBottom: "2%", marginTop: "4%"}}>
-                        <TextArea placeholder='Reply' onChange={this.handleInputChange} name="text" ref="text" value={this.state.text}/>
+                        <TextArea placeholder='Type Your Comment Here' onChange={this.handleInputChange} name="text" ref="text" value={this.state.text} style={{backgroundColor: "transparent", color: "white"}}/>
                     </Form>
 
-                    <Button.Group size='small'>
-                        <Button basic color="grey" onClick={this.handleSubmit}>Submit</Button>
-                    </Button.Group>
+                        <Icon name='checkmark' size='large' circular color="grey"  onClick={this.handleSubmit}/>
+                        <Icon name='close' size='large' circular color="grey" onClick={()=> this.props.showComments()} />
              </div>
            )
       }

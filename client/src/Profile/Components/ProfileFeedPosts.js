@@ -106,7 +106,7 @@ let messageStyles={
             <Grid columns={2}>
                   <Grid.Row>
                   <Grid.Column width={4}>
-                  <Image  style={{ border: "2px solid #67C8D3", padding: "2px", height: "4rem", width: "4rem", borderRadius: "999px"}} src={this.props.image_url} rounded />
+                  <Image  style={{ border: "2px solid #67C8D3", padding: "2px", height: "4rem", width: "4rem", borderRadius: "999px"}} src={this.props.image_url} />
                   </Grid.Column>
                   <Grid.Column width={12}>
                       <Link to={'/home/profile/'+ this.props.userId}><h2 style={{lineHeight: "4.2rem", color: "white"}}>{this.props.name}</h2></Link>
