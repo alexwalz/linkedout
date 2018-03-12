@@ -3,5 +3,5 @@ html{
 }
 
 label{
-    color: "white"
+    color: "white"!important;
 }

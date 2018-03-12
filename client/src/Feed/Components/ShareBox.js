@@ -2,6 +2,7 @@ import React , { Component } from 'react'
 import { Container, Grid, Segment, Header, Icon, Form, TextArea, Card,  Button, Image, Select, Step, Comment} from 'semantic-ui-react'
 import PostButton from './PostButton'
 import axios from 'axios'
+import '../css/feed.css'
 
 let messageStyles={
   marginBottom: "5px",
@@ -19,6 +20,7 @@ class ShareBox extends Component {
     constructor(props) {
         super(props);
         this.state = { 
+          color: "grey",
           editing: false,
           messageType: "News Feed"
          }
@@ -85,8 +87,8 @@ class ShareBox extends Component {
         <Form reply>
           {/* <Select placeholder='Select the type of post' options={postOptions} style={messageStyles} name="messageType" onChange={this.handleInputChange}/> */}
           <Form.TextArea style={{backgroundColor:"transparent", border: "1px solid white", color: "white"}} onChange={this.handleInputChange} name="message"/>
-          <Icon name='checkmark' size='large' circular color="grey"  onClick={this.handleFormSubmit}/>
-          <Icon name='close' size='large' circular color="grey" onClick={()=> this.cancel()} />
+          <Icon className="submitButton" name='checkmark' size='large' circular color="grey" style={{ cursor: "pointer"}}  onClick={this.handleFormSubmit}/>
+          <Icon className="submitButton"  name='close' size='large' circular color="grey" style={{ cursor: "pointer"}}  onClick={()=> this.cancel()} />
         </Form>
       </Comment.Content>
     </Comment>

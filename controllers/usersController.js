@@ -169,7 +169,9 @@ module.exports = {
                     phone: req.body.phone,
                     birthday: req.body.birthday,
                     location: req.body.location,
-                    about: req.body.about
+                    about: req.body.about,
+                    firstName: req.body.firstName,
+                    lastName: req.body.lastName
                 }
             }).then(function (dbModel) {
             res.json(dbModel);

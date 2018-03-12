@@ -63,7 +63,7 @@ class FeedMessages extends Component {
 
 
 let messageStyles={
-    border: "2px solid grey",
+    border: "4px solid grey",
     padding: "3%",
     borderImage: "linear-gradient(to bottom, #3acfd5 0%, #3a4ed5 100%)",
     backgroundColor: "transparent"
@@ -93,9 +93,9 @@ let messageStyles={
       renderDisplay(props){
 
         let messageStyles={
-            border: "2px solid grey",
+            border: "4px solid grey",
             padding: "3%",
-            borderImage: "linear-gradient(to bottom, #3acfd5 0%, #3a4ed5 100%)",
+            // borderImage: "linear-gradient(to bottom, #3acfd5 0%, #3a4ed5 100%)",
             backgroundColor: "transparent"
         }
 

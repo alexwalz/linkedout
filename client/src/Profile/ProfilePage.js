@@ -135,7 +135,7 @@ class ProfilePage extends Component {
   render() {
     return (
       <div>
-        {this.state.loggedInUser.loggedIn ? null : <SecondaryModal />}
+        {/* {this.state.loggedInUser.loggedIn ? null : <SecondaryModal />} */}
 
         <Container style={{ paddingTop: 62 }}>
           <Grid>
@@ -233,13 +233,13 @@ class ProfilePage extends Component {
 
 
 {/* BROKEN CODE */}
-                  {/* <Grid.Column width={16} style={{marginTop:"4%"}}>
+                  <Grid.Column width={16} style={{marginTop:"4%"}}>
                     <ProjectsView
                       userInfo={this.state.renderedUser}
                       loggedInUserInfo={this.state.loggedInUser}
                       url={this.state.url}
                     />
-                  </Grid.Column> */}
+                  </Grid.Column>
 
 {/* ######### */}
 
