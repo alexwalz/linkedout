@@ -17,7 +17,10 @@ import { Redirect } from "react-router-dom"
 class FeedPage extends Component {
     constructor(props) {
         super(props);
+        this.update = this.update.bind(this)
+        
         this.state = {
+          update: false,
           loggedInUser: {
             firstName: "John",
             lastName: "Doe",
@@ -50,6 +53,10 @@ class FeedPage extends Component {
           }
         };
       }
+
+      update = () => {
+        this.setState({update: true})
+    }
     
       componentDidMount() {
         this.getLoggedInUser();
@@ -97,7 +104,7 @@ renderFeedPage(){
                             <Grid>
                                 <Grid.Row>
                                     <Grid.Column width={16} style={{marginTop:"15%"}}>
-                                         <FeedShareBox loggedInUser={this.state.loggedInUser}/>
+                                         <FeedShareBox loggedInUser={this.state.loggedInUser} renderUser={this.update} />
                                     </Grid.Column>
                                     <Grid.Column width={16} style={{marginTop:"3%"}}>
                                         <NewProjectBox loggedInUser={this.state.loggedInUser}/>
@@ -127,7 +134,7 @@ renderFeedPage(){
                                     </Grid.Column>
 
                                     <Grid.Column width={16}>
-                                        <FeedContainer  loggedInUser={this.state.loggedInUser} />
+                                        <FeedContainer  loggedInUser={this.state.loggedInUser} renderUser={this.update}/>
                                     </Grid.Column>
 
                                 </Grid.Row>
