@@ -66,6 +66,10 @@ await this.props.renderUser()
         <Card.Description>
            <Form>
 
+           <Form.Group widths='equal'>
+           <Form.Input fluid label='First Name' placeholder={this.props.userInfo.firstName} onChange={this.handleInputChange}  name="firstName"/>
+           <Form.Input fluid label='Last Name' placeholder={this.props.userInfo.lastName} onChange={this.handleInputChange}  name="lastName"/>
+           </Form.Group>
 
            <Form.Group widths='equal'>
            <Form.Input fluid label='Company' placeholder={this.props.userInfo.current_company} onChange={this.handleInputChange}  name="current_company"/>
@@ -130,84 +134,92 @@ await this.props.renderUser()
         </Grid.Row>
 
    
-    <Grid>
-        <Grid.Row columns={2}>
 
+
+        
         {this.props.userInfo.email === "" ? null :
+        <Grid>
+        <Grid.Row columns={2}>
         <Grid.Column width={2}>
             <Icon circular color='grey' name='mail outline' />
         </Grid.Column>
-        }
-
-        {this.props.userInfo.email === "" ? null :
+      
         <Grid.Column width={14} textAlign="left">
             <h4 style={{lineHeight: "2.5rem", color: "white"}}>{this.props.userInfo.email}</h4>
         </Grid.Column>
+        </Grid.Row>
+        </Grid>
         }
         
+        
         {this.props.userInfo.phone === "" ? null :
+        <Grid  style={{marginTop: "-8%"}}>
+        <Grid.Row columns={2}>
         <Grid.Column width={2} style={{marginTop: "3px"}}>
             <Icon circular color='grey' name='phone' />
         </Grid.Column>
-        } 
 
-        {this.props.userInfo.phone === "" ? null :
         <Grid.Column width={14} textAlign="left">
             <h4 style={{lineHeight: "2.5rem", color: "white"}}>{this.props.userInfo.phone}</h4>
         </Grid.Column>
+        </Grid.Row>
+        </Grid>
         }
 
         {this.props.userInfo.current_company === "" ? null :
+        <Grid  style={{marginTop: "-8%"}}>
+        <Grid.Row columns={2}>
         <Grid.Column width={2} style={{marginTop: "3px"}}>
             <Icon circular color='grey' name='building outline' />
         </Grid.Column>
-        }
-
-        {this.props.userInfo.current_compay === "" ? null :
         <Grid.Column width={14} textAlign="left">
             <h4 style={{lineHeight: "2.5rem", color: "white"}}>{this.props.userInfo.current_company}</h4>
         </Grid.Column>
+        </Grid.Row>
+        </Grid>
         }
 
         {this.props.userInfo.job_title === "" ? null :
+        <Grid  style={{marginTop: "-8%"}}>
+        <Grid.Row columns={2}>
         <Grid.Column width={2} style={{marginTop: "3px"}}>
             <Icon circular color='grey' name='code' />
         </Grid.Column>
-        }
 
-        {this.props.userInfo.job_title === "" ? null :
         <Grid.Column width={14} textAlign="left">
             <h4 style={{lineHeight: "2.5rem", color: "white"}}>{this.props.userInfo.job_title}</h4>
         </Grid.Column>
+        </Grid.Row>
+        </Grid>
         }
 
         {this.props.userInfo.birthday === "" ? null :
+        <Grid  style={{marginTop: "-8%"}}>
+        <Grid.Row columns={2}>
         <Grid.Column width={2} style={{marginTop: "3px"}}>
         <Icon circular color='grey' name='calendar' />
         </Grid.Column>
-        }
 
-        {this.props.userInfo.birthday === "" ? null :
         <Grid.Column width={14} textAlign="left">
             <h4 style={{lineHeight: "2.5rem", color: "white"}}>{this.props.userInfo.birthday}</h4>
         </Grid.Column>
+        </Grid.Row>
+        </Grid>
         }
 
         {this.props.userInfo.location === "" ? null :
+        <Grid  style={{marginTop: "-8%"}}>
+        <Grid.Row columns={2}>
         <Grid.Column width={2} style={{marginTop: "3px"}}>
         <Icon circular color='grey' name='map pin' />
         </Grid.Column>
-        }
 
-        {this.props.userInfo.location === "" ? null :
         <Grid.Column width={14} textAlign="left">
             <h4 style={{lineHeight: "2.5rem", color: "white"}}>{this.props.userInfo.location}</h4>
         </Grid.Column>
-        }
-
         </Grid.Row>
-
-    </Grid>
+        </Grid>
+        }
         
     </Segment>
   </div>

@@ -1,6 +1,7 @@
 import React , { Component } from 'react'
 import { Container, Grid, Segment, Header, Icon, Form, TextArea, Card,  Button, Image, Select, Step, Comment} from 'semantic-ui-react'
 import axios from 'axios'
+import './css/profile.css'
 
 let messageStyles={
   marginBottom: "5px",
@@ -89,8 +90,8 @@ class ShareBox extends Component {
           <Form.Input style={{backgroundColor:"transparent", border: "1px solid white", color: "white"}} onChange={this.handleInputChange} name="project_url" label="Link To Project Production" placeholder="https://..."/>
           <Form.TextArea style={{backgroundColor:"transparent", border: "1px solid white", color: "white"}} onChange={this.handleInputChange} name="project_description" placeholder="For this project I did..."/>
           <Form.Input style={{backgroundColor:"transparent", border: "1px solid white", color: "white"}} onChange={this.handleInputChange} name="languages" label="Languages Used" placeholder="React, Node, Express, MongoDb"/>
-          <Icon name='checkmark' size='large' circular color="grey"  onClick={this.handleFormSubmit}/>
-          <Icon name='close' size='large' circular color="grey" onClick={()=> this.cancel()} />
+          <a><Icon name='checkmark' size='large' circular color="grey" style={{ cursor: "pointer"}} onClick={this.handleFormSubmit}/></a>
+          <Icon name='close' size='large' circular color="grey"  style={{ cursor: "pointer"}} onClick={()=> this.cancel()} />
         </Form>
       </Comment.Content>
     </Comment>

@@ -82,7 +82,6 @@ renderFeedPage(){
             background: `url(${background}) no-repeat center center fixed`,
             webkitBackgroundSize: "cover",
             mozBackgroundSize: "cover",
-            oBackgroundSize: "cover",
             backgroundSize: "cover",
             backgroundSize: "cover",
         }}>
@@ -100,9 +99,9 @@ renderFeedPage(){
 
                  <Grid.Row  style={{marginTop: "5%"}}>
 
-                 <Grid.Column width={5}>
+                 <Grid.Column width={5} style={{marginLeft: "2%"}}>
                             <Grid>
-                                <Grid.Row>
+                                <Grid.Row style={{maxWidth:"450px", minWidth:"350px"}}>
                                     <Grid.Column width={16} style={{marginTop:"15%"}}>
                                          <FeedShareBox loggedInUser={this.state.loggedInUser} renderUser={this.update} />
                                     </Grid.Column>
@@ -128,7 +127,7 @@ renderFeedPage(){
                  <Grid.Column width={7}>
 
                             <Grid>
-                                <Grid.Row>
+                                <Grid.Row style={{maxWidth:"650px", minWidth:"500px"}}>
                                     <Grid.Column width={16}>
                                         <FeaturedJobContainer />
                                     </Grid.Column>

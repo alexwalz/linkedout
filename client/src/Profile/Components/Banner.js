@@ -18,8 +18,10 @@ let styles={
 }
 
 let imageStyles={
-    height: "20vh",
-    width: "20vh",
+    maxHeight: "150px",
+    minHeight: "150px",
+    maxWidth: "150px",
+    minWidth: "150px",
     overflow: "hidden",
     padding: "3px",
     border: "3px solid #5CC1CD", 
