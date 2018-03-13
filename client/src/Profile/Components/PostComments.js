@@ -35,7 +35,7 @@ export default class CommentExamplecommentsCollapsed extends Component {
       <div>
        <div>
        <Button circular color="grey" icon='comments' onClick={this.showComments}/>
-        {commentsNumber === 0 ? <a style={{cursor: "pointer", color: "inherit"}} onClick={this.showComments}> {commentsNumber} comments</a> : <a style={{cursor: "pointer", color: "inherit"}} onClick={this.showComments}> {commentsNumber} comments</a>}
+        {commentsNumber === 0 ? <a style={{cursor: "pointer", color: "#67C8D3"}} onClick={this.showComments}> {commentsNumber} comments</a> : <a style={{cursor: "pointer", color: "inherit"}} onClick={this.showComments}> {commentsNumber} comments</a>}
         </div>
 
         <Comment.Group>

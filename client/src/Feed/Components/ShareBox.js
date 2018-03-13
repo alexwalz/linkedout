@@ -87,8 +87,8 @@ class ShareBox extends Component {
         <Form reply>
           {/* <Select placeholder='Select the type of post' options={postOptions} style={messageStyles} name="messageType" onChange={this.handleInputChange}/> */}
           <Form.TextArea style={{backgroundColor:"transparent", border: "1px solid white", color: "white"}} onChange={this.handleInputChange} name="message"/>
-          <Icon className="submitButton" name='checkmark' size='large' circular color="grey" style={{ cursor: "pointer"}}  onClick={this.handleFormSubmit}/>
-          <Icon className="submitButton"  name='close' size='large' circular color="grey" style={{ cursor: "pointer"}}  onClick={()=> this.cancel()} />
+          <Icon className="submitButton" name='checkmark' size='large' circular color="grey" style={{ cursor: "pointer", backgroundColor: "white"}}  onClick={this.handleFormSubmit}/>
+          <Icon className="submitButton"  name='close' size='large' circular color="grey" style={{ cursor: "pointer", backgroundColor: "white"}}  onClick={()=> this.cancel()} />
         </Form>
       </Comment.Content>
     </Comment>
