@@ -28,7 +28,6 @@ export default class SearchContainer extends Component {
     })
   }
 
-
   componentWillMount() {
     this.resetComponent()
     this.getUsers();
@@ -40,7 +39,11 @@ export default class SearchContainer extends Component {
 
   resetComponent = () => this.setState({ isLoading: false, results: [], value: '' })
 
-  handleResultSelect = (e, { result }) => this.setState({ value: result.title })
+  handleResultSelect = (e, { result }) => {
+    window.location.assign("/home/profile/" + result.id)
+    this.setState({ value: result.title })
+  }
+
 
   handleSearchChange = (e, { value }) => {
     this.setState({ isLoading: true, value })
