@@ -16,7 +16,7 @@ class ConnectButton extends Component {
     axios
       .get("/api/users/" + this.props.url)
       .then(response => {this.setState({ renderedUser: response.data });})
-      .catch(error => {console.log("Error fetching and parsing data", error);});
+      .catch(error => {null});
   }
 
   componentWillReceiveProps(props) {
@@ -28,7 +28,7 @@ class ConnectButton extends Component {
         this.setState({connected: false});
         this.handleConnectionCheck()
     })
-    .catch(error => {console.log("Error fetching and parsing data", error);});
+    .catch(error => {null});
   }
 
   handleConnect = ()=> {
@@ -42,7 +42,7 @@ class ConnectButton extends Component {
     axios
       .get("/api/users/login")
       .then(response => {this.setState({ loggedInUser: response.data });})
-      .catch(error => {console.log("Error fetching and parsing data", error);});
+      .catch(error => {null});
   };
 
   handleConnectionCheck = () =>{
