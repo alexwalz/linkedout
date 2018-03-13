@@ -5,6 +5,7 @@ import Logo from './Logo';
 import {Link} from "react-router-dom";
 import background from '../../img/midnight.jpg'
 import axios from 'axios'
+import Search from './Search'
 
 
 
@@ -61,7 +62,7 @@ class Nav extends Component {
         <Menu.Menu position='left' style={{marginLeft: 30}}>
                 <Logo/>
                 <Menu.Item>
-                <Input icon='search' placeholder='Search...' style={{width:300}}/>
+                <Search style={{width:300}}/>
                 </Menu.Item>
         </Menu.Menu>
         <Menu.Menu position='left'>
