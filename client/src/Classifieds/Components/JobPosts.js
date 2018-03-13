@@ -25,14 +25,6 @@ function JobPosts(props) {
       <div style={{margin: "5px"}}>
           <Message info style={messageStyles}>
           <Grid columns={2}>
-                {/* <Grid.Row>
-                <Grid.Column width={4}>
-                <Image style={imageStyles} src={props.image_url} size='mini' />
-                </Grid.Column>
-                <Grid.Column width={12}>
-                    <h2  style={{color: "white"}}>{props.name}</h2>
-                </Grid.Column>
-                </Grid.Row> */}
 
                 <Grid.Row>
                 <Grid.Column  width={16}>
