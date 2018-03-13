@@ -83,12 +83,13 @@ await this.props.renderUser()
       <Card
         fluid
         style={{ boxShadow: "0 4px 6px 0 rgba(0, 0, 0, 0.2)" }}
-        style={{ marginBottom: "10px" }}
+
       >
         <Card.Content>
           <Card.Description>
             <Form>
-              <Form.TextArea label="about" placeholder="Tell us about you..." onChange={this.handleInputChange} name="about"/>
+              <h2 style={{color: "grey"}}>Edit About Section</h2>
+              <Form.TextArea placeholder={this.props.userInfo.about} onChange={this.handleInputChange} name="about"/>
             </Form>
           </Card.Description>
         </Card.Content>
@@ -115,7 +116,7 @@ await this.props.renderUser()
   renderDisplay() {
     return (
       
-      <div style={{ marginBottom: "10px" }}>
+      <div style={{ marginBottom: "10px", marginTop: "2%" }}>
       
         <Grid.Row style={{ marginBottom: "10px", marginBottom: "10px" }}>
           {this.props.loggedInUserInfo.userId === this.props.url &&
