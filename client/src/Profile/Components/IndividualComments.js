@@ -94,8 +94,8 @@ class IndividualComments extends Component {
                   </Comment.Actions>
                   <Form reply>
                     <Form.TextArea style={{backgroundColor:"transparent", border: "1px solid white", color: "white"}} onChange={this.handleInputChange} name="text" placeholder={this.props.message}/>
-                    <Icon name='checkmark' size='large' circular color="grey"  onClick={this.updateComment}/>
-                    <Icon name='close' size='large' circular color="grey" onClick={()=> this.cancel()} />
+                    <Icon name='checkmark' size='large' circular color="grey" style={{backgroundColor: "white"}} onClick={this.updateComment}/>
+                    <Icon name='close' size='large' circular color="grey" style={{backgroundColor: "white"}} onClick={()=> this.cancel()} />
                     <Button inverted color='red' onClick={this.deleteComment}>Delete</Button>
                   </Form>
                 </Comment.Content>

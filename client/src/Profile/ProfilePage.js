@@ -220,7 +220,7 @@ class ProfilePage extends Component {
                                             <Link to="/home/profile/5a91a842c09c7b377882e41d"> KURT</Link> */}
 
 
-                  <Grid.Column width={16} style={{ marginTop: "10px" }}>
+                  <Grid.Column width={16} style={{ marginTop: "10px", marginBottom: "4%" }}>
                          <Divider horizontal><h3  textAlign="center" style={{color: "white"}}>My Projects</h3></Divider>
                   
                          {this.state.loggedInUser.userId ===
@@ -233,12 +233,13 @@ class ProfilePage extends Component {
 
 
 {/* BROKEN CODE */}
-                  <Grid.Column width={16} style={{marginTop:"4%"}}>
-                    <ProjectsView
-                      userInfo={this.state.renderedUser}
-                      loggedInUserInfo={this.state.loggedInUser}
-                      url={this.state.url}
-                    />
+                  <Grid.Column width={16} style={{marginBottom:"6%"}}>
+                          <ProjectsView
+                            userInfo={this.state.renderedUser}
+                            loggedInUserInfo={this.state.loggedInUser}
+                            url={this.state.url}
+                            style={{marginBottom: "4%"}}
+                          />
                   </Grid.Column>
 
 {/* ######### */}

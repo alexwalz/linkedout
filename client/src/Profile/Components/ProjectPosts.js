@@ -77,8 +77,8 @@ class ShareBox extends Component {
           <Form.Input style={{backgroundColor:"transparent", border: "1px solid white", color: "white"}} onChange={this.handleInputChange} name="project_url" label="Link To Project Production" placeholder="https://..."/>
           <Form.TextArea style={{backgroundColor:"transparent", border: "1px solid white", color: "white"}} onChange={this.handleInputChange} name="project_description" placeholder="For this project I did..."/>
           <Form.Input style={{backgroundColor:"transparent", border: "1px solid white", color: "white"}} onChange={this.handleInputChange} name="languages" label="Languages Used" placeholder="React, Node, Express, MongoDb"/>
-          <Icon name='checkmark' size='large' circular color="grey"  onClick={this.handleFormSubmit}/>
-          <Icon name='close' size='large' circular color="grey" onClick={()=> this.cancel()} />
+          <Icon name='checkmark' size='large' circular color="grey"  style={{ backgroundColor: "white", cursor: "pointer", border: "1px solid #7ABEC9"}} onClick={this.handleFormSubmit}/>
+          <Icon name='close' size='large' circular color="grey" style={{ backgroundColor: "white", cursor: "pointer",  border: "2px solid #7ABEC9"}} onClick={()=> this.cancel()} />
           <Button inverted color='red'>Delete</Button>
         </Form>
       </Comment.Content>

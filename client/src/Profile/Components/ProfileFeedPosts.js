@@ -71,7 +71,7 @@ let messageStyles={
 
         return(
   
-                <Comment.Group style={{backgroundColor: "none"}}>
+                <Comment.Group style={{backgroundColor: "none", marginBottom: "5%"}}>
                 <Comment style={{backgroundColor: "transparent"}}>
                   <Comment.Content>
                     <Comment.Actions>
@@ -79,8 +79,8 @@ let messageStyles={
                     </Comment.Actions>
                     <Form reply>
                       <Form.TextArea style={{backgroundColor:"transparent", border: "1px solid white", color: "white"}} onChange={this.handleInputChange} name="text" placeholder={this.props.message}/>
-                      <Icon name='checkmark' size='large' circular color="grey"  onClick={this.updatePost}/>
-                      <Icon name='close' size='large' circular color="grey" onClick={()=> this.cancel()} />
+                      <Icon name='checkmark' size='large' circular color="grey"  style={{backgroundColor: "white"}} onClick={this.updatePost}/>
+                      <Icon name='close' size='large' circular color="grey" style={{backgroundColor: "white"}} onClick={()=> this.cancel()} />
                       <Button inverted color='red' onClick={this.deleteComment}>Delete</Button>
                     </Form>
                   </Comment.Content>
@@ -93,7 +93,7 @@ let messageStyles={
       renderDisplay(props){
 
         let messageStyles={
-            border: "4px solid grey",
+            border: "4px solid white",
             padding: "3%",
             // borderImage: "linear-gradient(to bottom, #3acfd5 0%, #3a4ed5 100%)",
             backgroundColor: "transparent"
@@ -101,7 +101,7 @@ let messageStyles={
 
         return(
   
-            <div style={{margin: "5px"}}>
+            <div style={{margin: "10px"}}>
             <Message info style={messageStyles}>
             <Grid columns={2}>
                   <Grid.Row>
@@ -138,7 +138,7 @@ let messageStyles={
                   </div>
 
                 <div>
-                {this.props.loggedInUserInfo._id === this.props.url ? <h5 style={{marginBottom: "3%", cursor: "pointer"}} onClick={()=> this.edit()}>Edit Post</h5> : null}
+                {this.props.loggedInUserInfo._id === this.props.url ? <h5 style={{marginBottom: "3%", cursor: "pointer", color: "#67C8D3"}} onClick={()=> this.edit()}>Edit Post</h5> : null}
                   
                 </div>
   

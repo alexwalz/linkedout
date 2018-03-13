@@ -11,7 +11,7 @@ class FeaturedJob extends Component {
     render() { 
         return ( 
             <div>
-            <Step.Group fluid vertical style={{backgroundColor:"transparent", border: "1px solid white"}}>
+            <Step.Group fluid vertical style={{backgroundColor:"transparent", border: "3px solid #67C8D3"}}>
             <Step active style={{backgroundColor:"transparent"}}>
             <Icon name='code' color="grey" />
             <Step.Content>

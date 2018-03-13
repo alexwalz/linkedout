@@ -44,8 +44,8 @@ import axios from 'axios'
                         <TextArea placeholder='Type Your Comment Here' onChange={this.handleInputChange} name="text" ref="text" value={this.state.text} style={{backgroundColor: "transparent", color: "white"}}/>
                     </Form>
 
-                        <Icon name='checkmark' size='large' circular color="grey"  onClick={this.handleSubmit}/>
-                        <Icon name='close' size='large' circular color="grey" onClick={()=> this.props.showComments()} />
+                        <Icon name='checkmark' size='large' circular color="grey" style={{ cursor: "pointer", backgroundColor: "white"}} onClick={this.handleSubmit}/>
+                        <Icon name='close' size='large' circular color="grey" style={{ cursor: "pointer",  backgroundColor: "white"}}onClick={()=> this.props.showComments()} />
              </div>
            )
       }
