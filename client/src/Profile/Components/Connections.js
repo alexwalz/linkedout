@@ -30,7 +30,7 @@ const Connections = (props) => (
                             </Grid.Column>
 
                        
-                        {props.userInfo.connections.slice(0, 6).reverse().map((connection, key) => (
+                        {props.userInfo.connections.slice((props.userInfo.connections.length-6), (props.userInfo.connections.length)).reverse().map((connection, key) => (
                             <Grid.Column width={2} style={{padding: "5px"}} textAlign="center">
                                         <IndividualConnections url={connection._id} firstName={connection.firstName} key={key} lastName ={connection.lastName}  job_title={connection.job_title}  image_url={connection.image_url} />
                            </Grid.Column>
