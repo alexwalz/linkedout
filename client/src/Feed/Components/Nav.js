@@ -56,6 +56,7 @@ class Nav extends Component {
         left: 0,
         right: 0,
         backgroundImage: `url(${background})`,
+        backgroundSize: "cover"
       }}>
       {this.getUser()}
       <Menu inverted pointing secondary style={{ border:'none'}}> 
@@ -65,7 +66,7 @@ class Nav extends Component {
                 <Search style={{width:300}}/>
                 </Menu.Item>
         </Menu.Menu>
-        <Menu.Menu position='left'>
+        <Menu.Menu position='right'>
            
               <Menu.Item name='home' active={activeItem === 'home'} onClick={this.handleItemClick}>
                <Link to="/home/feed">
