@@ -13,6 +13,7 @@ import FeedShareBox from './Components/ShareBox'
 import NewProjectBox from '../Profile/Components/ProjectShareBox'
 import Languages from '../Profile/Components/LanguagesView'
 import { Redirect } from "react-router-dom"
+import AdSense from 'react-adsense'
 
 class FeedPage extends Component {
     constructor(props) {
@@ -142,6 +143,13 @@ renderFeedPage(){
                 </Grid.Column>
 
                 <Grid.Column width={4}>
+
+                        <AdSense.Google client='ca-pub-7961305018548600'
+                        slot='7806394673'
+                        />
+
+                        {/* style={{width: 500, height: 300, float: 'left'}}
+                        format=''  */}
 
                 </Grid.Column>
 
