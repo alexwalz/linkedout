@@ -17,6 +17,7 @@ class FileUploader extends Component {
         console.log(".... on Drop...");
         this.setState(files[0]);
         this.props.imageFile(files[0]);
+        this.props.update()
     }
 
     render() {

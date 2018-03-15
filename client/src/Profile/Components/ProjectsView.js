@@ -58,6 +58,7 @@ class ProfileFeed extends React.Component {
         {this.props.userInfo.projects.length > 0 ? this.props.userInfo.projects.slice(0).reverse().map((project, key) => (
           <div  style={{marginBottom: "2%"}}>
           <ProjectPosts
+              project_id={project._id}
               project_name={project.project_name}
               development_position={project.development_position}
               code_url={project.code_url}

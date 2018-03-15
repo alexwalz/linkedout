@@ -20,6 +20,7 @@ class ShareBox extends Component {
         super(props);
         this.state = { 
           editing: false,
+          postData: {}
          }
     }
 
@@ -34,10 +35,28 @@ class ShareBox extends Component {
     handleInputChange = event => {
       const value = event.target.value;
       const name = event.target.name;
-      this.setState({
-        [name]: value
-      });
+      this.setState(prevState => ({
+        postData: {
+            ...prevState.postData,
+            [name]:value
+          }
+        }));
     };
+
+    deletePost=()=>{
+      console.log("Delete Requested on", this.props.project_id)
+
+      axios
+      .delete("/api/projects/"+this.props.project_id)
+      .then(response => {
+              console.log("Successfully Deleted")
+              this.props.renderUser()
+              this.setState({editing: false})
+      })
+      .catch(error => {
+        console.log("Error fetching and parsing data", error);
+      });
+  }
    
 
   handleFormSubmit = ()=> {
@@ -60,6 +79,30 @@ class ShareBox extends Component {
 
   }
 
+  updatePost=()=>{
+    console.log("Update Requested on", this.props.project_id)
+
+    axios
+    .put("/api/comments/"+this.props.project_id, {
+          project_name: "",
+          development_position: "",
+          code_url: "", 
+          project_url: "",
+          project_description: "",
+          languages: ""
+    })
+    .then(response => {
+            console.log("Successfully Deleted")
+            this.props.updateParent()
+            this.setState({editing: false})
+    })
+    .catch(error => {
+      console.log("Error fetching and parsing data", error);
+    });
+}
+
+
+
     renderForm(){
 
       return(
@@ -71,15 +114,15 @@ class ShareBox extends Component {
           <Comment.Action active style={{color: "white"}}><h2>Edit Project</h2></Comment.Action>
         </Comment.Actions>
         <Form reply>
-          <Form.Input style={{backgroundColor:"transparent", border: "1px solid white", color: "white"}} onChange={this.handleInputChange} name="project_name" label="Project Name" placeholder="Name of My Project"/>
-          <Form.Input style={{backgroundColor:"transparent", border: "1px solid white", color: "white"}} onChange={this.handleInputChange} name="development_position" label="My Position" placeholder="Front End Developer"/>
+          <Form.Input style={{backgroundColor:"transparent", border: "1px solid white", color: "white"}} onChange={this.handleInputChange} name="project_name" label="Project Name" placeholder={this.props.project_name}/>
+          <Form.Input style={{backgroundColor:"transparent", border: "1px solid white", color: "white"}} onChange={this.handleInputChange} name="development_position" label="My Position" placeholder={this.props.development_position}/>
           <Form.Input style={{backgroundColor:"transparent", border: "1px solid white", color: "white"}} onChange={this.handleInputChange} name="code_url" label="Link To Project Code" placeholder="https://github.com/..."/>
           <Form.Input style={{backgroundColor:"transparent", border: "1px solid white", color: "white"}} onChange={this.handleInputChange} name="project_url" label="Link To Project Production" placeholder="https://..."/>
           <Form.TextArea style={{backgroundColor:"transparent", border: "1px solid white", color: "white"}} onChange={this.handleInputChange} name="project_description" placeholder="For this project I did..."/>
-          <Form.Input style={{backgroundColor:"transparent", border: "1px solid white", color: "white"}} onChange={this.handleInputChange} name="languages" label="Languages Used" placeholder="React, Node, Express, MongoDb"/>
-          <Icon name='checkmark' size='large' circular color="grey"  style={{ backgroundColor: "white", cursor: "pointer", border: "1px solid #7ABEC9"}} onClick={this.handleFormSubmit}/>
+          <Form.Input style={{backgroundColor:"transparent", border: "1px solid white", color: "white"}} onChange={this.handleInputChange} name="languages" label="Languages Used" placeholder={this.props.languages}/>
+          <Icon name='checkmark' size='large' circular color="grey"  style={{ backgroundColor: "white", cursor: "pointer", border: "1px solid #7ABEC9"}} onClick={this.updatePost}/>
           <Icon name='close' size='large' circular color="grey" style={{ backgroundColor: "white", cursor: "pointer",  border: "2px solid #7ABEC9"}} onClick={()=> this.cancel()} />
-          <Button inverted color='red'>Delete</Button>
+          <Button inverted color='red' onClick={this.deletePost}>Delete</Button>
         </Form>
       </Comment.Content>
     </Comment>

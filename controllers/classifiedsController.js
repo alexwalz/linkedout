@@ -19,10 +19,21 @@ module.exports = {
             .catch(err => res.status(422).json(err));
     },
     create: function (req, res) {
+        //console.log(".... req object...");
+        //console.log(req.body);
         db.classified
             .create(req.body)
-            .then(dbModel => res.json(dbModel))
-            .catch(err => res.status(422).json(err));
+            .then(dbModel => {
+                //console.log(".... in then");
+                //console.log(dbModel);
+                res.json(dbModel);
+            })
+            .catch(err => {
+                //console.log(".... in error");
+                //console.log(err);
+                res.status(422).json(err);
+
+            });
     },
     update: function (req, res) {
         db.classified

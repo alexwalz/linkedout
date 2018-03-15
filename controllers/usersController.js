@@ -1,4 +1,5 @@
 const db = require("../models");
+var moment = require('moment');
 
 module.exports = {
     findAll: function (req, res) {
@@ -28,6 +29,7 @@ module.exports = {
             .populate('education')
             .populate('connections')
             .then(function (dbUser) {
+                
                 dbUser.password = "";
                 res.json(dbUser);
             })
@@ -214,7 +216,7 @@ module.exports = {
                                             message: dbPost[i].message,
                                             messageType: dbPost[i].messageType,
                                             comments: dbPost[i].comments,
-                                            date: dbPost[i].date
+                                            date: moment(dbPost[i].date).fromNow()
                                         })
                                     }
                                 }

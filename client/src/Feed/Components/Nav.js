@@ -58,7 +58,6 @@ class Nav extends Component {
         backgroundImage: `url(${background})`,
         backgroundSize: "cover"
       }}>
-      {this.getUser()}
       <Menu inverted pointing secondary style={{ border:'none'}}> 
         <Menu.Menu position='left' style={{marginLeft: 30}}>
                 <Logo/>
@@ -76,10 +75,13 @@ class Nav extends Component {
               </Menu.Item>
             
 
-            <Menu.Item name='network' active={activeItem === 'network'} onClick={this.handleItemClick}>
-                <Icon name='users' />
-                Network
+            <Menu.Item name='classifieds' active={activeItem === 'classifieds'} onClick={this.handleItemClick}>
+            <Link to={`/home/classifieds`}>
+                <Icon name='newspaper' />
+                Classifieds
+                </Link>
             </Menu.Item>
+
             <Menu.Item name='profile' active={activeItem === 'profile'} onClick={this.handleItemClick}>
               <Link to={`/home/profile/${this.state.loggedInUser}`}>
                 <Icon name='image' />

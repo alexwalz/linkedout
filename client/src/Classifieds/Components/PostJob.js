@@ -5,6 +5,7 @@ import axios from 'axios';
 
 
 
+
 export default class PostJob extends Component {
   constructor(props) {
       super(props);
@@ -22,6 +23,7 @@ export default class PostJob extends Component {
           position_responsibilities: "",
           position_qualifications: "",
 
+
           formsCollapsed: true,
         }
         
@@ -38,12 +40,45 @@ export default class PostJob extends Component {
         [name]: value
       });
     };
+
+    handleChangeCategory = (e, { value }) => {
+      this.setState({category : value })
+    };
+
+    handleInputChangeSalaryFrom = (e, { value }) => {
+      this.setState({salaryFrom : value })
+    };
+
+    handleInputChangeSalaryTo = (e, { value }) => {
+      this.setState({salaryTo : value })
+    };
+
+    handleInputChangeJobType = (e, { value }) => {
+      this.setState({jobType : value })
+    };
+
+    handleInputChangeEduLevel = (e, { value }) => {
+      this.setState({eduLevel : value })
+    };
+
+    handleInputChangeYearsExp = (e, { value }) => {
+      this.setState({yearsOfExp : value })
+    };
+
+
+
+
   
     handleFormSubmit = event => {
       event.preventDefault();
-      // axios.post("/api/users", this.state).then(function(response){
-      // })
+      this.props.cformData(this.state);
+      axios.post("/api/classifieds", this.state).then(function(response){
+      });
+      this.showForms()
+      this.props.update()
     };
+
+
     renderDisplay(){
       return(
           <Step.Group fluid vertical style={{backgroundColor:"transparent", border: "1px solid white"}}>
@@ -58,69 +93,73 @@ export default class PostJob extends Component {
 
         )
     }
+    
 
   render() { 
-
+  
     const { formsCollapsed } = this.state
 
       let categoryOptions =[
-        {key: 'front', value: 'front', text: 'Frontend Developer'},
-        {key: 'back', value: 'back', text: 'Backend Developer'},
-        {key: 'engineer', value: 'engineer', text: 'Software Engineer'},
-        {key: 'full', value: 'full', text: 'Fullstack Developer'},
-        {key: 'other', value: 'other', text: 'Other'}
+        {key: 'front', value: 'Frontend Developer', text: 'Frontend Developer'},
+        {key: 'back', value: 'Backend Developer', text: 'Backend Developer'},
+        {key: 'engineer', value: 'Software Engineer', text: 'Software Engineer'},
+        {key: 'full', value: 'Fullstack Developer', text: 'Fullstack Developer'},
+        {key: 'other', value: 'Other', text: 'Other'}
       ]
       let salaryFromOptions =[
         
         // {key: 'from', value: 'from', text: 'Salary Range From'},
-        {key: '40,000', value: '40,000', text: '$40,000'},
-        {key: '50,000', value: '50,000', text: '$50,000'},
-        {key: '60,000', value: '60,000', text: '$60,000'},
-        {key: '70,000', value: '70,000', text: '$70,000'},
-        {key: '80,000', value: '80,000', text: '$80,000'},
-        {key: '90,000', value: '90,000', text: '$90,000'},
-        {key: '100,000', value: '100,000', text: '$100,000'},
-        {key: '>120,000', value: '>120,000', text: '>$120,000'},
+        {key: '40,000', value: '$40,000', text: '$40,000'},
+        {key: '50,000', value: '$50,000', text: '$50,000'},
+        {key: '60,000', value: '$60,000', text: '$60,000'},
+        {key: '70,000', value: '$70,000', text: '$70,000'},
+        {key: '80,000', value: '$80,000', text: '$80,000'},
+        {key: '90,000', value: '$90,000', text: '$90,000'},
+        {key: '100,000', value: '$100,000', text: '$100,000'},
+        {key: '>120,000', value: '>$120,000', text: '>$120,000'},
       ]
       let salaryToOptions =[
         
         // {key: 'to', value: 'to', text: 'Salary Range To'},
-        {key: '40,000', value: '40,000', text: '$40,000'},
-        {key: '50,000', value: '50,000', text: '$50,000'},
-        {key: '60,000', value: '60,000', text: '$60,000'},
-        {key: '70,000', value: '70,000', text: '$70,000'},
-        {key: '80,000', value: '80,000', text: '$80,000'},
-        {key: '90,000', value: '90,000', text: '$90,000'},
-        {key: '100,000', value: '100,000', text: '$100,000'},
-        {key: '>120,000', value: '>120,000', text: '>$120,000'},
+        {key: '40,000', value: '$40,000', text: '$40,000'},
+        {key: '50,000', value: '$50,000', text: '$50,000'},
+        {key: '60,000', value: '$60,000', text: '$60,000'},
+        {key: '70,000', value: '$70,000', text: '$70,000'},
+        {key: '80,000', value: '$80,000', text: '$80,000'},
+        {key: '90,000', value: '$90,000', text: '$90,000'},
+        {key: '100,000', value: '$100,000', text: '$100,000'},
+        {key: '>120,000', value: '>$120,000', text: '>$120,000'},
       ]
       let jobType =[
         
-        {key: 'full', value: 'full', text: 'Full Time'},
-        {key: 'part', value: 'part', text: 'Part Time'},
-        {key: 'contract', value: 'contract', text: 'Contract'},
-        {key: 'temp', value: 'temp', text: 'Temporary'},
+        {key: 'full', value: 'Full Time', text: 'Full Time'},
+        {key: 'part', value: 'Part Time', text: 'Part Time'},
+        {key: 'contract', value: 'Contract', text: 'Contract'},
+        {key: 'temp', value: 'Temporary', text: 'Temporary'},
       ]
       let eduLevel =[
         
-        {key: 'none', value: 'none', text: 'None'},
-        {key: 'advanced', value: 'advanced', text: 'Advanced Degree'},
-        {key: '4', value: '4', text: '4-Year Degree'},
-        {key: '2', value: '2', text: '2-Year Degree'},
-        {key: 'high', value: 'high', text: 'High School'},
+        {key: 'none', value: 'None', text: 'None'},
+        {key: 'advanced', value: 'Advanced Degree', text: 'Advanced Degree'},
+        {key: '4', value: '4-Year Degree', text: '4-Year Degree'},
+        {key: '2', value: '2-Year Degree', text: '2-Year Degree'},
+        {key: 'high', value: 'High School', text: 'High School'},
       ]
       let yearsOfExp =[
         
-        {key: 'none', value: 'none', text: 'None'},
-        {key: '1-2', value: '1-2', text: '1-2 Years'},
-        {key: '3-4', value: '3-4', text: '3-4 Years'},
-        {key: '5-7', value: '5-7', text: '5-7 Years'},
-        {key: '8-10', value: '8-10', text: '8-10 Years'},
-        {key: '10', value: '10', text: '>10 Years'},
+        {key: 'none', value: 'None', text: 'None'},
+        {key: '1-2', value: '1-2 Years', text: '1-2 Years'},
+        {key: '3-4', value: '3-4 Years', text: '3-4 Years'},
+        {key: '5-7', value: '5-7 Years', text: '5-7 Years'},
+        {key: '8-10', value: '8-10 Years', text: '8-10 Years'},
+        {key: '10', value: '>10 Year', text: '>10 Years'},
       ]
 
       return (  
+
+        
     <div>
+      
       <Container style={{width: '70%'}} >
           {this.renderDisplay() }
       </Container>
@@ -132,7 +171,7 @@ export default class PostJob extends Component {
         <Comment>
 
                   <Divider horizontal>
-                      <h2 textAlign="center" style={{ color: "white" }}>
+                      <h2 textalign="center" style={{ color: "white" }}>
                           <Icon circular name='id card' />General Information
                       </h2>
                   </Divider>
@@ -151,12 +190,13 @@ export default class PostJob extends Component {
                               
                         <Form.Group widths='equal'>
                           <Form.Input onChange={this.handleInputChange} label='Company Name' placeholder='ex. Adobe' type='text' name="company_name"/>                             
-                          <Form.Select onChange={this.handleInputChange} label='Category' widths='equal' fluid label='Category' type='text' options={categoryOptions} />
+                          <Form.Select onChange={this.handleChangeCategory} label='Category' widths='equal' fluid label='Category' type='text' name="category" options={categoryOptions} />
                         </Form.Group>
+                      
                               
                         <Form.Group style={{marginLeft: .5, marginRight: .5}} widths='equal'>
-                          <Form.Select onChange={this.handleInputChange}  fluid label='Salary' placeholder='From' type='text' options={salaryFromOptions} />
-                          <Form.Select onChange={this.handleInputChange}  fluid label='Range' placeholder='To' type='text' options={salaryToOptions} />
+                          <Form.Select onChange={this.handleInputChangeSalaryFrom}  fluid label='Salary' placeholder='From' type='text' options={salaryFromOptions} name="salaryFrom"/>
+                          <Form.Select onChange={this.handleInputChangeSalaryTo}  fluid label='Range' placeholder='To' type='text' options={salaryToOptions} name="salaryTo"/>
                         </Form.Group>
 
                         <Form.Group widths='equal'>
@@ -167,11 +207,11 @@ export default class PostJob extends Component {
                         </Form.Group>
 
                         <Form.Group widths='equal'>
-                          <Form.Select onChange={this.handleInputChange}  fluid label='Job Type' type='text' options={jobType} style={{marginRight: 6}} />
+                          <Form.Select onChange={this.handleInputChangeJobType}  fluid label='Job Type' type='text' name="jobType" options={jobType} style={{marginRight: 6}} />
 
-                          <Form.Select onChange={this.handleInputChange}  fluid label='Education Level' type='text' options={eduLevel} style={{marginRight: 6}} />
+                          <Form.Select onChange={this.handleInputChangeEduLevel}  fluid label='Education Level' type='text' name="eduLevel" options={eduLevel} style={{marginRight: 6}} />
 
-                          <Form.Select onChange={this.handleInputChange}  fluid label='Years of Experience' type='text' options={yearsOfExp} style={{marginRight: 6}} />
+                          <Form.Select onChange={this.handleInputChangeYearsExp}  fluid label='Years of Experience' type='text' name="yearsOfExp" options={yearsOfExp} style={{marginRight: 6}} />
                         </Form.Group>
                               
                     </Form>
@@ -196,7 +236,7 @@ export default class PostJob extends Component {
       <Comment widths='equal'>
 
                   <Divider horizontal>
-                        <h2 textAlign="center" style={{ color: "white" }}>
+                        <h2 textalign="center" style={{ color: "white" }}>
                           <Icon circular name='briefcase' />Description and Qualifications
                         </h2>
                   </Divider>
@@ -238,7 +278,7 @@ export default class PostJob extends Component {
       <Comment widths='equal'>
 
                   <Divider horizontal>
-                        <h2 textAlign="center" style={{ color: "white" }}>
+                        <h2 textalign="center" style={{ color: "white" }}>
                             <Icon circular name='address book' />Contact Info
                         </h2>
                   </Divider>
@@ -264,7 +304,7 @@ export default class PostJob extends Component {
                               <Form.TextArea rows={4} onChange={this.handleInputChange} label='Additional Info' placeholder='Enter Text' name="additional_info"/>
 
                               <Form.Checkbox inline label='I agree to the terms and conditions' />
-                              <Button color='teal' inverted onClick={this.handleFormSubmit}>Post Job</Button>
+                              <Button color='teal' inverted onClick={this.handleFormSubmit} >Post Job</Button>
 
                     </Form>
                     
