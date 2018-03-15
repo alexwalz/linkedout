@@ -16,6 +16,8 @@ class ClassifiedsPage extends Component {
 
          }
     }
+
+
     render() { 
         return ( 
 
@@ -56,7 +58,9 @@ class ClassifiedsPage extends Component {
                         <Grid.Row>
                             <Grid.Column width={16}>
                             
-                                <PostJob />
+                                <PostJob
+                                ClassifiedInfo={this.state}
+                                />
 
                             </Grid.Column>
                         </Grid.Row>

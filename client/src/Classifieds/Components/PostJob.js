@@ -5,6 +5,7 @@ import axios from 'axios';
 
 
 
+
 export default class PostJob extends Component {
   constructor(props) {
       super(props);
@@ -22,6 +23,7 @@ export default class PostJob extends Component {
           position_responsibilities: "",
           position_qualifications: "",
 
+
           formsCollapsed: true,
         }
         
@@ -38,11 +40,40 @@ export default class PostJob extends Component {
         [name]: value
       });
     };
+
+    handleChangeCategory = (e, { value }) => {
+      this.setState({category : value })
+    };
+
+    handleInputChangeSalaryFrom = (e, { value }) => {
+      this.setState({salaryFrom : value })
+    };
+
+    handleInputChangeSalaryTo = (e, { value }) => {
+      this.setState({salaryTo : value })
+    };
+
+    handleInputChangeJobType = (e, { value }) => {
+      this.setState({jobType : value })
+    };
+
+    handleInputChangeEduLevel = (e, { value }) => {
+      this.setState({eduLevel : value })
+    };
+
+    handleInputChangeYearsExp = (e, { value }) => {
+      this.setState({yearsOfExp : value })
+    };
+
+
+
+
   
     handleFormSubmit = event => {
       event.preventDefault();
-      // axios.post("/api/users", this.state).then(function(response){
-      // })
+      axios.post("/api/classifieds", this.state).then(function(response){
+        
+      })     
     };
     renderDisplay(){
       return(
@@ -58,9 +89,10 @@ export default class PostJob extends Component {
 
         )
     }
+    
 
   render() { 
-
+  
     const { formsCollapsed } = this.state
 
       let categoryOptions =[
@@ -120,7 +152,10 @@ export default class PostJob extends Component {
       ]
 
       return (  
+
+        
     <div>
+      
       <Container style={{width: '70%'}} >
           {this.renderDisplay() }
       </Container>
@@ -132,7 +167,7 @@ export default class PostJob extends Component {
         <Comment>
 
                   <Divider horizontal>
-                      <h2 textAlign="center" style={{ color: "white" }}>
+                      <h2 textalign="center" style={{ color: "white" }}>
                           <Icon circular name='id card' />General Information
                       </h2>
                   </Divider>
@@ -151,12 +186,13 @@ export default class PostJob extends Component {
                               
                         <Form.Group widths='equal'>
                           <Form.Input onChange={this.handleInputChange} label='Company Name' placeholder='ex. Adobe' type='text' name="company_name"/>                             
-                          <Form.Select onChange={this.handleInputChange} label='Category' widths='equal' fluid label='Category' type='text' options={categoryOptions} />
+                          <Form.Select onChange={this.handleChangeCategory} label='Category' widths='equal' fluid label='Category' type='text' name="category" options={categoryOptions} />
                         </Form.Group>
+                      
                               
                         <Form.Group style={{marginLeft: .5, marginRight: .5}} widths='equal'>
-                          <Form.Select onChange={this.handleInputChange}  fluid label='Salary' placeholder='From' type='text' options={salaryFromOptions} />
-                          <Form.Select onChange={this.handleInputChange}  fluid label='Range' placeholder='To' type='text' options={salaryToOptions} />
+                          <Form.Select onChange={this.handleInputChangeSalaryFrom}  fluid label='Salary' placeholder='From' type='text' options={salaryFromOptions} name="salaryFrom"/>
+                          <Form.Select onChange={this.handleInputChangeSalaryTo}  fluid label='Range' placeholder='To' type='text' options={salaryToOptions} name="salaryTo"/>
                         </Form.Group>
 
                         <Form.Group widths='equal'>
@@ -167,11 +203,11 @@ export default class PostJob extends Component {
                         </Form.Group>
 
                         <Form.Group widths='equal'>
-                          <Form.Select onChange={this.handleInputChange}  fluid label='Job Type' type='text' options={jobType} style={{marginRight: 6}} />
+                          <Form.Select onChange={this.handleInputChangeJobType}  fluid label='Job Type' type='text' name="jobType" options={jobType} style={{marginRight: 6}} />
 
-                          <Form.Select onChange={this.handleInputChange}  fluid label='Education Level' type='text' options={eduLevel} style={{marginRight: 6}} />
+                          <Form.Select onChange={this.handleInputChangeEduLevel}  fluid label='Education Level' type='text' name="eduLevel" options={eduLevel} style={{marginRight: 6}} />
 
-                          <Form.Select onChange={this.handleInputChange}  fluid label='Years of Experience' type='text' options={yearsOfExp} style={{marginRight: 6}} />
+                          <Form.Select onChange={this.handleInputChangeYearsExp}  fluid label='Years of Experience' type='text' name="yearsOfExp" options={yearsOfExp} style={{marginRight: 6}} />
                         </Form.Group>
                               
                     </Form>
@@ -196,7 +232,7 @@ export default class PostJob extends Component {
       <Comment widths='equal'>
 
                   <Divider horizontal>
-                        <h2 textAlign="center" style={{ color: "white" }}>
+                        <h2 textalign="center" style={{ color: "white" }}>
                           <Icon circular name='briefcase' />Description and Qualifications
                         </h2>
                   </Divider>
@@ -238,7 +274,7 @@ export default class PostJob extends Component {
       <Comment widths='equal'>
 
                   <Divider horizontal>
-                        <h2 textAlign="center" style={{ color: "white" }}>
+                        <h2 textalign="center" style={{ color: "white" }}>
                             <Icon circular name='address book' />Contact Info
                         </h2>
                   </Divider>

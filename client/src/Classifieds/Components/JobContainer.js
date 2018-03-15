@@ -12,7 +12,7 @@ class JobsFeed extends Component {
         return ( 
             <div>
             <Divider horizontal>
-                  <h2 textAlign="center" style={{ color: "white" }}>
+                  <h2 textalign="center" style={{ color: "white" }}>
                         <Icon circular name='handshake icon' />Apply For These Jobs
                   </h2>
             </Divider>
