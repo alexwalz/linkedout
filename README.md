@@ -1,5 +1,5 @@
 # DevSpot!
-[alt text](imgs/DespotLogo.PNG "DevSpot Image")
+[alt text](/imgs/DespotLogo.PNG "DevSpot Image")
 
 [Running on Heroku](https://devspot1.herokuapp.com)
 
