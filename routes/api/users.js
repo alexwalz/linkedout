@@ -189,6 +189,10 @@ router.route("/:id/newProject")
         usersController.newProject(req, res);
     });
 
+router.route("/:id/removeProject/:projectName")
+    .put(function (req, res) {
+        usersController.removeProject(req, res);
+    });
 // Matches with "/api/users/:id"
 router
     .route("/:id")

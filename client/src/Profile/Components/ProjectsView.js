@@ -67,7 +67,7 @@ class ProfileFeed extends React.Component {
               languages={project.languages} 
               loggedInUserInfo={this.props.loggedInUserInfo}
               url={this.props.url}
-             
+              renderUser={this.props.renderUser}
               />
               </div>
               
