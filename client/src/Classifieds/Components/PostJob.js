@@ -71,9 +71,9 @@ export default class PostJob extends Component {
   
     handleFormSubmit = event => {
       event.preventDefault();
+      this.props.cformData(this.state);
       axios.post("/api/classifieds", this.state).then(function(response){
-        
-      })     
+      });
     };
     renderDisplay(){
       return(

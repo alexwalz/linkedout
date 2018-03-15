@@ -7,16 +7,30 @@ import background from '../img/midnight.jpg';
 import JobContainer from './Components/JobContainer';
 // import ContactInfoForm from './Components/ContactInfoForm';
 // import QualificationsForm from './Components/QualificationsForm';
+import axios from 'axios';
 
+let all = [];
 
 class ClassifiedsPage extends Component {
     constructor(props) {
         super(props);
-        this.state = { 
-
+        this.state = {
          }
     }
 
+    cformData = (result) => {
+        this.setState(result);
+        console.log(result)
+        axios.get('/api/classifieds')
+            .then((response) => {
+                for (let i = 0; i < response.data.length; i++) {
+                    console.log(".... data");
+                    console.log(response.data);
+                    all.push(response.data);
+                }
+            })
+            .catch(e => console.log(e));
+    };
 
     render() { 
         return ( 
@@ -58,15 +72,19 @@ class ClassifiedsPage extends Component {
                         <Grid.Row>
                             <Grid.Column width={16}>
                             
-                                <PostJob
+                                <PostJob cformData={this.cformData}
                                 ClassifiedInfo={this.state}
                                 />
 
                             </Grid.Column>
                         </Grid.Row>
-
-                                <JobContainer/>
-
+                            {
+                               all.map((cfied, index) => (
+                                    <JobContainer cInfo={cfied}/>
+                                )
+                                )
+                            }
+                                <JobContainer cInfo={this.state}/>
                         </Grid>
                     </Container>
                     </Sidebar.Pusher>

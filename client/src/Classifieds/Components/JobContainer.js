@@ -53,7 +53,7 @@ class JobsFeed extends Component {
             <Step active style={{backgroundColor:"transparent"}}>
             <Icon name='code' color="grey" />
             <Step.Content>
-              <Step.Title style={{color: "#67C8D3", width: "100%"}}>Company Name</Step.Title>
+              <Step.Title style={{color: "#67C8D3", width: "100%"}}>{this.props.cInfo.company_name}</Step.Title>
               <Step.Description style={{color: "white"}}>Front End Developer</Step.Description>
             </Step.Content>
               
