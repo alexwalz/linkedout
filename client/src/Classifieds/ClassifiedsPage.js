@@ -8,13 +8,16 @@ import JobContainer from './Components/JobContainer';
 // import ContactInfoForm from './Components/ContactInfoForm';
 // import QualificationsForm from './Components/QualificationsForm';
 import axios from 'axios';
+import ApplyHeader from './Components/ApplyHeader';
 
-let all = [];
+ 
 
 class ClassifiedsPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
+
+            all: [],
          }
     }
 
@@ -26,11 +29,22 @@ class ClassifiedsPage extends Component {
                 for (let i = 0; i < response.data.length; i++) {
                     console.log(".... data");
                     console.log(response.data);
-                    all.push(response.data);
+                    this.state.all.push(response.data);
                 }
             })
             .catch(e => console.log(e));
     };
+
+    componentDidMount(){
+        axios
+        .get("/api/classifieds")
+        .then(response => {
+          this.setState({all: response.data});
+        })
+        .catch(error => {
+          console.log("Error fetching and parsing data", error);
+        });
+    }
 
     render() { 
         return ( 
@@ -78,13 +92,15 @@ class ClassifiedsPage extends Component {
 
                             </Grid.Column>
                         </Grid.Row>
+                        <ApplyHeader />
+                        <br/>
                             {
-                               all.map((cfied, index) => (
+                            this.state.all.slice(0).reverse().map((cfied, index) => (
                                     <JobContainer cInfo={cfied}/>
                                 )
                                 )
                             }
-                                <JobContainer cInfo={this.state}/>
+                                {/* <JobContainer cInfo={this.state}/> */}
                         </Grid>
                     </Container>
                     </Sidebar.Pusher>

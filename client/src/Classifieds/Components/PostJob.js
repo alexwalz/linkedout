@@ -96,59 +96,59 @@ export default class PostJob extends Component {
     const { formsCollapsed } = this.state
 
       let categoryOptions =[
-        {key: 'front', value: 'front', text: 'Frontend Developer'},
-        {key: 'back', value: 'back', text: 'Backend Developer'},
-        {key: 'engineer', value: 'engineer', text: 'Software Engineer'},
-        {key: 'full', value: 'full', text: 'Fullstack Developer'},
-        {key: 'other', value: 'other', text: 'Other'}
+        {key: 'front', value: 'Frontend Developer', text: 'Frontend Developer'},
+        {key: 'back', value: 'Backend Developer', text: 'Backend Developer'},
+        {key: 'engineer', value: 'Software Engineer', text: 'Software Engineer'},
+        {key: 'full', value: 'Fullstack Developer', text: 'Fullstack Developer'},
+        {key: 'other', value: 'Other', text: 'Other'}
       ]
       let salaryFromOptions =[
         
         // {key: 'from', value: 'from', text: 'Salary Range From'},
-        {key: '40,000', value: '40,000', text: '$40,000'},
-        {key: '50,000', value: '50,000', text: '$50,000'},
-        {key: '60,000', value: '60,000', text: '$60,000'},
-        {key: '70,000', value: '70,000', text: '$70,000'},
-        {key: '80,000', value: '80,000', text: '$80,000'},
-        {key: '90,000', value: '90,000', text: '$90,000'},
-        {key: '100,000', value: '100,000', text: '$100,000'},
-        {key: '>120,000', value: '>120,000', text: '>$120,000'},
+        {key: '40,000', value: '$40,000', text: '$40,000'},
+        {key: '50,000', value: '$50,000', text: '$50,000'},
+        {key: '60,000', value: '$60,000', text: '$60,000'},
+        {key: '70,000', value: '$70,000', text: '$70,000'},
+        {key: '80,000', value: '$80,000', text: '$80,000'},
+        {key: '90,000', value: '$90,000', text: '$90,000'},
+        {key: '100,000', value: '$100,000', text: '$100,000'},
+        {key: '>120,000', value: '>$120,000', text: '>$120,000'},
       ]
       let salaryToOptions =[
         
         // {key: 'to', value: 'to', text: 'Salary Range To'},
-        {key: '40,000', value: '40,000', text: '$40,000'},
-        {key: '50,000', value: '50,000', text: '$50,000'},
-        {key: '60,000', value: '60,000', text: '$60,000'},
-        {key: '70,000', value: '70,000', text: '$70,000'},
-        {key: '80,000', value: '80,000', text: '$80,000'},
-        {key: '90,000', value: '90,000', text: '$90,000'},
-        {key: '100,000', value: '100,000', text: '$100,000'},
-        {key: '>120,000', value: '>120,000', text: '>$120,000'},
+        {key: '40,000', value: '$40,000', text: '$40,000'},
+        {key: '50,000', value: '$50,000', text: '$50,000'},
+        {key: '60,000', value: '$60,000', text: '$60,000'},
+        {key: '70,000', value: '$70,000', text: '$70,000'},
+        {key: '80,000', value: '$80,000', text: '$80,000'},
+        {key: '90,000', value: '$90,000', text: '$90,000'},
+        {key: '100,000', value: '$100,000', text: '$100,000'},
+        {key: '>120,000', value: '>$120,000', text: '>$120,000'},
       ]
       let jobType =[
         
-        {key: 'full', value: 'full', text: 'Full Time'},
-        {key: 'part', value: 'part', text: 'Part Time'},
-        {key: 'contract', value: 'contract', text: 'Contract'},
-        {key: 'temp', value: 'temp', text: 'Temporary'},
+        {key: 'full', value: 'Full Time', text: 'Full Time'},
+        {key: 'part', value: 'Part Time', text: 'Part Time'},
+        {key: 'contract', value: 'Contract', text: 'Contract'},
+        {key: 'temp', value: 'Temporary', text: 'Temporary'},
       ]
       let eduLevel =[
         
-        {key: 'none', value: 'none', text: 'None'},
-        {key: 'advanced', value: 'advanced', text: 'Advanced Degree'},
-        {key: '4', value: '4', text: '4-Year Degree'},
-        {key: '2', value: '2', text: '2-Year Degree'},
-        {key: 'high', value: 'high', text: 'High School'},
+        {key: 'none', value: 'None', text: 'None'},
+        {key: 'advanced', value: 'Advanced Degree', text: 'Advanced Degree'},
+        {key: '4', value: '4-Year Degree', text: '4-Year Degree'},
+        {key: '2', value: '2-Year Degree', text: '2-Year Degree'},
+        {key: 'high', value: 'High School', text: 'High School'},
       ]
       let yearsOfExp =[
         
-        {key: 'none', value: 'none', text: 'None'},
-        {key: '1-2', value: '1-2', text: '1-2 Years'},
-        {key: '3-4', value: '3-4', text: '3-4 Years'},
-        {key: '5-7', value: '5-7', text: '5-7 Years'},
-        {key: '8-10', value: '8-10', text: '8-10 Years'},
-        {key: '10', value: '10', text: '>10 Years'},
+        {key: 'none', value: 'None', text: 'None'},
+        {key: '1-2', value: '1-2 Years', text: '1-2 Years'},
+        {key: '3-4', value: '3-4 Years', text: '3-4 Years'},
+        {key: '5-7', value: '5-7 Years', text: '5-7 Years'},
+        {key: '8-10', value: '8-10 Years', text: '8-10 Years'},
+        {key: '10', value: '>10 Year', text: '>10 Years'},
       ]
 
       return (  
