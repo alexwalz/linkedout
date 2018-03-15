@@ -156,6 +156,29 @@ module.exports = {
             })
             .catch(err => res.status(422).json(err));
     },
+    removeProject: function (req, res) {
+        db.user
+            .findById(req.params.id)
+            .then(function (dbUser) {
+                var projs = dbUser.projects;
+                var rp = req.params.projectName;
+                //console.log(".... removing project ..." + rp);
+                for (var i = 0; i < projs.length; i++) {
+                    if (projs[i].project_name === rp) {
+                        projs.splice(i, 1);
+                        break;
+                    }
+                }
+                //console.log(projs);
+                //dbUser.projects = projs;
+                db.user.findOneAndUpdate({_id: req.params.id}, {$set: {projects: projs}}, {new: true})
+                    .then(function (dbUser2) {
+                        res.json(dbUser2);
+                    });
+                //res.json(dbUser);
+            })
+            .catch(err => res.status(422).json(err));
+    },
     replaceLanguages: function (req, res) {
         db.user
             .findOneAndUpdate({_id: req.params.id}, {$set: {languages: req.body}}, {new: true})
