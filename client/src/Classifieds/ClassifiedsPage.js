@@ -41,6 +41,7 @@ class ClassifiedsPage extends Component {
         .get("/api/classifieds")
         .then(response => {
           this.setState({all: response.data});
+          console.log(response)
         })
         .catch(error => {
           console.log("Error fetching and parsing data", error);
@@ -80,7 +81,8 @@ class ClassifiedsPage extends Component {
                 backgroundSize: 'cover',
                 paddingTop: 15, 
                 paddingLeft: "2%", 
-                paddingRight: "2%"
+                paddingRight: "2%",
+                minHeight: "100%"
             }}>
 
             

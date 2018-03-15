@@ -43,65 +43,18 @@ class ShareBox extends Component {
         }));
     };
 
-    deletePost=()=>{
-      console.log("Delete Requested on", this.props.project_id)
-
+    deleteProject= () =>{
+      let projectName = this.props.project_name.split(' ').join('%20')
       axios
-      .delete("/api/projects/"+this.props.project_id)
-      .then(response => {
-              console.log("Successfully Deleted")
-              this.props.renderUser()
-              this.setState({editing: false})
-      })
-      .catch(error => {
-        console.log("Error fetching and parsing data", error);
-      });
-  }
-   
-
-  handleFormSubmit = ()=> {
-    axios
-      .post(
-          `/api/users/addPost`, 
-          {
-            message: this.state.message,
-            messageType: this.state.messageType
-          }
-          
-      )
+      .put(
+          "/api/users/" + this.props.loggedInUserInfo.userData._id + "/removeProject/" + projectName) 
       .then(r => {
         this.setState({editing: false})
         this.props.renderUser()
-
       })
       .catch(e => console.log(e));
-
-
-  }
-
-  updatePost=()=>{
-    console.log("Update Requested on", this.props.project_id)
-
-    axios
-    .put("/api/comments/"+this.props.project_id, {
-          project_name: "",
-          development_position: "",
-          code_url: "", 
-          project_url: "",
-          project_description: "",
-          languages: ""
-    })
-    .then(response => {
-            console.log("Successfully Deleted")
-            this.props.updateParent()
-            this.setState({editing: false})
-    })
-    .catch(error => {
-      console.log("Error fetching and parsing data", error);
-    });
-}
-
-
+    }
+   
 
     renderForm(){
 
@@ -138,7 +91,7 @@ class ShareBox extends Component {
               <Step active  style={{backgroundColor:"transparent"}}>
               <div style={{width: "100%"}}>
               {this.props.loggedInUserInfo.user}
-              {this.props.loggedInUserInfo.userId === this.props.url && this.props.loggedInUserInfo.loggedIn ? <Icon name='pencil' size='small' color="grey" style={{marginBottom: "3%"}} onClick={()=> this.edit()} /> : null } 
+              
                   <Step.Content>
                     <Step.Title style={{color: "#67C8D3", width: "100%"}}>{this.props.project_name}</Step.Title>
                     <Step.Description style={{color: "white"}}>{this.props.development_position}</Step.Description>
@@ -171,6 +124,7 @@ class ShareBox extends Component {
 
 
               </Step>
+              {this.props.loggedInUserInfo.userId === this.props.url && this.props.loggedInUserInfo.loggedIn ?  <Button color='red' onClick={this.deleteProject} style={{width: "100%"}}>Remove</Button> : null } 
        </Step.Group>
         )
     }
