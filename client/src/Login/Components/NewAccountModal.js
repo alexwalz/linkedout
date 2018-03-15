@@ -9,6 +9,7 @@ import upload from 'superagent';
 class LoginModal extends Component {
     constructor(props) {
         super(props);
+        this.update = this.update.bind(this)
         this.state = {
             firstName: "",
             lastName: "",
@@ -22,11 +23,23 @@ class LoginModal extends Component {
             password: "",
             password_confirm: "",
             file: {},
-            image_urlError: "",
+            image_urlError: true,
             logged: false,
             formError: true
         }
     };
+
+    update = () =>{
+        this.setState({image_urlError: false})
+    }
+
+    componentDidUpdate(){
+        if(this.state.formError){
+            if(!this.state.emailError && !this.state.passwordError && !this.state.password_confirmError && !this.state.firstNameError && !this.state.lastNameError  && !this.state.locationError && !this.state.current_companyError && !this.state.job_titleError && !this.state.aboutError && !this.state.image_urlError ) {
+                this.setState({formError : false});
+            } 
+        }
+    }
 
     handleInputChange = event => {
         const value = event.target.value;
@@ -41,60 +54,46 @@ class LoginModal extends Component {
     validate = () => {
         if(this.state.email.match(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/)){
              this.setState({emailError: false})
-           
         }else {
             this.setState({emailError: true})
-            this.setState({formError: true})
-
         }
         if(this.state.password == undefined || this.state.password.length < 8 || this.state.password.length > 15){
             this.setState({passwordError : true})
-            this.setState({formError: true})
-           
         }else {
              this.setState({passwordError : false})
-
         }
         if(this.state.password === this.state.password_confirm){
             this.setState({password_confirmError: false})
-         
         } else {
             this.setState({password_confirmError: true})
-            this.setState({formError: true})
         }
         if(this.state.firstName.length < 1){
             this.setState({firstNameError: true})
-            this.setState({formError: true})
         } else {
             this.setState({firstNameError: false})
         }
         if(this.state.lastName.length < 1){
             this.setState({lastNameError: true})
-            this.setState({formError: true})
         } else {
             this.setState({lastNameError: false})
         }
         if(this.state.location.length < 1){
             this.setState({locationError: true})
-            this.setState({formError: true})
         } else {
             this.setState({locationError: false})
         }
         if(this.state.current_company.length < 1){
             this.setState({current_companyError: true})
-            this.setState({formError: true})
         } else {
             this.setState({current_companyError: false})
         }
         if(this.state.job_title.length < 1){
             this.setState({job_titleError: true})
-            this.setState({formError: true})
         } else {
             this.setState({job_titleError: false})
         }
         if(this.state.about.length < 1){
             this.setState({aboutError: true})
-            this.setState({formError: true})
         } else {
             this.setState({aboutError: false})
         }
@@ -104,14 +103,6 @@ class LoginModal extends Component {
 
             this.setState({image_urlError: false})
         }
-
-        if(!this.state.emailError && !this.state.passwordError && !this.state.password_confirmError && !this.state.firstNameError && !this.state.lastNameError  && !this.state.locationError && !this.state.current_companyError && !this.state.job_titleError && !this.state.aboutError && !this.state.image_urlError ) {
-            this.setState({formError : false});
-        }else {
-            this.setState({formError: true})
-
-        }
-       
     }
 
     handleFormSubmit = event => {
@@ -196,7 +187,8 @@ class LoginModal extends Component {
 
                                     <Form.Group>
                                         <FileUploader imageFile={this.handleImageFile} name="image_url"
-                                                      onChange={this.handleInputChange} style={{marginBottom: "15px"}}/>
+                                                      onChange={this.handleInputChange} style={{marginBottom: "15px"}}
+                                                      update={this.update}/>
                                     </Form.Group>
 
                                     <Form.Group widths='equal'>

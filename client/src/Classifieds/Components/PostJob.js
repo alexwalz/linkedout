@@ -74,7 +74,11 @@ export default class PostJob extends Component {
       this.props.cformData(this.state);
       axios.post("/api/classifieds", this.state).then(function(response){
       });
+      this.showForms()
+      this.props.update()
     };
+
+
     renderDisplay(){
       return(
           <Step.Group fluid vertical style={{backgroundColor:"transparent", border: "1px solid white"}}>
@@ -300,7 +304,7 @@ export default class PostJob extends Component {
                               <Form.TextArea rows={4} onChange={this.handleInputChange} label='Additional Info' placeholder='Enter Text' name="additional_info"/>
 
                               <Form.Checkbox inline label='I agree to the terms and conditions' />
-                              <Button color='teal' inverted onClick={this.handleFormSubmit}>Post Job</Button>
+                              <Button color='teal' inverted onClick={this.handleFormSubmit} >Post Job</Button>
 
                     </Form>
                     

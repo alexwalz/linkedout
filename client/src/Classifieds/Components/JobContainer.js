@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Step, Button, Icon, Divider, Grid} from 'semantic-ui-react'
+import {Step, Button, Icon, Divider, Grid, Header} from 'semantic-ui-react'
 import {Link} from 'react-router-dom'
 
 
@@ -71,9 +71,56 @@ class JobsFeed extends Component {
         </Grid.Row>
 
         <Grid.Row>
-              <Step.Title style={{color: "#67C8D3", marginTop:"25px"}}>Job Description</Step.Title>
-              <Step.Description style={{color: "white"}}>{this.props.cInfo.jobType}<br/>{this.props.cInfo.category}<br/><br/>DESCRIPTION: {this.props.cInfo.position_description}<br/><br/>RESPONSIBILITES: {this.props.cInfo.position_responsibilities}<br/><br/>QUALIFICATIONS: {this.props.cInfo.position_qualifications}<br/><br/>SALARY RANGE FROM: {this.props.cInfo.salaryFrom} TO: {this.props.cInfo.salaryTo}<br/> EDUCATION LEVEL: {this.props.cInfo.eduLevel}<br/> EXPERIENCE REQUIRED: {this.props.cInfo.yearsOfExp}<br/><br/>CONTACT INFO<br/>  NAME: {this.props.cInfo.contact_name}<br/>  NUMBER: {this.props.cInfo.phone_number}<br/>  EMAIL: {this.props.cInfo.contact_email}<br/><br/> {this.props.cInfo.additional_info}</Step.Description>
+              <Step.Title style={{color: "#67C8D3", marginTop:"25px"}}>Job Title</Step.Title>
+              <Step.Description style={{color: "white"}}>{this.props.cInfo.jobType}<br/>{this.props.cInfo.category}<br/><br/></Step.Description>
         </Grid.Row>
+
+        <Grid.Row>
+              <Step.Title style={{color: "#67C8D3", marginTop:"25px"}}> Job Description</Step.Title>
+              <Step.Description style={{color: "white"}}>{this.props.cInfo.position_description}</Step.Description>
+        </Grid.Row>
+
+        <Grid.Row>
+              <Step.Title style={{color: "#67C8D3", marginTop:"25px"}}> Job Responsibilities</Step.Title>
+              <Step.Description style={{color: "white"}}>{this.props.cInfo.position_responsibilities}</Step.Description>
+        </Grid.Row>
+
+        <Grid.Row>
+              <Step.Title style={{color: "#67C8D3", marginTop:"25px"}}>Qualifications</Step.Title>
+              <Step.Description style={{color: "white"}}>{this.props.cInfo.position_qualifications}</Step.Description>
+        </Grid.Row>
+
+        <Grid.Row>
+
+            <Grid.Column width={4}>
+              <Step.Title style={{color: "#67C8D3", marginTop:"25px"}}>Salary Information</Step.Title>
+              <Step.Description style={{color: "white"}}>{this.props.cInfo.salaryFrom} TO: {this.props.cInfo.salaryTo}</Step.Description>
+            </Grid.Column>
+
+       
+             <Grid.Column width={4}>
+              <Step.Title style={{color: "#67C8D3", marginTop:"25px"}}>Education</Step.Title>
+              <Step.Description style={{color: "white"}}>{this.props.cInfo.eduLevel}</Step.Description>
+             </Grid.Column>
+
+             <Grid.Column width={4}>
+              <Step.Title style={{color: "#67C8D3", marginTop:"25px"}}>Experience</Step.Title>
+              <Step.Description style={{color: "white"}}>{this.props.cInfo.yearsOfExp}</Step.Description>
+             </Grid.Column>
+
+             <Grid.Column width={4}>
+              <Step.Title style={{color: "#67C8D3", marginTop:"25px"}}>Additional Information</Step.Title>
+              <Step.Description style={{color: "white"}}>{this.props.cInfo.additional_info}</Step.Description>
+             </Grid.Column>
+
+             <Grid.Column width={4}>
+              <Step.Title style={{color: "#67C8D3", marginTop:"25px"}}>Contact Information</Step.Title>
+              <Step.Description style={{color: "white"}}>NAME: {this.props.cInfo.contact_name}<br/>  NUMBER: {this.props.cInfo.phone_number}<br/>  EMAIL: {this.props.cInfo.contact_email}</Step.Description>
+             </Grid.Column>
+
+        </Grid.Row>
+
+
             </Step.Content>
             
         </Grid>

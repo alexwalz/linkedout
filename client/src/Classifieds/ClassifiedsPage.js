@@ -15,8 +15,9 @@ import ApplyHeader from './Components/ApplyHeader';
 class ClassifiedsPage extends Component {
     constructor(props) {
         super(props);
+        this.update = this.update.bind(this)
         this.state = {
-
+            update: false,
             all: [],
          }
     }
@@ -44,6 +45,29 @@ class ClassifiedsPage extends Component {
         .catch(error => {
           console.log("Error fetching and parsing data", error);
         });
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        axios
+          .get("/api/classifieds/")
+          .then(response => {
+            if (
+              JSON.stringify(response.data) !==
+              JSON.stringify(this.state.all)
+            ) {
+              this.setState({ all: response.data});
+              this.setState({update: false})
+            } else {
+            }
+            
+          })
+          .catch(error => {
+            console.log("Error fetching and parsing data", error);
+          });
+      }
+
+    update = () => {
+        this.setState({update: true})
     }
 
     render() { 
@@ -88,6 +112,7 @@ class ClassifiedsPage extends Component {
                             
                                 <PostJob cformData={this.cformData}
                                 ClassifiedInfo={this.state}
+                                update={this.update}
                                 />
 
                             </Grid.Column>
@@ -96,7 +121,9 @@ class ClassifiedsPage extends Component {
                         <br/>
                             {
                             this.state.all.slice(0).reverse().map((cfied, index) => (
+                                <Grid.Column width={16}>
                                     <JobContainer cInfo={cfied}/>
+                                    </Grid.Column>
                                 )
                                 )
                             }
