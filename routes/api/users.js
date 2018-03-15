@@ -86,9 +86,51 @@ router.post("/", upload.single('theseNamesMustMatch'), (req, res) => {
                         console.log(err);
                         res.status(422).json(err)
                     });
-                //res.send('File uploaded to S3');
             });
-            //res.json(dbModel)
+        })
+        .catch(err => {
+            console.log("... errr creating user....");
+            console.log(err);
+            res.status(422).json(err)
+        });
+});
+
+router.put("/img", upload.single('theseNamesMustMatch'), (req, res) => {
+    db.user.findOne({_id: req.session.userId})
+        .then(dbModel => {
+            if (req.file == null) { // if no file was input
+                return res.json(dbModel);
+            }
+            let mimetype = req.file.mimetype;
+            let arr = mimetype.split("/");
+            let keyname = dbModel._id + "." + arr[1];
+            let userId = dbModel._id;
+            s3.putObject({
+                Bucket: S3_BUCKET,
+                Key: keyname,
+                Body: req.file.buffer,
+                ACL: 'public-read', // your permisions
+            }, (err) => {
+                if (err) {
+                    console.log("... errr...");
+                    console.log(err);
+                    return res.status(400).send(err);
+                }
+                let url = URL_PREFIX + keyname;
+                console.log("... url set... ");
+                console.log(url);
+                db.user
+                    .findOneAndUpdate({_id: userId}, {$set:{image_url: url}}, {new: true})
+                    .then(dbUpdate => {
+                        req.session.userId = dbUpdate._id;
+                        res.json(dbUpdate);
+                    })
+                    .catch(err => {
+                        console.log(".... err on userupdate");
+                        console.log(err);
+                        res.status(422).json(err)
+                    });
+            });
         })
         .catch(err => {
             console.log("... errr creating user....");

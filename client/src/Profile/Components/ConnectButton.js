@@ -7,22 +7,57 @@ class ConnectButton extends Component {
   constructor(props) {
     super(props);
     this.state = { 
+      updateReady: true,
       connected: false
      }
   }
 
-  handleConnect = ()=> {
-    console.log("Connection Requested")
-    console.log(this.props)
+  componentDidMount() {
     axios
-    .post(
-        `/api/users/connections/add/`+this.props.userInfo._id+"", 
-       
-    )
-    .then(r => {
-      console.log(r)
+      .get("/api/users/" + this.props.url)
+      .then(response => {this.setState({ renderedUser: response.data });})
+      .catch(error => {null});
+  }
+
+  componentWillReceiveProps(props) {
+    this.setState(props)
+    axios
+    .get("/api/users/" + this.props.url)
+    .then(response => {
+        this.setState({ renderedUser: response.data });
+        this.setState({connected: false});
+        this.handleConnectionCheck()
     })
+    .catch(error => {null});
+  }
+
+  handleConnect = ()=> {
+    axios
+    .post(`/api/users/connections/add/`+this.props.userInfo._id+"", )
+    .then(r => {this.setState({connected: true})})
     .catch(e => console.log(e));
+  }
+
+  getLoggedInUser = () => {
+    axios
+      .get("/api/users/login")
+      .then(response => {this.setState({ loggedInUser: response.data });})
+      .catch(error => {null});
+  };
+
+  handleConnectionCheck = () =>{
+    this.getLoggedInUser()
+    this.state.loggedInUser.loggedIn ? 
+    this.state.loggedInUser.userData.connections.map((connectionCheck, key) => (
+      connectionCheck._id === this.state.url ? this.setState({connected: true}) : null)) : null
+  }
+
+  connectedButton = () => {
+    return(<Button basic color="red"><Icon name='heart'/>Connected</Button>)
+  }
+
+  connectButton = () => {
+    return(<Button basic color="grey" onClick={this.handleConnect}><Icon name='empty heart'/>Connect</Button>)
   }
 
 
@@ -30,9 +65,9 @@ class ConnectButton extends Component {
     return ( 
       <div>
           <Button.Group>
-              <Button basic color="grey" onClick={this.handleConnect}> Connect </Button>
+              {this.state.connected ? this.connectedButton() : this.connectButton()}
               <Button.Or />
-              <Button basic color="teal">Email Me</Button>
+              <Button basic color="grey"><Icon name='mail'/>Email Me</Button>
         </Button.Group>
     </div>
      )

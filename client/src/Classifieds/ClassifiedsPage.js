@@ -5,18 +5,19 @@ import ClassifiedsInfo from './Components/ClassifiedsInfo';
 import PostJob from './Components/PostJob';
 import background from '../img/midnight.jpg';
 import JobContainer from './Components/JobContainer';
-import ContactInfoForm from './Components/ContactInfoForm';
-import QualificationsForm from './Components/QualificationsForm';
+// import ContactInfoForm from './Components/ContactInfoForm';
+// import QualificationsForm from './Components/QualificationsForm';
 
 
 class ClassifiedsPage extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-            info: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
 
          }
     }
+
+
     render() { 
         return ( 
 
@@ -30,6 +31,8 @@ class ClassifiedsPage extends Component {
                 paddingRight: "2%"
             }}>
 
+            
+            
             <Container>
                 <Sidebar.Pushable>
                     <Sidebar as={Menu} animation='overlay' width='thin' visible={this.state.visible} icon='labeled'
@@ -46,44 +49,23 @@ class ClassifiedsPage extends Component {
                     </Sidebar>
                     <Sidebar.Pusher>
                     
-                    <Container style={{paddingTop: 110}}>
+                    
+                    
+                    
+                    <Container style={{paddingTop: 85}}>
                         <Grid>
+                        
                         <Grid.Row>
+                            <Grid.Column width={16}>
                             
-                            <Grid.Column width={16}>
-                            <Divider horizontal>
-                                <h2 textAlign="center" style={{ color: "white" }}>
-                                    <Icon circular name='id card' />General Information
-                                </h2>
-                                </Divider>
-                                <PostJob />
-                            </Grid.Column>
+                                <PostJob
+                                ClassifiedInfo={this.state}
+                                />
 
-                            <Grid.Column width={16}>
-                            <Divider horizontal>
-                                <h2 textAlign="center" style={{ color: "white" }}>
-                                    <Icon circular name='briefcase' />Description and Qualifications
-                                </h2>
-                                </Divider>
-                                <QualificationsForm />
                             </Grid.Column>
-                                        
-                            <Grid.Column width={16}>
-                            <Divider horizontal>
-                                <h2 textAlign="center" style={{ color: "white" }}>
-                                    <Icon circular name='address book' />Contact Info
-                                </h2>
-                                </Divider>
-                                <ContactInfoForm />
-                            </Grid.Column>
-
                         </Grid.Row>
 
-
-                                <JobContainer 
-                                firstName={this.state.firstName} lastName={this.state.lastName}
-                                job_title={this.state.job_title} image_url={this.state.image_url}
-                                />
+                                <JobContainer/>
 
                         </Grid>
                     </Container>

@@ -1,5 +1,5 @@
   import React, {Component} from 'react'
-  import { Comment, Icon, Form, Button } from 'semantic-ui-react'
+  import { Comment, Icon, Form, Button, Image } from 'semantic-ui-react'
   import {Link} from 'react-router-dom'
   import axios from 'axios'
 
@@ -94,8 +94,8 @@ class IndividualComments extends Component {
                   </Comment.Actions>
                   <Form reply>
                     <Form.TextArea style={{backgroundColor:"transparent", border: "1px solid white", color: "white"}} onChange={this.handleInputChange} name="text" placeholder={this.props.message}/>
-                    <Icon name='checkmark' size='large' circular color="grey"  onClick={this.updateComment}/>
-                    <Icon name='close' size='large' circular color="grey" onClick={()=> this.cancel()} />
+                    <Icon name='checkmark' size='large' circular color="grey" style={{backgroundColor: "white"}} onClick={this.updateComment}/>
+                    <Icon name='close' size='large' circular color="grey" style={{backgroundColor: "white"}} onClick={()=> this.cancel()} />
                     <Button inverted color='red' onClick={this.deleteComment}>Delete</Button>
                   </Form>
                 </Comment.Content>
@@ -109,15 +109,15 @@ class IndividualComments extends Component {
       return(
 
         <Comment>
-            <Comment.Avatar as='a' circular src={this.props.userInfo.image_url} />
+          <div style={{textAlign: "center", marginLeft:"auto", marginRight: "auto", marginBottom: "1%"}}>
+          <Link to={'/home/profile/'+ this.props.comment_user._id}><Image  style={{ border: "2px solid #67C8D3", padding: "2px", height: "4rem", width: "4rem", borderRadius: "999px"}} src={this.props.comment_user.image_url} /></Link>
+            </div>
             <Comment.Content>
-             <Link to={'/home/profile/'+ this.props.userInfo._id}> <Comment.Author  style={{color: "#5CC1CD"}} as='a'>{this.props.userInfo.firstName + " " + this.props.userInfo.lastName}</Comment.Author></Link>
-              <Comment.Metadata>
-                <span style={{color: "grey"}}>{this.props.date}</span>
-              </Comment.Metadata>
-        {this.props.loggedInUserInfo.userId === this.props.user_id && this.props.loggedInUserInfo.loggedIn ? <Icon name='pencil' size='small' color="teal" style={{marginBottom: "3%", cursor: "pointer"}} onClick={()=> this.edit()} /> : null } 
+             <Link to={'/home/profile/'+ this.props.comment_user._id}> <Comment.Author  style={{color: "#5CC1CD"}} as='a'>{this.props.comment_user.firstName + " " + this.props.comment_user.lastName}</Comment.Author></Link>
               <Comment.Text style={{color: "white"}}>{this.props.message}</Comment.Text>
               <Comment.Actions>
+            {this.props.loggedInUserInfo._id === this.props.comment_user._id ? <Icon name='pencil' size='small' color="teal" style={{marginBottom: "3%", cursor: "pointer"}} onClick={()=> this.edit()} /> : null } 
+              <span style={{color: "grey"}}>{this.props.date}</span>
               </Comment.Actions>
             </Comment.Content>
         </Comment>

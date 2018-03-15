@@ -5,6 +5,7 @@ import Logo from './Logo';
 import {Link} from "react-router-dom";
 import background from '../../img/midnight.jpg'
 import axios from 'axios'
+import Search from './Search'
 
 
 
@@ -55,16 +56,17 @@ class Nav extends Component {
         left: 0,
         right: 0,
         backgroundImage: `url(${background})`,
+        backgroundSize: "cover"
       }}>
       {this.getUser()}
       <Menu inverted pointing secondary style={{ border:'none'}}> 
         <Menu.Menu position='left' style={{marginLeft: 30}}>
                 <Logo/>
                 <Menu.Item>
-                <Input icon='search' placeholder='Search...' style={{width:300}}/>
+                <Search style={{width:300}}/>
                 </Menu.Item>
         </Menu.Menu>
-        <Menu.Menu position='left'>
+        <Menu.Menu position='right'>
            
               <Menu.Item name='home' active={activeItem === 'home'} onClick={this.handleItemClick}>
                <Link to="/home/feed">

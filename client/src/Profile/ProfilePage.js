@@ -23,8 +23,6 @@ import LanguagesView from "./Components/LanguagesView";
 import Bio from "./Components/Bio";
 import ShareBox from "../Feed/Components/ShareBox";
 import Connections from "./Components/Connections";
-import Newsfeed from "./Components/NewsFeed";
-import background from "../img/midnight.jpg";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 import SecondaryModal from "../Login/Components/SecondaryLoginModal";
@@ -136,14 +134,8 @@ class ProfilePage extends Component {
 
   render() {
     return (
-      <div
-        style={{
-          backgroundImage: `url(${background})`,
-          backgroundPositionX: "center",
-          color: "grey"
-        }}
-      >
-        {this.state.loggedInUser.loggedIn ? null : <SecondaryModal />}
+      <div>
+        {/* {this.state.loggedInUser.loggedIn ? null : <SecondaryModal />} */}
 
         <Container style={{ paddingTop: 62 }}>
           <Grid>
@@ -228,7 +220,7 @@ class ProfilePage extends Component {
                                             <Link to="/home/profile/5a91a842c09c7b377882e41d"> KURT</Link> */}
 
 
-                  <Grid.Column width={16} style={{ marginTop: "10px" }}>
+                  <Grid.Column width={16} style={{ marginTop: "10px", marginBottom: "4%" }}>
                          <Divider horizontal><h3  textAlign="center" style={{color: "white"}}>My Projects</h3></Divider>
                   
                          {this.state.loggedInUser.userId ===
@@ -239,13 +231,18 @@ class ProfilePage extends Component {
 
                   </Grid.Column>
 
-                  <Grid.Column width={16} style={{marginTop:"4%"}}>
-                    <ProjectsView
-                      userInfo={this.state.renderedUser}
-                      loggedInUserInfo={this.state.loggedInUser}
-                      url={this.state.url}
-                    />
+
+{/* BROKEN CODE */}
+                  <Grid.Column width={16} style={{marginBottom:"6%"}}>
+                          <ProjectsView
+                            userInfo={this.state.renderedUser}
+                            loggedInUserInfo={this.state.loggedInUser}
+                            url={this.state.url}
+                            style={{marginBottom: "4%"}}
+                          />
                   </Grid.Column>
+
+{/* ######### */}
 
 
                 </Grid.Row>

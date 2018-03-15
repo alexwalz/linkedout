@@ -1,34 +1,99 @@
-import React , { Component } from 'react'
-import { Container, Grid, Segment, Header, Icon, Form, TextArea, Card,  Button, Image, Select, Step} from 'semantic-ui-react'
-import JobButton from './JobButton';
+import React, { Component } from 'react'
+import { Container, Grid, Segment, Header, Icon, Form, TextArea, Card, Button, Image, Select, Step, Divider, Comment} from 'semantic-ui-react'
+// import JobButton from './JobButton';
 import axios from 'axios';
 
 
-class PostJob extends Component {
+
+
+export default class PostJob extends Component {
   constructor(props) {
       super(props);
       this.state = {
+          contact_name: "",
+          phone_number: "",
+          contact_email: "",
+          additional_info: "",
+          job_title: "",
+          company_name: "",
+          city: "",
+          state: "",
+          zip: "",
+          position_description: "",
+          position_responsibilities: "",
+          position_qualifications: "",
 
+
+          formsCollapsed: true,
         }
+        
   }
 
+    showForms = () => (
+      this.state.formsCollapsed ? this.setState({formsCollapsed: false}) : this.setState({formsCollapsed: true})
+    )
 
-  handleInputChange = event => {
+    handleInputChange = event => {
       const value = event.target.value;
       const name = event.target.name;
       this.setState({
         [name]: value
       });
     };
-  
-    handleFormSubmit = event => {
-      event.preventDefault();
-      axios.post("/api/users", this.state).then(function(response){
-      })
+
+    handleChangeCategory = (e, { value }) => {
+      this.setState({category : value })
+    };
+
+    handleInputChangeSalaryFrom = (e, { value }) => {
+      this.setState({salaryFrom : value })
+    };
+
+    handleInputChangeSalaryTo = (e, { value }) => {
+      this.setState({salaryTo : value })
+    };
+
+    handleInputChangeJobType = (e, { value }) => {
+      this.setState({jobType : value })
+    };
+
+    handleInputChangeEduLevel = (e, { value }) => {
+      this.setState({eduLevel : value })
+    };
+
+    handleInputChangeYearsExp = (e, { value }) => {
+      this.setState({yearsOfExp : value })
     };
 
 
+
+
+  
+    handleFormSubmit = event => {
+      event.preventDefault();
+      axios.post("/api/classifieds", this.state).then(function(response){
+        
+      })     
+    };
+    renderDisplay(){
+      return(
+          <Step.Group fluid vertical style={{backgroundColor:"transparent", border: "1px solid white"}}>
+              <Step active onClick={this.showForms}  style={{backgroundColor:"transparent"}}>
+              <Icon name='plus' color="grey" />
+              <Step.Content>
+                <Step.Title style={{color: "#67C8D3"}}>Job Posts</Step.Title>
+                <Step.Description style={{color: "white"}}>Click Here To Create A New Job Post</Step.Description>
+              </Step.Content>
+              </Step>
+       </Step.Group>
+
+        )
+    }
+    
+
   render() { 
+  
+    const { formsCollapsed } = this.state
 
       let categoryOptions =[
         {key: 'front', value: 'front', text: 'Frontend Developer'},
@@ -87,69 +152,166 @@ class PostJob extends Component {
       ]
 
       return (  
-          <div>
 
-          
-              <Grid columns={2} >
-              <Grid.Row >
-              <Grid.Column width={16}>
+        
+    <div>
+      
+      <Container style={{width: '70%'}} >
+          {this.renderDisplay() }
+      </Container>
+        {/* <Button circular color="grey" icon='comments' onClick={this.showForms}/> */}
+        
+{/* /////////////////////////////////////////////// GENERAL INFO FORM////////////////////////////////////////////////////////// */}
                   
-                      <Segment inverted   style={{backgroundImage: "url('https://www.toptal.com/designers/subtlepatterns/patterns/always_grey.png')", border: "1px solid white"}}>
-                          
-                          <Form inverted>
-                          
-                          
-                              <Form.Group widths='equal'>
-                              <Form.Input onChange={this.handleInputChange} label='Job Title' placeholder='ex. Project Manager' type='text' name="jobTitle"/>
-                              </Form.Group>
-                              
-                              <Form.Group widths='equal'>
-                              <Form.Input onChange={this.handleInputChange} label='Company Name' placeholder='ex. Adobe' type='text' name="companyName"/>                             
-                              <Form.Select onChange={this.handleInputChange} label='Category' widths='equal' fluid label='Category' placeholder='Select Category' type='text' options={categoryOptions} />
-                              </Form.Group>
-                              
-                              <Form.Group style={{marginLeft: .5, marginRight: .5}} widths='equal'>
-                              <Form.Select onChange={this.handleInputChange}  fluid label='Salary' placeholder='From' type='text' options={salaryFromOptions} />
-                              <Form.Select onChange={this.handleInputChange}  fluid label='Range' placeholder='To' type='text' options={salaryToOptions} />
-                              </Form.Group>
+      <Comment.Group style={{marginLeft: 'auto', marginRight: 'auto'}} collapsed={formsCollapsed}>
+        <Comment>
 
-                              <Form.Group widths='equal'>
-                              <Form.Input onChange={this.handleInputChange} label='City' placeholder='ex. Salt Lake City' type='text' name="city"/>
-                              
-                              <Form.Input onChange={this.handleInputChange} label='State' type='state' name="state"/>
-                              <Form.Input onChange={this.handleInputChange} label='Zip' type='zip' name="zip"/>
-                              </Form.Group>
+                  <Divider horizontal>
+                      <h2 textalign="center" style={{ color: "white" }}>
+                          <Icon circular name='id card' />General Information
+                      </h2>
+                  </Divider>
 
-                              <Form.Group widths='equal'>
-                              <Form.Select onChange={this.handleInputChange}  fluid label='Job Type' placeholder='Job Type' type='text' options={jobType} style={{marginRight: 6}} />
 
-                              <Form.Select onChange={this.handleInputChange}  fluid label='Education Level' type='text' options={eduLevel} style={{marginRight: 6}} />
-
-                              <Form.Select onChange={this.handleInputChange}  fluid label='Years of Experience' type='text' options={yearsOfExp} style={{marginRight: 6}} />
-                              </Form.Group>
-                              <br/>
-                              </Form>
-                              
-                          </Segment>
-
-                          <Grid>
-                          <Grid.Column width={16} >
+              <Segment inverted style={{backgroundImage: "url('https://www.toptal.com/designers/subtlepatterns/patterns/always_grey.png')", border: "1px solid white"}}>
               
-                
+                    <Form inverted>
+                          
+                    <br/>
+                        
+
+                        <Form.Group widths='equal'>
+                          <Form.Input onChange={this.handleInputChange} label='Job Title' placeholder='ex. Project Manager' type='text' name="job_title"/>
+                        </Form.Group>
+                              
+                        <Form.Group widths='equal'>
+                          <Form.Input onChange={this.handleInputChange} label='Company Name' placeholder='ex. Adobe' type='text' name="company_name"/>                             
+                          <Form.Select onChange={this.handleChangeCategory} label='Category' widths='equal' fluid label='Category' type='text' name="category" options={categoryOptions} />
+                        </Form.Group>
+                      
+                              
+                        <Form.Group style={{marginLeft: .5, marginRight: .5}} widths='equal'>
+                          <Form.Select onChange={this.handleInputChangeSalaryFrom}  fluid label='Salary' placeholder='From' type='text' options={salaryFromOptions} name="salaryFrom"/>
+                          <Form.Select onChange={this.handleInputChangeSalaryTo}  fluid label='Range' placeholder='To' type='text' options={salaryToOptions} name="salaryTo"/>
+                        </Form.Group>
+
+                        <Form.Group widths='equal'>
+                          <Form.Input onChange={this.handleInputChange} label='City' placeholder='ex. Salt Lake City' type='text' name="city"/>
+                              
+                          <Form.Input onChange={this.handleInputChange} label='State' type='state' name="state"/>
+                          <Form.Input onChange={this.handleInputChange} label='Zip' type='zip' name="zip"/>
+                        </Form.Group>
+
+                        <Form.Group widths='equal'>
+                          <Form.Select onChange={this.handleInputChangeJobType}  fluid label='Job Type' type='text' name="jobType" options={jobType} style={{marginRight: 6}} />
+
+                          <Form.Select onChange={this.handleInputChangeEduLevel}  fluid label='Education Level' type='text' name="eduLevel" options={eduLevel} style={{marginRight: 6}} />
+
+                          <Form.Select onChange={this.handleInputChangeYearsExp}  fluid label='Years of Experience' type='text' name="yearsOfExp" options={yearsOfExp} style={{marginRight: 6}} />
+                        </Form.Group>
+                              
+                    </Form>
+                  
+              </Segment>
+
+      </Comment>
+    </Comment.Group>
+
+
+              <Grid>
+              <Grid.Column width={16} >
               </Grid.Column>
               </Grid>
                          
+    
 
-              </Grid.Column>
 
+
+{/* /////////////////////////////////////////////// QUALIFICATIONS FORM////////////////////////////////////////////////////////// */}
+    <Comment.Group style={{marginLeft: 'auto', marginRight: 'auto'}} collapsed={formsCollapsed}>
+      <Comment widths='equal'>
+
+                  <Divider horizontal>
+                        <h2 textalign="center" style={{ color: "white" }}>
+                          <Icon circular name='briefcase' />Description and Qualifications
+                        </h2>
+                  </Divider>
+
+              <Segment inverted   style={{backgroundImage: "url('https://www.toptal.com/designers/subtlepatterns/patterns/always_grey.png')", border: "1px solid white"}}>
+                                
+                    <Form inverted>
+                          
+                        <br/>
+
+                        <Form.TextArea rows={3} onChange={this.handleInputChange} label='Position Description' placeholder='Enter Text' name="position_description"/>
+
+                        <Form.TextArea rows={6} onChange={this.handleInputChange} label='Position Responsibilities' placeholder='Enter Text' name="position_responsibilities"/>
+
+                        <Form.TextArea rows={6} onChange={this.handleInputChange} label='Position Qualifications' placeholder='Enter Text' name="position_qualifications"/>
+
+                            <Grid>
+                            <Grid.Column width={16} >
               
-              </Grid.Row>
+                
+                            </Grid.Column>
+                            </Grid>  
+                        
+                    </Form>
+                    
+              </ Segment>
+      </Comment>
+    </Comment.Group>
+              
+            <Grid>
+            <Grid.Column width={16} >
+            </Grid.Column>
+            </Grid>
 
-          </Grid>
+
+{/* /////////////////////////////////////////////// CONTACT INFO FORM////////////////////////////////////////////////////////// */}
+          
+    <Comment.Group style={{marginLeft: 'auto', marginRight: 'auto'}} collapsed={formsCollapsed}>
+      <Comment widths='equal'>
+
+                  <Divider horizontal>
+                        <h2 textalign="center" style={{ color: "white" }}>
+                            <Icon circular name='address book' />Contact Info
+                        </h2>
+                  </Divider>
+
+              <Segment inverted   style={{backgroundImage: "url('https://www.toptal.com/designers/subtlepatterns/patterns/always_grey.png')", border: "1px solid white"}}>
+                    
+                    <Form inverted>
+                          
+                        <br/>
+
+                              <Form.Group widths='equal'>
+                              <Form.Input onChange={this.handleInputChange} label='Contact Name' placeholder='' type='text' name="contact_name"/>
+                              </Form.Group>
+                              
+                              
+                              <Form.Group widths='equal'>
+                              <Form.Input onChange={this.handleInputChange} label='Contact Phone Number' placeholder='(###) ###-####' type='text' name="phone_number"/>
+
+                              <Form.Input onChange={this.handleInputChange} label='Contact Email' placeholder='' type='text' name="contact_email"/>
+                              </Form.Group>
+                              
+
+                              <Form.TextArea rows={4} onChange={this.handleInputChange} label='Additional Info' placeholder='Enter Text' name="additional_info"/>
+
+                              <Form.Checkbox inline label='I agree to the terms and conditions' />
+                              <Button color='teal' inverted onClick={this.handleFormSubmit}>Post Job</Button>
+
+                    </Form>
+                    
+          </ Segment>
+
+          </Comment>
+                </Comment.Group>
+              <br/>
       </div>
       )
   }
 }
 
 
-export default PostJob;

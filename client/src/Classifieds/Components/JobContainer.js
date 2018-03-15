@@ -1,23 +1,87 @@
-import React from 'react'
-import { Header, Segment, Container } from 'semantic-ui-react'
-import JobPosts from './JobPosts'
+import React, { Component } from 'react'
+import {Step, Button, Icon, Divider} from 'semantic-ui-react'
+import {Link} from 'react-router-dom'
 
-const JobsFeed = (props) => (
-      <div style={{marginTop: 40}}>
-            <JobPosts messageType = "Job Posting" name={props.firstName + " " + props.lastName} image_url={props.image_url} message = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. A scelerisque purus semper eget duis at tellus at urna. Magna eget est lorem ipsum dolor sit amet consectetur. Gravida dictum fusce ut placerat orci." date="February 13, 2018"/>
 
-            <JobPosts messageType = "Job Posting" name={props.firstName + " " + props.lastName} image_url={props.image_url} message = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. A scelerisque purus semper eget duis at tellus at urna. Magna eget est lorem ipsum dolor sit amet consectetur. Gravida dictum fusce ut placerat orci." date="February 13, 2018"/>
+class JobsFeed extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {  }
+    }
+    render() { 
+        return ( 
+            <div>
+            <Divider horizontal>
+                  <h2 textalign="center" style={{ color: "white" }}>
+                        <Icon circular name='handshake icon' />Apply For These Jobs
+                  </h2>
+            </Divider>
 
-            <JobPosts messageType = "Job Posting" name={props.firstName + " " + props.lastName} image_url={props.image_url} message = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. A scelerisque purus semper eget duis at tellus at urna. Magna eget est lorem ipsum dolor sit amet consectetur. Gravida dictum fusce ut placerat orci." date="February 13, 2018"/>
+            <Step.Group fluid vertical style={{backgroundColor:"transparent", border: "1px solid white"}}>
+            <Step active style={{backgroundColor:"transparent"}}>
+            <Icon name='code' color="grey" />
+            <Step.Content>
+              <Step.Title style={{color: "#67C8D3", width: "100%"}}>Company Name</Step.Title>
+              <Step.Description style={{color: "white"}}>Front End Developer</Step.Description>
+            </Step.Content>
+              
 
-            <JobPosts messageType = "Job Posting" name={props.firstName + " " + props.lastName} image_url={props.image_url} message = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. A scelerisque purus semper eget duis at tellus at urna. Magna eget est lorem ipsum dolor sit amet consectetur. Gravida dictum fusce ut placerat orci." date="February 13, 2018"/>
+            <Step.Content style={{marginTop:"15px", marginBottom: "15px"}}>
 
-            <JobPosts messageType = "Job Posting" name={props.firstName + " " + props.lastName} image_url={props.image_url} message = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. A scelerisque purus semper eget duis at tellus at urna. Magna eget est lorem ipsum dolor sit amet consectetur. Gravida dictum fusce ut placerat orci." date="February 13, 2018"/>
+            <Button.Group>
+                  <Link to={"/home/classifieds"} target="_blank"><Button basic color="grey">View Website</Button></Link>
+                  <Button.Or />
+                  <Link to={"/home/classifieds"} target="_blank"><Button basic color="grey">Email Company</Button></Link>
+              </Button.Group>
 
-            <JobPosts messageType = "Job Posting" name={props.firstName + " " + props.lastName} image_url={props.image_url} message = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. A scelerisque purus semper eget duis at tellus at urna. Magna eget est lorem ipsum dolor sit amet consectetur. Gravida dictum fusce ut placerat orci." date="February 13, 2018"/>
+              <Step.Title style={{color: "#67C8D3", marginTop:"25px"}}>Job Description</Step.Title>
+              <Step.Description style={{color: "white"}}>This is where you put in a bunch of information about the job posting.  It's going to be somewhat long so it's important for the design to still look good when the text is super long like this.</Step.Description>
+            </Step.Content>
 
-            <JobPosts messageType = "Job Posting" name={props.firstName + " " + props.lastName} image_url={props.image_url} message = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. A scelerisque purus semper eget duis at tellus at urna. Magna eget est lorem ipsum dolor sit amet consectetur. Gravida dictum fusce ut placerat orci." date="February 13, 2018"/>
-    </div>
-)
+          <Step.Content>
+              <Step.Title style={{color: "#67C8D3", marginTop: "15px"}}>Languages</Step.Title>
+              <Step.Description style={{color: "white"}}>React, Node, Javascript, Ruby</Step.Description>
+            </Step.Content>
 
-export default JobsFeed
+
+            </Step>
+     </Step.Group>
+
+
+
+     <Step.Group fluid vertical style={{backgroundColor:"transparent", border: "1px solid white"}}>
+            <Step active style={{backgroundColor:"transparent"}}>
+            <Icon name='code' color="grey" />
+            <Step.Content>
+              <Step.Title style={{color: "#67C8D3", width: "100%"}}>Company Name</Step.Title>
+              <Step.Description style={{color: "white"}}>Front End Developer</Step.Description>
+            </Step.Content>
+              
+
+            <Step.Content style={{marginTop:"15px", marginBottom: "15px"}}>
+
+            <Button.Group>
+                  <Link to={"/"} target="_blank"><Button basic color="grey">View Website</Button></Link>
+                  <Button.Or />
+                  <Link to={"/"} target="_blank"><Button basic color="grey">Email Company</Button></Link>
+              </Button.Group>
+
+              <Step.Title style={{color: "#67C8D3", marginTop:"25px"}}>Job Description</Step.Title>
+              <Step.Description style={{color: "white"}}>This is where you put in a bunch of information about the job posting.  It's going to be somewhat long so it's important for the design to still look good when the text is super long like this.</Step.Description>
+            </Step.Content>
+
+          <Step.Content>
+              <Step.Title style={{color: "#67C8D3", marginTop: "15px"}}>Languages</Step.Title>
+              <Step.Description style={{color: "white"}}>React, Node, Javascript, Ruby</Step.Description>
+            </Step.Content>
+
+
+            </Step>
+     </Step.Group>
+     <br/>>
+     </div>
+         )
+    }
+}
+ 
+export default JobsFeed;

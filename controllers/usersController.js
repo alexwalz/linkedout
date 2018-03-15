@@ -19,12 +19,15 @@ module.exports = {
                 path: 'posts',
                 populate: {
                     path: 'comments',
-                    model: 'comment'
+                    model: 'comment',
+                    populate: {
+                        path: 'user',
+                        model: 'User'
+                    }
                 }
             })
             .populate('education')
             .populate('connections')
-            .populate('comments')
             .then(function (dbUser) {
                 for(i = 0; i < dbUser.posts.length; i++) {
                     var newPostDate = moment(dbUser.posts[i].date).fromNow();
@@ -177,7 +180,9 @@ module.exports = {
                     phone: req.body.phone,
                     birthday: req.body.birthday,
                     location: req.body.location,
-                    about: req.body.about
+                    about: req.body.about,
+                    firstName: req.body.firstName,
+                    lastName: req.body.lastName
                 }
             }).then(function (dbModel) {
             res.json(dbModel);
@@ -187,6 +192,14 @@ module.exports = {
     },
     findRecentPosts: function (req, res) {
         db.Post.find({}).sort({viewCount: -1}).limit(50)
+            .populate({
+                path: 'comments',
+                model: 'comment',
+                populate: {
+                    path: 'user',
+                    model: 'User'
+                }
+            })
             .then(function (dbPost) {
                 var postIdArray = [];
 

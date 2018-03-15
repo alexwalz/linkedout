@@ -12,11 +12,16 @@ import FeaturedJobContainer from './Components/FeaturedJobContainer'
 import FeedShareBox from './Components/ShareBox'
 import NewProjectBox from '../Profile/Components/ProjectShareBox'
 import Languages from '../Profile/Components/LanguagesView'
+import { Redirect } from "react-router-dom"
+import AdSense from 'react-adsense'
 
 class FeedPage extends Component {
     constructor(props) {
         super(props);
+        this.update = this.update.bind(this)
+        
         this.state = {
+          update: false,
           loggedInUser: {
             firstName: "John",
             lastName: "Doe",
@@ -49,6 +54,10 @@ class FeedPage extends Component {
           }
         };
       }
+
+      update = () => {
+        this.setState({update: true})
+    }
     
       componentDidMount() {
         this.getLoggedInUser();
@@ -66,9 +75,17 @@ class FeedPage extends Component {
       };
 
 
-renderFeedPage(){
+renderFeedPage(){   
     return ( 
-        <div style={{backgroundImage: `url(${background})`, backgroundPositionX: 'center', color:"grey", paddingTop: 80, paddingLeft: "2%", paddingRight: "2%"}}>
+      <div>
+        {this.state.loggedInUser ?
+        <div style={{
+            background: `url(${background}) no-repeat center center fixed`,
+            webkitBackgroundSize: "cover",
+            mozBackgroundSize: "cover",
+            backgroundSize: "cover",
+            backgroundSize: "cover",
+        }}>
              
                  
                 <Grid>
@@ -81,13 +98,13 @@ renderFeedPage(){
                      </Grid.Column>
                 </Grid.Row> */}
 
-                 <Grid.Row>
+                 <Grid.Row  style={{marginTop: "5%"}}>
 
-                 <Grid.Column width={5}>
+                 <Grid.Column width={5} style={{marginLeft: "2%"}}>
                             <Grid>
-                                <Grid.Row>
+                                <Grid.Row style={{maxWidth:"450px", minWidth:"350px"}}>
                                     <Grid.Column width={16} style={{marginTop:"15%"}}>
-                                         <FeedShareBox loggedInUser={this.state.loggedInUser}/>
+                                         <FeedShareBox loggedInUser={this.state.loggedInUser} renderUser={this.update} />
                                     </Grid.Column>
                                     <Grid.Column width={16} style={{marginTop:"3%"}}>
                                         <NewProjectBox loggedInUser={this.state.loggedInUser}/>
@@ -99,6 +116,10 @@ renderFeedPage(){
                                         <Divider horizontal><h3 textAlign="center" style={{ color: "white" }}><Icon circular name='info' />My Languages</h3></Divider>
                                         <Languages loggedInUserInfo={this.state.loggedInUser} userInfo={this.state.loggedInUser}/>
                                     </Grid.Column>
+                                    <Grid.Column width={16} style={{marginTop:"3%"}}>
+                                        <Divider horizontal><h3 textAlign="center" style={{ color: "white" }}><Icon circular name='newspaper' />News Articles</h3></Divider>
+                                        <NewsFeed />
+                                    </Grid.Column>
                                 </Grid.Row>
                             </Grid>
                 </Grid.Column>
@@ -107,13 +128,13 @@ renderFeedPage(){
                  <Grid.Column width={7}>
 
                             <Grid>
-                                <Grid.Row>
+                                <Grid.Row style={{maxWidth:"650px", minWidth:"500px"}}>
                                     <Grid.Column width={16}>
                                         <FeaturedJobContainer />
                                     </Grid.Column>
 
                                     <Grid.Column width={16}>
-                                        <FeedContainer  loggedInUser={this.state.loggedInUser} />
+                                        <FeedContainer  loggedInUser={this.state.loggedInUser} renderUser={this.update}/>
                                     </Grid.Column>
 
                                 </Grid.Row>
@@ -122,6 +143,13 @@ renderFeedPage(){
                 </Grid.Column>
 
                 <Grid.Column width={4}>
+
+                        <AdSense.Google client='ca-pub-7961305018548600'
+                        slot='7806394673'
+                        />
+
+                        {/* style={{width: 500, height: 300, float: 'left'}}
+                        format=''  */}
 
                 </Grid.Column>
 
@@ -132,7 +160,10 @@ renderFeedPage(){
                 
         
         </div>
-     
+          : <Redirect to={`/`}/>}
+      </div>
+
+   
     )
 }
 
@@ -150,7 +181,7 @@ renderLoaderPage(){
 
     render() { 
         return ( 
- 			
+      
           <div>
               {this.state.loading ? this.renderLoaderPage() : this.renderFeedPage()}
         </div>

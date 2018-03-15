@@ -16,7 +16,7 @@ const Languages = (props) => (
             //  <Message info textAlign="center" style={messageStyles}>{(props.loggedUser)? <Icon name="delete" color='red' onClick={()=>props.deleteLanguage(props.language)} style={{opacity: 0.7}}/> : null }{props.language}</Message>
             <List.Item key={props.language}>
             {(props.loggedUser)? <Icon name="close" onClick={()=>props.deleteLanguage(props.language)} style={{opacity: 0.7}}/> : null }
-            <List.Content header={props.language} />
+            <List.Content style={{color: "#5CC1CD"}} header={props.language} />
           </List.Item>
 )
 
