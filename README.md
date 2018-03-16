@@ -1,7 +1,7 @@
 # DevSpot!
-[alt text](/imgs/DespotLogo.PNG)
+![alt text](/imgs/DespotLogo.PNG)
 
-[Running on Heroku](https://devspot1.herokuapp.com)
+[App is Running on Heroku](https://devspot1.herokuapp.com)
 
 ## Social Networking for Developers
 
